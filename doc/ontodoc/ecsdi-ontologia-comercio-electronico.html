@@ -1,0 +1,3628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ECSDI Ontologia de Comercio Electronico</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "ECSDI Ontologia de Comercio Electronico"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.8.3</span>
+  </div>
+  <h1>ECSDI Ontologia de Comercio Electronico</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico</code></dd>
+        <dt>Version URI</dt>
+        <dd><a href="http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico/1.0.0">http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico/1.0.0</a></dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="data_file.ttl">RDF (turtle)</a></dd>
+    </dl>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namedindividuals">Named Individuals</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <img src="diagram.png">
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Accion">Accion</a></li>
+        <li><a href="#Actor">Actor</a></li>
+        <li><a href="#ActualizarHistorialBusqueda">ActualizarHistorialBusqueda</a></li>
+        <li><a href="#ActualizarHistorialPedidos">ActualizarHistorialPedidos</a></li>
+        <li><a href="#ActualizarInformacionProductos">ActualizarInformacionProductos</a></li>
+        <li><a href="#AgenciaTransporte">AgenciaTransporte</a></li>
+        <li><a href="#Agente">Agente</a></li>
+        <li><a href="#Asistente">Asistente</a></li>
+        <li><a href="#BuscarProductos">BuscarProductos</a></li>
+        <li><a href="#Busqueda">Busqueda</a></li>
+        <li><a href="#CentroLogistico">CentroLogistico</a></li>
+        <li><a href="#Cobrar">Cobrar</a></li>
+        <li><a href="#Cobro">Cobro</a></li>
+        <li><a href="#ComercioExterno">ComercioExterno</a></li>
+        <li><a href="#Comunicacion">Comunicacion</a></li>
+        <li><a href="#ContratarEnvio">ContratarEnvio</a></li>
+        <li><a href="#ContratarRecogida">ContratarRecogida</a></li>
+        <li><a href="#Devolucion">Devolucion</a></li>
+        <li><a href="#EnviarFacturaPedido">EnviarFacturaPedido</a></li>
+        <li><a href="#Envio">Envio</a></li>
+        <li><a href="#Factura">Factura</a></li>
+        <li><a href="#InformarEnvioPedido">InformarEnvioPedido</a></li>
+        <li><a href="#InformarProductosPedidos">InformarProductosPedidos</a></li>
+        <li><a href="#InformarRecogidaProductos">InformarRecogidaProductos</a></li>
+        <li><a href="#Linea">Linea</a></li>
+        <li><a href="#LineaBusqueda">LineaBusqueda</a></li>
+        <li><a href="#LineaEnvio">LineaEnvio</a></li>
+        <li><a href="#LineaOferta">LineaOferta</a></li>
+        <li><a href="#LineaProducto">LineaProducto</a></li>
+        <li><a href="#Lote">Lote</a></li>
+        <li><a href="#Lugar">Lugar</a></li>
+        <li><a href="#Marca">Marca</a></li>
+        <li><a href="#MetodoPago">MetodoPago</a></li>
+        <li><a href="#Modelo">Modelo</a></li>
+        <li><a href="#Oferta">Oferta</a></li>
+        <li><a href="#Pago">Pago</a></li>
+        <li><a href="#Pedido">Pedido</a></li>
+        <li><a href="#Producto">Producto</a></li>
+        <li><a href="#ProveedorPagos">ProveedorPagos</a></li>
+        <li><a href="#RealizarEnvio">RealizarEnvio</a></li>
+        <li><a href="#RealizarPedido">RealizarPedido</a></li>
+        <li><a href="#Recomendacion">Recomendacion</a></li>
+        <li><a href="#RecomendarProductos">RecomendarProductos</a></li>
+        <li><a href="#Reembolsar">Reembolsar</a></li>
+        <li><a href="#Reembolso">Reembolso</a></li>
+        <li><a href="#Respuesta">Respuesta</a></li>
+        <li><a href="#RespuestaCobro">RespuestaCobro</a></li>
+        <li><a href="#RespuestaInformacionTransporteEnvio">RespuestaInformacionTransporteEnvio</a></li>
+        <li><a href="#RespuestaInformacionTransporteRecogida">RespuestaInformacionTransporteRecogida</a></li>
+        <li><a href="#RespuestaProductos">RespuestaProductos</a></li>
+        <li><a href="#RespuestaReembolso">RespuestaReembolso</a></li>
+        <li><a href="#RespuestaResolucionDevolucion">RespuestaResolucionDevolucion</a></li>
+        <li><a href="#RespuestaValoracionProducto">RespuestaValoracionProducto</a></li>
+        <li><a href="#SolicitarDevolucionProductos">SolicitarDevolucionProductos</a></li>
+        <li><a href="#SolicitarEnvio">SolicitarEnvio</a></li>
+        <li><a href="#SolicitarInformacionTransporteEnvio">SolicitarInformacionTransporteEnvio</a></li>
+        <li><a href="#SolicitarInformacionTransporteRecogida">SolicitarInformacionTransporteRecogida</a></li>
+        <li><a href="#SolicitarValoracionProducto">SolicitarValoracionProducto</a></li>
+        <li><a href="#TargetaCredito">TargetaCredito</a></li>
+        <li><a href="#Valoracion">Valoracion</a></li>
+    </ul>
+    <div class="entity class" id="Accion">
+        <h3>Accion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Acciones entre Actores y Agentes del Sistema.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Comunicacion">Comunicacion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteEnvio">SolicitarInformacionTransporteEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#BuscarProductos">BuscarProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarEnvio">SolicitarEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarRecogida">ContratarRecogida</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarEnvio">RealizarEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RecomendarProductos">RecomendarProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarPedido">RealizarPedido</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarEnvioPedido">InformarEnvioPedido</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolsar">Reembolsar</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobrar">Cobrar</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#EnviarFacturaPedido">EnviarFacturaPedido</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarValoracionProducto">SolicitarValoracionProducto</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarHistorialBusqueda">ActualizarHistorialBusqueda</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarRecogidaProductos">InformarRecogidaProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarInformacionProductos">ActualizarInformacionProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarEnvio">ContratarEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarDevolucionProductos">SolicitarDevolucionProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarProductosPedidos">InformarProductosPedidos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarHistorialPedidos">ActualizarHistorialPedidos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteRecogida">SolicitarInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Actor">
+        <h3>Actor<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Actor externo al Sistema que interactua con éste.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Asistente">Asistente</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#AgenciaTransporte">AgenciaTransporte</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno">ComercioExterno</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ProveedorPagos">ProveedorPagos</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ActualizarHistorialBusqueda">
+        <h3>ActualizarHistorialBusqueda<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarHistorialBusqueda</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Agente BuscadorProductos envia la busqueda hecha por un Asistente al Agente Recomendador/ControlCalidad para que la almacene en el Historial búsquedas</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#busca">busca</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ActualizarHistorialPedidos">
+        <h3>ActualizarHistorialPedidos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarHistorialPedidos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Al completarse y cerrarse un Pedido, el Agente Gestor pedidos lo manda al Recomendador/control calidad para que lo almacene en el Historial pedidos.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ActualizarInformacionProductos">
+        <h3>ActualizarInformacionProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarInformacionProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El ComercioExterno envia un conjunto de Ofertas. Si la Oferta ya existia en el Sistema, se actualiza. Si no existia, se crea.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofrece">ofrece</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AgenciaTransporte">
+        <h3>AgenciaTransporte<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#AgenciaTransporte</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Se encarga del envio de Lotes y la recogida de Devoluciones. El Sistema negocia con esta el envio de cada uno de los Lotes. Como habrá varias Agencias de Transporte disponibles, elegirá la más barata y conveniente.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor">Actor</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Agente">
+        <h3>Agente<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Agente</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Agente que forma parte del Sistema</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Asistente">
+        <h3>Asistente<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Asistente</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Es el intermediario entre el Usuario/Cliente. Actua en su nombre y es el principal Actor del Sistema.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor">Actor</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_a">recomienda_a</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hecha_por">hecha_por</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BuscarProductos">
+        <h3>BuscarProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#BuscarProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Un Asistente realiza una Busqueda sobre unas categorias de Productos, indicando cantidad y un intervalo de precio para cada una de ellas.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#busca">busca</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Busqueda">
+        <h3>Busqueda<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Busqueda</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Conjunto de LineaBusqueda (categorias de Productos asociadas con cantidades e intervalos de precio)</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_busqueda">tiene_linea_busqueda</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#busca">busca</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CentroLogistico">
+        <h3>CentroLogistico<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Almacen de Productos y Agente encargado del Envio de los Productos comprados.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Agente">Agente</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_por_enviar">tiene_por_enviar</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#esta_en">esta_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_en_inventario">tiene_en_inventario</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#devolver_a">devolver_a</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_origen">con_origen</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Cobrar">
+        <h3>Cobrar<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobrar</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Gestor pedidos solicita el Cobro al Proveedor de pagos.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_cobro">con_cobro</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Cobro">
+        <h3>Cobro<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobro</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Transaccion entrante a las cuentas del Sistema</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pago">Pago</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_cobro">con_cobro</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ComercioExterno">
+        <h3>ComercioExterno<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Pone a la venta Productos en nuestro sistema en forma de Ofertas. Estas ofertas pueden estar más o menos integradas en el Sistema, pudiendo darse 2 escenarios: 1) Los Productos se encuentran en algun CentroLogistico y el Sistema se encarga de su envio. 2) Los Productos se encuentran en el ComercioExterno y por lo tanto es éste el que se encarga de su envio.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor">Actor</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofrece">ofrece</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_origen">con_origen</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#devolver_a">devolver_a</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Comunicacion">
+        <h3>Comunicacion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Comunicacion</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ContratarEnvio">
+        <h3>ContratarEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El CentroLogistico contrata el envio de un Lote con una AgenciaTransporte</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_lote">envia_lote</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ContratarRecogida">
+        <h3>ContratarRecogida<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarRecogida</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema contrata la Recogida de una Devolución con una AgenciaTransporte.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Devolucion">
+        <h3>Devolucion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Permite a un Asistente devolver un/os producto/s y recuperar el dinero pagado por el</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recoger_en">recoger_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#importe_total">importe_total</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#estado">estado</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_reembolso">con_reembolso</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide_devolver">pide_devolver</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="EnviarFacturaPedido">
+        <h3>EnviarFacturaPedido<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#EnviarFacturaPedido</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema envia la Factura del Pedido al Asistente que lo ha comprado.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Envio">
+        <h3>Envio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Conjunto de LineaProducto que han sido enviados y tienen origen y destino comun</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_producto">tiene_linea_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_destino">con_destino</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_origen">con_origen</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_envios">tiene_envios</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Factura">
+        <h3>Factura<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Factura</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Conjunto de LineaOferta (tuplas Producto, precio unitario, precio total) e importe total</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#importe_total">importe_total</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta">tiene_linea_oferta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_factura">tiene_factura</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InformarEnvioPedido">
+        <h3>InformarEnvioPedido<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarEnvioPedido</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Agente Gestor envios informa al Asistente de que se ha enviado un Pedido y de las diversas procedencias de los Productos, además de otros detalles del envio. También se informa de que se ha cobrado el envio.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_pedido">de_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_envios">tiene_envios</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InformarProductosPedidos">
+        <h3>InformarProductosPedidos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarProductosPedidos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema informa al ComercioExterno de que alguien ha comprado un conjunto de Productos (LineaOferta)</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta">tiene_linea_oferta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InformarRecogidaProductos">
+        <h3>InformarRecogidaProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarRecogidaProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema informa al Asistente de las instrucciones que debe seguir para efectuar la Devolución que prèviamente habia solicitado y habia sido aprovada.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#instrucciones">instrucciones</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Linea">
+        <h3>Linea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Linea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Clase que permite asociar otra clase con una cantidad</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaOferta">LineaOferta</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda">LineaBusqueda</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaProducto">LineaProducto</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cantidad">cantidad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LineaBusqueda">
+        <h3>LineaBusqueda<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Asocia una categoria de Producto, con una cantidad y un intervalo de precios</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Linea">Linea</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio_min">precio_min</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#categoria">categoria</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio_max">precio_max</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_busqueda">tiene_linea_busqueda</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LineaEnvio">
+        <h3>LineaEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Asocia una Oferta con una cantidad y un Pedido. De esta manera, para cada Producto conoce: cantidad a enviar, destino al que enviarlo/s, como debe gestionar el envio y cual es el ComercioExterno que lo vende.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaOferta">LineaOferta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_pedido">de_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_envio">tiene_linea_envio</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LineaOferta">
+        <h3>LineaOferta<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaOferta</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Asocia una Oferta con una cantidad. La cantidad en una LineaOferta siempre es menor que la cantidad de su Oferta. Así se puede decir: Quiero X unidades del Producto de esta Oferta al precio indicado en la Oferta.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Linea">Linea</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaEnvio">LineaEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta">tiene_linea_oferta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LineaProducto">
+        <h3>LineaProducto<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaProducto</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Asocia un Producto con una cantidad</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Linea">Linea</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#producto">producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_en_inventario">tiene_en_inventario</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_producto">tiene_linea_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Lote">
+        <h3>Lote<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Conjunto de LineaEnvio (es decir de cantidades de Productos) con destino común, que se encuentran en el mismo CentroLogistico y, por lo tanto, se enviaran juntas.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_origen">con_origen</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_producto">tiene_linea_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_destino">con_destino</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_lote">envia_lote</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_por_enviar">tiene_por_enviar</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Lugar">
+        <h3>Lugar<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Ubicación geográfica a nivel de municipio</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ciudad">ciudad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#esta_en">esta_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#se_entrega_en">se_entrega_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recoger_en">recoger_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_destino">con_destino</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Marca">
+        <h3>Marca<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Marca</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Marca fabricante de Productos</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_marca">tiene_marca</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="MetodoPago">
+        <h3>MetodoPago<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#MetodoPago</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Metodo mediante el cual el Asistente efectuará el pago de un pedido</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#TargetaCredito">TargetaCredito</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#descripcion">descripcion</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_metodo_pago">tiene_metodo_pago</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Modelo">
+        <h3>Modelo<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Modelo</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Modelo de una Marca y un Producto</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_marca">tiene_marca</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_modelo">tiene_modelo</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Oferta">
+        <h3>Oferta<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Oferta de Producto hecha por un ComercioExterno o por el Sistema mismo. Contiene la cantidad, el precio unitario del Producto ofertado y el tipo de gestion que se debe hacer se esos Productos a la hora de efectuar el envio. La cantidad de una Oferta siempre es menor que la cantidad de su Producto. Puede haber varias ofertas del mismo Producto y el mismo ComercioExterno, ya que puede variar el precio, por ejemplo.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio">precio</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#gestion_envio">gestion_envio</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cantidad">cantidad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofrece">ofrece</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofertado_en">ofertado_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Pago">
+        <h3>Pago<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pago</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Transaccion bancaria</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobro">Cobro</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolso">Reembolso</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#importe_total">importe_total</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Pedido">
+        <h3>Pedido<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Conjunto de LineaOferta (cantidades de productos a un determinado precio). Contiene tambien el MetodoPago, la prioridad de envio, el destino donde enviar los Productos, la Factura de compra y los distintos Envios que son necesarios para el procesamiento del Pedido.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_pedido">de_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_factura">tiene_factura</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#estado">estado</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#prioridad">prioridad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_metodo_pago">tiene_metodo_pago</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#se_entrega_en">se_entrega_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_cobro">con_cobro</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta">tiene_linea_oferta</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#importe_total">importe_total</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide">pide</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_pedido">de_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_pedido">envia_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Producto">
+        <h3>Producto<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Información de un Producto. Contiene información del Modelo y Marca, la cantidad total disponible en el Sistema, las Valoraciones que los Asistentes han hecho y su valoración media.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valoracion_media">valoracion_media</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#descripcion">descripcion</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_modelo">tiene_modelo</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_valoracion">tiene_valoracion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cantidad">cantidad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#restricciones_devolucion">restricciones_devolucion</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#categoria">categoria</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre">nombre</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofertado_en">ofertado_en</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#producto">producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valora_producto">valora_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_producto">recomienda_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ProveedorPagos">
+        <h3>ProveedorPagos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ProveedorPagos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Es el encargado de efectuar los Pagos que necesita el Sistema.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor">Actor</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RealizarEnvio">
+        <h3>RealizarEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Agente Gestor pedidos solicita al Gestor envios que gestiones el envio de los Productos de un Pedido</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_pedido">envia_pedido</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RealizarPedido">
+        <h3>RealizarPedido<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarPedido</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Asistente hace un Pedido</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide">pide</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Recomendacion">
+        <h3>Recomendacion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Recomendacion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Recomendacion de Productos basada en el historial de Busquedas, el historial de Pedidos y las Valoraciones hechas por el Asistente</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_producto">recomienda_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_a">recomienda_a</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda">recomienda</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RecomendarProductos">
+        <h3>RecomendarProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RecomendarProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Agente Recomendador/control calidad efectua una Recomendacion de uno o varios Productos al Asistente.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda">recomienda</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Reembolsar">
+        <h3>Reembolsar<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolsar</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Gestor devoluciones solicita el Reembolso al Proveedor de pagos.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_reembolso">con_reembolso</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Reembolso">
+        <h3>Reembolso<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolso</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Transaccion bancaria saliente de las cuentas del Sistema</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pago">Pago</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador">identificador</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_reembolso">con_reembolso</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Respuesta">
+        <h3>Respuesta<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuestas a las Acciones entre Actores y Agentes del Sistema</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Comunicacion">Comunicacion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaResolucionDevolucion">RespuestaResolucionDevolucion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaProductos">RespuestaProductos</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaValoracionProducto">RespuestaValoracionProducto</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaReembolso">RespuestaReembolso</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteRecogida">RespuestaInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaCobro">RespuestaCobro</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteEnvio">RespuestaInformacionTransporteEnvio</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaCobro">
+        <h3>RespuestaCobro<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaCobro</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción Cobrar. El Proveedor de pagos comunica el estado de la transaccion. Puede tener 2 estados: 1) exitoso 2) fallido.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_cobro">con_cobro</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#estado">estado</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaInformacionTransporteEnvio">
+        <h3>RespuestaInformacionTransporteEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción SolicitarInformaciónTransporteEnvio. La AgenciaTransporte comunica al Sistema el precio para ese Lote y la fecha estimada de entrega.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio">precio</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_lote">envia_lote</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaInformacionTransporteRecogida">
+        <h3>RespuestaInformacionTransporteRecogida<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteRecogida</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción SolicitarInformaciónTransporteRecogida. La AgenciaTransporte comunica al Sistema el precio para esa Recogida y la fecha de recogida.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio">precio</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaProductos">
+        <h3>RespuestaProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción BuscarProductos. El Sistema responde al Asistente con un conjunto de ofertas que le pueden ser de interés.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta">tiene_linea_oferta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaReembolso">
+        <h3>RespuestaReembolso<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaReembolso</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción Reembolsar. El Proveedor de pagos comunica el estado de la transaccion. Puede tener 2 estados: 1) exitoso 2) fallido.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#estado">estado</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_reembolso">con_reembolso</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaResolucionDevolucion">
+        <h3>RespuestaResolucionDevolucion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaResolucionDevolucion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Acción SolicitarDevoluciónProducto. El Sistema comunica si la Devolución se podra hacer o no.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RespuestaValoracionProducto">
+        <h3>RespuestaValoracionProducto<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaValoracionProducto</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Respuesta a la Accion SolicitarValoracionProducto. El Asistente comunica al Sistema las Valoraciones hechas por el Usuario.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Respuesta">Respuesta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hace_valoracion">hace_valoracion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SolicitarDevolucionProductos">
+        <h3>SolicitarDevolucionProductos<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarDevolucionProductos</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Asistente solicita al Sistema la Devolución de uno o varios Productos que previamente ha comprado.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide_devolver">pide_devolver</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SolicitarEnvio">
+        <h3>SolicitarEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema solicita al ComercioExterno o al CentroLogistico que envie un conjunto de Productos (LineaEnvio)</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_envio">tiene_linea_envio</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SolicitarInformacionTransporteEnvio">
+        <h3>SolicitarInformacionTransporteEnvio<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteEnvio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El CentroLogistico solicita información a una AgenciaTransporte sobre los costes y tiempo de entrega de un Lote</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_lote">envia_lote</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SolicitarInformacionTransporteRecogida">
+        <h3>SolicitarInformacionTransporteRecogida<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteRecogida</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>ElCentroLogistico solicita informacion tarifaria y de tiempo estimado de entrega a la AgenciaTransporte para la Recogida de una Devolucion</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion">de_devolucion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#devolver_a">devolver_a</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SolicitarValoracionProducto">
+        <h3>SolicitarValoracionProducto<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarValoracionProducto</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>El Sistema solicita la Valoracion de uno o varios Productos al Asistente que los ha comprado previamente.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valora_producto">valora_producto</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="TargetaCredito">
+        <h3>TargetaCredito<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#TargetaCredito</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Metodo de pago consistente en el pago por targeta</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#MetodoPago">MetodoPago</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#fecha_caducidad">fecha_caducidad</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cvv">cvv</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pan">pan</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Valoracion">
+        <h3>Valoracion<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Valoracion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Asociacion entre Producto y Asistente que contiene la valoracion hecha por el Asistente sobre el Producto</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valor">valor</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hecha_por">hecha_por</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_valoracion">tiene_valoracion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hace_valoracion">hace_valoracion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#busca">busca</a></li>
+        <li><a href="#con_cobro">con_cobro</a></li>
+        <li><a href="#con_destino">con_destino</a></li>
+        <li><a href="#con_origen">con_origen</a></li>
+        <li><a href="#con_reembolso">con_reembolso</a></li>
+        <li><a href="#de_devolucion">de_devolucion</a></li>
+        <li><a href="#de_pedido">de_pedido</a></li>
+        <li><a href="#devolver_a">devolver_a</a></li>
+        <li><a href="#envia_lote">envia_lote</a></li>
+        <li><a href="#envia_pedido">envia_pedido</a></li>
+        <li><a href="#esta_en">esta_en</a></li>
+        <li><a href="#hace_valoracion">hace_valoracion</a></li>
+        <li><a href="#hecha_por">hecha_por</a></li>
+        <li><a href="#ofertado_en">ofertado_en</a></li>
+        <li><a href="#ofrece">ofrece</a></li>
+        <li><a href="#pide">pide</a></li>
+        <li><a href="#pide_devolver">pide_devolver</a></li>
+        <li><a href="#producto">producto</a></li>
+        <li><a href="#recoger_en">recoger_en</a></li>
+        <li><a href="#recomienda">recomienda</a></li>
+        <li><a href="#recomienda_a">recomienda_a</a></li>
+        <li><a href="#recomienda_producto">recomienda_producto</a></li>
+        <li><a href="#se_entrega_en">se_entrega_en</a></li>
+        <li><a href="#tiene_en_inventario">tiene_en_inventario</a></li>
+        <li><a href="#tiene_envios">tiene_envios</a></li>
+        <li><a href="#tiene_factura">tiene_factura</a></li>
+        <li><a href="#tiene_linea_busqueda">tiene_linea_busqueda</a></li>
+        <li><a href="#tiene_linea_envio">tiene_linea_envio</a></li>
+        <li><a href="#tiene_linea_oferta">tiene_linea_oferta</a></li>
+        <li><a href="#tiene_linea_producto">tiene_linea_producto</a></li>
+        <li><a href="#tiene_marca">tiene_marca</a></li>
+        <li><a href="#tiene_metodo_pago">tiene_metodo_pago</a></li>
+        <li><a href="#tiene_modelo">tiene_modelo</a></li>
+        <li><a href="#tiene_por_enviar">tiene_por_enviar</a></li>
+        <li><a href="#tiene_valoracion">tiene_valoracion</a></li>
+        <li><a href="#valora_producto">valora_producto</a></li>
+    </ul>
+    <div class="entity property" id="busca">
+        <h3>busca<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#busca</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarHistorialBusqueda">ActualizarHistorialBusqueda</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#BuscarProductos">BuscarProductos</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Busqueda">Busqueda</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="con_cobro">
+        <h3>con_cobro<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_cobro</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaCobro">RespuestaCobro</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobrar">Cobrar</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobro">Cobro</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="con_destino">
+        <h3>con_destino<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_destino</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio">Envio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote">Lote</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar">Lugar</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="con_origen">
+        <h3>con_origen<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_origen</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote">Lote</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio">Envio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno">ComercioExterno</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="con_reembolso">
+        <h3>con_reembolso<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#con_reembolso</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolsar">Reembolsar</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaReembolso">RespuestaReembolso</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolso">Reembolso</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="de_devolucion">
+        <h3>de_devolucion<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_devolucion</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarRecogida">ContratarRecogida</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteRecogida">SolicitarInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaResolucionDevolucion">RespuestaResolucionDevolucion</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarRecogidaProductos">InformarRecogidaProductos</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteRecogida">RespuestaInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="de_pedido">
+        <h3>de_pedido<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#de_pedido</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaEnvio">LineaEnvio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarEnvioPedido">InformarEnvioPedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="devolver_a">
+        <h3>devolver_a<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#devolver_a</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteRecogida">SolicitarInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno">ComercioExterno</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="envia_lote">
+        <h3>envia_lote<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_lote</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarInformacionTransporteEnvio">SolicitarInformacionTransporteEnvio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteEnvio">RespuestaInformacionTransporteEnvio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ContratarEnvio">ContratarEnvio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote">Lote</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="envia_pedido">
+        <h3>envia_pedido<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#envia_pedido</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarEnvio">RealizarEnvio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="esta_en">
+        <h3>esta_en<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#esta_en</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar">Lugar</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hace_valoracion">
+        <h3>hace_valoracion<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hace_valoracion</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaValoracionProducto">RespuestaValoracionProducto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Valoracion">Valoracion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hecha_por">
+        <h3>hecha_por<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#hecha_por</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Valoracion">Valoracion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Asistente">Asistente</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ofertado_en">
+        <h3>ofertado_en<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofertado_en</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ofrece">
+        <h3>ofrece<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ofrece</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ActualizarInformacionProductos">ActualizarInformacionProductos</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno">ComercioExterno</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pide">
+        <h3>pide<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RealizarPedido">RealizarPedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pide_devolver">
+        <h3>pide_devolver<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pide_devolver</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarDevolucionProductos">SolicitarDevolucionProductos</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="producto">
+        <h3>producto<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#producto</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaProducto">LineaProducto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="recoger_en">
+        <h3>recoger_en<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recoger_en</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar">Lugar</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="recomienda">
+        <h3>recomienda<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RecomendarProductos">RecomendarProductos</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Recomendacion">Recomendacion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="recomienda_a">
+        <h3>recomienda_a<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_a</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Recomendacion">Recomendacion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Asistente">Asistente</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="recomienda_producto">
+        <h3>recomienda_producto<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#recomienda_producto</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Recomendacion">Recomendacion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="se_entrega_en">
+        <h3>se_entrega_en<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#se_entrega_en</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar">Lugar</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_en_inventario">
+        <h3>tiene_en_inventario<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_en_inventario</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaProducto">LineaProducto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_envios">
+        <h3>tiene_envios<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_envios</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarEnvioPedido">InformarEnvioPedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio">Envio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_factura">
+        <h3>tiene_factura<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_factura</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Factura">Factura</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_linea_busqueda">
+        <h3>tiene_linea_busqueda<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_busqueda</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Busqueda">Busqueda</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda">LineaBusqueda</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_linea_envio">
+        <h3>tiene_linea_envio<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_envio</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarEnvio">SolicitarEnvio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaEnvio">LineaEnvio</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_linea_oferta">
+        <h3>tiene_linea_oferta<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_oferta</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarProductosPedidos">InformarProductosPedidos</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaProductos">RespuestaProductos</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Factura">Factura</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaOferta">LineaOferta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_linea_producto">
+        <h3>tiene_linea_producto<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_linea_producto</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio">Envio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote">Lote</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaProducto">LineaProducto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_marca">
+        <h3>tiene_marca<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_marca</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Modelo">Modelo</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Marca">Marca</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_metodo_pago">
+        <h3>tiene_metodo_pago<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_metodo_pago</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#MetodoPago">MetodoPago</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_modelo">
+        <h3>tiene_modelo<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_modelo</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Modelo">Modelo</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_por_enviar">
+        <h3>tiene_por_enviar<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_por_enviar</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lote">Lote</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tiene_valoracion">
+        <h3>tiene_valoracion<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#tiene_valoracion</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Valoracion">Valoracion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="valora_producto">
+        <h3>valora_producto<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valora_producto</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#SolicitarValoracionProducto">SolicitarValoracionProducto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#cantidad">cantidad</a></li>
+        <li><a href="#categoria">categoria</a></li>
+        <li><a href="#ciudad">ciudad</a></li>
+        <li><a href="#cvv">cvv</a></li>
+        <li><a href="#descripcion">descripcion</a></li>
+        <li><a href="#estado">estado</a></li>
+        <li><a href="#fecha_caducidad">fecha_caducidad</a></li>
+        <li><a href="#gestion_envio">gestion_envio</a></li>
+        <li><a href="#identificador">identificador</a></li>
+        <li><a href="#importe_total">importe_total</a></li>
+        <li><a href="#instrucciones">instrucciones</a></li>
+        <li><a href="#nombre">nombre</a></li>
+        <li><a href="#pan">pan</a></li>
+        <li><a href="#precio">precio</a></li>
+        <li><a href="#precio_max">precio_max</a></li>
+        <li><a href="#precio_min">precio_min</a></li>
+        <li><a href="#prioridad">prioridad</a></li>
+        <li><a href="#restricciones_devolucion">restricciones_devolucion</a></li>
+        <li><a href="#valor">valor</a></li>
+        <li><a href="#valoracion_media">valoracion_media</a></li>
+    </ul>
+    <div class="entity property" id="cantidad">
+        <h3>cantidad<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cantidad</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La cantidad se expresa como el número de unidades de la clase a la cual pertenece.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Linea">Linea</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="categoria">
+        <h3>categoria<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#categoria</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La categoria representa un aspecto característico de Producto por el cual se le puede buscar.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda">LineaBusqueda</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ciudad">
+        <h3>ciudad<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ciudad</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La ciudad identifica un lugar en concreto, siendo esta única.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Lugar">Lugar</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="cvv">
+        <h3>cvv<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#cvv</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El cvv es el Código de Valor de Verificación de una tarjeta de crédito.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#TargetaCredito">TargetaCredito</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="descripcion">
+        <h3>descripcion<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#descripcion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La descripción consiste en una explicación más detallada del concepto al cual pertenece.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#MetodoPago">MetodoPago</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="estado">
+        <h3>estado<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#estado</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El estado representa la circunstancia en la que se encuentra el concepto al cual pertenece.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaReembolso">RespuestaReembolso</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaCobro">RespuestaCobro</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="fecha_caducidad">
+        <h3>fecha_caducidad<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#fecha_caducidad</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La fecha de caducidad es la fecha en la que una tarjeta de crédito deja de ser válida.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#TargetaCredito">TargetaCredito</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="gestion_envio">
+        <h3>gestion_envio<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#gestion_envio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Gestión envio expresa si una oferta debe gestionarse de forma interna o externa.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="identificador">
+        <h3>identificador<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#identificador</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El identificador se usa para poder distinguir entre diferentes instancias del mismo concepto.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#ComercioExterno">ComercioExterno</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Cobro">Cobro</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Envio">Envio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#AgenciaTransporte">AgenciaTransporte</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Reembolso">Reembolso</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="importe_total">
+        <h3>importe_total<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#importe_total</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El importe total se expresa como la suma de diferentes cantidades de dinero que tienen un fin común.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Factura">Factura</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pago">Pago</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Devolucion">Devolucion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="instrucciones">
+        <h3>instrucciones<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#instrucciones</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Serie de pasos a seguir para llevar a cabo un objetivo
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#InformarRecogidaProductos">InformarRecogidaProductos</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="nombre">
+        <h3>nombre<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#nombre</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El nombre se usa para designar un concepto.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Modelo">Modelo</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Actor">Actor</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Accion">Accion</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Marca">Marca</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#CentroLogistico">CentroLogistico</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pan">
+        <h3>pan<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#pan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El pan (Personal Account Number) es el Número de la tarjeta bancaria.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#TargetaCredito">TargetaCredito</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="precio">
+        <h3>precio<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    El precio representa la cantidad de dinero que cuesta una determinada transacción.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Oferta">Oferta</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteEnvio">RespuestaInformacionTransporteEnvio</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#RespuestaInformacionTransporteRecogida">RespuestaInformacionTransporteRecogida</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="precio_max">
+        <h3>precio_max<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio_max</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indica el precio máximo de un intervalo.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio">precio</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda">LineaBusqueda</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="precio_min">
+        <h3>precio_min<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio_min</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indica el precio mínimo de un intervalo.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#precio">precio</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#LineaBusqueda">LineaBusqueda</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="prioridad">
+        <h3>prioridad<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#prioridad</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    La prioridad se expresa como el número máximo de dias que deben pasar hasta que el Pedido se entregue.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Pedido">Pedido</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="restricciones_devolucion">
+        <h3>restricciones_devolucion<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#restricciones_devolucion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Las restricciones de devolución de un producto representan una serie de condiciones que se deben cumplir para que se pueda tramitar la devolución como tal.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="valor">
+        <h3>valor<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Cualquier valor numerico cuya semantica depende de la clase en la que se usa.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Valoracion">Valoracion</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="valoracion_media">
+        <h3>valoracion_media<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#valoracion_media</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Media aritmetica de todas las valoraciones hechas a un Producto
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#Producto">Producto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+  
+  <section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#individual">individual</a></li>
+    </ul>
+    <div class="entity named_individual" id="individual">
+        <h3>individual<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#individual
+                  
+                  </code>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+  
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>:</dt>
+        <dd><code>http://www.semanticweb.org/samragu/ontologies/2022/3/ecsdi-ontologia-comercio-electronico#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
+</body>
+</html>

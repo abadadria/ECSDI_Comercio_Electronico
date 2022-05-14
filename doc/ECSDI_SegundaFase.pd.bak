@@ -14249,8 +14249,8 @@ finish</field>
 		    </field>
 		    <field name="location">
 			<object type="Coordinate" id="1318">
-			    <field name="x">291</field>
-			    <field name="y">199</field>
+			    <field name="x">318</field>
+			    <field name="y">184</field>
 			</object>
 		    </field>
 		</object>

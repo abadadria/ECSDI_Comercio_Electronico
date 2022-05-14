@@ -1,26 +1,26 @@
-@prefix : <http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#> .
+@prefix : <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico> .
+@base <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#> .
 
-<http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico> rdf:type owl:Ontology ;
-                                                                             owl:versionIRI <http://www.semanticweb.org/samragu/ontologies/2022/3/comercio-electronico/1.0.0> .
+<http://www.semanticweb.org/samragu/ontologies/comercio-electronico> rdf:type owl:Ontology ;
+                                                                             owl:versionIRI <http://www.semanticweb.org/samragu/ontologies/comercio-electronico/1.0.0> .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#busca
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#busca
 :busca rdf:type owl:ObjectProperty ;
        rdfs:domain :ActualizarHistorialBusqueda ,
                    :BuscarProductos ;
        rdfs:range :Busqueda .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#con_cobro
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_cobro
 :con_cobro rdf:type owl:ObjectProperty ;
            rdfs:domain :Cobrar ,
                        :Pedido ,
@@ -28,14 +28,14 @@
            rdfs:range :Cobro .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#con_destino
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_destino
 :con_destino rdf:type owl:ObjectProperty ;
              rdfs:domain :Envio ,
                          :Lote ;
              rdfs:range :Lugar .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#con_origen
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_origen
 :con_origen rdf:type owl:ObjectProperty ;
             rdfs:domain :Envio ,
                         :Lote ;
@@ -43,7 +43,7 @@
                        :ComercioExterno .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#con_reembolso
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_reembolso
 :con_reembolso rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
                rdfs:domain :Devolucion ,
@@ -52,7 +52,7 @@
                rdfs:range :Reembolso .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#de_devolucion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_devolucion
 :de_devolucion rdf:type owl:ObjectProperty ;
                rdfs:domain :ContratarRecogida ,
                            :InformarRecogidaProductos ,
@@ -62,7 +62,7 @@
                rdfs:range :Devolucion .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#de_pedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_pedido
 :de_pedido rdf:type owl:ObjectProperty ;
            rdfs:domain :InformarEnvioPedido ,
                        :LineaEnvio ,
@@ -70,14 +70,14 @@
            rdfs:range :Pedido .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#devolver_a
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#devolver_a
 :devolver_a rdf:type owl:ObjectProperty ;
             rdfs:domain :SolicitarInformacionTransporteRecogida ;
             rdfs:range :CentroLogistico ,
                        :ComercioExterno .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#envia_lote
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#envia_lote
 :envia_lote rdf:type owl:ObjectProperty ;
             rdfs:domain :ContratarEnvio ,
                         :RespuestaInformacionTransporteEnvio ,
@@ -85,123 +85,123 @@
             rdfs:range :Lote .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#envia_pedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#envia_pedido
 :envia_pedido rdf:type owl:ObjectProperty ;
               rdfs:domain :RealizarEnvio ;
               rdfs:range :Pedido .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#esta_en
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#esta_en
 :esta_en rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
          rdfs:domain :CentroLogistico ;
          rdfs:range :Lugar .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#hace_valoracion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#hace_valoracion
 :hace_valoracion rdf:type owl:ObjectProperty ;
                  rdfs:domain :RespuestaValoracionProducto ;
                  rdfs:range :Valoracion .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#hecha_por
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#hecha_por
 :hecha_por rdf:type owl:ObjectProperty ;
            rdfs:domain :Valoracion ;
            rdfs:range :Asistente .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ofertado_en
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ofertado_en
 :ofertado_en rdf:type owl:ObjectProperty ;
              rdfs:domain :Producto ;
              rdfs:range :Oferta .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ofrece
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ofrece
 :ofrece rdf:type owl:ObjectProperty ;
         rdfs:domain :ActualizarInformacionProductos ,
                     :ComercioExterno ;
         rdfs:range :Oferta .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#pide
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#pide
 :pide rdf:type owl:ObjectProperty ;
       rdfs:domain :RealizarPedido ;
       rdfs:range :Pedido .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#pide_devolver
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#pide_devolver
 :pide_devolver rdf:type owl:ObjectProperty ;
                rdfs:domain :SolicitarDevolucionProductos ;
                rdfs:range :Devolucion .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#producto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#producto
 :producto rdf:type owl:ObjectProperty ;
           rdfs:domain :LineaProducto ;
           rdfs:range :Producto .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#recoger_en
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#recoger_en
 :recoger_en rdf:type owl:ObjectProperty ;
             rdfs:domain :Devolucion ;
             rdfs:range :Lugar .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#recomienda
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#recomienda
 :recomienda rdf:type owl:ObjectProperty ;
             rdfs:domain :RecomendarProductos ;
             rdfs:range :Recomendacion .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#recomienda_a
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#recomienda_a
 :recomienda_a rdf:type owl:ObjectProperty ;
               rdfs:domain :Recomendacion ;
               rdfs:range :Asistente .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#recomienda_producto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#recomienda_producto
 :recomienda_producto rdf:type owl:ObjectProperty ;
                      rdfs:domain :Recomendacion ;
                      rdfs:range :Producto .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#se_entrega_en
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#se_entrega_en
 :se_entrega_en rdf:type owl:ObjectProperty ;
                rdfs:domain :Pedido ;
                rdfs:range :Lugar .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_en_inventario
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_en_inventario
 :tiene_en_inventario rdf:type owl:ObjectProperty ;
                      rdfs:domain :CentroLogistico ;
                      rdfs:range :LineaProducto .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_envios
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_envios
 :tiene_envios rdf:type owl:ObjectProperty ;
               rdfs:domain :InformarEnvioPedido ;
               rdfs:range :Envio .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_factura
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_factura
 :tiene_factura rdf:type owl:ObjectProperty ;
                rdfs:domain :Pedido ;
                rdfs:range :Factura .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_linea_busqueda
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_busqueda
 :tiene_linea_busqueda rdf:type owl:ObjectProperty ;
                       rdfs:domain :Busqueda ;
                       rdfs:range :LineaBusqueda .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_linea_envio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_envio
 :tiene_linea_envio rdf:type owl:ObjectProperty ;
                    rdfs:domain :SolicitarEnvio ;
                    rdfs:range :LineaEnvio .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_linea_oferta
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_oferta
 :tiene_linea_oferta rdf:type owl:ObjectProperty ;
                     rdfs:domain :Factura ,
                                 :InformarProductosPedidos ,
@@ -210,44 +210,44 @@
                     rdfs:range :LineaOferta .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_linea_producto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_producto
 :tiene_linea_producto rdf:type owl:ObjectProperty ;
                       rdfs:domain :Envio ,
                                   :Lote ;
                       rdfs:range :LineaProducto .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_marca
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_marca
 :tiene_marca rdf:type owl:ObjectProperty ;
              rdfs:domain :Modelo ;
              rdfs:range :Marca .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_metodo_pago
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_metodo_pago
 :tiene_metodo_pago rdf:type owl:ObjectProperty ;
                    rdfs:domain :Pedido ;
                    rdfs:range :MetodoPago .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_modelo
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_modelo
 :tiene_modelo rdf:type owl:ObjectProperty ;
               rdfs:domain :Producto ;
               rdfs:range :Modelo .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_por_enviar
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_por_enviar
 :tiene_por_enviar rdf:type owl:ObjectProperty ;
                   rdfs:domain :CentroLogistico ;
                   rdfs:range :Lote .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#tiene_valoracion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_valoracion
 :tiene_valoracion rdf:type owl:ObjectProperty ;
                   rdfs:domain :Producto ;
                   rdfs:range :Valoracion .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#valora_producto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#valora_producto
 :valora_producto rdf:type owl:ObjectProperty ;
                  rdfs:domain :SolicitarValoracionProducto ;
                  rdfs:range :Producto .
@@ -257,7 +257,7 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#cantidad
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#cantidad
 :cantidad rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Linea ,
@@ -267,7 +267,7 @@
           rdfs:comment "La cantidad se expresa como el número de unidades de la clase a la cual pertenece."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#categoria
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#categoria
 :categoria rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
            rdfs:domain :LineaBusqueda ,
@@ -276,7 +276,7 @@
            rdfs:comment "La categoria representa un aspecto característico de Producto por el cual se le puede buscar."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ciudad
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ciudad
 :ciudad rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Lugar ;
@@ -284,7 +284,7 @@
         rdfs:comment "La ciudad identifica un lugar en concreto, siendo esta única."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#cvv
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#cvv
 :cvv rdf:type owl:DatatypeProperty ;
      rdfs:subPropertyOf owl:topDataProperty ;
      rdfs:domain :TargetaCredito ;
@@ -292,7 +292,7 @@
      rdfs:comment "El cvv es el Código de Valor de Verificación de una tarjeta de crédito."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#descripcion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#descripcion
 :descripcion rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :MetodoPago ,
@@ -301,7 +301,7 @@
              rdfs:comment "La descripción consiste en una explicación más detallada del concepto al cual pertenece."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#estado
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#estado
 :estado rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Devolucion ,
@@ -312,7 +312,7 @@
         rdfs:comment "El estado representa la circunstancia en la que se encuentra el concepto al cual pertenece."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#fecha_caducidad
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#fecha_caducidad
 :fecha_caducidad rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
                  rdfs:domain :TargetaCredito ;
@@ -320,7 +320,7 @@
                  rdfs:comment "La fecha de caducidad es la fecha en la que una tarjeta de crédito deja de ser válida."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#gestion_envio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#gestion_envio
 :gestion_envio rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :Oferta ;
@@ -328,7 +328,7 @@
                rdfs:comment "Gestión envio expresa si una oferta debe gestionarse de forma interna o externa."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#identificador
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#identificador
 :identificador rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :AgenciaTransporte ,
@@ -345,7 +345,7 @@
                rdfs:comment "El identificador se usa para poder distinguir entre diferentes instancias del mismo concepto."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#importe_total
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#importe_total
 :importe_total rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :Devolucion ,
@@ -356,14 +356,14 @@
                rdfs:comment "El importe total se expresa como la suma de diferentes cantidades de dinero que tienen un fin común."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#instrucciones
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#instrucciones
 :instrucciones rdf:type owl:DatatypeProperty ;
                rdfs:domain :InformarRecogidaProductos ;
                rdfs:range xsd:string ;
                rdfs:comment "Serie de pasos a seguir para llevar a cabo un objetivo"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#nombre
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#nombre
 :nombre rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Accion ,
@@ -376,7 +376,7 @@
         rdfs:comment "El nombre se usa para designar un concepto."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#pan
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#pan
 :pan rdf:type owl:DatatypeProperty ;
      rdfs:subPropertyOf owl:topDataProperty ;
      rdfs:domain :TargetaCredito ;
@@ -384,7 +384,7 @@
      rdfs:comment "El pan (Personal Account Number) es el Número de la tarjeta bancaria."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#precio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#precio
 :precio rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Oferta ,
@@ -394,7 +394,7 @@
         rdfs:comment "El precio representa la cantidad de dinero que cuesta una determinada transacción."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#precio_max
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#precio_max
 :precio_max rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf :precio ;
             rdfs:domain :LineaBusqueda ;
@@ -402,7 +402,7 @@
             rdfs:comment "Indica el precio máximo de un intervalo."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#precio_min
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#precio_min
 :precio_min rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf :precio ;
             rdfs:domain :LineaBusqueda ;
@@ -410,21 +410,21 @@
             rdfs:comment "Indica el precio mínimo de un intervalo."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#prioridad
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#prioridad
 :prioridad rdf:type owl:DatatypeProperty ;
            rdfs:domain :Pedido ;
            rdfs:range xsd:float ;
            rdfs:comment "La prioridad se expresa como el número máximo de dias que deben pasar hasta que el Pedido se entregue."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#restricciones_devolucion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#restricciones_devolucion
 :restricciones_devolucion rdf:type owl:DatatypeProperty ;
                           rdfs:domain :Producto ;
                           rdfs:range xsd:string ;
                           rdfs:comment "Las restricciones de devolución de un producto representan una serie de condiciones que se deben cumplir para que se pueda tramitar la devolución como tal."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#valor
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#valor
 :valor rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf owl:topDataProperty ;
        rdfs:domain :Valoracion ;
@@ -432,7 +432,7 @@
        rdfs:comment "Cualquier valor numerico cuya semantica depende de la clase en la que se usa."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#valoracion_media
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#valoracion_media
 :valoracion_media rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Producto ;
@@ -444,344 +444,344 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Accion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Accion
 :Accion rdf:type owl:Class ;
         rdfs:subClassOf :Comunicacion ;
         owl:disjointWith :Respuesta ;
         rdfs:comment "Acciones entre Actores y Agentes del Sistema."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Actor
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Actor
 :Actor rdf:type owl:Class ;
        rdfs:comment "Actor externo al Sistema que interactua con éste." .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ActualizarHistorialBusqueda
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ActualizarHistorialBusqueda
 :ActualizarHistorialBusqueda rdf:type owl:Class ;
                              rdfs:subClassOf :Accion ;
                              rdfs:comment "El Agente BuscadorProductos envia la busqueda hecha por un Asistente al Agente Recomendador/ControlCalidad para que la almacene en el Historial búsquedas"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ActualizarHistorialPedidos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ActualizarHistorialPedidos
 :ActualizarHistorialPedidos rdf:type owl:Class ;
                             rdfs:subClassOf :Accion ;
                             rdfs:comment "Al completarse y cerrarse un Pedido, el Agente Gestor pedidos lo manda al Recomendador/control calidad para que lo almacene en el Historial pedidos."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ActualizarInformacionProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ActualizarInformacionProductos
 :ActualizarInformacionProductos rdf:type owl:Class ;
                                 rdfs:subClassOf :Accion ;
                                 rdfs:comment "El ComercioExterno envia un conjunto de Ofertas. Si la Oferta ya existia en el Sistema, se actualiza. Si no existia, se crea."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#AgenciaTransporte
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#AgenciaTransporte
 :AgenciaTransporte rdf:type owl:Class ;
                    rdfs:subClassOf :Actor ;
                    rdfs:comment "Se encarga del envio de Lotes y la recogida de Devoluciones. El Sistema negocia con esta el envio de cada uno de los Lotes. Como habrá varias Agencias de Transporte disponibles, elegirá la más barata y conveniente."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Agente
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Agente
 :Agente rdf:type owl:Class ;
         rdfs:comment "Agente que forma parte del Sistema"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Asistente
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Asistente
 :Asistente rdf:type owl:Class ;
            rdfs:subClassOf :Actor ;
            rdfs:comment "Es el intermediario entre el Usuario/Cliente. Actua en su nombre y es el principal Actor del Sistema."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#BuscarProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#BuscarProductos
 :BuscarProductos rdf:type owl:Class ;
                  rdfs:subClassOf :Accion ;
                  rdfs:comment "Un Asistente realiza una Busqueda sobre unas categorias de Productos, indicando cantidad y un intervalo de precio para cada una de ellas."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Busqueda
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Busqueda
 :Busqueda rdf:type owl:Class ;
           rdfs:comment "Conjunto de LineaBusqueda (categorias de Productos asociadas con cantidades e intervalos de precio)"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#CentroLogistico
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#CentroLogistico
 :CentroLogistico rdf:type owl:Class ;
                  rdfs:subClassOf :Agente ;
                  rdfs:comment "Almacen de Productos y Agente encargado del Envio de los Productos comprados."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Cobrar
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Cobrar
 :Cobrar rdf:type owl:Class ;
         rdfs:subClassOf :Accion ;
         rdfs:comment "El Gestor pedidos solicita el Cobro al Proveedor de pagos."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Cobro
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Cobro
 :Cobro rdf:type owl:Class ;
        rdfs:subClassOf :Pago ;
        rdfs:comment "Transaccion entrante a las cuentas del Sistema"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ComercioExterno
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ComercioExterno
 :ComercioExterno rdf:type owl:Class ;
                  rdfs:subClassOf :Actor ;
                  rdfs:comment "Pone a la venta Productos en nuestro sistema en forma de Ofertas. Estas ofertas pueden estar más o menos integradas en el Sistema, pudiendo darse 2 escenarios: 1) Los Productos se encuentran en algun CentroLogistico y el Sistema se encarga de su envio. 2) Los Productos se encuentran en el ComercioExterno y por lo tanto es éste el que se encarga de su envio."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Comunicacion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Comunicacion
 :Comunicacion rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ContratarEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ContratarEnvio
 :ContratarEnvio rdf:type owl:Class ;
                 rdfs:subClassOf :Accion ;
                 rdfs:comment "El CentroLogistico contrata el envio de un Lote con una AgenciaTransporte"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ContratarRecogida
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ContratarRecogida
 :ContratarRecogida rdf:type owl:Class ;
                    rdfs:subClassOf :Accion ;
                    rdfs:comment "El Sistema contrata la Recogida de una Devolución con una AgenciaTransporte."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Devolucion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Devolucion
 :Devolucion rdf:type owl:Class ;
             rdfs:comment "Permite a un Asistente devolver un/os producto/s y recuperar el dinero pagado por el"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#EnviarFacturaPedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#EnviarFacturaPedido
 :EnviarFacturaPedido rdf:type owl:Class ;
                      rdfs:subClassOf :Accion ;
                      rdfs:comment "El Sistema envia la Factura del Pedido al Asistente que lo ha comprado." .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Envio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Envio
 :Envio rdf:type owl:Class ;
        rdfs:comment "Conjunto de LineaProducto que han sido enviados y tienen origen y destino comun"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Factura
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Factura
 :Factura rdf:type owl:Class ;
          rdfs:comment "Conjunto de LineaOferta (tuplas Producto, precio unitario, precio total) e importe total"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#InformarEnvioPedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarEnvioPedido
 :InformarEnvioPedido rdf:type owl:Class ;
                      rdfs:subClassOf :Accion ;
                      rdfs:comment "El Agente Gestor envios informa al Asistente de que se ha enviado un Pedido y de las diversas procedencias de los Productos, además de otros detalles del envio. También se informa de que se ha cobrado el envio."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#InformarProductosPedidos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarProductosPedidos
 :InformarProductosPedidos rdf:type owl:Class ;
                           rdfs:subClassOf :Accion ;
                           rdfs:comment "El Sistema informa al ComercioExterno de que alguien ha comprado un conjunto de Productos (LineaOferta)"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#InformarRecogidaProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarRecogidaProductos
 :InformarRecogidaProductos rdf:type owl:Class ;
                            rdfs:subClassOf :Accion ;
                            rdfs:comment "El Sistema informa al Asistente de las instrucciones que debe seguir para efectuar la Devolución que prèviamente habia solicitado y habia sido aprovada."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Linea
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Linea
 :Linea rdf:type owl:Class ;
        rdfs:comment "Clase que permite asociar otra clase con una cantidad"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#LineaBusqueda
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaBusqueda
 :LineaBusqueda rdf:type owl:Class ;
                rdfs:subClassOf :Linea ;
                rdfs:comment "Asocia una categoria de Producto, con una cantidad y un intervalo de precios"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#LineaEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaEnvio
 :LineaEnvio rdf:type owl:Class ;
             rdfs:subClassOf :LineaOferta ;
             rdfs:comment "Asocia una Oferta con una cantidad y un Pedido. De esta manera, para cada Producto conoce: cantidad a enviar, destino al que enviarlo/s, como debe gestionar el envio y cual es el ComercioExterno que lo vende."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#LineaOferta
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaOferta
 :LineaOferta rdf:type owl:Class ;
              rdfs:subClassOf :Linea ;
              rdfs:comment "Asocia una Oferta con una cantidad. La cantidad en una LineaOferta siempre es menor que la cantidad de su Oferta. Así se puede decir: Quiero X unidades del Producto de esta Oferta al precio indicado en la Oferta."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#LineaProducto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaProducto
 :LineaProducto rdf:type owl:Class ;
                rdfs:subClassOf :Linea ;
                rdfs:comment "Asocia un Producto con una cantidad"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Lote
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Lote
 :Lote rdf:type owl:Class ;
       rdfs:comment "Conjunto de LineaEnvio (es decir de cantidades de Productos) con destino común, que se encuentran en el mismo CentroLogistico y, por lo tanto, se enviaran juntas."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Lugar
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Lugar
 :Lugar rdf:type owl:Class ;
        rdfs:comment "Ubicación geográfica a nivel de municipio"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Marca
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Marca
 :Marca rdf:type owl:Class ;
        rdfs:comment "Marca fabricante de Productos"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#MetodoPago
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#MetodoPago
 :MetodoPago rdf:type owl:Class ;
             rdfs:comment "Metodo mediante el cual el Asistente efectuará el pago de un pedido"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Modelo
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Modelo
 :Modelo rdf:type owl:Class ;
         rdfs:comment "Modelo de una Marca y un Producto"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Oferta
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Oferta
 :Oferta rdf:type owl:Class ;
         rdfs:comment "Oferta de Producto hecha por un ComercioExterno o por el Sistema mismo. Contiene la cantidad, el precio unitario del Producto ofertado y el tipo de gestion que se debe hacer se esos Productos a la hora de efectuar el envio. La cantidad de una Oferta siempre es menor que la cantidad de su Producto. Puede haber varias ofertas del mismo Producto y el mismo ComercioExterno, ya que puede variar el precio, por ejemplo."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Pago
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Pago
 :Pago rdf:type owl:Class ;
       rdfs:comment "Transaccion bancaria"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Pedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Pedido
 :Pedido rdf:type owl:Class ;
         rdfs:comment "Conjunto de LineaOferta (cantidades de productos a un determinado precio). Contiene tambien el MetodoPago, la prioridad de envio, el destino donde enviar los Productos, la Factura de compra y los distintos Envios que son necesarios para el procesamiento del Pedido."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Producto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Producto
 :Producto rdf:type owl:Class ;
           rdfs:comment "Información de un Producto. Contiene información del Modelo y Marca, la cantidad total disponible en el Sistema, las Valoraciones que los Asistentes han hecho y su valoración media."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#ProveedorPagos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ProveedorPagos
 :ProveedorPagos rdf:type owl:Class ;
                 rdfs:subClassOf :Actor ;
                 rdfs:comment "Es el encargado de efectuar los Pagos que necesita el Sistema."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RealizarEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RealizarEnvio
 :RealizarEnvio rdf:type owl:Class ;
                rdfs:subClassOf :Accion ;
                rdfs:comment "El Agente Gestor pedidos solicita al Gestor envios que gestiones el envio de los Productos de un Pedido"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RealizarPedido
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RealizarPedido
 :RealizarPedido rdf:type owl:Class ;
                 rdfs:subClassOf :Accion ;
                 rdfs:comment "El Asistente hace un Pedido" .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Recomendacion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Recomendacion
 :Recomendacion rdf:type owl:Class ;
                rdfs:comment "Recomendacion de Productos basada en el historial de Busquedas, el historial de Pedidos y las Valoraciones hechas por el Asistente"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RecomendarProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RecomendarProductos
 :RecomendarProductos rdf:type owl:Class ;
                      rdfs:subClassOf :Accion ;
                      rdfs:comment "El Agente Recomendador/control calidad efectua una Recomendacion de uno o varios Productos al Asistente."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Reembolsar
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Reembolsar
 :Reembolsar rdf:type owl:Class ;
             rdfs:subClassOf :Accion ;
             rdfs:comment "El Gestor devoluciones solicita el Reembolso al Proveedor de pagos."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Reembolso
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Reembolso
 :Reembolso rdf:type owl:Class ;
            rdfs:subClassOf :Pago ;
            rdfs:comment "Transaccion bancaria saliente de las cuentas del Sistema"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Respuesta
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Respuesta
 :Respuesta rdf:type owl:Class ;
            rdfs:subClassOf :Comunicacion ;
            rdfs:comment "Respuestas a las Acciones entre Actores y Agentes del Sistema"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaCobro
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaCobro
 :RespuestaCobro rdf:type owl:Class ;
                 rdfs:subClassOf :Respuesta ;
                 rdfs:comment "Respuesta a la Acción Cobrar. El Proveedor de pagos comunica el estado de la transaccion. Puede tener 2 estados: 1) exitoso 2) fallido."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaInformacionTransporteEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaInformacionTransporteEnvio
 :RespuestaInformacionTransporteEnvio rdf:type owl:Class ;
                                      rdfs:subClassOf :Respuesta ;
                                      owl:disjointWith :RespuestaProductos ;
                                      rdfs:comment "Respuesta a la Acción SolicitarInformaciónTransporteEnvio. La AgenciaTransporte comunica al Sistema el precio para ese Lote y la fecha estimada de entrega."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaInformacionTransporteRecogida
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaInformacionTransporteRecogida
 :RespuestaInformacionTransporteRecogida rdf:type owl:Class ;
                                         rdfs:subClassOf :Respuesta ;
                                         rdfs:comment "Respuesta a la Acción SolicitarInformaciónTransporteRecogida. La AgenciaTransporte comunica al Sistema el precio para esa Recogida y la fecha de recogida."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaProductos
 :RespuestaProductos rdf:type owl:Class ;
                     rdfs:subClassOf :Respuesta ;
                     rdfs:comment "Respuesta a la Acción BuscarProductos. El Sistema responde al Asistente con un conjunto de ofertas que le pueden ser de interés."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaReembolso
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaReembolso
 :RespuestaReembolso rdf:type owl:Class ;
                     rdfs:subClassOf :Respuesta ;
                     rdfs:comment "Respuesta a la Acción Reembolsar. El Proveedor de pagos comunica el estado de la transaccion. Puede tener 2 estados: 1) exitoso 2) fallido."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaResolucionDevolucion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaResolucionDevolucion
 :RespuestaResolucionDevolucion rdf:type owl:Class ;
                                rdfs:subClassOf :Respuesta ;
                                rdfs:comment "Respuesta a la Acción SolicitarDevoluciónProducto. El Sistema comunica si la Devolución se podra hacer o no."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#RespuestaValoracionProducto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaValoracionProducto
 :RespuestaValoracionProducto rdf:type owl:Class ;
                              rdfs:subClassOf :Respuesta ;
                              rdfs:comment "Respuesta a la Accion SolicitarValoracionProducto. El Asistente comunica al Sistema las Valoraciones hechas por el Usuario."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#SolicitarDevolucionProductos
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarDevolucionProductos
 :SolicitarDevolucionProductos rdf:type owl:Class ;
                               rdfs:subClassOf :Accion ;
                               rdfs:comment "El Asistente solicita al Sistema la Devolución de uno o varios Productos que previamente ha comprado."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#SolicitarEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarEnvio
 :SolicitarEnvio rdf:type owl:Class ;
                 rdfs:subClassOf :Accion ;
                 rdfs:comment "El Sistema solicita al ComercioExterno o al CentroLogistico que envie un conjunto de Productos (LineaEnvio)"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#SolicitarInformacionTransporteEnvio
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarInformacionTransporteEnvio
 :SolicitarInformacionTransporteEnvio rdf:type owl:Class ;
                                      rdfs:subClassOf :Accion ;
                                      rdfs:comment "El CentroLogistico solicita información a una AgenciaTransporte sobre los costes y tiempo de entrega de un Lote"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#SolicitarInformacionTransporteRecogida
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarInformacionTransporteRecogida
 :SolicitarInformacionTransporteRecogida rdf:type owl:Class ;
                                         rdfs:subClassOf :Accion ;
                                         rdfs:comment "ElCentroLogistico solicita informacion tarifaria y de tiempo estimado de entrega a la AgenciaTransporte para la Recogida de una Devolucion"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#SolicitarValoracionProducto
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarValoracionProducto
 :SolicitarValoracionProducto rdf:type owl:Class ;
                              rdfs:subClassOf :Accion ;
                              rdfs:comment "El Sistema solicita la Valoracion de uno o varios Productos al Asistente que los ha comprado previamente."@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#TargetaCredito
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#TargetaCredito
 :TargetaCredito rdf:type owl:Class ;
                 rdfs:subClassOf :MetodoPago ;
                 rdfs:comment "Metodo de pago consistente en el pago por targeta"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#Valoracion
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Valoracion
 :Valoracion rdf:type owl:Class ;
             rdfs:comment "Asociacion entre Producto y Asistente que contiene la valoracion hecha por el Asistente sobre el Producto"@es .
 
@@ -790,7 +790,7 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/samragu/ontologies/2022/3/untitled-ontology-4#individual
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#individual
 :individual rdf:type owl:NamedIndividual .
 
 

@@ -130,3 +130,5 @@ dmypy.json
 
 # cusstom
 .pd.bak
+
+.vscode/

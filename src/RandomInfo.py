@@ -83,7 +83,7 @@ if __name__ == '__main__':
         # Creamos cinco instancias de modelo y le asignamos esta marca
         for k in range(5):
             # instancia al azar
-            rmodelo = 'Modelo_' + str(j) + str(k)
+            rmodelo = 'Modelo_' + str(j*5 + k)
             modelos[j*5 + k] = rmodelo
             # print(rmodelo)
             # Añadimos la instancia de modelo

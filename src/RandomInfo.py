@@ -32,7 +32,7 @@ from rdflib import Graph, RDF, RDFS, OWL, XSD, Namespace, Literal
 import string
 import random
 
-__author__ = 'bejar'
+__author__ = 'abadadria'
 
 
 def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
@@ -47,26 +47,9 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
 
-def random_attribute(type, lim):
-    """
-    Genera un valor de atributo al azar dentro de un limite de valores para int y floar
-    :param type:
-    :return:
-    """
-    if len(lim) == 0 or lim[0] > lim[1]:
-        raise Exception('No Limit')
-    if type == 'f':
-        return random.uniform(lim[0], lim[1])
-    elif type == 'i':
-        return int(random.uniform(lim[0], lim[1]))
-
-
 if __name__ == '__main__':
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
-
-    # lista de tipos XSD datatypes para los rangos de las propiedades
-    xsddatatypes = {'s': XSD.string, 'i': XSD.int, 'f': XSD.float}
 
     # Diccionario de atributos f= tipo float, i= tipo int, s= tipo string, otro => clase existente en la ontologia
     # Faltan atributos que no son necesarios para esta entrega

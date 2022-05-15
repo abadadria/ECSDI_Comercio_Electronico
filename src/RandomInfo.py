@@ -122,18 +122,17 @@ if __name__ == '__main__':
         products_graph.add((myOnto[rproduct], myOnto.tiene_modelo, Literal(modelos[i])))
         
         # Generamos sus atributos
-        for prop in product_properties:
-            print(prop)
+        for prop_key, prop_value in product_properties.items():
             # el atributo es real
-            if prop == 'f':
+            if prop_value == 'f':
                 val = Literal(random.random())
             # el atributo es entero
-            elif prop == 'i':
+            elif prop_value == 'i':
                 val = Literal(random.randint(0, 50))
             # el atributo es string
             else:
-                val = Literal(random_name(str(prop)))
-            products_graph.add((myOnto[rproduct], myOnto[prop], val)) 
+                val = Literal(random_name(str(prop_key)))
+            products_graph.add((myOnto[rproduct], myOnto[prop_key], val)) 
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)

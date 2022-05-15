@@ -162,404 +162,404 @@ ns1:Modelo_74 a ns1:Modelo ;
     ns1:tiene_marca ns1:Marca_7 .
 
 ns1:Product_0 a ns1:Producto ;
-    ns1:cantidad "cantidad_2U2R77" ;
-    ns1:categoria "categoria_46WZ25" ;
-    ns1:descripcion "descripcion_LFM2U8" ;
-    ns1:identificador 46 ;
+    ns1:cantidad 0 ;
+    ns1:categoria "categoria_4VWMV3" ;
+    ns1:descripcion "descripcion_J45DGK" ;
+    ns1:identificador 48 ;
     ns1:nombre "Product_0" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_CTP1T2" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_FDEYLF" ;
     ns1:tiene_modelo "Modelo_00" ;
-    ns1:valoracion_media "valoracion_media_O0ET1Q" .
+    ns1:valoracion_media 7.785016e-01 .
 
 ns1:Product_1 a ns1:Producto ;
-    ns1:cantidad "cantidad_KW3IGG" ;
-    ns1:categoria "categoria_X18P6F" ;
-    ns1:descripcion "descripcion_OPCGPD" ;
-    ns1:identificador 30 ;
+    ns1:cantidad 34 ;
+    ns1:categoria "categoria_QZONR2" ;
+    ns1:descripcion "descripcion_XWL0GP" ;
+    ns1:identificador 20 ;
     ns1:nombre "Product_1" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_GXZY40" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_ZQKJ6S" ;
     ns1:tiene_modelo "Modelo_01" ;
-    ns1:valoracion_media "valoracion_media_8QBLNS" .
+    ns1:valoracion_media 1.483523e-01 .
 
 ns1:Product_10 a ns1:Producto ;
-    ns1:cantidad "cantidad_NOO7JM" ;
-    ns1:categoria "categoria_UOT8JG" ;
-    ns1:descripcion "descripcion_3JPDQP" ;
-    ns1:identificador 13 ;
+    ns1:cantidad 50 ;
+    ns1:categoria "categoria_V7CZGX" ;
+    ns1:descripcion "descripcion_459I8N" ;
+    ns1:identificador 50 ;
     ns1:nombre "Product_10" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_9F6X1F" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_6V9HAC" ;
     ns1:tiene_modelo "Modelo_20" ;
-    ns1:valoracion_media "valoracion_media_1T7VS1" .
+    ns1:valoracion_media 1.151572e-01 .
 
 ns1:Product_11 a ns1:Producto ;
-    ns1:cantidad "cantidad_9DXP6D" ;
-    ns1:categoria "categoria_XXSZMD" ;
-    ns1:descripcion "descripcion_L5PSQK" ;
-    ns1:identificador 4 ;
+    ns1:cantidad 44 ;
+    ns1:categoria "categoria_ZVWRAB" ;
+    ns1:descripcion "descripcion_FHIBP8" ;
+    ns1:identificador 38 ;
     ns1:nombre "Product_11" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_Y2QYFH" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_E9G5ST" ;
     ns1:tiene_modelo "Modelo_21" ;
-    ns1:valoracion_media "valoracion_media_VY4I0Z" .
+    ns1:valoracion_media 1.735111e-01 .
 
 ns1:Product_12 a ns1:Producto ;
-    ns1:cantidad "cantidad_TQAPN8" ;
-    ns1:categoria "categoria_LCCNLJ" ;
-    ns1:descripcion "descripcion_X36TMA" ;
-    ns1:identificador 25 ;
+    ns1:cantidad 41 ;
+    ns1:categoria "categoria_TU5XKJ" ;
+    ns1:descripcion "descripcion_JDR077" ;
+    ns1:identificador 10 ;
     ns1:nombre "Product_12" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_CZ6XE7" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_PIGTCN" ;
     ns1:tiene_modelo "Modelo_22" ;
-    ns1:valoracion_media "valoracion_media_J8W2HI" .
+    ns1:valoracion_media 7.554627e-01 .
 
 ns1:Product_13 a ns1:Producto ;
-    ns1:cantidad "cantidad_QTGHWR" ;
-    ns1:categoria "categoria_DE7FCP" ;
-    ns1:descripcion "descripcion_3XFN6S" ;
-    ns1:identificador 15 ;
+    ns1:cantidad 9 ;
+    ns1:categoria "categoria_MXHZQB" ;
+    ns1:descripcion "descripcion_QKLJOG" ;
+    ns1:identificador 35 ;
     ns1:nombre "Product_13" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_J96UG4" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_BIA6O2" ;
     ns1:tiene_modelo "Modelo_23" ;
-    ns1:valoracion_media "valoracion_media_VRF5QC" .
+    ns1:valoracion_media 3.404163e-01 .
 
 ns1:Product_14 a ns1:Producto ;
-    ns1:cantidad "cantidad_SH9IHO" ;
-    ns1:categoria "categoria_MH7MI6" ;
-    ns1:descripcion "descripcion_0B3AEU" ;
-    ns1:identificador 1 ;
+    ns1:cantidad 13 ;
+    ns1:categoria "categoria_I6G2FX" ;
+    ns1:descripcion "descripcion_MYN47Q" ;
+    ns1:identificador 42 ;
     ns1:nombre "Product_14" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_XU3J6J" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_V49YOX" ;
     ns1:tiene_modelo "Modelo_24" ;
-    ns1:valoracion_media "valoracion_media_5YTA7J" .
+    ns1:valoracion_media 2.595054e-01 .
 
 ns1:Product_15 a ns1:Producto ;
-    ns1:cantidad "cantidad_CHQ9EZ" ;
-    ns1:categoria "categoria_356A4J" ;
-    ns1:descripcion "descripcion_96U2YM" ;
-    ns1:identificador 31 ;
+    ns1:cantidad 13 ;
+    ns1:categoria "categoria_M4E942" ;
+    ns1:descripcion "descripcion_CX9LKP" ;
+    ns1:identificador 44 ;
     ns1:nombre "Product_15" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_3YCGXB" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_6OJ1IK" ;
     ns1:tiene_modelo "Modelo_30" ;
-    ns1:valoracion_media "valoracion_media_VYE9SQ" .
+    ns1:valoracion_media 6.652246e-01 .
 
 ns1:Product_16 a ns1:Producto ;
-    ns1:cantidad "cantidad_1M2DY8" ;
-    ns1:categoria "categoria_NVQPP5" ;
-    ns1:descripcion "descripcion_EICHW3" ;
-    ns1:identificador 42 ;
+    ns1:cantidad 13 ;
+    ns1:categoria "categoria_1T60X4" ;
+    ns1:descripcion "descripcion_SSV442" ;
+    ns1:identificador 28 ;
     ns1:nombre "Product_16" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_P7Z92T" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_AZNGDW" ;
     ns1:tiene_modelo "Modelo_31" ;
-    ns1:valoracion_media "valoracion_media_HSU8QB" .
+    ns1:valoracion_media 3.993907e-01 .
 
 ns1:Product_17 a ns1:Producto ;
-    ns1:cantidad "cantidad_OMKOAW" ;
-    ns1:categoria "categoria_UHAVTM" ;
-    ns1:descripcion "descripcion_RDOQOB" ;
-    ns1:identificador 21 ;
+    ns1:cantidad 42 ;
+    ns1:categoria "categoria_ZPR1LG" ;
+    ns1:descripcion "descripcion_485VHL" ;
+    ns1:identificador 50 ;
     ns1:nombre "Product_17" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_DV3IPM" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_6S2RLL" ;
     ns1:tiene_modelo "Modelo_32" ;
-    ns1:valoracion_media "valoracion_media_XWCWAT" .
+    ns1:valoracion_media 6.834642e-01 .
 
 ns1:Product_18 a ns1:Producto ;
-    ns1:cantidad "cantidad_9LSRR0" ;
-    ns1:categoria "categoria_X3Z6TR" ;
-    ns1:descripcion "descripcion_T189MI" ;
-    ns1:identificador 17 ;
+    ns1:cantidad 32 ;
+    ns1:categoria "categoria_FSYJ1W" ;
+    ns1:descripcion "descripcion_TT30C8" ;
+    ns1:identificador 6 ;
     ns1:nombre "Product_18" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_90GBPK" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_5SPD4N" ;
     ns1:tiene_modelo "Modelo_33" ;
-    ns1:valoracion_media "valoracion_media_6GN3Q7" .
+    ns1:valoracion_media 8.216192e-01 .
 
 ns1:Product_19 a ns1:Producto ;
-    ns1:cantidad "cantidad_TXZ8A3" ;
-    ns1:categoria "categoria_NKOU5A" ;
-    ns1:descripcion "descripcion_SWP5P7" ;
-    ns1:identificador 48 ;
+    ns1:cantidad 37 ;
+    ns1:categoria "categoria_2S33DU" ;
+    ns1:descripcion "descripcion_BY4HS0" ;
+    ns1:identificador 37 ;
     ns1:nombre "Product_19" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_2CA12B" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_WDYVS7" ;
     ns1:tiene_modelo "Modelo_34" ;
-    ns1:valoracion_media "valoracion_media_N5SEA6" .
+    ns1:valoracion_media 7.002525e-01 .
 
 ns1:Product_2 a ns1:Producto ;
-    ns1:cantidad "cantidad_ZIZN7M" ;
-    ns1:categoria "categoria_1QLAG7" ;
-    ns1:descripcion "descripcion_MO7H9J" ;
-    ns1:identificador 7 ;
+    ns1:cantidad 33 ;
+    ns1:categoria "categoria_D7IDLR" ;
+    ns1:descripcion "descripcion_GZGCKU" ;
+    ns1:identificador 14 ;
     ns1:nombre "Product_2" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_8P1IAS" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_MFCT5B" ;
     ns1:tiene_modelo "Modelo_02" ;
-    ns1:valoracion_media "valoracion_media_BWHGNB" .
+    ns1:valoracion_media 2.266499e-01 .
 
 ns1:Product_20 a ns1:Producto ;
-    ns1:cantidad "cantidad_8BF228" ;
-    ns1:categoria "categoria_SEW7AN" ;
-    ns1:descripcion "descripcion_8O3DHK" ;
-    ns1:identificador 17 ;
+    ns1:cantidad 2 ;
+    ns1:categoria "categoria_U4QGB9" ;
+    ns1:descripcion "descripcion_IN21Z7" ;
+    ns1:identificador 10 ;
     ns1:nombre "Product_20" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_NLDWLL" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_2EQJFK" ;
     ns1:tiene_modelo "Modelo_40" ;
-    ns1:valoracion_media "valoracion_media_R4ZD1W" .
+    ns1:valoracion_media 6.8328e-01 .
 
 ns1:Product_21 a ns1:Producto ;
-    ns1:cantidad "cantidad_YKDEA8" ;
-    ns1:categoria "categoria_IF6MZG" ;
-    ns1:descripcion "descripcion_M39CQ2" ;
-    ns1:identificador 42 ;
+    ns1:cantidad 7 ;
+    ns1:categoria "categoria_8UIGBJ" ;
+    ns1:descripcion "descripcion_LUGKET" ;
+    ns1:identificador 6 ;
     ns1:nombre "Product_21" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_H7HRZ8" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_HA0NN4" ;
     ns1:tiene_modelo "Modelo_41" ;
-    ns1:valoracion_media "valoracion_media_WG4VSQ" .
+    ns1:valoracion_media 8.491697e-01 .
 
 ns1:Product_22 a ns1:Producto ;
-    ns1:cantidad "cantidad_18ZZ0Y" ;
-    ns1:categoria "categoria_72KFNL" ;
-    ns1:descripcion "descripcion_A3RCCF" ;
-    ns1:identificador 17 ;
+    ns1:cantidad 10 ;
+    ns1:categoria "categoria_FRRUWO" ;
+    ns1:descripcion "descripcion_JW1CWT" ;
+    ns1:identificador 47 ;
     ns1:nombre "Product_22" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_OINAYT" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_S062UO" ;
     ns1:tiene_modelo "Modelo_42" ;
-    ns1:valoracion_media "valoracion_media_OR4I0W" .
+    ns1:valoracion_media 1.44533e-01 .
 
 ns1:Product_23 a ns1:Producto ;
-    ns1:cantidad "cantidad_X79WTE" ;
-    ns1:categoria "categoria_DFLM34" ;
-    ns1:descripcion "descripcion_UNE801" ;
-    ns1:identificador 50 ;
+    ns1:cantidad 27 ;
+    ns1:categoria "categoria_HAFHCZ" ;
+    ns1:descripcion "descripcion_7FNEZQ" ;
+    ns1:identificador 37 ;
     ns1:nombre "Product_23" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_8IUAWM" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_36ZGUS" ;
     ns1:tiene_modelo "Modelo_43" ;
-    ns1:valoracion_media "valoracion_media_AMZ6DJ" .
+    ns1:valoracion_media 2.743435e-02 .
 
 ns1:Product_24 a ns1:Producto ;
-    ns1:cantidad "cantidad_JAKSH7" ;
-    ns1:categoria "categoria_JSCJ6R" ;
-    ns1:descripcion "descripcion_UZMZ3N" ;
-    ns1:identificador 26 ;
+    ns1:cantidad 42 ;
+    ns1:categoria "categoria_MPHMVO" ;
+    ns1:descripcion "descripcion_J19DDP" ;
+    ns1:identificador 31 ;
     ns1:nombre "Product_24" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_DFIHGN" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_L9UL1R" ;
     ns1:tiene_modelo "Modelo_44" ;
-    ns1:valoracion_media "valoracion_media_KR229O" .
+    ns1:valoracion_media 3.203329e-01 .
 
 ns1:Product_25 a ns1:Producto ;
-    ns1:cantidad "cantidad_IGX0FX" ;
-    ns1:categoria "categoria_U2V760" ;
-    ns1:descripcion "descripcion_SBYY98" ;
-    ns1:identificador 17 ;
+    ns1:cantidad 19 ;
+    ns1:categoria "categoria_2HICIC" ;
+    ns1:descripcion "descripcion_7UKQ1Y" ;
+    ns1:identificador 10 ;
     ns1:nombre "Product_25" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_HT452I" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_D5EQ9F" ;
     ns1:tiene_modelo "Modelo_50" ;
-    ns1:valoracion_media "valoracion_media_9RNTTY" .
+    ns1:valoracion_media 8.691476e-01 .
 
 ns1:Product_26 a ns1:Producto ;
-    ns1:cantidad "cantidad_S0712K" ;
-    ns1:categoria "categoria_UWBUDJ" ;
-    ns1:descripcion "descripcion_434S1D" ;
-    ns1:identificador 46 ;
+    ns1:cantidad 17 ;
+    ns1:categoria "categoria_9GLBW7" ;
+    ns1:descripcion "descripcion_03EYLH" ;
+    ns1:identificador 17 ;
     ns1:nombre "Product_26" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_VO96R1" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_G62WQY" ;
     ns1:tiene_modelo "Modelo_51" ;
-    ns1:valoracion_media "valoracion_media_5PBVXM" .
+    ns1:valoracion_media 3.995913e-01 .
 
 ns1:Product_27 a ns1:Producto ;
-    ns1:cantidad "cantidad_R8PQZP" ;
-    ns1:categoria "categoria_LVGIBW" ;
-    ns1:descripcion "descripcion_T7RRBX" ;
-    ns1:identificador 2 ;
+    ns1:cantidad 17 ;
+    ns1:categoria "categoria_JHM6I8" ;
+    ns1:descripcion "descripcion_LBOX9V" ;
+    ns1:identificador 39 ;
     ns1:nombre "Product_27" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_0H5K2C" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_6ARFOK" ;
     ns1:tiene_modelo "Modelo_52" ;
-    ns1:valoracion_media "valoracion_media_K5U4KV" .
+    ns1:valoracion_media 5.626693e-01 .
 
 ns1:Product_28 a ns1:Producto ;
-    ns1:cantidad "cantidad_2QIIUG" ;
-    ns1:categoria "categoria_2HMSQS" ;
-    ns1:descripcion "descripcion_OOC6U8" ;
-    ns1:identificador 36 ;
+    ns1:cantidad 15 ;
+    ns1:categoria "categoria_F7RD5O" ;
+    ns1:descripcion "descripcion_036714" ;
+    ns1:identificador 21 ;
     ns1:nombre "Product_28" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_LZ3KJT" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_XEBQPD" ;
     ns1:tiene_modelo "Modelo_53" ;
-    ns1:valoracion_media "valoracion_media_VIDT1U" .
+    ns1:valoracion_media 9.780815e-01 .
 
 ns1:Product_29 a ns1:Producto ;
-    ns1:cantidad "cantidad_Q227VF" ;
-    ns1:categoria "categoria_GK740R" ;
-    ns1:descripcion "descripcion_A6N2WA" ;
-    ns1:identificador 12 ;
+    ns1:cantidad 28 ;
+    ns1:categoria "categoria_GYFZW4" ;
+    ns1:descripcion "descripcion_QI809S" ;
+    ns1:identificador 47 ;
     ns1:nombre "Product_29" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_SNBT0W" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_U3KMGZ" ;
     ns1:tiene_modelo "Modelo_54" ;
-    ns1:valoracion_media "valoracion_media_FLZ3HO" .
+    ns1:valoracion_media 2.686172e-01 .
 
 ns1:Product_3 a ns1:Producto ;
-    ns1:cantidad "cantidad_GRJN3C" ;
-    ns1:categoria "categoria_IEYCGR" ;
-    ns1:descripcion "descripcion_JFAJPA" ;
-    ns1:identificador 1 ;
+    ns1:cantidad 10 ;
+    ns1:categoria "categoria_DTPJ51" ;
+    ns1:descripcion "descripcion_XJE66B" ;
+    ns1:identificador 8 ;
     ns1:nombre "Product_3" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_7X0PAC" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_Q5WW3I" ;
     ns1:tiene_modelo "Modelo_03" ;
-    ns1:valoracion_media "valoracion_media_X4IWD6" .
+    ns1:valoracion_media 3.886711e-01 .
 
 ns1:Product_30 a ns1:Producto ;
-    ns1:cantidad "cantidad_3PURQK" ;
-    ns1:categoria "categoria_83W4UZ" ;
-    ns1:descripcion "descripcion_7EYS8B" ;
-    ns1:identificador 12 ;
+    ns1:cantidad 6 ;
+    ns1:categoria "categoria_EZ66DF" ;
+    ns1:descripcion "descripcion_0DVEQR" ;
+    ns1:identificador 46 ;
     ns1:nombre "Product_30" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_9EAETY" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_LY5KKR" ;
     ns1:tiene_modelo "Modelo_60" ;
-    ns1:valoracion_media "valoracion_media_S3SGSD" .
+    ns1:valoracion_media 2.434701e-01 .
 
 ns1:Product_31 a ns1:Producto ;
-    ns1:cantidad "cantidad_LSJG50" ;
-    ns1:categoria "categoria_N4UOAZ" ;
-    ns1:descripcion "descripcion_J07439" ;
-    ns1:identificador 11 ;
+    ns1:cantidad 18 ;
+    ns1:categoria "categoria_O2ONEY" ;
+    ns1:descripcion "descripcion_TGXTZA" ;
+    ns1:identificador 2 ;
     ns1:nombre "Product_31" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_K22W0N" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_PGK15M" ;
     ns1:tiene_modelo "Modelo_61" ;
-    ns1:valoracion_media "valoracion_media_PP7IJU" .
+    ns1:valoracion_media 1.527277e-01 .
 
 ns1:Product_32 a ns1:Producto ;
-    ns1:cantidad "cantidad_RMZ7JJ" ;
-    ns1:categoria "categoria_J8UNCH" ;
-    ns1:descripcion "descripcion_YO2XJU" ;
-    ns1:identificador 31 ;
+    ns1:cantidad 39 ;
+    ns1:categoria "categoria_4Z6VU3" ;
+    ns1:descripcion "descripcion_BLIF9Y" ;
+    ns1:identificador 18 ;
     ns1:nombre "Product_32" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_2Y8X4E" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_US870P" ;
     ns1:tiene_modelo "Modelo_62" ;
-    ns1:valoracion_media "valoracion_media_3NA791" .
+    ns1:valoracion_media 7.422388e-01 .
 
 ns1:Product_33 a ns1:Producto ;
-    ns1:cantidad "cantidad_358POK" ;
-    ns1:categoria "categoria_8MER1X" ;
-    ns1:descripcion "descripcion_NP3ERK" ;
-    ns1:identificador 25 ;
+    ns1:cantidad 28 ;
+    ns1:categoria "categoria_D2OMZY" ;
+    ns1:descripcion "descripcion_TFE19F" ;
+    ns1:identificador 43 ;
     ns1:nombre "Product_33" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_Z3U3R1" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_Z2EIMG" ;
     ns1:tiene_modelo "Modelo_63" ;
-    ns1:valoracion_media "valoracion_media_OIFK1T" .
+    ns1:valoracion_media 1.233653e-01 .
 
 ns1:Product_34 a ns1:Producto ;
-    ns1:cantidad "cantidad_27U5PJ" ;
-    ns1:categoria "categoria_BC790W" ;
-    ns1:descripcion "descripcion_28ZGF2" ;
-    ns1:identificador 36 ;
+    ns1:cantidad 50 ;
+    ns1:categoria "categoria_ASFU8W" ;
+    ns1:descripcion "descripcion_Z7SQEG" ;
+    ns1:identificador 8 ;
     ns1:nombre "Product_34" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_LJCB1B" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_EKS5R4" ;
     ns1:tiene_modelo "Modelo_64" ;
-    ns1:valoracion_media "valoracion_media_IZKMPA" .
+    ns1:valoracion_media 6.081798e-01 .
 
 ns1:Product_35 a ns1:Producto ;
-    ns1:cantidad "cantidad_O2L03W" ;
-    ns1:categoria "categoria_APQR6P" ;
-    ns1:descripcion "descripcion_XQ9JST" ;
-    ns1:identificador 45 ;
+    ns1:cantidad 44 ;
+    ns1:categoria "categoria_AYH8VR" ;
+    ns1:descripcion "descripcion_SM9GSC" ;
+    ns1:identificador 26 ;
     ns1:nombre "Product_35" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_ATF3LY" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_VQN6V3" ;
     ns1:tiene_modelo "Modelo_70" ;
-    ns1:valoracion_media "valoracion_media_9AY2ZX" .
+    ns1:valoracion_media 4.255781e-03 .
 
 ns1:Product_36 a ns1:Producto ;
-    ns1:cantidad "cantidad_FP9F71" ;
-    ns1:categoria "categoria_T5AEZB" ;
-    ns1:descripcion "descripcion_G7MK1S" ;
-    ns1:identificador 9 ;
+    ns1:cantidad 43 ;
+    ns1:categoria "categoria_03RNE8" ;
+    ns1:descripcion "descripcion_VFITSC" ;
+    ns1:identificador 41 ;
     ns1:nombre "Product_36" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_QMEAIK" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_0XOYDN" ;
     ns1:tiene_modelo "Modelo_71" ;
-    ns1:valoracion_media "valoracion_media_GNR330" .
+    ns1:valoracion_media 5.448408e-01 .
 
 ns1:Product_37 a ns1:Producto ;
-    ns1:cantidad "cantidad_66551M" ;
-    ns1:categoria "categoria_PSHUAK" ;
-    ns1:descripcion "descripcion_CQ0RIV" ;
-    ns1:identificador 18 ;
+    ns1:cantidad 35 ;
+    ns1:categoria "categoria_8X3MGY" ;
+    ns1:descripcion "descripcion_FB9GIX" ;
+    ns1:identificador 38 ;
     ns1:nombre "Product_37" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_R7BV4E" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_558EV0" ;
     ns1:tiene_modelo "Modelo_72" ;
-    ns1:valoracion_media "valoracion_media_8CP5SA" .
+    ns1:valoracion_media 7.009469e-01 .
 
 ns1:Product_38 a ns1:Producto ;
-    ns1:cantidad "cantidad_RCVKAF" ;
-    ns1:categoria "categoria_G823GI" ;
-    ns1:descripcion "descripcion_KSKKSP" ;
-    ns1:identificador 11 ;
+    ns1:cantidad 20 ;
+    ns1:categoria "categoria_QLOXJQ" ;
+    ns1:descripcion "descripcion_90MLIE" ;
+    ns1:identificador 12 ;
     ns1:nombre "Product_38" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_6RYYA1" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_8V0FL2" ;
     ns1:tiene_modelo "Modelo_73" ;
-    ns1:valoracion_media "valoracion_media_R9LSQ3" .
+    ns1:valoracion_media 2.668924e-01 .
 
 ns1:Product_39 a ns1:Producto ;
-    ns1:cantidad "cantidad_2M5NVC" ;
-    ns1:categoria "categoria_I1MBBI" ;
-    ns1:descripcion "descripcion_3OF0A2" ;
-    ns1:identificador 1 ;
+    ns1:cantidad 21 ;
+    ns1:categoria "categoria_3HVALQ" ;
+    ns1:descripcion "descripcion_B42AZQ" ;
+    ns1:identificador 39 ;
     ns1:nombre "Product_39" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_4FB5NU" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_79Q0VG" ;
     ns1:tiene_modelo "Modelo_74" ;
-    ns1:valoracion_media "valoracion_media_KQSRXM" .
+    ns1:valoracion_media 8.222796e-01 .
 
 ns1:Product_4 a ns1:Producto ;
-    ns1:cantidad "cantidad_DHEPFJ" ;
-    ns1:categoria "categoria_152YSB" ;
-    ns1:descripcion "descripcion_6AJ8JK" ;
-    ns1:identificador 49 ;
+    ns1:cantidad 7 ;
+    ns1:categoria "categoria_X10FGY" ;
+    ns1:descripcion "descripcion_TIDBJW" ;
+    ns1:identificador 33 ;
     ns1:nombre "Product_4" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_RZGOYA" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_KFP8ER" ;
     ns1:tiene_modelo "Modelo_04" ;
-    ns1:valoracion_media "valoracion_media_GGTC4T" .
+    ns1:valoracion_media 9.928927e-02 .
 
 ns1:Product_5 a ns1:Producto ;
-    ns1:cantidad "cantidad_AAX7MV" ;
-    ns1:categoria "categoria_UAA8VP" ;
-    ns1:descripcion "descripcion_7VRUH8" ;
-    ns1:identificador 18 ;
+    ns1:cantidad 14 ;
+    ns1:categoria "categoria_7RYRWV" ;
+    ns1:descripcion "descripcion_ADRZCN" ;
+    ns1:identificador 21 ;
     ns1:nombre "Product_5" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_G2N88A" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_2U6RJH" ;
     ns1:tiene_modelo "Modelo_10" ;
-    ns1:valoracion_media "valoracion_media_RHMY4K" .
+    ns1:valoracion_media 5.250608e-01 .
 
 ns1:Product_6 a ns1:Producto ;
-    ns1:cantidad "cantidad_WFTFFZ" ;
-    ns1:categoria "categoria_0GJTJ2" ;
-    ns1:descripcion "descripcion_NF9WQL" ;
-    ns1:identificador 19 ;
+    ns1:cantidad 38 ;
+    ns1:categoria "categoria_VKWDRJ" ;
+    ns1:descripcion "descripcion_ZPNGH5" ;
+    ns1:identificador 21 ;
     ns1:nombre "Product_6" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_505AND" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_CIW5SC" ;
     ns1:tiene_modelo "Modelo_11" ;
-    ns1:valoracion_media "valoracion_media_S2CUYT" .
+    ns1:valoracion_media 4.80124e-01 .
 
 ns1:Product_7 a ns1:Producto ;
-    ns1:cantidad "cantidad_YKFCXD" ;
-    ns1:categoria "categoria_U8UVGN" ;
-    ns1:descripcion "descripcion_2EC8D0" ;
-    ns1:identificador 1 ;
+    ns1:cantidad 27 ;
+    ns1:categoria "categoria_CKE2U4" ;
+    ns1:descripcion "descripcion_3KRE0P" ;
+    ns1:identificador 34 ;
     ns1:nombre "Product_7" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_XHD27W" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_JBH4AE" ;
     ns1:tiene_modelo "Modelo_12" ;
-    ns1:valoracion_media "valoracion_media_N4NDIO" .
+    ns1:valoracion_media 4.300524e-01 .
 
 ns1:Product_8 a ns1:Producto ;
-    ns1:cantidad "cantidad_XV1FPI" ;
-    ns1:categoria "categoria_ROCOM2" ;
-    ns1:descripcion "descripcion_KHCZVH" ;
-    ns1:identificador 23 ;
+    ns1:cantidad 12 ;
+    ns1:categoria "categoria_RUKCTX" ;
+    ns1:descripcion "descripcion_SN2PH9" ;
+    ns1:identificador 8 ;
     ns1:nombre "Product_8" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_SEI4I9" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_342E2L" ;
     ns1:tiene_modelo "Modelo_13" ;
-    ns1:valoracion_media "valoracion_media_R73D74" .
+    ns1:valoracion_media 2.441201e-02 .
 
 ns1:Product_9 a ns1:Producto ;
-    ns1:cantidad "cantidad_ZCBEUD" ;
-    ns1:categoria "categoria_ZNJTCD" ;
-    ns1:descripcion "descripcion_VA1M9R" ;
-    ns1:identificador 50 ;
+    ns1:cantidad 28 ;
+    ns1:categoria "categoria_XFWG2C" ;
+    ns1:descripcion "descripcion_11HNHN" ;
+    ns1:identificador 40 ;
     ns1:nombre "Product_9" ;
-    ns1:restricciones_devolucion "restricciones_devolucion_NS4CQE" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_L8U2S5" ;
     ns1:tiene_modelo "Modelo_14" ;
-    ns1:valoracion_media "valoracion_media_0LZLAN" .
+    ns1:valoracion_media 2.482878e-01 .
 
 ns1:Marca_0 a ns1:Marca ;
     ns1:nombre "Marca_0" .

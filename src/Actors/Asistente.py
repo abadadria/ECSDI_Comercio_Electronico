@@ -46,16 +46,6 @@ if args.b is None:
 else:
     bhost = args.b
 
-class LineaBusqueda:
-    def __init__(self, nombre, cantidad, precio_max, precio_min):
-        self.nombre = nombre
-        self.cantidad = cantidad
-        self.precio_max = precio_max
-        self.precio_min = precio_min 
-
-    def __str__(self):
-        return self.nombre + " " + str(self.cantidad) + " " + str(self.precio_max) + " " + str(self.precio_min)   
-
 def mensaje_busqueda(list):
     print(json.dumps(list))
     return requests.get(bhost + "/buscar", json=json.dumps(list))
@@ -65,12 +55,10 @@ def buscar_productos():
     print("Introduce las categorias de productos que te interesan:")
     print("\tFormato: categoria(str) cantidad(int) precio_min(int) precio_max(int)")
     
-    names = ["categoria", "cantidad", "precio_min", "precio_max"]
-    list = []
+    
 
     for i in range(ncategorias):
         linea = input().split();
-        list.append(LineaBusqueda(linea[0], int(linea[1]), int(linea[2]), int(linea[3])))
     
     res = mensaje_busqueda(list)
         

@@ -46,7 +46,6 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     """
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
-
 if __name__ == '__main__':
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
@@ -56,9 +55,17 @@ if __name__ == '__main__':
     product_properties = {'cantidad': 'i',
                           'categoria': 's',
                           'descripcion': 's',
-                          'identificador': 'i',
                           'restricciones_devolucion': 's',
                           'valoracion_media': 'f'}
+    
+    categorias_productos = ['producto_hogar', 
+                            'ropa', 
+                            'comida', 
+                            'informatica', 
+                            'electrodomestico', 
+                            'juguete', 
+                            'instrumento_musical', 
+                            'producto_jardin']
 
     # model_properties = {'tieneMarca': 'Marca', 'nombre': 's'}
     # marca_properties = {'nombre': 's'}
@@ -115,7 +122,10 @@ if __name__ == '__main__':
                 val = Literal(random.randint(0, 50))
             # el atributo es string
             else:
-                val = Literal(random_name(str(prop_key)))
+                if prop_key == 'categoria':
+                    val = Literal(random.choice(categorias_productos))
+                else:
+                    val = Literal(random_name(str(prop_key)))
             products_graph.add((myOnto[rproduct], myOnto[prop_key], val)) 
 
     # Grabamos la ontologia resultante en turtle

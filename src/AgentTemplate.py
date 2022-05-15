@@ -48,7 +48,7 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-@app.route("/comm")
+@app.route("/buscar")
 def comunicacion():
     """
     Entrypoint de comunicacion
@@ -56,8 +56,6 @@ def comunicacion():
     
     plan1()
     
-    global dsgraph
-    global mss_cnt
     return "Plan Ejecutado"
     
 

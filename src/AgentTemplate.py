@@ -27,6 +27,8 @@ port = 9010
 
 agn = Namespace("http://www.agentes.org#")
 
+myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
+
 # Contador de mensajes
 mss_cnt = 0
 

@@ -108,7 +108,8 @@ if __name__ == '__main__':
         for prop_key, prop_value in product_properties.items():
             # el atributo es real
             if prop_value == 'f':
-                val = Literal(random.random())
+                number = format(round(random.random(), 2), '.2f')
+                val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
                 val = Literal(random.randint(0, 50))

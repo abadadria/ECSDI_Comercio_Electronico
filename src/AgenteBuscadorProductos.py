@@ -3,7 +3,6 @@
 
 Esqueleto de agente usando los servicios web de Flask
 
-/comm es la entrada para la recepcion de mensajes del agente
 /Stop es la entrada que para el agente
 
 Tiene una funcion AgentBehavior1 que se lanza como un thread concurrente
@@ -33,14 +32,13 @@ myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-elect
 mss_cnt = 0
 
 # Datos del Agente
-
-AgentePersonal = Agent('AgenteSimple',
+AgenteBuscadorProductos = Agent('AgenteSimple',
                        agn.AgenteSimple,
                        'http://%s:%d/comm' % (hostname, port),
                        'http://%s:%d/Stop' % (hostname, port))
 
 # Global triplestore graph
-dsgraph = Graph()
+products_graph = Graph()
 
 cola1 = Queue()
 
@@ -78,6 +76,7 @@ def tidyup():
 
     """
     pass
+    
 
 
 def agentbehavior1(cola):
@@ -86,18 +85,23 @@ def agentbehavior1(cola):
 
     :return:
     """
-    
     pass
+    
 
 def plan1():
     print("Se ha hecho petición sobre /comm")
     
+    
+def setup():
+    products_graph.parse('product.ttl', format='turtle')
 
 
 if __name__ == '__main__':
     # Ponemos en marcha los behaviors
     ab1 = Process(target=agentbehavior1, args=(cola1,))
     ab1.start()
+    
+    setup()
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)

@@ -66,20 +66,14 @@ def comunicacion():
 
     def buscarProductos():
         gr = Graph()
-
-        print('graph------------')
-        print(gm.serialize(format='turtle'))
-        print('graph------------')
+        gr.namespace_manager.bind('rdf', RDF)
+        gr.namespace_manager.bind('ceo', CEO)
         
         for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
             cantidad = gm.value(s, CEO.cantidad)
-            print(cantidad)
             categoria = gm.value(s, CEO.categoria)
-            print(categoria)
             precio_max = gm.value(s, CEO.precio_max)
-            print(precio_max)
             precio_min = gm.value(s, CEO.precio_min)
-            print(precio_min)
             
             
             ''' NO FUNCIONA
@@ -105,19 +99,7 @@ def comunicacion():
             
             '''
             
-            for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
-                
-                '''
-                precio = products_graph.value(s, CEO.precio)
-                precioOk = False
-                if (Decimal(precio) > Decimal(precio_max)):
-                    print('dentro if')
-                    if (Decimal(precio) < Decimal(precio_min)):
-                        print('dentro if if')
-                        precioOk = True
-                print(precio + ' ' + precio_min + ' ' + precio_max + ' ' + str(precioOk))
-                '''
-                
+            for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
                 categoriap = products_graph.value(s, CEO.categoria)
                 categoriaOk = False
                 if categoriap == categoria:
@@ -126,10 +108,16 @@ def comunicacion():
                 if categoriaOk:
                     oferta = products_graph.value(s, CEO.ofertado_en)
                     precio = products_graph.value(oferta, CEO.precio)
-                    print(precio)
-                    gr.add((oferta, RDF.type, CEO.Oferta))
+                    precioOk = False
+                    if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
+                        precioOk = True
+                    if precioOk:
+                        gr.add((s, RDF.type, CEO.Producto))
+                        gr.add((s, CEO.categoria, categoriap))
+                        gr.add((oferta, RDF.type, CEO.Oferta))
+                        gr.add((oferta, CEO.precio, precio))
+                        gr.add((s, CEO.ofertado_en, oferta))
 
-        print(gr.serialize(format='turtle'))
         return gr
 
 
@@ -159,8 +147,6 @@ def comunicacion():
 
             # Averiguamos el tipo de la accion
             accion = gm.value(subject=content, predicate=RDF.type)
-
-            print(gm.serialize(format='turtle'))
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done

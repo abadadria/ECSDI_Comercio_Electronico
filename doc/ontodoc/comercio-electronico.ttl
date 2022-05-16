@@ -60,10 +60,16 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_pedido
 :de_pedido rdf:type owl:ObjectProperty ;
-           rdfs:domain :InformarEnvioPedido ,
-                       :LineaEnvio ,
-                       :Pedido ;
+           rdfs:domain :Devolucion ,
+                       :InformarEnvioPedido ,
+                       :LineaEnvio ;
            rdfs:range :Pedido .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_producto
+:de_producto rdf:type owl:ObjectProperty ;
+             rdfs:domain :Oferta ;
+             rdfs:range :Producto .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#devolver_a
@@ -108,12 +114,6 @@
 :ofrece rdf:type owl:ObjectProperty ;
         rdfs:domain :ComercioExterno ;
         rdfs:range :Oferta .
-
-
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#producto
-:producto rdf:type owl:ObjectProperty ;
-          rdfs:domain :LineaProducto ;
-          rdfs:range :Producto .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#recoger_en
@@ -165,10 +165,10 @@
                      rdfs:range :LineaProducto .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_envios
-:tiene_envios rdf:type owl:ObjectProperty ;
-              rdfs:domain :Pedido ;
-              rdfs:range :Envio .
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_envio
+:tiene_envio rdf:type owl:ObjectProperty ;
+             rdfs:domain :Pedido ;
+             rdfs:range :Envio .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_factura
@@ -234,7 +234,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_oferta
 :tiene_oferta rdf:type owl:ObjectProperty ;
-              rdfs:domain :ActualizarInformacionProductos ;
+              rdfs:domain :ActualizarInformacionProductos ,
+                          :LineaOferta ;
               rdfs:range :Oferta .
 
 
@@ -249,6 +250,12 @@
 :tiene_por_enviar rdf:type owl:ObjectProperty ;
                   rdfs:domain :CentroLogistico ;
                   rdfs:range :Lote .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_producto
+:tiene_producto rdf:type owl:ObjectProperty ;
+                rdfs:domain :LineaProducto ;
+                rdfs:range :Producto .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_reembolso
@@ -350,12 +357,11 @@
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :Actor ,
                            :Agente ,
-                           :Cobro ,
                            :Devolucion ,
                            :Envio ,
                            :Oferta ,
-                           :Pedido ,
-                           :Reembolso ;
+                           :Pago ,
+                           :Pedido ;
                rdfs:range xsd:positiveInteger ;
                rdfs:comment "El identificador se usa para poder distinguir entre diferentes instancias del mismo concepto."@es .
 
@@ -382,8 +388,7 @@
 :nombre rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Marca ,
-                    :Modelo ,
-                    :Producto ;
+                    :Modelo ;
         rdfs:range xsd:string ;
         rdfs:comment "El nombre se usa para designar un concepto."@es .
 

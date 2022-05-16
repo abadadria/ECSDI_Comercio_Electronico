@@ -185,7 +185,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_factura
 :tiene_factura rdf:type owl:ObjectProperty ;
-               rdfs:domain :Pedido ;
+               rdfs:domain :InformarFacturaPedido ,
+                           :Pedido ;
                rdfs:range :Factura .
 
 
@@ -546,12 +547,6 @@
             rdfs:comment "Permite a un Asistente devolver un/os producto/s y recuperar el dinero pagado por el"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#EnviarFacturaPedido
-:EnviarFacturaPedido rdf:type owl:Class ;
-                     rdfs:subClassOf :Accion ;
-                     rdfs:comment "El Sistema envia la Factura del Pedido al Asistente que lo ha comprado." .
-
-
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Envio
 :Envio rdf:type owl:Class ;
        rdfs:comment "Conjunto de LineaProducto que han sido enviados y tienen origen y destino comun"@es .
@@ -562,21 +557,32 @@
          rdfs:comment "Conjunto de LineaOferta (tuplas Producto, precio unitario, precio total) e importe total"@es .
 
 
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Informacion
+:Informacion rdf:type owl:Class ;
+             rdfs:subClassOf :Comunicacion .
+
+
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarEnvioPedido
 :InformarEnvioPedido rdf:type owl:Class ;
-                     rdfs:subClassOf :Accion ;
+                     rdfs:subClassOf :Informacion ;
                      rdfs:comment "El Agente Gestor envios informa al Asistente de que se ha enviado un Pedido y de las diversas procedencias de los Productos, además de otros detalles del envio. También se informa de que se ha cobrado el envio."@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarFacturaPedido
+:InformarFacturaPedido rdf:type owl:Class ;
+                       rdfs:subClassOf :Informacion ;
+                       rdfs:comment "El Sistema envia la Factura del Pedido al Asistente que lo ha comprado." .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarProductosPedidos
 :InformarProductosPedidos rdf:type owl:Class ;
-                          rdfs:subClassOf :Accion ;
+                          rdfs:subClassOf :Informacion ;
                           rdfs:comment "El Sistema informa al ComercioExterno de que alguien ha comprado un conjunto de Productos (LineaOferta)"@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#InformarRecogidaProductos
 :InformarRecogidaProductos rdf:type owl:Class ;
-                           rdfs:subClassOf :Accion ;
+                           rdfs:subClassOf :Informacion ;
                            rdfs:comment "El Sistema informa al Asistente de las instrucciones que debe seguir para efectuar la Devolución que prèviamente habia solicitado y habia sido aprovada."@es .
 
 
@@ -679,7 +685,7 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RecomendarProductos
 :RecomendarProductos rdf:type owl:Class ;
-                     rdfs:subClassOf :Accion ;
+                     rdfs:subClassOf :Informacion ;
                      rdfs:comment "El Agente Recomendador/control calidad efectua una Recomendacion de uno o varios Productos al Asistente."@es .
 
 

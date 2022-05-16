@@ -52,7 +52,7 @@ def comunicacion():
     Entrypoint de comunicacion
     """
     
-    plan1()
+    buscarProductos()
     
     return "Plan Ejecutado"
     
@@ -88,8 +88,9 @@ def agentbehavior1(cola):
     pass
     
 
-def plan1():
-    print("Se ha hecho petición sobre /comm")
+def buscarProductos():
+    
+    print("Se ha hecho petición sobre /buscar")
     
     
 def setup():

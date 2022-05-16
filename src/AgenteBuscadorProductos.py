@@ -27,6 +27,8 @@ from AgentUtil.Logging import config_logger
 from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
+from decimal import Decimal
+
 
 __author__ = 'adria'
 
@@ -79,6 +81,9 @@ def comunicacion():
             precio_min = gm.value(s, CEO.precio_min)
             print(precio_min)
             
+            
+            ''' NO FUNCIONA
+            
             # FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
             
             query = """PREFIX ceo: <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#>
@@ -93,12 +98,38 @@ def comunicacion():
             
             graph = products_graph.query(query, initNs= {'rdf', RDF})
             
-            print('graph despues de query------------')
+            print('graph despues de query)
             for row in graph:
                 print(row)
-            print('graph despues de query------------')       
-              
+            print('graph despues de query)    
+            
+            '''
+            
+            for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
+                
+                '''
+                precio = products_graph.value(s, CEO.precio)
+                precioOk = False
+                if (Decimal(precio) > Decimal(precio_max)):
+                    print('dentro if')
+                    if (Decimal(precio) < Decimal(precio_min)):
+                        print('dentro if if')
+                        precioOk = True
+                print(precio + ' ' + precio_min + ' ' + precio_max + ' ' + str(precioOk))
+                '''
+                
+                categoriap = products_graph.value(s, CEO.categoria)
+                categoriaOk = False
+                if categoriap == categoria:
+                     categoriaOk = True
+                            
+                if categoriaOk:
+                    oferta = products_graph.value(s, CEO.ofertado_en)
+                    precio = products_graph.value(oferta, CEO.precio)
+                    print(precio)
+                    gr.add((oferta, RDF.type, CEO.Oferta))
 
+        print(gr.serialize(format='turtle'))
         return gr
 
 

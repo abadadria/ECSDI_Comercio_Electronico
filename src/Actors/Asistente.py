@@ -39,6 +39,7 @@ parser.add_argument('--b', help="Host del agente Buscador Productos")
 
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
+
 '''
 if args.b is None:
     print("Usage: python3 Asistente.py --b http://<IP_Buscador>:<Port_Buscador>")
@@ -46,6 +47,39 @@ if args.b is None:
 else:
     bhost = args.b
 '''
+# Configuration stuff
+port = 9002
+
+hostname = '0.0.0.0'
+hostaddr = gethostname()
+
+print('DS Hostname =', hostaddr)
+
+# Flask stuff
+app = Flask(__name__)
+
+# Configuration constants and variables
+agn = Namespace("http://www.agentes.org#")
+
+hostaddrBuscador = 'adria-PS42-Modern-8MO'
+portBuscador = 9010
+
+AgenteBuscadorProductos = Agent('AgenteSimple',
+                       agn.AgenteSimple,
+                       'http://%s:%d/buscar' % (hostaddrBuscador, portBuscador),
+                       'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
+
+# Contador de mensajes
+mss_cnt = 0
+
+# Datos del Agente
+AgentePersonal = Agent('AgentePersonal',
+                       agn.AgentePersonal,
+                       'http://%s:%d/comm' % (hostaddr, port),
+                       'http://%s:%d/Stop' % (hostaddr, port))
+
+
+
 # Configuration of the namespace of comercio-electronico ontology
 CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
@@ -85,16 +119,22 @@ def buscar_productos():
     
     print(gm.serialize(format='turtle'))
 
-    gr = send_message(
-        build_message(gm, perf=ACL.request,
-                      sender="Asistente",
-                      receiver="Buscador_productos",
-                      content="Asistente1-BuscarProductos"),
-            'http://*********:****/buscar')
+    print(AgentePersonal.uri)
+    print(AgenteBuscadorProductos.uri)
+    print(AgenteBuscadorProductos.address)
+
+
+    msg = build_message(gm, perf=ACL.request,
+                        sender=AgentePersonal.uri,
+                        receiver=AgenteBuscadorProductos.uri)    
+    gr = send_message(msg, AgenteBuscadorProductos.address)
+
+    return gr
         
 def do(value):
     if value == 1:
-        buscar_productos()        
+        print(buscar_productos().serialize(format='turtle'))
+        
 
 if __name__ == '__main__':
     print("Bienvenido a el Asistente de Comercio Electronico")

@@ -26,6 +26,9 @@ from AgentUtil.Logging import config_logger
 from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
+
+__author__ = 'adria'
+
 # Configuration stuff
 hostname = socket.gethostname()
 port = 9010
@@ -61,9 +64,7 @@ def comunicacion():
     def buscarProductos():
         gr = Graph()
         
-
-
-        print("Se ha hecho petición sobre /buscar")
+        return gr
 
 
     message = request.args['content']

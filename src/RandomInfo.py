@@ -32,7 +32,7 @@ from rdflib import Graph, RDF, RDFS, OWL, XSD, Namespace, Literal
 import string
 import random
 
-__author__ = 'abadadria'
+__author__ = 'adria'
 
 
 def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):

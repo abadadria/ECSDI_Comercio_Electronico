@@ -69,13 +69,15 @@ def comunicacion():
         print('graph------------')
 
         
-
         for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
-            print(s)
-            print(p)
-            print(o)
             cantidad = gm.value(s, CEO.cantidad)
-            print(cantidad)         
+            print(cantidad)
+            categoria = gm.value(s, CEO.categoria)
+            print(categoria)
+            precio_max = gm.value(s, CEO.precio_max)
+            print(precio_max)
+            precio_min = gm.value(s, CEO.precio_min)
+            print(precio_min)
 
         return gr
 

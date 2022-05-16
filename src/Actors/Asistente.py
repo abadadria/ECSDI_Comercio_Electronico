@@ -119,14 +119,11 @@ def buscar_productos():
     
     print(gm.serialize(format='turtle'))
 
-    print(AgentePersonal.uri)
-    print(AgenteBuscadorProductos.uri)
-    print(AgenteBuscadorProductos.address)
-
-
     msg = build_message(gm, perf=ACL.request,
                         sender=AgentePersonal.uri,
-                        receiver=AgenteBuscadorProductos.uri)    
+                        receiver=AgenteBuscadorProductos.uri,
+                        content=bp)    
+
     gr = send_message(msg, AgenteBuscadorProductos.address)
 
     return gr

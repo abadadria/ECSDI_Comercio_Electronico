@@ -35,7 +35,7 @@ port = 9010
 
 agn = Namespace("http://www.agentes.org#")
 
-myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
+CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
 # Contador de mensajes
 mss_cnt = 0
@@ -89,12 +89,15 @@ def comunicacion():
                                 sender=AgenteBuscadorProductos.uri)
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
             content = msgdic['content']
-            print(content)
+
             # Averiguamos el tipo de la accion
             accion = gm.value(subject=content, predicate=RDF.type)
 
-            if accion == 'BuscarProductos':
+            # Aqui realizariamos lo que pide la accion
+            # Por ahora simplemente retornamos un Inform-done
+            if accion == CEO.BuscarProductos:
                 gr = buscarProductos()
             else:
                 gr = build_message( Graph(),

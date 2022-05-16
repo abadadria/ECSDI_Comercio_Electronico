@@ -61,7 +61,7 @@ app = Flask(__name__)
 # Configuration constants and variables
 agn = Namespace("http://www.agentes.org#")
 
-hostaddrBuscador = 'adria-PS42-Modern-8MO'
+hostaddrBuscador = 'adria-VirtualBox'
 portBuscador = 9010
 
 AgenteBuscadorProductos = Agent('AgenteSimple',

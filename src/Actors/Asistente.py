@@ -130,7 +130,17 @@ def buscar_productos():
         
 def do(value):
     if value == 1:
-        print(buscar_productos().serialize(format='turtle'))
+        gr = Graph()
+        gr = buscar_productos()
+        print('\n' + 'Las ofertas de productos son:\n ')
+        for s, p, o in gr.triples((None, RDF.type, CEO.Oferta)):
+            precio = gr.value(s, CEO.precio)
+            
+            length = len(s)
+            name = s[76:length]
+            
+            print(name + ' con precio: ' + precio + '€')
+        print('\n')
         
 
 if __name__ == '__main__':

@@ -46,7 +46,6 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     """
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
-
 if __name__ == '__main__':
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
@@ -56,9 +55,22 @@ if __name__ == '__main__':
     product_properties = {'cantidad': 'i',
                           'categoria': 's',
                           'descripcion': 's',
-                          'identificador': 'i',
                           'restricciones_devolucion': 's',
                           'valoracion_media': 'f'}
+
+    ofert_properties = {'cantidad': 'i',
+                        'gestion_envio' : 's',
+                        'identificador': 'i',
+                        'precio': 'f'}
+    
+    categorias_productos = ['producto_hogar', 
+                            'ropa', 
+                            'comida', 
+                            'informatica', 
+                            'electrodomestico', 
+                            'juguete', 
+                            'instrumento_musical', 
+                            'producto_jardin']
 
     # model_properties = {'tieneMarca': 'Marca', 'nombre': 's'}
     # marca_properties = {'nombre': 's'}
@@ -108,15 +120,60 @@ if __name__ == '__main__':
         for prop_key, prop_value in product_properties.items():
             # el atributo es real
             if prop_value == 'f':
-                number = format(round(random.random(), 2), '.2f')
+                number = format(round(random.uniform(0, 10), 2), '.2f')
                 val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
                 val = Literal(random.randint(0, 50))
             # el atributo es string
             else:
-                val = Literal(random_name(str(prop_key)))
+                if prop_key == 'categoria':
+                    val = Literal(random.choice(categorias_productos))
+                else:
+                    val = Literal(random_name(str(prop_key)))
             products_graph.add((myOnto[rproduct], myOnto[prop_key], val)) 
+
+        # generamos dos instancias de oferta para cada uno de los productos creados
+        oferta1 = 'Oferta_1_' + rproduct
+        oferta2 = 'Oferta_2_' + rproduct
+
+        # Añadimos la instancia de oferta
+        products_graph.add((myOnto[oferta1], RDF.type, myOnto.Oferta))
+        products_graph.add((myOnto[oferta2], RDF.type, myOnto.Oferta))
+
+        for of_key, of_value in ofert_properties.items():
+            # el atributo es real
+            if of_value == 'f':
+                number = format(round(random.uniform(0, 100), 2), '.2f')
+                number2 = format(round(random.uniform(0, 100), 2), '.2f')
+                val = Literal(number)
+                val2 = Literal(number)
+            # el atributo es entero
+            elif of_value == 'i':
+                if of_key == 'cantidad':
+                    val = Literal(1)
+                    val2 = val
+                else:
+                    val = Literal(random.randint(0, 50))
+                    val2 = Literal(random.randint(0, 50))
+            # el atributo es string
+            else:
+                if of_key == 'gestion_envio':
+                    val = Literal('interna')
+                    val2 = val
+                else:
+                    val = Literal(random_name(str(prop_key)))
+                    val2 = Literal(random_name(str(prop_key)))
+
+            products_graph.add((myOnto[oferta1], myOnto[of_key], val))
+            products_graph.add((myOnto[oferta2], myOnto[of_key], val2))
+
+        
+        
+        products_graph.add((myOnto[rproduct], myOnto.ofertado_en, myOnto[oferta1]))
+        products_graph.add((myOnto[rproduct], myOnto.ofertado_en, myOnto[oferta2]))
+
+
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)

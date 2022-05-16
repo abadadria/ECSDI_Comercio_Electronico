@@ -40,13 +40,13 @@ parser.add_argument('--b', help="Host del agente Buscador Productos")
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
 
-'''
+
 if args.b is None:
-    print("Usage: python3 Asistente.py --b http://<IP_Buscador>:<Port_Buscador>")
+    print("Usage: python3 Asistente.py --b hostNameBuscador <ejemplo: 127.0.0.1>")
     exit()
 else:
-    bhost = args.b
-'''
+    hostaddrBuscador = args.b
+
 # Configuration stuff
 port = 9002
 
@@ -61,7 +61,6 @@ app = Flask(__name__)
 # Configuration constants and variables
 agn = Namespace("http://www.agentes.org#")
 
-hostaddrBuscador = 'adria-VirtualBox'
 portBuscador = 9010
 
 AgenteBuscadorProductos = Agent('AgenteSimple',

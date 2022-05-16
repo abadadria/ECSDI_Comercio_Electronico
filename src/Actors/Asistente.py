@@ -65,7 +65,7 @@ def buscar_productos():
 
     for i in range(ncategorias):
         # Lee una linea de terminal que sorresponde con una LineaBusqueda
-        linea = input().split();
+        linea = input().split()
         # Añade la LineaBusqueda al grafo
         l = CEO["lineabusqueda" + str(i)]
         gm.add((l, RDF.type, CEO.LineaBusqueda))

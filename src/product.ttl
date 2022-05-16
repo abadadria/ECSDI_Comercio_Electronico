@@ -162,924 +162,924 @@ ns1:Modelo_9 a ns1:Modelo ;
     ns1:tiene_marca ns1:Marca_1 .
 
 ns1:Product_0 a ns1:Producto ;
-    ns1:cantidad 15 ;
-    ns1:categoria "producto_hogar" ;
-    ns1:descripcion "descripcion_RL63S3" ;
+    ns1:cantidad 4 ;
+    ns1:categoria "producto_jardin" ;
+    ns1:descripcion "descripcion_JLKKZ6" ;
     ns1:nombre "Product_0" ;
     ns1:ofertado_en ns1:Oferta_1_Product_0,
         ns1:Oferta_2_Product_0 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_QC2Y5S" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_IKW3CC" ;
     ns1:tiene_modelo "Modelo_0" ;
-    ns1:valoracion_media "0.73" .
+    ns1:valoracion_media "7.64" .
 
 ns1:Product_1 a ns1:Producto ;
-    ns1:cantidad 32 ;
-    ns1:categoria "ropa" ;
-    ns1:descripcion "descripcion_7BGPFS" ;
+    ns1:cantidad 50 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_YJPNNE" ;
     ns1:nombre "Product_1" ;
     ns1:ofertado_en ns1:Oferta_1_Product_1,
         ns1:Oferta_2_Product_1 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_WMOFTP" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_B36BJG" ;
     ns1:tiene_modelo "Modelo_1" ;
-    ns1:valoracion_media "3.39" .
+    ns1:valoracion_media "3.37" .
 
 ns1:Product_10 a ns1:Producto ;
-    ns1:cantidad 16 ;
-    ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_X395CU" ;
+    ns1:cantidad 32 ;
+    ns1:categoria "juguete" ;
+    ns1:descripcion "descripcion_MAA6PS" ;
     ns1:nombre "Product_10" ;
     ns1:ofertado_en ns1:Oferta_1_Product_10,
         ns1:Oferta_2_Product_10 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_QN1D3C" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_C5U2T7" ;
     ns1:tiene_modelo "Modelo_10" ;
-    ns1:valoracion_media "7.98" .
+    ns1:valoracion_media "6.79" .
 
 ns1:Product_11 a ns1:Producto ;
-    ns1:cantidad 25 ;
-    ns1:categoria "electrodomestico" ;
-    ns1:descripcion "descripcion_2YI6HK" ;
+    ns1:cantidad 48 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_MX4PRW" ;
     ns1:nombre "Product_11" ;
     ns1:ofertado_en ns1:Oferta_1_Product_11,
         ns1:Oferta_2_Product_11 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_FT46IX" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_8Y97OC" ;
     ns1:tiene_modelo "Modelo_11" ;
-    ns1:valoracion_media "8.72" .
+    ns1:valoracion_media "0.20" .
 
 ns1:Product_12 a ns1:Producto ;
-    ns1:cantidad 7 ;
-    ns1:categoria "producto_hogar" ;
-    ns1:descripcion "descripcion_ZNVVM8" ;
+    ns1:cantidad 28 ;
+    ns1:categoria "producto_jardin" ;
+    ns1:descripcion "descripcion_AMHF1G" ;
     ns1:nombre "Product_12" ;
     ns1:ofertado_en ns1:Oferta_1_Product_12,
         ns1:Oferta_2_Product_12 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_XZMBB0" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_MVZNAJ" ;
     ns1:tiene_modelo "Modelo_12" ;
-    ns1:valoracion_media "7.30" .
+    ns1:valoracion_media "3.87" .
 
 ns1:Product_13 a ns1:Producto ;
-    ns1:cantidad 25 ;
-    ns1:categoria "juguete" ;
-    ns1:descripcion "descripcion_CIVUUW" ;
+    ns1:cantidad 41 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_TN4WQX" ;
     ns1:nombre "Product_13" ;
     ns1:ofertado_en ns1:Oferta_1_Product_13,
         ns1:Oferta_2_Product_13 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_4IUSLO" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_CQD92U" ;
     ns1:tiene_modelo "Modelo_13" ;
-    ns1:valoracion_media "6.19" .
+    ns1:valoracion_media "1.47" .
 
 ns1:Product_14 a ns1:Producto ;
-    ns1:cantidad 5 ;
-    ns1:categoria "producto_hogar" ;
-    ns1:descripcion "descripcion_LOB07X" ;
+    ns1:cantidad 50 ;
+    ns1:categoria "electrodomestico" ;
+    ns1:descripcion "descripcion_TXI0YK" ;
     ns1:nombre "Product_14" ;
     ns1:ofertado_en ns1:Oferta_1_Product_14,
         ns1:Oferta_2_Product_14 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_IZSM6F" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_QSP6R4" ;
     ns1:tiene_modelo "Modelo_14" ;
-    ns1:valoracion_media "3.31" .
+    ns1:valoracion_media "5.04" .
 
 ns1:Product_15 a ns1:Producto ;
     ns1:cantidad 9 ;
-    ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_4WMQNX" ;
+    ns1:categoria "producto_jardin" ;
+    ns1:descripcion "descripcion_P6K4VP" ;
     ns1:nombre "Product_15" ;
     ns1:ofertado_en ns1:Oferta_1_Product_15,
         ns1:Oferta_2_Product_15 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_HJ7IV9" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_WZ43JA" ;
     ns1:tiene_modelo "Modelo_15" ;
-    ns1:valoracion_media "8.39" .
+    ns1:valoracion_media "1.04" .
 
 ns1:Product_16 a ns1:Producto ;
-    ns1:cantidad 48 ;
-    ns1:categoria "electrodomestico" ;
-    ns1:descripcion "descripcion_WRRKQ8" ;
+    ns1:cantidad 21 ;
+    ns1:categoria "juguete" ;
+    ns1:descripcion "descripcion_L48UWQ" ;
     ns1:nombre "Product_16" ;
     ns1:ofertado_en ns1:Oferta_1_Product_16,
         ns1:Oferta_2_Product_16 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_NCYAXO" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_D32XRE" ;
     ns1:tiene_modelo "Modelo_16" ;
-    ns1:valoracion_media "2.11" .
+    ns1:valoracion_media "6.72" .
 
 ns1:Product_17 a ns1:Producto ;
-    ns1:cantidad 46 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_SMSF5I" ;
+    ns1:cantidad 37 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_B2AT3L" ;
     ns1:nombre "Product_17" ;
     ns1:ofertado_en ns1:Oferta_1_Product_17,
         ns1:Oferta_2_Product_17 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_I6APNE" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_NNNWNX" ;
     ns1:tiene_modelo "Modelo_17" ;
-    ns1:valoracion_media "5.49" .
+    ns1:valoracion_media "7.00" .
 
 ns1:Product_18 a ns1:Producto ;
-    ns1:cantidad 46 ;
-    ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_T6T2DX" ;
+    ns1:cantidad 17 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_X4DPKU" ;
     ns1:nombre "Product_18" ;
     ns1:ofertado_en ns1:Oferta_1_Product_18,
         ns1:Oferta_2_Product_18 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_I7AH91" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_24VWXR" ;
     ns1:tiene_modelo "Modelo_18" ;
-    ns1:valoracion_media "6.64" .
+    ns1:valoracion_media "2.61" .
 
 ns1:Product_19 a ns1:Producto ;
-    ns1:cantidad 4 ;
-    ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_PMEMUQ" ;
+    ns1:cantidad 7 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_UX1GXQ" ;
     ns1:nombre "Product_19" ;
     ns1:ofertado_en ns1:Oferta_1_Product_19,
         ns1:Oferta_2_Product_19 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_3TCDCR" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_4UWCE3" ;
     ns1:tiene_modelo "Modelo_19" ;
-    ns1:valoracion_media "6.73" .
+    ns1:valoracion_media "4.68" .
 
 ns1:Product_2 a ns1:Producto ;
-    ns1:cantidad 40 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_LS9AS3" ;
+    ns1:cantidad 39 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_J9S044" ;
     ns1:nombre "Product_2" ;
     ns1:ofertado_en ns1:Oferta_1_Product_2,
         ns1:Oferta_2_Product_2 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_V36WCQ" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_JL5AMN" ;
     ns1:tiene_modelo "Modelo_2" ;
-    ns1:valoracion_media "8.99" .
+    ns1:valoracion_media "3.06" .
 
 ns1:Product_20 a ns1:Producto ;
-    ns1:cantidad 13 ;
-    ns1:categoria "producto_hogar" ;
-    ns1:descripcion "descripcion_EJC5GQ" ;
+    ns1:cantidad 15 ;
+    ns1:categoria "instrumento_musical" ;
+    ns1:descripcion "descripcion_P0K5ZF" ;
     ns1:nombre "Product_20" ;
     ns1:ofertado_en ns1:Oferta_1_Product_20,
         ns1:Oferta_2_Product_20 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_7KGQMA" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_XIUMK7" ;
     ns1:tiene_modelo "Modelo_20" ;
-    ns1:valoracion_media "4.09" .
+    ns1:valoracion_media "3.27" .
 
 ns1:Product_21 a ns1:Producto ;
-    ns1:cantidad 17 ;
-    ns1:categoria "electrodomestico" ;
-    ns1:descripcion "descripcion_6KIRJ3" ;
+    ns1:cantidad 28 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_A4421D" ;
     ns1:nombre "Product_21" ;
     ns1:ofertado_en ns1:Oferta_1_Product_21,
         ns1:Oferta_2_Product_21 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_TME8JK" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_R0M5BQ" ;
     ns1:tiene_modelo "Modelo_21" ;
-    ns1:valoracion_media "9.02" .
+    ns1:valoracion_media "7.14" .
 
 ns1:Product_22 a ns1:Producto ;
-    ns1:cantidad 34 ;
-    ns1:categoria "electrodomestico" ;
-    ns1:descripcion "descripcion_JNSRVI" ;
+    ns1:cantidad 49 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_PU8RPO" ;
     ns1:nombre "Product_22" ;
     ns1:ofertado_en ns1:Oferta_1_Product_22,
         ns1:Oferta_2_Product_22 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_TUSNDN" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_2NSTUL" ;
     ns1:tiene_modelo "Modelo_22" ;
-    ns1:valoracion_media "2.54" .
+    ns1:valoracion_media "0.08" .
 
 ns1:Product_23 a ns1:Producto ;
-    ns1:cantidad 9 ;
-    ns1:categoria "ropa" ;
-    ns1:descripcion "descripcion_KRFT73" ;
+    ns1:cantidad 11 ;
+    ns1:categoria "producto_jardin" ;
+    ns1:descripcion "descripcion_QUXAS0" ;
     ns1:nombre "Product_23" ;
     ns1:ofertado_en ns1:Oferta_1_Product_23,
         ns1:Oferta_2_Product_23 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_HLMZPY" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_VIENG4" ;
     ns1:tiene_modelo "Modelo_23" ;
-    ns1:valoracion_media "4.74" .
+    ns1:valoracion_media "3.89" .
 
 ns1:Product_24 a ns1:Producto ;
-    ns1:cantidad 13 ;
-    ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_M5SH2W" ;
+    ns1:cantidad 18 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_9YCXCQ" ;
     ns1:nombre "Product_24" ;
     ns1:ofertado_en ns1:Oferta_1_Product_24,
         ns1:Oferta_2_Product_24 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_XH7D72" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_Q3DECW" ;
     ns1:tiene_modelo "Modelo_24" ;
-    ns1:valoracion_media "4.37" .
+    ns1:valoracion_media "9.60" .
 
 ns1:Product_25 a ns1:Producto ;
-    ns1:cantidad 14 ;
-    ns1:categoria "informatica" ;
-    ns1:descripcion "descripcion_HVUSMA" ;
+    ns1:cantidad 43 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_P2C52U" ;
     ns1:nombre "Product_25" ;
     ns1:ofertado_en ns1:Oferta_1_Product_25,
         ns1:Oferta_2_Product_25 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_NOB63A" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_KO9BIU" ;
     ns1:tiene_modelo "Modelo_25" ;
-    ns1:valoracion_media "6.58" .
+    ns1:valoracion_media "0.65" .
 
 ns1:Product_26 a ns1:Producto ;
-    ns1:cantidad 46 ;
-    ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_62O7CH" ;
+    ns1:cantidad 0 ;
+    ns1:categoria "electrodomestico" ;
+    ns1:descripcion "descripcion_OB4TXS" ;
     ns1:nombre "Product_26" ;
     ns1:ofertado_en ns1:Oferta_1_Product_26,
         ns1:Oferta_2_Product_26 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_B3QHIE" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_3VFJJN" ;
     ns1:tiene_modelo "Modelo_26" ;
-    ns1:valoracion_media "5.04" .
+    ns1:valoracion_media "5.98" .
 
 ns1:Product_27 a ns1:Producto ;
-    ns1:cantidad 13 ;
-    ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_YFZQEL" ;
+    ns1:cantidad 37 ;
+    ns1:categoria "juguete" ;
+    ns1:descripcion "descripcion_RQGJY5" ;
     ns1:nombre "Product_27" ;
     ns1:ofertado_en ns1:Oferta_1_Product_27,
         ns1:Oferta_2_Product_27 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_LDUYJ4" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_DE1TBE" ;
     ns1:tiene_modelo "Modelo_27" ;
-    ns1:valoracion_media "9.88" .
+    ns1:valoracion_media "0.69" .
 
 ns1:Product_28 a ns1:Producto ;
-    ns1:cantidad 35 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_DME789" ;
+    ns1:cantidad 36 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_UZU4R5" ;
     ns1:nombre "Product_28" ;
     ns1:ofertado_en ns1:Oferta_1_Product_28,
         ns1:Oferta_2_Product_28 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_XKZ9WT" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_IVO7PC" ;
     ns1:tiene_modelo "Modelo_28" ;
-    ns1:valoracion_media "1.88" .
+    ns1:valoracion_media "0.89" .
 
 ns1:Product_29 a ns1:Producto ;
-    ns1:cantidad 15 ;
-    ns1:categoria "juguete" ;
-    ns1:descripcion "descripcion_A5LXBF" ;
+    ns1:cantidad 28 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_GJY9WX" ;
     ns1:nombre "Product_29" ;
     ns1:ofertado_en ns1:Oferta_1_Product_29,
         ns1:Oferta_2_Product_29 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_6F1CKM" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_C0WEKU" ;
     ns1:tiene_modelo "Modelo_29" ;
-    ns1:valoracion_media "3.42" .
+    ns1:valoracion_media "6.73" .
 
 ns1:Product_3 a ns1:Producto ;
-    ns1:cantidad 35 ;
-    ns1:categoria "ropa" ;
-    ns1:descripcion "descripcion_6ZABSI" ;
+    ns1:cantidad 31 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_72P72P" ;
     ns1:nombre "Product_3" ;
     ns1:ofertado_en ns1:Oferta_1_Product_3,
         ns1:Oferta_2_Product_3 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_TCR9T1" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_XUQT0P" ;
     ns1:tiene_modelo "Modelo_3" ;
-    ns1:valoracion_media "1.31" .
+    ns1:valoracion_media "9.66" .
 
 ns1:Product_30 a ns1:Producto ;
-    ns1:cantidad 12 ;
-    ns1:categoria "juguete" ;
-    ns1:descripcion "descripcion_F9E3QF" ;
+    ns1:cantidad 24 ;
+    ns1:categoria "electrodomestico" ;
+    ns1:descripcion "descripcion_OKCEC6" ;
     ns1:nombre "Product_30" ;
     ns1:ofertado_en ns1:Oferta_1_Product_30,
         ns1:Oferta_2_Product_30 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_EIIL1J" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_TTA5XJ" ;
     ns1:tiene_modelo "Modelo_30" ;
-    ns1:valoracion_media "6.10" .
+    ns1:valoracion_media "3.24" .
 
 ns1:Product_31 a ns1:Producto ;
-    ns1:cantidad 42 ;
+    ns1:cantidad 5 ;
     ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_AFAU1Z" ;
+    ns1:descripcion "descripcion_J4NIJU" ;
     ns1:nombre "Product_31" ;
     ns1:ofertado_en ns1:Oferta_1_Product_31,
         ns1:Oferta_2_Product_31 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_ATNV11" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_7ONZ0Z" ;
     ns1:tiene_modelo "Modelo_31" ;
-    ns1:valoracion_media "3.56" .
+    ns1:valoracion_media "2.32" .
 
 ns1:Product_32 a ns1:Producto ;
-    ns1:cantidad 39 ;
-    ns1:categoria "juguete" ;
-    ns1:descripcion "descripcion_9SWTHK" ;
+    ns1:cantidad 21 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_QAG6LL" ;
     ns1:nombre "Product_32" ;
     ns1:ofertado_en ns1:Oferta_1_Product_32,
         ns1:Oferta_2_Product_32 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_LFGRV6" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_JRXY0Q" ;
     ns1:tiene_modelo "Modelo_32" ;
-    ns1:valoracion_media "6.60" .
+    ns1:valoracion_media "2.16" .
 
 ns1:Product_33 a ns1:Producto ;
-    ns1:cantidad 2 ;
-    ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_EPCCTS" ;
+    ns1:cantidad 5 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_5IOFC9" ;
     ns1:nombre "Product_33" ;
     ns1:ofertado_en ns1:Oferta_1_Product_33,
         ns1:Oferta_2_Product_33 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_23URC9" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_RI02B0" ;
     ns1:tiene_modelo "Modelo_33" ;
-    ns1:valoracion_media "1.18" .
+    ns1:valoracion_media "8.82" .
 
 ns1:Product_34 a ns1:Producto ;
-    ns1:cantidad 26 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_E0QFF3" ;
+    ns1:cantidad 50 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_MP80JA" ;
     ns1:nombre "Product_34" ;
     ns1:ofertado_en ns1:Oferta_1_Product_34,
         ns1:Oferta_2_Product_34 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_HTX2XG" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_BKP9G0" ;
     ns1:tiene_modelo "Modelo_34" ;
-    ns1:valoracion_media "0.65" .
+    ns1:valoracion_media "5.62" .
 
 ns1:Product_35 a ns1:Producto ;
-    ns1:cantidad 27 ;
-    ns1:categoria "electrodomestico" ;
-    ns1:descripcion "descripcion_81H7K0" ;
+    ns1:cantidad 49 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_7XCUVJ" ;
     ns1:nombre "Product_35" ;
     ns1:ofertado_en ns1:Oferta_1_Product_35,
         ns1:Oferta_2_Product_35 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_Z1JQME" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_6Q13TT" ;
     ns1:tiene_modelo "Modelo_35" ;
-    ns1:valoracion_media "2.36" .
+    ns1:valoracion_media "9.30" .
 
 ns1:Product_36 a ns1:Producto ;
-    ns1:cantidad 6 ;
-    ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_QRBH5P" ;
+    ns1:cantidad 16 ;
+    ns1:categoria "informatica" ;
+    ns1:descripcion "descripcion_1ITLVH" ;
     ns1:nombre "Product_36" ;
     ns1:ofertado_en ns1:Oferta_1_Product_36,
         ns1:Oferta_2_Product_36 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_GLHFRF" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_GVNVTM" ;
     ns1:tiene_modelo "Modelo_36" ;
-    ns1:valoracion_media "6.55" .
+    ns1:valoracion_media "8.85" .
 
 ns1:Product_37 a ns1:Producto ;
-    ns1:cantidad 12 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_MM8BAH" ;
+    ns1:cantidad 8 ;
+    ns1:categoria "comida" ;
+    ns1:descripcion "descripcion_4KJ627" ;
     ns1:nombre "Product_37" ;
     ns1:ofertado_en ns1:Oferta_1_Product_37,
         ns1:Oferta_2_Product_37 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_PDAKYO" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_8FSZMJ" ;
     ns1:tiene_modelo "Modelo_37" ;
-    ns1:valoracion_media "2.39" .
+    ns1:valoracion_media "1.77" .
 
 ns1:Product_38 a ns1:Producto ;
-    ns1:cantidad 12 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_JPNMPE" ;
+    ns1:cantidad 18 ;
+    ns1:categoria "electrodomestico" ;
+    ns1:descripcion "descripcion_T7NYUW" ;
     ns1:nombre "Product_38" ;
     ns1:ofertado_en ns1:Oferta_1_Product_38,
         ns1:Oferta_2_Product_38 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_5BAKN2" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_JYPM5B" ;
     ns1:tiene_modelo "Modelo_38" ;
-    ns1:valoracion_media "7.02" .
+    ns1:valoracion_media "8.43" .
 
 ns1:Product_39 a ns1:Producto ;
-    ns1:cantidad 15 ;
-    ns1:categoria "informatica" ;
-    ns1:descripcion "descripcion_0SWDEU" ;
+    ns1:cantidad 45 ;
+    ns1:categoria "ropa" ;
+    ns1:descripcion "descripcion_0Y112S" ;
     ns1:nombre "Product_39" ;
     ns1:ofertado_en ns1:Oferta_1_Product_39,
         ns1:Oferta_2_Product_39 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_3GHI43" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_GREPVA" ;
     ns1:tiene_modelo "Modelo_39" ;
-    ns1:valoracion_media "0.16" .
+    ns1:valoracion_media "5.69" .
 
 ns1:Product_4 a ns1:Producto ;
-    ns1:cantidad 11 ;
-    ns1:categoria "juguete" ;
-    ns1:descripcion "descripcion_31A2L4" ;
+    ns1:cantidad 34 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_NPTZ6V" ;
     ns1:nombre "Product_4" ;
     ns1:ofertado_en ns1:Oferta_1_Product_4,
         ns1:Oferta_2_Product_4 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_SZWJJU" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_TNZ0U3" ;
     ns1:tiene_modelo "Modelo_4" ;
-    ns1:valoracion_media "2.07" .
+    ns1:valoracion_media "6.62" .
 
 ns1:Product_5 a ns1:Producto ;
-    ns1:cantidad 35 ;
+    ns1:cantidad 36 ;
     ns1:categoria "comida" ;
-    ns1:descripcion "descripcion_D2IHE5" ;
+    ns1:descripcion "descripcion_Y1RQ0C" ;
     ns1:nombre "Product_5" ;
     ns1:ofertado_en ns1:Oferta_1_Product_5,
         ns1:Oferta_2_Product_5 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_IIM68T" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_E02H3P" ;
     ns1:tiene_modelo "Modelo_5" ;
-    ns1:valoracion_media "5.68" .
+    ns1:valoracion_media "3.88" .
 
 ns1:Product_6 a ns1:Producto ;
-    ns1:cantidad 35 ;
-    ns1:categoria "producto_jardin" ;
-    ns1:descripcion "descripcion_04V1QC" ;
+    ns1:cantidad 50 ;
+    ns1:categoria "producto_hogar" ;
+    ns1:descripcion "descripcion_WPHJUG" ;
     ns1:nombre "Product_6" ;
     ns1:ofertado_en ns1:Oferta_1_Product_6,
         ns1:Oferta_2_Product_6 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_YKCHLT" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_8USSB6" ;
     ns1:tiene_modelo "Modelo_6" ;
-    ns1:valoracion_media "9.32" .
+    ns1:valoracion_media "1.15" .
 
 ns1:Product_7 a ns1:Producto ;
-    ns1:cantidad 0 ;
-    ns1:categoria "producto_hogar" ;
-    ns1:descripcion "descripcion_9N5C76" ;
+    ns1:cantidad 25 ;
+    ns1:categoria "instrumento_musical" ;
+    ns1:descripcion "descripcion_S1I9AI" ;
     ns1:nombre "Product_7" ;
     ns1:ofertado_en ns1:Oferta_1_Product_7,
         ns1:Oferta_2_Product_7 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_5F5043" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_GM5UB3" ;
     ns1:tiene_modelo "Modelo_7" ;
-    ns1:valoracion_media "1.55" .
+    ns1:valoracion_media "2.34" .
 
 ns1:Product_8 a ns1:Producto ;
-    ns1:cantidad 37 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_XACWJV" ;
+    ns1:cantidad 9 ;
+    ns1:categoria "producto_jardin" ;
+    ns1:descripcion "descripcion_8XRRGL" ;
     ns1:nombre "Product_8" ;
     ns1:ofertado_en ns1:Oferta_1_Product_8,
         ns1:Oferta_2_Product_8 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_LNRYEA" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_BD9W3R" ;
     ns1:tiene_modelo "Modelo_8" ;
-    ns1:valoracion_media "1.88" .
+    ns1:valoracion_media "6.13" .
 
 ns1:Product_9 a ns1:Producto ;
-    ns1:cantidad 20 ;
-    ns1:categoria "instrumento_musical" ;
-    ns1:descripcion "descripcion_3QRJ3Y" ;
+    ns1:cantidad 37 ;
+    ns1:categoria "juguete" ;
+    ns1:descripcion "descripcion_TND7A3" ;
     ns1:nombre "Product_9" ;
     ns1:ofertado_en ns1:Oferta_1_Product_9,
         ns1:Oferta_2_Product_9 ;
-    ns1:restricciones_devolucion "restricciones_devolucion_CJZPFU" ;
+    ns1:restricciones_devolucion "restricciones_devolucion_1S5YNI" ;
     ns1:tiene_modelo "Modelo_9" ;
-    ns1:valoracion_media "2.37" .
+    ns1:valoracion_media "7.51" .
 
 ns1:Oferta_1_Product_0 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 5 ;
-    ns1:precio "94.59" .
+    ns1:identificador 34 ;
+    ns1:precio "73.39" .
 
 ns1:Oferta_1_Product_1 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 49 ;
-    ns1:precio "94.88" .
+    ns1:identificador 8 ;
+    ns1:precio "53.26" .
 
 ns1:Oferta_1_Product_10 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 26 ;
-    ns1:precio "84.40" .
+    ns1:identificador 14 ;
+    ns1:precio "78.73" .
 
 ns1:Oferta_1_Product_11 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 46 ;
-    ns1:precio "92.15" .
+    ns1:identificador 5 ;
+    ns1:precio "36.29" .
 
 ns1:Oferta_1_Product_12 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 50 ;
-    ns1:precio "56.80" .
+    ns1:identificador 23 ;
+    ns1:precio "89.72" .
 
 ns1:Oferta_1_Product_13 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 29 ;
-    ns1:precio "4.47" .
+    ns1:identificador 42 ;
+    ns1:precio "16.40" .
 
 ns1:Oferta_1_Product_14 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 33 ;
-    ns1:precio "72.09" .
+    ns1:identificador 10 ;
+    ns1:precio "36.08" .
 
 ns1:Oferta_1_Product_15 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 12 ;
-    ns1:precio "95.64" .
+    ns1:identificador 36 ;
+    ns1:precio "34.52" .
 
 ns1:Oferta_1_Product_16 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 12 ;
-    ns1:precio "60.32" .
+    ns1:identificador 33 ;
+    ns1:precio "81.40" .
 
 ns1:Oferta_1_Product_17 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 10 ;
-    ns1:precio "62.39" .
+    ns1:identificador 46 ;
+    ns1:precio "83.10" .
 
 ns1:Oferta_1_Product_18 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 33 ;
-    ns1:precio "62.42" .
+    ns1:identificador 25 ;
+    ns1:precio "25.46" .
 
 ns1:Oferta_1_Product_19 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 46 ;
-    ns1:precio "84.36" .
+    ns1:identificador 35 ;
+    ns1:precio "43.39" .
 
 ns1:Oferta_1_Product_2 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 35 ;
-    ns1:precio "5.83" .
+    ns1:identificador 48 ;
+    ns1:precio "98.75" .
 
 ns1:Oferta_1_Product_20 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 38 ;
-    ns1:precio "11.23" .
+    ns1:identificador 15 ;
+    ns1:precio "53.97" .
 
 ns1:Oferta_1_Product_21 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 34 ;
-    ns1:precio "77.03" .
+    ns1:identificador 12 ;
+    ns1:precio "35.93" .
 
 ns1:Oferta_1_Product_22 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 23 ;
-    ns1:precio "9.46" .
+    ns1:identificador 34 ;
+    ns1:precio "7.36" .
 
 ns1:Oferta_1_Product_23 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 47 ;
-    ns1:precio "44.51" .
+    ns1:identificador 20 ;
+    ns1:precio "10.96" .
 
 ns1:Oferta_1_Product_24 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 24 ;
-    ns1:precio "63.11" .
+    ns1:identificador 49 ;
+    ns1:precio "26.08" .
 
 ns1:Oferta_1_Product_25 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 37 ;
-    ns1:precio "60.76" .
+    ns1:identificador 36 ;
+    ns1:precio "46.07" .
 
 ns1:Oferta_1_Product_26 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 29 ;
-    ns1:precio "38.09" .
+    ns1:identificador 21 ;
+    ns1:precio "79.11" .
 
 ns1:Oferta_1_Product_27 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 32 ;
-    ns1:precio "97.70" .
+    ns1:identificador 33 ;
+    ns1:precio "46.58" .
 
 ns1:Oferta_1_Product_28 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 0 ;
-    ns1:precio "21.79" .
+    ns1:identificador 23 ;
+    ns1:precio "61.74" .
 
 ns1:Oferta_1_Product_29 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 0 ;
-    ns1:precio "46.75" .
+    ns1:identificador 32 ;
+    ns1:precio "54.18" .
 
 ns1:Oferta_1_Product_3 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 20 ;
-    ns1:precio "15.59" .
+    ns1:identificador 6 ;
+    ns1:precio "99.46" .
 
 ns1:Oferta_1_Product_30 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 24 ;
-    ns1:precio "94.92" .
+    ns1:identificador 33 ;
+    ns1:precio "35.12" .
 
 ns1:Oferta_1_Product_31 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 44 ;
-    ns1:precio "58.29" .
+    ns1:identificador 5 ;
+    ns1:precio "54.67" .
 
 ns1:Oferta_1_Product_32 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 43 ;
-    ns1:precio "21.97" .
+    ns1:identificador 38 ;
+    ns1:precio "80.76" .
 
 ns1:Oferta_1_Product_33 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 43 ;
-    ns1:precio "66.30" .
+    ns1:identificador 24 ;
+    ns1:precio "72.63" .
 
 ns1:Oferta_1_Product_34 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 8 ;
-    ns1:precio "64.71" .
+    ns1:identificador 20 ;
+    ns1:precio "64.02" .
 
 ns1:Oferta_1_Product_35 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 42 ;
-    ns1:precio "16.81" .
+    ns1:identificador 50 ;
+    ns1:precio "49.27" .
 
 ns1:Oferta_1_Product_36 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 35 ;
-    ns1:precio "70.01" .
+    ns1:identificador 32 ;
+    ns1:precio "94.02" .
 
 ns1:Oferta_1_Product_37 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 6 ;
-    ns1:precio "33.69" .
+    ns1:identificador 9 ;
+    ns1:precio "35.42" .
 
 ns1:Oferta_1_Product_38 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 2 ;
-    ns1:precio "6.43" .
+    ns1:identificador 6 ;
+    ns1:precio "85.00" .
 
 ns1:Oferta_1_Product_39 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 23 ;
-    ns1:precio "36.87" .
+    ns1:identificador 35 ;
+    ns1:precio "53.78" .
 
 ns1:Oferta_1_Product_4 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 41 ;
-    ns1:precio "16.97" .
+    ns1:identificador 24 ;
+    ns1:precio "47.13" .
 
 ns1:Oferta_1_Product_5 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 11 ;
-    ns1:precio "38.41" .
+    ns1:identificador 14 ;
+    ns1:precio "80.33" .
 
 ns1:Oferta_1_Product_6 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 28 ;
-    ns1:precio "36.60" .
+    ns1:identificador 34 ;
+    ns1:precio "8.16" .
 
 ns1:Oferta_1_Product_7 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 47 ;
-    ns1:precio "45.40" .
+    ns1:identificador 8 ;
+    ns1:precio "82.39" .
 
 ns1:Oferta_1_Product_8 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 7 ;
-    ns1:precio "21.36" .
+    ns1:identificador 49 ;
+    ns1:precio "38.91" .
 
 ns1:Oferta_1_Product_9 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 44 ;
-    ns1:precio "14.74" .
+    ns1:identificador 20 ;
+    ns1:precio "46.84" .
 
 ns1:Oferta_2_Product_0 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 8 ;
-    ns1:precio "94.59" .
+    ns1:identificador 6 ;
+    ns1:precio "79.82" .
 
 ns1:Oferta_2_Product_1 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 19 ;
-    ns1:precio "94.88" .
+    ns1:identificador 9 ;
+    ns1:precio "40.31" .
 
 ns1:Oferta_2_Product_10 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 11 ;
-    ns1:precio "84.40" .
+    ns1:identificador 34 ;
+    ns1:precio "19.25" .
 
 ns1:Oferta_2_Product_11 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 30 ;
-    ns1:precio "92.15" .
+    ns1:identificador 5 ;
+    ns1:precio "33.29" .
 
 ns1:Oferta_2_Product_12 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 15 ;
-    ns1:precio "56.80" .
+    ns1:identificador 1 ;
+    ns1:precio "82.11" .
 
 ns1:Oferta_2_Product_13 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 19 ;
-    ns1:precio "4.47" .
+    ns1:identificador 25 ;
+    ns1:precio "88.04" .
 
 ns1:Oferta_2_Product_14 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 36 ;
-    ns1:precio "72.09" .
+    ns1:identificador 8 ;
+    ns1:precio "35.36" .
 
 ns1:Oferta_2_Product_15 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 21 ;
-    ns1:precio "95.64" .
+    ns1:identificador 20 ;
+    ns1:precio "29.02" .
 
 ns1:Oferta_2_Product_16 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 45 ;
-    ns1:precio "60.32" .
+    ns1:identificador 27 ;
+    ns1:precio "98.94" .
 
 ns1:Oferta_2_Product_17 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 11 ;
-    ns1:precio "62.39" .
+    ns1:identificador 9 ;
+    ns1:precio "8.83" .
 
 ns1:Oferta_2_Product_18 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 42 ;
-    ns1:precio "62.42" .
+    ns1:identificador 16 ;
+    ns1:precio "43.46" .
 
 ns1:Oferta_2_Product_19 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 26 ;
-    ns1:precio "84.36" .
+    ns1:identificador 35 ;
+    ns1:precio "38.09" .
 
 ns1:Oferta_2_Product_2 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 19 ;
-    ns1:precio "5.83" .
+    ns1:identificador 38 ;
+    ns1:precio "63.46" .
 
 ns1:Oferta_2_Product_20 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 27 ;
-    ns1:precio "11.23" .
+    ns1:identificador 3 ;
+    ns1:precio "95.94" .
 
 ns1:Oferta_2_Product_21 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 14 ;
-    ns1:precio "77.03" .
+    ns1:identificador 30 ;
+    ns1:precio "63.36" .
 
 ns1:Oferta_2_Product_22 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 30 ;
-    ns1:precio "9.46" .
+    ns1:identificador 13 ;
+    ns1:precio "19.53" .
 
 ns1:Oferta_2_Product_23 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 10 ;
-    ns1:precio "44.51" .
+    ns1:identificador 16 ;
+    ns1:precio "43.88" .
 
 ns1:Oferta_2_Product_24 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 24 ;
-    ns1:precio "63.11" .
+    ns1:identificador 32 ;
+    ns1:precio "58.41" .
 
 ns1:Oferta_2_Product_25 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 28 ;
-    ns1:precio "60.76" .
+    ns1:identificador 40 ;
+    ns1:precio "57.08" .
 
 ns1:Oferta_2_Product_26 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 28 ;
-    ns1:precio "38.09" .
+    ns1:identificador 31 ;
+    ns1:precio "95.94" .
 
 ns1:Oferta_2_Product_27 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 44 ;
-    ns1:precio "97.70" .
+    ns1:identificador 15 ;
+    ns1:precio "44.83" .
 
 ns1:Oferta_2_Product_28 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 31 ;
-    ns1:precio "21.79" .
+    ns1:identificador 43 ;
+    ns1:precio "51.80" .
 
 ns1:Oferta_2_Product_29 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 24 ;
-    ns1:precio "46.75" .
+    ns1:identificador 40 ;
+    ns1:precio "6.22" .
 
 ns1:Oferta_2_Product_3 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 48 ;
-    ns1:precio "15.59" .
+    ns1:identificador 32 ;
+    ns1:precio "55.69" .
 
 ns1:Oferta_2_Product_30 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 18 ;
-    ns1:precio "94.92" .
+    ns1:identificador 42 ;
+    ns1:precio "38.62" .
 
 ns1:Oferta_2_Product_31 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 50 ;
-    ns1:precio "58.29" .
+    ns1:identificador 48 ;
+    ns1:precio "19.45" .
 
 ns1:Oferta_2_Product_32 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 29 ;
-    ns1:precio "21.97" .
+    ns1:identificador 27 ;
+    ns1:precio "0.51" .
 
 ns1:Oferta_2_Product_33 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 48 ;
-    ns1:precio "66.30" .
+    ns1:identificador 24 ;
+    ns1:precio "41.04" .
 
 ns1:Oferta_2_Product_34 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 44 ;
-    ns1:precio "64.71" .
+    ns1:identificador 22 ;
+    ns1:precio "70.15" .
 
 ns1:Oferta_2_Product_35 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 45 ;
-    ns1:precio "16.81" .
+    ns1:identificador 1 ;
+    ns1:precio "18.78" .
 
 ns1:Oferta_2_Product_36 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 7 ;
-    ns1:precio "70.01" .
+    ns1:identificador 36 ;
+    ns1:precio "56.65" .
 
 ns1:Oferta_2_Product_37 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 26 ;
-    ns1:precio "33.69" .
+    ns1:identificador 29 ;
+    ns1:precio "33.22" .
 
 ns1:Oferta_2_Product_38 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 20 ;
-    ns1:precio "6.43" .
+    ns1:identificador 22 ;
+    ns1:precio "88.06" .
 
 ns1:Oferta_2_Product_39 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 37 ;
-    ns1:precio "36.87" .
+    ns1:identificador 0 ;
+    ns1:precio "92.55" .
 
 ns1:Oferta_2_Product_4 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 41 ;
-    ns1:precio "16.97" .
+    ns1:identificador 9 ;
+    ns1:precio "18.20" .
 
 ns1:Oferta_2_Product_5 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 12 ;
-    ns1:precio "38.41" .
+    ns1:identificador 13 ;
+    ns1:precio "77.26" .
 
 ns1:Oferta_2_Product_6 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
     ns1:identificador 6 ;
-    ns1:precio "36.60" .
+    ns1:precio "50.72" .
 
 ns1:Oferta_2_Product_7 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 39 ;
-    ns1:precio "45.40" .
+    ns1:identificador 6 ;
+    ns1:precio "27.32" .
 
 ns1:Oferta_2_Product_8 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 11 ;
-    ns1:precio "21.36" .
+    ns1:identificador 39 ;
+    ns1:precio "74.00" .
 
 ns1:Oferta_2_Product_9 a ns1:Oferta ;
     ns1:cantidad 1 ;
     ns1:gestion_envio "interna" ;
-    ns1:identificador 13 ;
-    ns1:precio "14.74" .
+    ns1:identificador 31 ;
+    ns1:precio "14.41" .
 
 ns1:Marca_0 a ns1:Marca ;
     ns1:nombre "Marca_0" .

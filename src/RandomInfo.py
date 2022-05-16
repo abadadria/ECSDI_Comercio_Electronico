@@ -147,7 +147,7 @@ if __name__ == '__main__':
                 number = format(round(random.uniform(0, 100), 2), '.2f')
                 number2 = format(round(random.uniform(0, 100), 2), '.2f')
                 val = Literal(number)
-                val2 = Literal(number)
+                val2 = Literal(number2)
             # el atributo es entero
             elif of_value == 'i':
                 if of_key == 'cantidad':

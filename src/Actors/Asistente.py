@@ -59,9 +59,16 @@ def buscar_productos():
     gm.namespace_manager.bind('rdf', RDF)
     gm.namespace_manager.bind('ceo', CEO)
 
+    # Crea la Acción BuscarProductos
+    bp = CEO.buscarproductos
+    gm.add((bp, RDF.type, CEO.BuscarProductos))
+    gm.add((CEO.BuscarProductos, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+
     # Añade la Busqueda al grafo
     b = CEO.busqueda
     gm.add((b, RDF.type, CEO.Busqueda))
+    gm.add((bp, CEO.busca, b))
 
     for i in range(ncategorias):
         # Lee una linea de terminal que sorresponde con una LineaBusqueda

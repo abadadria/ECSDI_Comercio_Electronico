@@ -14,11 +14,20 @@ Asume que el agente de registro esta en el puerto 9000
 from multiprocessing import Process, Queue
 import socket
 
-from rdflib import Namespace, Graph
-from flask import Flask
+from flask import Flask, request, render_template
+from rdflib import Graph, RDF, Namespace, RDFS, Literal
+from rdflib.namespace import FOAF
 
+from AgentUtil.ACL import ACL
 from AgentUtil.FlaskServer import shutdown_server
 from AgentUtil.Agent import Agent
+from AgentUtil.ACLMessages import build_message, get_message_properties
+from AgentUtil.Logging import config_logger
+from AgentUtil.DSO import DSO
+from AgentUtil.Util import gethostname
+
+
+__author__ = 'adria'
 
 # Configuration stuff
 hostname = socket.gethostname()
@@ -26,7 +35,7 @@ port = 9010
 
 agn = Namespace("http://www.agentes.org#")
 
-myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
+CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
 # Contador de mensajes
 mss_cnt = 0
@@ -46,15 +55,72 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-@app.route("/buscar")
+@app.route("/comm")
 def comunicacion():
     """
     Entrypoint de comunicacion
     """
-    
-    plan1()
-    
-    return "Plan Ejecutado"
+
+    def buscarProductos():
+        gr = Graph()
+
+        print('graph------------')
+        print(gm.serialize(format='turtle'))
+        print('graph------------')
+
+        
+        for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+            cantidad = gm.value(s, CEO.cantidad)
+            print(cantidad)
+            categoria = gm.value(s, CEO.categoria)
+            print(categoria)
+            precio_max = gm.value(s, CEO.precio_max)
+            print(precio_max)
+            precio_min = gm.value(s, CEO.precio_min)
+            print(precio_min)
+
+        return gr
+
+
+    message = request.args['content']
+    gm = Graph()
+    gm.parse(data=message, format='xml')
+
+    msgdic = get_message_properties(gm)
+
+    # Comprobamos que sea un mensaje FIPA ACL
+    if not msgdic:
+        # Si no es, respondemos que no hemos entendido el mensaje
+        gr = build_message(Graph(),
+                           ACL['not-understood'],
+                           sender=AgenteBuscadorProductos.uri)
+    else:
+        # Obtenemos la performativa
+        if msgdic['performative'] != ACL.request:
+            # Si no es un request, respondemos que no hemos entendido el mensaje
+            gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=AgenteBuscadorProductos.uri)
+        else:
+            # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
+            content = msgdic['content']
+
+            # Averiguamos el tipo de la accion
+            accion = gm.value(subject=content, predicate=RDF.type)
+
+            print(gm.serialize(format='turtle'))
+
+            # Aqui realizariamos lo que pide la accion
+            # Por ahora simplemente retornamos un Inform-done
+            if accion == CEO.BuscarProductos:
+                gr = buscarProductos()
+            else:
+                gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=AgenteBuscadorProductos.uri)
+            
+    return gr.serialize(format='xml')
     
 
 
@@ -86,10 +152,6 @@ def agentbehavior1(cola):
     :return:
     """
     pass
-    
-
-def plan1():
-    print("Se ha hecho petición sobre /comm")
     
     
 def setup():

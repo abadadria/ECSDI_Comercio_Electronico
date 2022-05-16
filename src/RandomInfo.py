@@ -32,7 +32,7 @@ from rdflib import Graph, RDF, RDFS, OWL, XSD, Namespace, Literal
 import string
 import random
 
-__author__ = 'abadadria'
+__author__ = 'adria'
 
 
 def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
@@ -48,8 +48,8 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
 
 if __name__ == '__main__':
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
-    myOnto = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
-
+    CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
+    
     # Diccionario de atributos f= tipo float, i= tipo int, s= tipo string, otro => clase existente en la ontologia
     # Faltan atributos que no son necesarios para esta entrega
     product_properties = {'cantidad': 'i',
@@ -78,6 +78,9 @@ if __name__ == '__main__':
     # contiene 40 productos, 8 marcas y 40 modelos
     products_graph = Graph()
 
+    products_graph.namespace_manager.bind('rdf', RDF)
+    products_graph.namespace_manager.bind('ceo', CEO)
+
     # Listas con todas las marcas y los modelos que se van a crear
     marcas = [None] * 8
     modelos = [None] * 40
@@ -89,9 +92,9 @@ if __name__ == '__main__':
         marcas[j] = rmarca
         # print(rmarca)
         # Añadimos la instancia de marca
-        products_graph.add((myOnto[rmarca], RDF.type, myOnto.Marca))
+        products_graph.add((CEO[rmarca], RDF.type, CEO.Marca))
         # Le asignamos una propiedad nombre a la marca
-        products_graph.add((myOnto[rmarca], myOnto.nombre, Literal(rmarca)))
+        products_graph.add((CEO[rmarca], CEO.nombre, Literal(rmarca)))
         # Creamos cinco instancias de modelo y le asignamos esta marca
         for k in range(5):
             # instancia al azar
@@ -99,22 +102,22 @@ if __name__ == '__main__':
             modelos[j*5 + k] = rmodelo
             # print(rmodelo)
             # Añadimos la instancia de modelo
-            products_graph.add((myOnto[rmodelo], RDF.type, myOnto.Modelo))
+            products_graph.add((CEO[rmodelo], RDF.type, CEO.Modelo))
             # Le asignamos una propiedad nombre al modelo
-            products_graph.add((myOnto[rmodelo], myOnto.nombre, Literal(rmodelo)))
+            products_graph.add((CEO[rmodelo], CEO.nombre, Literal(rmodelo)))
             # Le asignamos la marca que acabamos de crear
-            products_graph.add((myOnto[rmodelo], myOnto.tiene_marca, myOnto[rmarca]))
+            products_graph.add((CEO[rmodelo], CEO.tiene_marca, CEO[rmarca]))
     
     for i in range(40):
         # generamos instancias de productos
         rproduct = 'Product_' + str(i)
         # print(rproduct)
         # Añadimos la instancia de producto
-        products_graph.add((myOnto[rproduct], RDF.type, myOnto.Producto))
+        products_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
         # Le asignamos una propiedad nombre al producto
-        products_graph.add((myOnto[rproduct], myOnto.nombre, Literal(rproduct)))
+        products_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
         # Le asignamos un modelo al producto
-        products_graph.add((myOnto[rproduct], myOnto.tiene_modelo, Literal(modelos[i])))
+        products_graph.add((CEO[rproduct], CEO.tiene_modelo, Literal(modelos[i])))
         
         # Generamos sus atributos
         for prop_key, prop_value in product_properties.items():
@@ -131,15 +134,15 @@ if __name__ == '__main__':
                     val = Literal(random.choice(categorias_productos))
                 else:
                     val = Literal(random_name(str(prop_key)))
-            products_graph.add((myOnto[rproduct], myOnto[prop_key], val)) 
+            products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
 
         # generamos dos instancias de oferta para cada uno de los productos creados
         oferta1 = 'Oferta_1_' + rproduct
         oferta2 = 'Oferta_2_' + rproduct
 
         # Añadimos la instancia de oferta
-        products_graph.add((myOnto[oferta1], RDF.type, myOnto.Oferta))
-        products_graph.add((myOnto[oferta2], RDF.type, myOnto.Oferta))
+        products_graph.add((CEO[oferta1], RDF.type, CEO.Oferta))
+        products_graph.add((CEO[oferta2], RDF.type, CEO.Oferta))
 
         for of_key, of_value in ofert_properties.items():
             # el atributo es real
@@ -147,7 +150,7 @@ if __name__ == '__main__':
                 number = format(round(random.uniform(0, 100), 2), '.2f')
                 number2 = format(round(random.uniform(0, 100), 2), '.2f')
                 val = Literal(number)
-                val2 = Literal(number)
+                val2 = Literal(number2)
             # el atributo es entero
             elif of_value == 'i':
                 if of_key == 'cantidad':
@@ -165,13 +168,13 @@ if __name__ == '__main__':
                     val = Literal(random_name(str(prop_key)))
                     val2 = Literal(random_name(str(prop_key)))
 
-            products_graph.add((myOnto[oferta1], myOnto[of_key], val))
-            products_graph.add((myOnto[oferta2], myOnto[of_key], val2))
+            products_graph.add((CEO[oferta1], CEO[of_key], val))
+            products_graph.add((CEO[oferta2], CEO[of_key], val2))
 
         
         
-        products_graph.add((myOnto[rproduct], myOnto.ofertado_en, myOnto[oferta1]))
-        products_graph.add((myOnto[rproduct], myOnto.ofertado_en, myOnto[oferta2]))
+        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta1]))
+        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta2]))
 
 
 

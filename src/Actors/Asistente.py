@@ -39,6 +39,7 @@ parser.add_argument('--b', help="Host del agente Buscador Productos")
 
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
+
 '''
 if args.b is None:
     print("Usage: python3 Asistente.py --b http://<IP_Buscador>:<Port_Buscador>")
@@ -46,7 +47,40 @@ if args.b is None:
 else:
     bhost = args.b
 '''
-# Configuration of the namespace of comercio-electronico ontology
+# Configuration stuff
+port = 9002
+
+hostname = '0.0.0.0'
+hostaddr = gethostname()
+
+print('DS Hostname =', hostaddr)
+
+# Flask stuff
+app = Flask(__name__)
+
+# Configuration constants and variables
+agn = Namespace("http://www.agentes.org#")
+
+hostaddrBuscador = 'adria-PS42-Modern-8MO'
+portBuscador = 9010
+
+AgenteBuscadorProductos = Agent('AgenteSimple',
+                       agn.AgenteSimple,
+                       'http://%s:%d/comm' % (hostaddrBuscador, portBuscador),
+                       'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
+
+# Contador de mensajes
+mss_cnt = 0
+
+# Datos del Agente
+AgentePersonal = Agent('AgentePersonal',
+                       agn.AgentePersonal,
+                       'http://%s:%d/comm' % (hostaddr, port),
+                       'http://%s:%d/Stop' % (hostaddr, port))
+
+
+
+# Configuration of the namespaprint(cnt)ce of comercio-electronico ontology
 CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
 def buscar_productos():
@@ -66,13 +100,13 @@ def buscar_productos():
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
 
     # Añade la Busqueda al grafo
-    b = CEO.busqueda
+    b = CEO.Busqueda
     gm.add((b, RDF.type, CEO.Busqueda))
     gm.add((bp, CEO.busca, b))
 
     for i in range(ncategorias):
         # Lee una linea de terminal que sorresponde con una LineaBusqueda
-        linea = input().split();
+        linea = input().split()
         # Añade la LineaBusqueda al grafo
         l = CEO["lineabusqueda" + str(i)]
         gm.add((l, RDF.type, CEO.LineaBusqueda))
@@ -83,18 +117,21 @@ def buscar_productos():
         gm.add((l, CEO.precio_min, Literal(int(linea[2]))))
         gm.add((l, CEO.precio_max, Literal(int(linea[3]))))
     
-    print(gm.serialize(format='turtle'))
+    # print(gm.serialize(format='turtle'))
 
-    gr = send_message(
-        build_message(gm, perf=ACL.request,
-                      sender="Asistente",
-                      receiver="Buscador_productos",
-                      content="Asistente1-BuscarProductos"),
-            'http://*********:****/buscar')
+    msg = build_message(gm, perf=ACL.request,
+                        sender=AgentePersonal.uri,
+                        receiver=AgenteBuscadorProductos.uri,
+                        content=bp)    
+
+    gr = send_message(msg, AgenteBuscadorProductos.address)
+
+    return gr
         
 def do(value):
     if value == 1:
-        buscar_productos()        
+        print(buscar_productos().serialize(format='turtle'))
+        
 
 if __name__ == '__main__':
     print("Bienvenido a el Asistente de Comercio Electronico")

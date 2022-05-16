@@ -58,6 +58,14 @@ def comunicacion():
     Entrypoint de comunicacion
     """
 
+    def buscarProductos():
+        gr = Graph()
+        
+
+
+        print("Se ha hecho petición sobre /buscar")
+
+
     message = request.args['content']
     gm = Graph()
     gm.parse(data=message, format='xml')
@@ -81,6 +89,7 @@ def comunicacion():
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             content = msgdic['content']
+            print(content)
             # Averiguamos el tipo de la accion
             accion = gm.value(subject=content, predicate=RDF.type)
 
@@ -91,7 +100,6 @@ def comunicacion():
                                 ACL['not-understood'],
                                 sender=AgenteBuscadorProductos.uri)
             
- 
     return gr.serialize(format='xml')
     
 
@@ -124,11 +132,6 @@ def agentbehavior1(cola):
     :return:
     """
     pass
-    
-
-def buscarProductos():
-    
-    print("Se ha hecho petición sobre /buscar")
     
     
 def setup():

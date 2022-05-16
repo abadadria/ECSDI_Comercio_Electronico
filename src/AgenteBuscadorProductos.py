@@ -55,7 +55,7 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-@app.route("/buscar")
+@app.route("/comm")
 def comunicacion():
     """
     Entrypoint de comunicacion
@@ -63,14 +63,26 @@ def comunicacion():
 
     def buscarProductos():
         gr = Graph()
+
+        print('graph------------')
+        print(gm.serialize(format='turtle'))
+        print('graph------------')
+
         
+
+        for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+            print(s)
+            print(p)
+            print(o)
+            cantidad = gm.value(s, CEO.cantidad)
+            print(cantidad)         
+
         return gr
 
 
     message = request.args['content']
     gm = Graph()
     gm.parse(data=message, format='xml')
-
 
     msgdic = get_message_properties(gm)
 
@@ -94,6 +106,8 @@ def comunicacion():
 
             # Averiguamos el tipo de la accion
             accion = gm.value(subject=content, predicate=RDF.type)
+
+            print(gm.serialize(format='turtle'))
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done

@@ -66,7 +66,7 @@ portBuscador = 9010
 
 AgenteBuscadorProductos = Agent('AgenteSimple',
                        agn.AgenteSimple,
-                       'http://%s:%d/buscar' % (hostaddrBuscador, portBuscador),
+                       'http://%s:%d/comm' % (hostaddrBuscador, portBuscador),
                        'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
 
 # Contador de mensajes
@@ -80,7 +80,7 @@ AgentePersonal = Agent('AgentePersonal',
 
 
 
-# Configuration of the namespace of comercio-electronico ontology
+# Configuration of the namespaprint(cnt)ce of comercio-electronico ontology
 CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
 def buscar_productos():
@@ -100,7 +100,7 @@ def buscar_productos():
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
 
     # Añade la Busqueda al grafo
-    b = CEO.busqueda
+    b = CEO.Busqueda
     gm.add((b, RDF.type, CEO.Busqueda))
     gm.add((bp, CEO.busca, b))
 
@@ -117,7 +117,7 @@ def buscar_productos():
         gm.add((l, CEO.precio_min, Literal(int(linea[2]))))
         gm.add((l, CEO.precio_max, Literal(int(linea[3]))))
     
-    print(gm.serialize(format='turtle'))
+    # print(gm.serialize(format='turtle'))
 
     msg = build_message(gm, perf=ACL.request,
                         sender=AgentePersonal.uri,

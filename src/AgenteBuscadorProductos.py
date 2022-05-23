@@ -11,6 +11,7 @@ Asume que el agente de registro esta en el puerto 9000
 
 """
 
+import logging
 from multiprocessing import Process, Queue
 import socket
 from SPARQLWrapper import SPARQLWrapper
@@ -193,6 +194,8 @@ def agentbehavior1(cola):
     
 def setup():
     products_graph.parse('product.ttl', format='turtle')
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
 
 
 if __name__ == '__main__':
@@ -201,6 +204,8 @@ if __name__ == '__main__':
     ab1.start()
     
     setup()
+
+    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)

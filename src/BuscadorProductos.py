@@ -29,6 +29,7 @@ from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
 from decimal import Decimal
+from multiprocessing import Process
 
 
 __author__ = 'adria'
@@ -59,13 +60,7 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-@app.route("/comm")
-def comunicacion():
-    """
-    Entrypoint de comunicacion
-    """
-
-    def buscarProductos():
+def buscarProductos(gm):
         gr = Graph()
         gr.namespace_manager.bind('rdf', RDF)
         gr.namespace_manager.bind('ceo', CEO)
@@ -75,30 +70,6 @@ def comunicacion():
             categoria = gm.value(s, CEO.categoria)
             precio_max = gm.value(s, CEO.precio_max)
             precio_min = gm.value(s, CEO.precio_min)
-            
-            
-            ''' NO FUNCIONA
-            
-            # FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-            
-            query = """PREFIX ceo: <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#>
-                    SELECT ?Oferta ?Producto ?categoria ?precio
-                    WHERE {
-                        ?Oferta rdf:type ceo:Oferta .
-                        ?Oferta ceo:precio ?precio .
-                        ?Producto ceo:ofertado_en ?Oferta .
-                        ?Producto ceo:categoria ?categoria .
-                        FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-                    }"""
-            
-            graph = products_graph.query(query, initNs= {'rdf', RDF})
-            
-            print('graph despues de query)
-            for row in graph:
-                print(row)
-            print('graph despues de query)    
-            
-            '''
             
             for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
                 categoriap = products_graph.value(s, CEO.categoria)
@@ -121,6 +92,11 @@ def comunicacion():
 
         return gr
 
+@app.route("/comm")
+def comunicacion():
+    """
+    Entrypoint de comunicacion
+    """
 
     message = request.args['content']
     gm = Graph()
@@ -152,14 +128,23 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.BuscarProductos:
-                gr = buscarProductos()
+                gr = buscarProductos(gm)
+                """
+                Crear proceso que almacene la busqueda
+                """
+            elif accion == CEO.ActualizarInformacionProductos:
+                """
+                Crar proceso que actualice la información de busqueda de productos
+                """
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=AgenteBuscadorProductos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
                                 sender=AgenteBuscadorProductos.uri)
             
     return gr.serialize(format='xml')
-    
 
 
 @app.route("/Stop")
@@ -189,11 +174,16 @@ def agentbehavior1(cola):
 
     :return:
     """
+    """
+    Aqui metemos la comunicacion con el servicio directoria para registrarse como agente buscadorProductos
+    """
+    
+    
     pass
     
     
 def setup():
-    products_graph.parse('product.ttl', format='turtle')
+    products_graph.parse('informacion productos.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 

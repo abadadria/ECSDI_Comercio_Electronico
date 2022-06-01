@@ -72,7 +72,7 @@ AgenteBuscadorProductos = Agent('AgenteSimple',
 mss_cnt = 0
 
 # Datos del Agente
-AgentePersonal = Agent('AgentePersonal',
+ComercioExterno1 = Agent('AgentePersonal',
                        agn.AgentePersonal,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
@@ -84,7 +84,7 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 
 def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
-    print("Introduce el nombre del producto y el nuevo precio:")
+    print("Introduce el nombre del producto y sus atributos a cambiar (insertar '-' si no se desea cambiar")
     print("\tFormato: nombre(str) categoria(str) descripcion(str) restricciones_devolucion(str)")
     
     # Crea el grafo de la acción ActualizarInformacionProductos
@@ -98,28 +98,20 @@ def actualizar_info_productos():
     gm.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
 
-    # Añade la Busqueda al grafo
-    b = CEO.Busqueda
-    gm.add((b, RDF.type, CEO.Busqueda))
-    gm.add((bp, CEO.busca, b))
-
     for i in range(nproductos):
-        # Lee una linea de terminal que sorresponde con una LineaBusqueda
-        linea = input().split()
+        # Lee una linea de terminal que sorresponde con un Producto (no entero)
+        atributosProducto = input().split()
         # Añade la LineaBusqueda al grafo
-        l = CEO["lineabusqueda" + str(i)]
-        gm.add((l, RDF.type, CEO.LineaBusqueda))
-        gm.add((CEO.LineaBusqueda, RDFS.subClassOf, CEO.Linea))
-        gm.add((l, CEO.cantidad, Literal(int(linea[1]))))
-        gm.add((b, CEO.tiene_linea_busqueda, l))
-        gm.add((l, CEO.categoria, Literal(linea[0])))
-        gm.add((l, CEO.precio_min, Literal(int(linea[2]))))
-        gm.add((l, CEO.precio_max, Literal(int(linea[3]))))
+        p = CEO[atributosProducto[0]]
+        gm.add((p, RDF.type, CEO.Producto))
+        gm.add((p, CEO.categoria, Literal(atributosProducto[1])))
+        gm.add((p, CEO.descripcion, Literal(atributosProducto[2])))
+        gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[3])))
     
-    # print(gm.serialize(format='turtle'))
+    print(gm.serialize(format='turtle'))
 
     msg = build_message(gm, perf=ACL.request,
-                        sender=AgentePersonal.uri,
+                        sender=ComercioExterno1.uri,
                         receiver=AgenteBuscadorProductos.uri,
                         content=bp)
 
@@ -130,6 +122,7 @@ def actualizar_info_productos():
 def do(value):
     if value == 1:
         actualizar_info_productos()
+        """Comprobar ack """
         print('\n' + 'El mensaje se ha enviado:\n ')
         
 

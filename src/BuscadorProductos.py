@@ -46,7 +46,7 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 mss_cnt = 0
 
 # Datos del Agente
-AgenteBuscadorProductos = Agent('AgenteSimple',
+BuscadorProductos = Agent('AgenteSimple',
                        agn.AgenteSimple,
                        'http://%s:%d/comm' % (hostname, port),
                        'http://%s:%d/Stop' % (hostname, port))
@@ -109,14 +109,14 @@ def comunicacion():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(),
                            ACL['not-understood'],
-                           sender=AgenteBuscadorProductos.uri)
+                           sender=BuscadorProductos.uri)
     else:
         # Obtenemos la performativa
         if msgdic['performative'] != ACL.request:
             # Si no es un request, respondemos que no hemos entendido el mensaje
             gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=AgenteBuscadorProductos.uri)
+                                sender=BuscadorProductos.uri)
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
@@ -138,11 +138,11 @@ def comunicacion():
                 """
                 gr = build_message( Graph(),
                                 ACL['confirm'],
-                                sender=AgenteBuscadorProductos.uri)
+                                sender=BuscadorProductos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=AgenteBuscadorProductos.uri)
+                                sender=BuscadorProductos.uri)
             
     return gr.serialize(format='xml')
 

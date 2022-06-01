@@ -149,7 +149,8 @@ if __name__ == '__main__':
             # el atributo es string
             else:
                 if of_key == 'gestion_envio':
-                    val = Literal('interna')
+                    tipoGestion = ['interna', 'externa']
+                    val = Literal(random.choice(tipoGestion))
                     val2 = val
                 else:
                     val = Literal(random_name(str(prop_key)))

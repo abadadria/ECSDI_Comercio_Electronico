@@ -130,11 +130,11 @@ def comunicacion():
             if accion == CEO.BuscarProductos:
                 gr = buscarProductos(gm)
                 """
-                Crear proceso que almacene la busqueda
+                Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """
             elif accion == CEO.ActualizarInformacionProductos:
                 """
-                Crar proceso que actualice la información de busqueda de productos
+                Crear proceso que actualice la información de busqueda de productos
                 """
                 gr = build_message( Graph(),
                                 ACL['confirm'],

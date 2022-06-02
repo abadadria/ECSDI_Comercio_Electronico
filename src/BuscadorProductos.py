@@ -92,6 +92,20 @@ def buscarProductos(gm):
 
     return gr
 
+
+def gestionarActualizacion(ge):    
+    """
+    Actualizar estado del grafo products_graph
+    """
+    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        descripcion = ge.value(s, CEO.descripcion)
+        categoria = ge.value(s, CEO.categoria)
+        restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
+        
+
+    return
+
+
 @app.route("/comm")
 def comunicacion():
     """
@@ -130,15 +144,13 @@ def comunicacion():
             if accion == CEO.BuscarProductos:
                 gr = buscarProductos(gm)
                 """
-                Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
+                (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """
             elif accion == CEO.ActualizarInformacionProductos:
-                """
-                Crear proceso que actualice la información de busqueda de productos
-                """
-                print("mensaje recibido\n")
-                print(gm.serialize(format='turtle'))
+                ab1 = Process(target=gestionarActualizacion, args=(gm,))
+                ab1.start()
                 
+                print(gm.serialize(format='turtle'))
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=BuscadorProductos.uri)

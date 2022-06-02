@@ -19,6 +19,14 @@
        rdfs:range :Busqueda .
 
 
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_agente
+:con_agente rdf:type owl:ObjectProperty ;
+            rdfs:domain :BuscarAgente ,
+                        :RegistrarAgente ,
+                        :RespuestaAgente ;
+            rdfs:range :Agente .
+
+
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_cobro
 :con_cobro rdf:type owl:ObjectProperty ;
            rdfs:domain :Pedido ;
@@ -325,6 +333,12 @@
              rdfs:comment "La descripción consiste en una explicación más detallada del concepto al cual pertenece."@es .
 
 
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#direccion
+:direccion rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Agente ;
+           rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#estado
 :estado rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
@@ -441,6 +455,11 @@
                           rdfs:comment "Las restricciones de devolución de un producto representan una serie de condiciones que se deben cumplir para que se pueda tramitar la devolución como tal."@es .
 
 
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#uri
+:uri rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Agente .
+
+
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#valor
 :valor rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf owl:topDataProperty ;
@@ -511,6 +530,12 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#BuscadorProductos
 :BuscadorProductos rdf:type owl:Class ;
                    rdfs:subClassOf :Agente .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#BuscarAgente
+:BuscarAgente rdf:type owl:Class ;
+              rdfs:subClassOf :Accion ;
+              rdfs:comment "Cualquier agente solicita la dirección de un tipo de agente"@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#BuscarProductos
@@ -748,10 +773,21 @@
            rdfs:comment "Transaccion bancaria saliente de las cuentas del Sistema"@es .
 
 
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RegistrarAgente
+:RegistrarAgente rdf:type owl:Class ;
+                 rdfs:subClassOf :Accion ;
+                 rdfs:comment "Cualquier agente se registra en el ServicioDirectorio"@es .
+
+
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Respuesta
 :Respuesta rdf:type owl:Class ;
            rdfs:subClassOf :Comunicacion ;
            rdfs:comment "Respuestas a las Acciones entre Actores y Agentes del Sistema"@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaAgente
+:RespuestaAgente rdf:type owl:Class ;
+                 rdfs:subClassOf :Respuesta .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#RespuestaCobro
@@ -795,6 +831,11 @@
 :RespuestaValoracionProducto rdf:type owl:Class ;
                              rdfs:subClassOf :Respuesta ;
                              rdfs:comment "Respuesta a la Accion SolicitarValoracionProducto. El Asistente comunica al Sistema las Valoraciones hechas por el Usuario."@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#ServicioDirectorio
+:ServicioDirectorio rdf:type owl:Class ;
+                    rdfs:subClassOf :Agente .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#SolicitarDevolucionProductos

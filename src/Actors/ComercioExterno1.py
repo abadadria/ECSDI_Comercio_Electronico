@@ -35,17 +35,17 @@ __author__ = 'adria'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
-parser.add_argument('--b', help="Host del agente Buscador Productos")
+parser.add_argument('--b', help="Host del agente Gestor Productos Externos")
 
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
 
 
 if args.b is None:
-    print("Usage: python3 ComercioExterno1.py --b hostNameBuscador <ejemplo: 127.0.0.1>")
+    print("Usage: python3 ComercioExterno1.py --b hostNameGestor <ejemplo: 127.0.0.1>")
     exit()
 else:
-    hostaddrBuscador = args.b
+    hostaddrGestor = args.b
 
 # Configuration stuff
 port = 9003
@@ -61,12 +61,12 @@ app = Flask(__name__)
 # Configuration constants and variables
 agn = Namespace("http://www.agentes.org#")
 
-portBuscador = 9010
+portGestor = 9011
 
-AgenteBuscadorProductos = Agent('AgenteSimple',
+GestorProductosExternos = Agent('AgenteSimple',
                        agn.AgenteSimple,
-                       'http://%s:%d/comm' % (hostaddrBuscador, portBuscador),
-                       'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
+                       'http://%s:%d/comm' % (hostaddrGestor, portGestor),
+                       'http://%s:%d/Stop' % (hostaddrGestor, portGestor))
 
 # Contador de mensajes
 mss_cnt = 0
@@ -86,7 +86,11 @@ def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
     print("Introduce el nombre del producto y sus atributos a cambiar (insertar '-' si no se desea cambiar")
     print("\tFormato: nombre(str) categoria(str) descripcion(str) restricciones_devolucion(str)")
-    
+    """
+    Ampliar en un futuro para que se pueda cambiar todo tipo de información y que sea el gestor
+    de productos externos el que decida a quien enviar esta informacion. De momento solo se puede cambiar la
+    informacion que le corresponde al buscador de productos
+    """
     # Crea el grafo de la acción ActualizarInformacionProductos
     gm = Graph()
     gm.namespace_manager.bind('rdf', RDF)
@@ -108,22 +112,23 @@ def actualizar_info_productos():
         gm.add((p, CEO.descripcion, Literal(atributosProducto[2])))
         gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[3])))
     
-    print(gm.serialize(format='turtle'))
-
     msg = build_message(gm, perf=ACL.request,
                         sender=ComercioExterno1.uri,
-                        receiver=AgenteBuscadorProductos.uri,
+                        receiver=GestorProductosExternos.uri,
                         content=bp)
 
-    gr = send_message(msg, AgenteBuscadorProductos.address)
+    gr = send_message(msg, GestorProductosExternos.address)
 
     return gr
         
 def do(value):
     if value == 1:
-        actualizar_info_productos()
-        """Comprobar ack """
-        print('\n' + 'El mensaje se ha enviado:\n ')
+        gr = actualizar_info_productos()
+        msgdic = get_message_properties(gr)
+        if msgdic['performative'] == ACL.confirm:
+            print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
+        else:
+            print('\n' + 'Ha habido un error durante el proceso\n ')
         
 
 if __name__ == '__main__':

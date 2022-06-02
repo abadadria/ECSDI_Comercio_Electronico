@@ -23,7 +23,7 @@ from rdflib.namespace import FOAF
 from AgentUtil.ACL import ACL
 from AgentUtil.FlaskServer import shutdown_server
 from AgentUtil.Agent import Agent
-from AgentUtil.ACLMessages import build_message, get_message_properties
+from AgentUtil.ACLMessages import build_message, send_message, get_message_properties
 from AgentUtil.Logging import config_logger
 from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
@@ -36,7 +36,7 @@ __author__ = 'adria'
 
 # Configuration stuff
 hostname = socket.gethostname()
-port = 9010
+port = 9011
 
 agn = Namespace("http://www.agentes.org#")
 
@@ -45,8 +45,16 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 # Contador de mensajes
 mss_cnt = 0
 
+hostaddrBuscador = "adria-VirtualBox"
+portBuscador = 9010
+
+AgenteBuscadorProductos = Agent('AgenteSimple',
+                       agn.AgenteSimple,
+                       'http://%s:%d/comm' % (hostaddrBuscador, portBuscador),
+                       'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
+
 # Datos del Agente
-BuscadorProductos = Agent('AgenteSimple',
+GestorProductosExternos = Agent('AgenteSimple',
                        agn.AgenteSimple,
                        'http://%s:%d/comm' % (hostname, port),
                        'http://%s:%d/Stop' % (hostname, port))
@@ -60,37 +68,35 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-def buscarProductos(gm):
+def gestionarActualizacion(gm):
+    print("gestionando actualización de productos")
+    """
+    De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro
+    Ahora solo redirecciona, en un futuro tendra que separar la informacion y enviar varios mensajes
+    """
+
     gr = Graph()
     gr.namespace_manager.bind('rdf', RDF)
     gr.namespace_manager.bind('ceo', CEO)
     
-    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
-        cantidad = gm.value(s, CEO.cantidad)
-        categoria = gm.value(s, CEO.categoria)
-        precio_max = gm.value(s, CEO.precio_max)
-        precio_min = gm.value(s, CEO.precio_min)
-        
-        for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
-            categoriap = products_graph.value(s, CEO.categoria)
-            categoriaOk = False
-            if categoriap == categoria:
-                    categoriaOk = True
-                        
-            if categoriaOk:
-                oferta = products_graph.value(s, CEO.ofertado_en)
-                precio = products_graph.value(oferta, CEO.precio)
-                precioOk = False
-                if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
-                    precioOk = True
-                if precioOk:
-                    gr.add((s, RDF.type, CEO.Producto))
-                    gr.add((s, CEO.categoria, categoriap))
-                    gr.add((oferta, RDF.type, CEO.Oferta))
-                    gr.add((oferta, CEO.precio, precio))
-                    gr.add((s, CEO.ofertado_en, oferta))
+    bp = CEO.ActualizarInformacionProductos
 
-    return gr
+    msg = build_message(gm, perf=ACL.request,
+                        sender=GestorProductosExternos.uri,
+                        receiver=AgenteBuscadorProductos.uri,
+                        content=bp)
+
+    gr = send_message(msg, AgenteBuscadorProductos.address)
+        
+    msgdic = get_message_properties(gr)
+    if msgdic['performative'] == ACL.confirm:
+        print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
+    else:
+        print('\n' + 'Ha habido un error durante el proceso\n ')
+    
+    return
+
+        
 
 @app.route("/comm")
 def comunicacion():
@@ -109,14 +115,14 @@ def comunicacion():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(),
                            ACL['not-understood'],
-                           sender=BuscadorProductos.uri)
+                           sender=GestorProductosExternos.uri)
     else:
         # Obtenemos la performativa
         if msgdic['performative'] != ACL.request:
             # Si no es un request, respondemos que no hemos entendido el mensaje
             gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=BuscadorProductos.uri)
+                                sender=GestorProductosExternos.uri)
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
@@ -127,23 +133,16 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.BuscarProductos:
-                gr = buscarProductos(gm)
-                """
-                Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
-                """
-            elif accion == CEO.ActualizarInformacionProductos:
-                """
-                Crear proceso que actualice la información de busqueda de productos
-                """
-                print("mensaje recibido")
+            if accion == CEO.ActualizarInformacionProductos:
+                ab1 = Process(target=gestionarActualizacion, args=(gm,))
+                ab1.start()
                 gr = build_message( Graph(),
                                 ACL['confirm'],
-                                sender=BuscadorProductos.uri)
+                                sender=GestorProductosExternos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=BuscadorProductos.uri)
+                                sender=GestorProductosExternos.uri)
             
     return gr.serialize(format='xml')
 
@@ -176,7 +175,7 @@ def agentbehavior1(cola):
     :return:
     """
     """
-    Aqui metemos la comunicacion con el servicio directoria para registrarse como agente buscadorProductos
+    Aqui metemos la comunicacion con el servicio directoria para registrarse como agente GestorProductosExternos
     """
     
     
@@ -184,7 +183,6 @@ def agentbehavior1(cola):
     
     
 def setup():
-    products_graph.parse('informacion productos.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 

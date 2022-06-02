@@ -68,18 +68,30 @@ cola1 = Queue()
 app = Flask(__name__)
 
 
-def gestionarActualizacion(gm):
+def gestionarActualizacion(ge):
     print("gestionando actualización de productos")
     """
     De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro
     Ahora solo redirecciona, en un futuro tendra que separar la informacion y enviar varios mensajes
     """
 
-    gr = Graph()
-    gr.namespace_manager.bind('rdf', RDF)
-    gr.namespace_manager.bind('ceo', CEO)
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
     
     bp = CEO.ActualizarInformacionProductos
+    gm.add((bp, RDF.type, CEO.ActualizarInformacionProductos))
+    gm.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    
+    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        descripcion = ge.value(s, CEO.descripcion)
+        categoria = ge.value(s, CEO.categoria)
+        restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
+        gm.add((s, RDF.type, CEO.Producto))
+        gm.add((s, CEO.categoria, Literal(descripcion)))
+        gm.add((s, CEO.descripcion, Literal(categoria)))
+        gm.add((s, CEO.restricciones_devolucion, Literal(restricciones_devolucion)))
 
     msg = build_message(gm, perf=ACL.request,
                         sender=GestorProductosExternos.uri,
@@ -134,6 +146,7 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.ActualizarInformacionProductos:
+                print(gm.serialize(format='turtle'))
                 ab1 = Process(target=gestionarActualizacion, args=(gm,))
                 ab1.start()
                 gr = build_message( Graph(),

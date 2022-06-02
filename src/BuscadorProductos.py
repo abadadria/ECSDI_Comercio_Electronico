@@ -136,7 +136,9 @@ def comunicacion():
                 """
                 Crear proceso que actualice la información de busqueda de productos
                 """
-                print("mensaje recibido")
+                print("mensaje recibido\n")
+                print(gm.serialize(format='turtle'))
+                
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=BuscadorProductos.uri)

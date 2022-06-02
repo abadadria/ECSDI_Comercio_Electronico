@@ -39,6 +39,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dir',
                     default=None,
                     help="Direccion del servicio de directorio")
+parser.add_argument('--open',
+                    help="Define si el servidor esta abierto al exterior o no",
+                    action='store_true',
+                    default=False)
 parser.add_argument('--port',
                     type=int,
                     help="Puerto de comunicacion del agente")
@@ -64,7 +68,13 @@ if args.port is None:
 else:
     port = args.port
 
-hostname = socket.gethostname()
+if args.open:
+    hostname = '0.0.0.0'
+    hostaddr = gethostname()
+else:
+    hostaddr = hostname = socket.gethostname()
+
+print('DS Hostname =', hostaddr)
 
 agn = Namespace("http://www.agentes.org#")
 

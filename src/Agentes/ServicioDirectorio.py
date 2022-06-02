@@ -135,26 +135,6 @@ def register():
                              msgcnt=mss_cnt)
 
 
-        '''
-        agn_add = gm.value(subject=content, predicate=DSO.Address)
-        agn_name = gm.value(subject=content, predicate=FOAF.name)
-        agn_uri = gm.value(subject=content, predicate=DSO.Uri)
-        agn_type = gm.value(subject=content, predicate=DSO.AgentType)
-
-        # Añadimos la informacion en el grafo de registro vinculandola a la URI
-        # del agente y registrandola como tipo FOAF.Agent
-        dsgraph.add((agn_uri, RDF.type, FOAF.Agent))
-        dsgraph.add((agn_uri, FOAF.name, agn_name))
-        dsgraph.add((agn_uri, DSO.Address, agn_add))
-        dsgraph.add((agn_uri, DSO.AgentType, agn_type))
-
-        # Generamos un mensaje de respuesta
-        return build_message(Graph(),
-                             ACL.confirm,
-                             sender=ServicioDirectorio.uri,
-                             receiver=agn_uri,
-                             msgcnt=mss_cnt)
-        '''
     def process_search():
         # Asumimos que hay una accion de busqueda que puede tener
         # diferentes parametros en funcion de si se busca un tipo de agente
@@ -168,22 +148,34 @@ def register():
 
         logger.info('Peticion de busqueda')
 
-        agn_type = gm.value(subject=content, predicate=DSO.AgentType)
-        rsearch = dsgraph.triples((None, DSO.AgentType, agn_type))
+        agn_type = gm.value(subject=CEO.agente, predicate=RDF.type)
+        rsearch = dsgraph.triples((None, RDF.type, agn_type))
         if rsearch is not None:
-            agn_uri = next(rsearch)[0]
-            agn_add = dsgraph.value(subject=agn_uri, predicate=DSO.Address)
+            agn = next(rsearch)
+
             gr = Graph()
-            gr.bind('dso', DSO)
-            rsp_obj = agn['Directory-response']
-            gr.add((rsp_obj, DSO.Address, agn_add))
-            gr.add((rsp_obj, DSO.Uri, agn_uri))
+            gr.namespace_manager.bind('rdf', RDF)
+            gr.namespace_manager.bind('ceo', CEO)
+
+            ra = CEO.RespuestaAgente
+            gr.add((ra, RDF.type, CEO.RespuestaAgente))
+            gr.add((CEO.RespuestaAgente, RDFS.subClassOf, CEO.Respuesta))
+            gr.add((CEO.Respuesta, RDFS.subClassOf, CEO.Comunicacion))
+
+            a = CEO.agente
+            gr.add((a, RDF.type, agn_type))
+            gr.add((agn_type, RDFS.subClassOf, CEO.Agente))
+            gr.add((a, CEO.direccion, Literal(agn[0])))
+            gr.add((a, CEO.uri, agn_type))
+            gr.add((ra, CEO.con_agente, a))
+
+
             return build_message(gr,
                                  ACL.inform,
                                  sender=ServicioDirectorio.uri,
                                  msgcnt=mss_cnt,
-                                 receiver=agn_uri,
-                                 content=rsp_obj)
+                                 content=ra)
+
         else:
             # Si no encontramos nada retornamos un inform sin contenido
             return build_message(Graph(),

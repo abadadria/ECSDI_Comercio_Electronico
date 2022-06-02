@@ -457,7 +457,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#uri
 :uri rdf:type owl:DatatypeProperty ;
-     rdfs:domain :Agente .
+     rdfs:domain :Agente ;
+     rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#valor

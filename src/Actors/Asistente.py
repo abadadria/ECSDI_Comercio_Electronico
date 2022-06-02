@@ -14,8 +14,10 @@ Asume que el agente de registro esta en el puerto 9000
 from multiprocessing import Process, Queue
 import logging
 import argparse
+from time import gmtime
 
 from flask import Flask, request
+from matplotlib import get_backend
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, Literal
 from rdflib.namespace import FOAF, RDF
 
@@ -35,23 +37,40 @@ __author__ = 'raul'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
-parser.add_argument('--b', help="Host del agente Buscador Productos")
-
+parser.add_argument('--open',
+                    help="Define si el servidor est abierto al exterior o no",
+                    action='store_true',
+                    default=False)
+parser.add_argument('--dir',
+                    default=None,
+                    help="Direccion del servicio de directorio")
+parser.add_argument('--port',
+                    type=int,
+                    help="Puerto de comunicacion del agente")
+parser.add_argument('--verbose',
+                    help="Genera un log de la comunicacion del servidor web",
+                    action='store_true',
+                    default=False)
+                    
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
 
-
-if args.b is None:
-    print("Usage: python3 Asistente.py --b hostNameBuscador <ejemplo: 127.0.0.1>")
-    exit()
+if args.dir is None:
+    raise NameError('A Directory Service addess is needed')
 else:
-    hostaddrBuscador = args.b
+    diraddress = args.dir
 
 # Configuration stuff
-port = 9002
+if args.port is None:
+    port = 9002
+else:
+    port = args.port
 
-hostname = '0.0.0.0'
-hostaddr = gethostname()
+if args.open:
+    hostname = '0.0.0.0'
+    hostaddr = gethostname()
+else:
+    hostaddr = hostname = socket.gethostname()
 
 print('DS Hostname =', hostaddr)
 
@@ -61,32 +80,65 @@ app = Flask(__name__)
 # Configuration constants and variables
 agn = Namespace("http://www.agentes.org#")
 
-portBuscador = 9010
+# Configuration of the namespace of comercio-electronico ontology
+CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
-AgenteBuscadorProductos = Agent('AgenteSimple',
-                       agn.AgenteSimple,
-                       'http://%s:%d/comm' % (hostaddrBuscador, portBuscador),
-                       'http://%s:%d/Stop' % (hostaddrBuscador, portBuscador))
+ServicioDirectorio = Agent('ServicioDirectorio',
+                        CEO.ServicioDirectorio,
+                        '%s/register' % (diraddress),
+                        '%s/Stop' % (diraddress))
 
 # Contador de mensajes
 mss_cnt = 0
 
 # Datos del Agente
-AgentePersonal = Agent('AgentePersonal',
-                       agn.AgentePersonal,
+Asistente = Agent('Asistente',
+                       CEO.Asistente,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
+def obtener_agente(agn_uri):
+    # Obtiene un agente
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
 
+    ba = CEO.buscaragente
+    gm.add((ba, RDF.type, CEO.BuscarAgente))
+    gm.add((CEO.BuscarAgente, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
 
-# Configuration of the namespaprint(cnt)ce of comercio-electronico ontology
-CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
+    a = CEO.agente
+    gm.add((a, RDF.type, agn_uri))
+    gm.add((agn_uri, RDFS.subClassOf, CEO.Agente))
+    gm.add((ba, CEO.con_agente, a))
+
+    print(gm.serialize(format='turtle'))
+
+    msg = build_message(gm,
+                        ACL.request,
+                        sender=Asistente.uri,
+                        receiver=ServicioDirectorio.uri,
+                        content=ba)
+
+    gr = send_message(msg, ServicioDirectorio.address)
+
+    print(gr.serialize(format='turtle'))
+
+    address = gr.value(subject=CEO.agente, predicate=CEO.direccion)
+
+    print('address: ' + address)
+
+    return Agent('BuscadorProductos',
+                 CEO.BuscadorProductos,
+                 address,
+                 '')
 
 def buscar_productos():
     ncategorias = int(input("Introduce la cantidad de categorias de productos que te interesan:"))
     print("Introduce las categorias de productos que te interesan:")
     print("\tFormato: categoria(str) cantidad(int) precio_min(int) precio_max(int)")
-    
+
     # Crea el grafo de la acción BuscarProductos
     gm = Graph()
     gm.namespace_manager.bind('rdf', RDF)
@@ -118,12 +170,16 @@ def buscar_productos():
     
     # print(gm.serialize(format='turtle'))
 
-    msg = build_message(gm, perf=ACL.request,
-                        sender=AgentePersonal.uri,
-                        receiver=AgenteBuscadorProductos.uri,
+    BuscadorProductos = obtener_agente(CEO.BuscadorProductos)
+    print('Buscador address: ' + BuscadorProductos.address)
+
+    msg = build_message(gm,
+                        perf=ACL.request,
+                        sender=Asistente.uri,
+                        receiver=BuscadorProductos.uri,
                         content=bp)    
 
-    gr = send_message(msg, AgenteBuscadorProductos.address)
+    gr = send_message(msg, BuscadorProductos.address)
 
     return gr
         

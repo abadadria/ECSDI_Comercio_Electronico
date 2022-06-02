@@ -86,8 +86,8 @@ mss_cnt = 0
 # Datos del Agente
 BuscadorProductos = Agent('BuscadorProductos',
                        CEO.BuscadorProductos,
-                       'http://%s:%d/comm' % (hostname, port),
-                       'http://%s:%d/Stop' % (hostname, port))
+                       'http://%s:%d/comm' % (hostaddr, port),
+                       'http://%s:%d/Stop' % (hostaddr, port))
 
 ServicioDirectorio = Agent('ServicioDirectorio',
                         CEO.ServicioDirectorio,
@@ -285,7 +285,7 @@ if __name__ == '__main__':
     
     setup()
 
-    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
+    print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)

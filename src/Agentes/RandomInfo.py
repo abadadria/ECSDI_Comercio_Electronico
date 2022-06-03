@@ -43,11 +43,9 @@ if __name__ == '__main__':
                           'categoria': 's',
                           'descripcion': 's',
                           'restricciones_devolucion': 's',
+                          'gestion_envio' : 's',
+                          'precio': 'f',
                           'valoracion_media': 'f'}
-
-    ofert_properties = {'gestion_envio' : 's',
-                        'identificador': 'i',
-                        'precio': 'f'}
     
     categorias_productos = ['producto_hogar', 
                             'ropa', 
@@ -109,8 +107,12 @@ if __name__ == '__main__':
         for prop_key, prop_value in product_properties.items():
             # el atributo es real
             if prop_value == 'f':
-                number = format(round(random.uniform(0, 10), 2), '.2f')
-                val = Literal(number)
+                if prop_key == 'precio':
+                    number = format(round(random.uniform(0, 100), 2), '.2f')
+                    val = Literal(number)
+                else:
+                    number = format(round(random.uniform(0, 10), 2), '.2f')
+                    val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
                 val = Literal(random.randint(0, 50))
@@ -118,46 +120,12 @@ if __name__ == '__main__':
             else:
                 if prop_key == 'categoria':
                     val = Literal(random.choice(categorias_productos))
+                elif prop_key == 'gestion_envio':
+                    tipoGestion = ['interna', 'externa']
+                    val = Literal(random.choice(tipoGestion))
                 else:
                     val = Literal(random_name(str(prop_key)))
             products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
-
-        # generamos dos instancias de oferta para cada uno de los productos creados
-        oferta1 = 'Oferta_1_' + rproduct
-        oferta2 = 'Oferta_2_' + rproduct
-
-        # Añadimos la instancia de oferta
-        products_graph.add((CEO[oferta1], RDF.type, CEO.Oferta))
-        products_graph.add((CEO[oferta2], RDF.type, CEO.Oferta))
-
-        for of_key, of_value in ofert_properties.items():
-            # el atributo es real
-            if of_value == 'f':
-                number = format(round(random.uniform(0, 100), 2), '.2f')
-                number2 = format(round(random.uniform(0, 100), 2), '.2f')
-                val = Literal(number)
-                val2 = Literal(number2)
-            # el atributo es entero
-            elif of_value == 'i':
-                val = Literal(random.randint(0, 50))
-                val2 = Literal(random.randint(0, 50))
-            # el atributo es string
-            else:
-                if of_key == 'gestion_envio':
-                    tipoGestion = ['interna', 'externa']
-                    val = Literal(random.choice(tipoGestion))
-                    val2 = val
-                else:
-                    val = Literal(random_name(str(prop_key)))
-                    val2 = Literal(random_name(str(prop_key)))
-
-            products_graph.add((CEO[oferta1], CEO[of_key], val))
-            products_graph.add((CEO[oferta2], CEO[of_key], val2))
-
-        
-        
-        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta1]))
-        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta2]))
 
 
 

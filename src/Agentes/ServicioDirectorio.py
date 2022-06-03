@@ -135,6 +135,26 @@ def register():
                              msgcnt=mss_cnt)
 
 
+    def process_unregister():
+        agn_type = gm.value(subject=CEO.agente, predicate=RDF.type)
+        agn_adr = gm.value(subject=CEO.agente, predicate=CEO.direccion)
+        agn_uri = gm.value(subject=CEO.agente, predicate=CEO.uri)
+
+        dsgraph.remove((agn_adr, RDF.type, agn_type))
+        dsgraph.remove((agn_adr, CEO.uri, agn_uri))
+        dsgraph.remove((agn_adr, CEO.direccion, agn_adr))
+
+        logger.info('Grafo del ServicioDirectorio')
+        logger.info(dsgraph.serialize(format='turtle'))
+        
+        # Generamos un mensaje de respuesta
+        return build_message(Graph(),
+                             ACL.confirm,
+                             sender=ServicioDirectorio.uri,
+                             receiver=agn_uri,
+                             msgcnt=mss_cnt)
+
+
     def process_search():
         # Asumimos que hay una accion de busqueda que puede tener
         # diferentes parametros en funcion de si se busca un tipo de agente
@@ -221,6 +241,8 @@ def register():
             # Accion de busqueda
             elif accion == CEO.BuscarAgente:
                 gr = process_search()
+            elif accion == CEO.DesregistrarAgente:
+                gr = process_unregister()
             # No habia ninguna accion en el mensaje
             else:
                 gr = build_message(Graph(),

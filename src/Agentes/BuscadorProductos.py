@@ -32,7 +32,7 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
-from DirectoryOps import register_agent
+from DirectoryOps import register_agent, unregister_agent
 
 
 __author__ = 'adria'

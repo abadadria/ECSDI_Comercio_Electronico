@@ -140,6 +140,7 @@ def buscarProductos(gm):
                 if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
                     precioOk = True
                 if precioOk:
+                    # Añadimos toda la informacion necessaria: producto, oferta, modelo, marca
                     gr.add((s, RDF.type, CEO.Producto))
                     
                     gr.add((oferta, RDF.type, CEO.Oferta))
@@ -160,11 +161,21 @@ def buscarProductos(gm):
                     restricciones_devolucion = products_graph.value(s, CEO.restricciones_devolucion)
                     gr.add((s, CEO.descrrestricciones_devolucionipcion, restricciones_devolucion))
                     
-                    tiene_modelo = products_graph.value(s, CEO.tiene_modelo)
-                    gr.add((s, CEO.tiene_modelo, tiene_modelo))
-                    
                     valoracion_media = products_graph.value(s, CEO.valoracion_media)
                     gr.add((s, CEO.valoracion_media, valoracion_media))
+                    
+                    modelo = products_graph.value(s, CEO.tiene_modelo)
+                    gr.add((s, CEO.tiene_modelo, modelo))
+                    
+                    # Creamos las instancias de marca y modelo
+                    gr.add((modelo, RDF.type, CEO.Modelo))
+                    nombreModelo = products_graph.value(modelo, CEO.nombre)
+                    gr.add((modelo, CEO.nombre, nombreModelo))
+                    tiene_marca = products_graph.value(modelo, CEO.tiene_marca)
+                    gr.add((tiene_marca, RDF.type, CEO.Marca))
+                    gr.add((modelo, CEO.tiene_marca, tiene_marca))
+                    nombreMarca = products_graph.value(tiene_marca, CEO.nombre)
+                    gr.add((tiene_marca, CEO.nombre, nombreMarca))
                     
                     
 

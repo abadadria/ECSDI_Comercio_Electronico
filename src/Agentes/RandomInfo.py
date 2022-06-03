@@ -103,7 +103,7 @@ if __name__ == '__main__':
         # Le asignamos una propiedad nombre al producto
         products_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
         # Le asignamos un modelo al producto
-        products_graph.add((CEO[rproduct], CEO.tiene_modelo, Literal(modelos[i])))
+        products_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
         
         # Generamos sus atributos
         for prop_key, prop_value in product_properties.items():

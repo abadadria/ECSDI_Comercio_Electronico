@@ -18,7 +18,7 @@ from AgentUtil.Util import gethostname
 
 from decimal import Decimal
 
-from DirectoryOps import register_agent
+from DirectoryOps import register_agent, unregister_agent
 
 
 __author__ = 'raul'
@@ -71,6 +71,7 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 
 # Contador de mensajes
 mss_cnt = 0
+n_pedidos = 0
 
 # Datos del Agente
 GestorPedidos = Agent('GestorPedidos',
@@ -108,6 +109,13 @@ def comunicacion():
     Entrypoint de comunicacion
     """
     def crear_pedido():
+        gr = Graph()
+        gr.namespace_manager.bind('rdf', RDF)
+        gr.namespace_manager.bind('ceo', CEO)
+
+        p = CEO['pedido_' + str(n_pedidos)]
+        gr.add((p, RDF.type, CEO.Pedido))
+        gr.add(())
         pass
     
 
@@ -155,6 +163,13 @@ def comunicacion():
 def setup():
     pass
 
+def tidyup():
+    """
+    Acciones previas a parar el agente
+
+    """
+    unregister_agent(GestorPedidos, ServicioDirectorio)
+    pass
 
 if __name__ == '__main__':
     setup()
@@ -164,5 +179,5 @@ if __name__ == '__main__':
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
-
+    tidyup()
     print('The End')

@@ -32,7 +32,7 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
-from DirectoryOps import register_agent
+from DirectoryOps import register_agent, unregister_agent
 
 
 __author__ = 'adria'
@@ -269,6 +269,7 @@ def tidyup():
     Acciones previas a parar el agente
 
     """
+    unregister_agent(BuscadorProductos, ServicioDirectorio)
     pass
     
 
@@ -308,4 +309,5 @@ if __name__ == '__main__':
 
     # Esperamos a que acaben los behaviors
     ab1.join()
+    tidyup()
     print('The End')

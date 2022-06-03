@@ -93,7 +93,7 @@ ServicioDirectorio = Agent('ServicioDirectorio',
 mss_cnt = 0
 
 # Datos del Agente
-ComercioExterno1 = Agent('AgentePersonal',
+ComercioExterno = Agent('AgentePersonal',
                        agn.AgentePersonal,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
@@ -129,10 +129,10 @@ def actualizar_info_productos():
         gm.add((p, CEO.descripcion, Literal(atributosProducto[2])))
         gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[3])))
     
-    GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno1, ServicioDirectorio)
+    GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
     
     msg = build_message(gm, perf=ACL.request,
-                        sender=ComercioExterno1.uri,
+                        sender=ComercioExterno.uri,
                         receiver=GestorProductosExternos.uri,
                         content=bp)
 
@@ -151,7 +151,7 @@ def do(value):
         
 
 if __name__ == '__main__':
-    print("Bienvenido a ComercioExterno1")
+    print("Bienvenido a ComercioExterno")
     
     while 1:
         print("Que acción deseas realizar?")

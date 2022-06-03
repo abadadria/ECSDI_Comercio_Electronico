@@ -259,32 +259,8 @@ def stop():
 
     :return:
     """
-    tidyup()
     shutdown_server()
     return "Parando Servidor"
-
-
-def tidyup():
-    """
-    Acciones previas a parar el agente
-
-    """
-    pass
-    
-
-
-def agentbehavior1(cola):
-    """
-    Un comportamiento del agente
-
-    :return:
-    """
-    """
-    Aqui metemos la comunicacion con el servicio directoria para registrarse como agente buscadorProductos
-    """
-    
-    
-    pass
     
     
 def setup():
@@ -294,10 +270,6 @@ def setup():
 
 
 if __name__ == '__main__':
-    # Ponemos en marcha los behaviors
-    ab1 = Process(target=agentbehavior1, args=(cola1,))
-    ab1.start()
-    
     setup()
     register_agent(BuscadorProductos, ServicioDirectorio, logger)
 
@@ -306,6 +278,4 @@ if __name__ == '__main__':
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
 
-    # Esperamos a que acaben los behaviors
-    ab1.join()
     print('The End')

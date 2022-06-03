@@ -30,28 +30,47 @@ import socket
 import requests
 import json
 
+from DirectoryOps import search_agent
+
 
 __author__ = 'adria'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
-parser.add_argument('--b', help="Host del agente Gestor Productos Externos")
+parser.add_argument('--open',
+                    help="Define si el servidor est abierto al exterior o no",
+                    action='store_true',
+                    default=False)
+parser.add_argument('--dir',
+                    default=None,
+                    help="Direccion del servicio de directorio")
+parser.add_argument('--port',
+                    type=int,
+                    help="Puerto de comunicacion del agente")
+parser.add_argument('--verbose',
+                    help="Genera un log de la comunicacion del servidor web",
+                    action='store_true',
+                    default=False)
 
 # parsing de los parametros de la linea de comandos
 args = parser.parse_args()
 
-
-if args.b is None:
-    print("Usage: python3 ComercioExterno1.py --b hostNameGestor <ejemplo: 127.0.0.1>")
-    exit()
+if args.dir is None:
+    raise NameError('A Directory Service addess is needed')
 else:
-    hostaddrGestor = args.b
+    diraddress = args.dir
 
 # Configuration stuff
-port = 9003
+if args.port is None:
+    port = 9003
+else:
+    port = args.port
 
-hostname = '0.0.0.0'
-hostaddr = gethostname()
+if args.open:
+    hostname = '0.0.0.0'
+    hostaddr = gethostname()
+else:
+    hostaddr = hostname = socket.gethostname()
 
 print('DS Hostname =', hostaddr)
 
@@ -61,12 +80,14 @@ app = Flask(__name__)
 # Configuration constants and variables
 agn = Namespace("http://www.agentes.org#")
 
-portGestor = 9011
+# Configuration of the namespaprint(cnt)ce of comercio-electronico ontology
+CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
-GestorProductosExternos = Agent('AgenteSimple',
-                       agn.AgenteSimple,
-                       'http://%s:%d/comm' % (hostaddrGestor, portGestor),
-                       'http://%s:%d/Stop' % (hostaddrGestor, portGestor))
+ServicioDirectorio = Agent('ServicioDirectorio',
+                        CEO.ServicioDirectorio,
+                        '%s/register' % (diraddress),
+                        '%s/Stop' % (diraddress))
+
 
 # Contador de mensajes
 mss_cnt = 0
@@ -77,10 +98,6 @@ ComercioExterno1 = Agent('AgentePersonal',
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
-
-
-# Configuration of the namespaprint(cnt)ce of comercio-electronico ontology
-CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
 
 def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
@@ -111,6 +128,8 @@ def actualizar_info_productos():
         gm.add((p, CEO.categoria, Literal(atributosProducto[1])))
         gm.add((p, CEO.descripcion, Literal(atributosProducto[2])))
         gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[3])))
+    
+    GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno1, ServicioDirectorio)
     
     msg = build_message(gm, perf=ACL.request,
                         sender=ComercioExterno1.uri,

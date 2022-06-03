@@ -120,24 +120,53 @@ def buscarProductos(gm):
         precio_max = gm.value(s, CEO.precio_max)
         precio_min = gm.value(s, CEO.precio_min)
         
-        for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
+        """ CREAR LINIA OFERTA I DEVOLVER ESO"""
+        
+        for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
             categoriap = products_graph.value(s, CEO.categoria)
+            cantidadp = products_graph.value(s, CEO.cantidad)
             categoriaOk = False
+            cantidadOk = False
             if categoriap == categoria:
-                    categoriaOk = True
-                        
-            if categoriaOk:
+                categoriaOk = True
+            if cantidadp >= cantidad:
+                cantidadOk = True
+            
+            if categoriaOk and cantidadOk:
                 oferta = products_graph.value(s, CEO.ofertado_en)
                 precio = products_graph.value(oferta, CEO.precio)
+                gestion_envio = products_graph.value(oferta, CEO.gestion_envio)
                 precioOk = False
                 if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
                     precioOk = True
                 if precioOk:
                     gr.add((s, RDF.type, CEO.Producto))
-                    gr.add((s, CEO.categoria, categoriap))
+                    
                     gr.add((oferta, RDF.type, CEO.Oferta))
                     gr.add((oferta, CEO.precio, precio))
+                    gr.add((oferta, CEO.gestion_envio, gestion_envio))
+                    
+                    
+                    gr.add((s, CEO.categoria, categoriap))
+                    gr.add((s, CEO.cantidad, cantidadp))
                     gr.add((s, CEO.ofertado_en, oferta))
+                    
+                    descripcion = products_graph.value(s, CEO.descripcion)
+                    gr.add((s, CEO.descripcion, descripcion))
+                    
+                    nombre = products_graph.value(s, CEO.nombre)
+                    gr.add((s, CEO.nombre, nombre))
+                    
+                    restricciones_devolucion = products_graph.value(s, CEO.restricciones_devolucion)
+                    gr.add((s, CEO.descrrestricciones_devolucionipcion, restricciones_devolucion))
+                    
+                    tiene_modelo = products_graph.value(s, CEO.tiene_modelo)
+                    gr.add((s, CEO.tiene_modelo, tiene_modelo))
+                    
+                    valoracion_media = products_graph.value(s, CEO.valoracion_media)
+                    gr.add((s, CEO.valoracion_media, valoracion_media))
+                    
+                    
 
     return gr
 
@@ -192,6 +221,7 @@ def comunicacion():
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.BuscarProductos:
                 gr = buscarProductos(gm)
+                print(gr.serialize(format='turtle'))
                 """
                 (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """

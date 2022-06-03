@@ -45,8 +45,7 @@ if __name__ == '__main__':
                           'restricciones_devolucion': 's',
                           'valoracion_media': 'f'}
 
-    ofert_properties = {'cantidad': 'i',
-                        'gestion_envio' : 's',
+    ofert_properties = {'gestion_envio' : 's',
                         'identificador': 'i',
                         'precio': 'f'}
     
@@ -140,12 +139,8 @@ if __name__ == '__main__':
                 val2 = Literal(number2)
             # el atributo es entero
             elif of_value == 'i':
-                if of_key == 'cantidad':
-                    val = Literal(1)
-                    val2 = val
-                else:
-                    val = Literal(random.randint(0, 50))
-                    val2 = Literal(random.randint(0, 50))
+                val = Literal(random.randint(0, 50))
+                val2 = Literal(random.randint(0, 50))
             # el atributo es string
             else:
                 if of_key == 'gestion_envio':
@@ -168,6 +163,6 @@ if __name__ == '__main__':
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)
-    ofile = open('informacion productos.ttl', "w")
+    ofile = open('../informacion productos.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()

@@ -9,21 +9,8 @@ RandomInfo
 
     Genera un grafo RDF con aserciones generando los valores de los atributos aleatoriamente
 
-    Asumimos que tenemos ya definida una ontologia y simplemente escogemos una o varias de las clases
-    y generamos aleatoriamente los valores para sus atributos.
+    Corresponde a la BD de Información productos
 
-    Solo tenemos que añadir aserciones al grafo RDFlib y despues grabarlo en OWL (o turtle), el resultado
-    deberia poder cargarse en Protege, en un grafo RDFlib o en una triplestore (Stardog, Fuseki, ...)
-
-    Se puede añadir tambien aserciones sobre las clases y los atributos si no estan ya en una ontologia
-      que hayamos elaborado con Protege
-
-:Authors: bejar
-    
-
-:Version: 
-
-:Created on: 22/04/2016 12:30 
 
 """
 
@@ -58,8 +45,7 @@ if __name__ == '__main__':
                           'restricciones_devolucion': 's',
                           'valoracion_media': 'f'}
 
-    ofert_properties = {'cantidad': 'i',
-                        'gestion_envio' : 's',
+    ofert_properties = {'gestion_envio' : 's',
                         'identificador': 'i',
                         'precio': 'f'}
     
@@ -153,16 +139,13 @@ if __name__ == '__main__':
                 val2 = Literal(number2)
             # el atributo es entero
             elif of_value == 'i':
-                if of_key == 'cantidad':
-                    val = Literal(1)
-                    val2 = val
-                else:
-                    val = Literal(random.randint(0, 50))
-                    val2 = Literal(random.randint(0, 50))
+                val = Literal(random.randint(0, 50))
+                val2 = Literal(random.randint(0, 50))
             # el atributo es string
             else:
                 if of_key == 'gestion_envio':
-                    val = Literal('interna')
+                    tipoGestion = ['interna', 'externa']
+                    val = Literal(random.choice(tipoGestion))
                     val2 = val
                 else:
                     val = Literal(random_name(str(prop_key)))
@@ -180,6 +163,6 @@ if __name__ == '__main__':
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)
-    ofile = open('product.ttl', "w")
+    ofile = open('../informacion productos.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()

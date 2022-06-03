@@ -32,6 +32,8 @@ import socket
 import requests
 import json
 
+from DirectoryOps import search_agent
+
 
 __author__ = 'raul'
 
@@ -97,43 +99,6 @@ Asistente = Agent('Asistente',
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
-def obtener_agente(agn_uri):
-    # Obtiene un agente
-    gm = Graph()
-    gm.namespace_manager.bind('rdf', RDF)
-    gm.namespace_manager.bind('ceo', CEO)
-
-    ba = CEO.buscaragente
-    gm.add((ba, RDF.type, CEO.BuscarAgente))
-    gm.add((CEO.BuscarAgente, RDFS.subClassOf, CEO.Accion))
-    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
-
-    a = CEO.agente
-    gm.add((a, RDF.type, agn_uri))
-    gm.add((agn_uri, RDFS.subClassOf, CEO.Agente))
-    gm.add((ba, CEO.con_agente, a))
-
-    print(gm.serialize(format='turtle'))
-
-    msg = build_message(gm,
-                        ACL.request,
-                        sender=Asistente.uri,
-                        receiver=ServicioDirectorio.uri,
-                        content=ba)
-
-    gr = send_message(msg, ServicioDirectorio.address)
-
-    print(gr.serialize(format='turtle'))
-
-    address = gr.value(subject=CEO.agente, predicate=CEO.direccion)
-
-    print('address: ' + address)
-
-    return Agent('BuscadorProductos',
-                 CEO.BuscadorProductos,
-                 address,
-                 '')
-
 def buscar_productos():
     ncategorias = int(input("Introduce la cantidad de categorias de productos que te interesan:"))
     print("Introduce las categorias de productos que te interesan:")
@@ -170,8 +135,7 @@ def buscar_productos():
     
     # print(gm.serialize(format='turtle'))
 
-    BuscadorProductos = obtener_agente(CEO.BuscadorProductos)
-    print('Buscador address: ' + BuscadorProductos.address)
+    BuscadorProductos = search_agent(CEO.BuscadorProductos, Asistente, ServicioDirectorio)
 
     msg = build_message(gm,
                         perf=ACL.request,

@@ -38,9 +38,41 @@ def register_agent(agent, ds, logger):
     logger.info(gr.serialize(format='turtle'))
 
     if (None, ACL.performative, ACL.confirm) in gr:
-        print('\n  * Registro de agente CONFIRMADO')
+        print('\n * Registro de agente CONFIRMADO')
     else:
-        print('\n  * Registro de agente NO confirmado')
+        print('\n * Registro de agente NO confirmado')
+
+
+def unregister_agent(agent, ds):
+    # Desregistro del ServicioDirectorio
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
+    
+    ra = CEO.desregistraragente
+    gm.add((ra, RDF.type, CEO.DesregistrarAgente))
+    gm.add((CEO.DesregistrarAgente, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+
+    a = CEO.agente
+    gm.add((a, RDF.type, agent.uri))
+    gm.add((agent.uri, RDFS.subClassOf, CEO.Agente))
+    gm.add((a, CEO.direccion, Literal(agent.address)))
+    gm.add((a, CEO.uri, agent.uri))
+    gm.add((ra, CEO.con_agente, a))
+
+    msg = build_message(gm,
+                        ACL.request,
+                        sender=agent.uri,
+                        receiver=ds.uri,
+                        content=ra)
+    
+    gr = send_message(msg, ds.address)
+
+    if (None, ACL.performative, ACL.confirm) in gr:
+        print('\n * Desregistro de agente CONFIRMADO')
+    else:
+        print('\n * Desregistro de agente NO confirmado')
 
 
 def search_agent(agn_uri, agent, ds):

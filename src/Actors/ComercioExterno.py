@@ -102,7 +102,7 @@ ComercioExterno = Agent('AgentePersonal',
 def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
     print("Introduce el nombre del producto y sus atributos a cambiar (insertar '-' si no se desea cambiar")
-    print("\tFormato: nombre(str) categoria(str) descripcion(str) restricciones_devolucion(str)")
+    print("\tFormato: nombre(str) cantidad(int) categoria(str) descripcion(str) precio(float) restricciones_devolucion(str)")
     """
     Ampliar en un futuro para que se pueda cambiar todo tipo de información y que sea el gestor
     de productos externos el que decida a quien enviar esta informacion. De momento solo se puede cambiar la
@@ -120,16 +120,23 @@ def actualizar_info_productos():
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
 
     for i in range(nproductos):
-        # Lee una linea de terminal que sorresponde con un Producto (no entero)
+        # Lee una linea de terminal que sorresponde con parte de la inforacion de un Producto
         atributosProducto = input().split()
+        print(atributosProducto)
         # Añade la LineaBusqueda al grafo
         p = CEO[atributosProducto[0]]
         gm.add((p, RDF.type, CEO.Producto))
-        gm.add((p, CEO.categoria, Literal(atributosProducto[1])))
-        gm.add((p, CEO.descripcion, Literal(atributosProducto[2])))
-        gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[3])))
+        if atributosProducto[1] != '-': gm.add((p, CEO.cantidad, Literal(atributosProducto[1])))
+        if atributosProducto[2] != '-': gm.add((p, CEO.categoria, Literal(atributosProducto[2])))
+        if atributosProducto[3] != '-': gm.add((p, CEO.descripcion, Literal(atributosProducto[3])))
+        if atributosProducto[4] != '-': gm.add((p, CEO.precio, Literal(atributosProducto[4])))
+        if atributosProducto[5] != '-': gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[5])))
     
     GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
+    
+    print("printando gestor productos externos\n")
+    print(GestorProductosExternos)
+    print(gm.serialize(format='turtle'))
     
     msg = build_message(gm, perf=ACL.request,
                         sender=ComercioExterno.uri,

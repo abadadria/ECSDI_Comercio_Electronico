@@ -128,13 +128,17 @@ def gestionarActualizacion(ge):
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
     
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        descripcion = ge.value(s, CEO.descripcion)
+        cantidad = ge.value(s, CEO.cantidad)
         categoria = ge.value(s, CEO.categoria)
+        descripcion = ge.value(s, CEO.descripcion)
+        precio = ge.value(s, CEO.precio)
         restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
         gm.add((s, RDF.type, CEO.Producto))
-        gm.add((s, CEO.categoria, Literal(descripcion)))
-        gm.add((s, CEO.descripcion, Literal(categoria)))
-        gm.add((s, CEO.restricciones_devolucion, Literal(restricciones_devolucion)))
+        if cantidad != None: gm.add((s, CEO.cantidad, Literal(cantidad)))
+        if categoria != None: gm.add((s, CEO.categoria, Literal(categoria)))
+        if descripcion != None: gm.add((s, CEO.descripcion, Literal(descripcion)))
+        if precio != None: gm.add((s, CEO.precio, Literal(precio)))
+        if restricciones_devolucion != None: gm.add((s, CEO.restricciones_devolucion, Literal(restricciones_devolucion)))
 
     BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
 
@@ -191,7 +195,6 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.ActualizarInformacionProductos:
-                print(gm.serialize(format='turtle'))
                 ab1 = Process(target=gestionarActualizacion, args=(gm,))
                 ab1.start()
                 gr = build_message( Graph(),

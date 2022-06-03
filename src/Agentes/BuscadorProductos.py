@@ -30,6 +30,7 @@ from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
 from decimal import Decimal
+from multiprocessing import Process
 
 from DirectoryOps import register_agent
 
@@ -108,68 +109,57 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
+def buscarProductos(gm):
+    gr = Graph()
+    gr.namespace_manager.bind('rdf', RDF)
+    gr.namespace_manager.bind('ceo', CEO)
+    
+    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+        cantidad = gm.value(s, CEO.cantidad)
+        categoria = gm.value(s, CEO.categoria)
+        precio_max = gm.value(s, CEO.precio_max)
+        precio_min = gm.value(s, CEO.precio_min)
+        
+        for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
+            categoriap = products_graph.value(s, CEO.categoria)
+            categoriaOk = False
+            if categoriap == categoria:
+                    categoriaOk = True
+                        
+            if categoriaOk:
+                oferta = products_graph.value(s, CEO.ofertado_en)
+                precio = products_graph.value(oferta, CEO.precio)
+                precioOk = False
+                if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
+                    precioOk = True
+                if precioOk:
+                    gr.add((s, RDF.type, CEO.Producto))
+                    gr.add((s, CEO.categoria, categoriap))
+                    gr.add((oferta, RDF.type, CEO.Oferta))
+                    gr.add((oferta, CEO.precio, precio))
+                    gr.add((s, CEO.ofertado_en, oferta))
+
+    return gr
+
+
+def gestionarActualizacion(ge):    
+    """
+    Actualizar estado del grafo products_graph
+    """
+    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        descripcion = ge.value(s, CEO.descripcion)
+        categoria = ge.value(s, CEO.categoria)
+        restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
+        
+
+    return
+
+
 @app.route("/comm")
 def comunicacion():
     """
     Entrypoint de comunicacion
     """
-
-    def buscarProductos():
-        gr = Graph()
-        gr.namespace_manager.bind('rdf', RDF)
-        gr.namespace_manager.bind('ceo', CEO)
-        
-        for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
-            cantidad = gm.value(s, CEO.cantidad)
-            categoria = gm.value(s, CEO.categoria)
-            precio_max = gm.value(s, CEO.precio_max)
-            precio_min = gm.value(s, CEO.precio_min)
-            
-            
-            ''' NO FUNCIONA
-            
-            # FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-            
-            query = """PREFIX ceo: <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#>
-                    SELECT ?Oferta ?Producto ?categoria ?precio
-                    WHERE {
-                        ?Oferta rdf:type ceo:Oferta .
-                        ?Oferta ceo:precio ?precio .
-                        ?Producto ceo:ofertado_en ?Oferta .
-                        ?Producto ceo:categoria ?categoria .
-                        FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-                    }"""
-            
-            graph = products_graph.query(query, initNs= {'rdf', RDF})
-            
-            print('graph despues de query)
-            for row in graph:
-                print(row)
-            print('graph despues de query)    
-            
-            '''
-            
-            for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
-                categoriap = products_graph.value(s, CEO.categoria)
-                categoriaOk = False
-                if categoriap == categoria:
-                     categoriaOk = True
-                            
-                if categoriaOk:
-                    oferta = products_graph.value(s, CEO.ofertado_en)
-                    precio = products_graph.value(oferta, CEO.precio)
-                    precioOk = False
-                    if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
-                        precioOk = True
-                    if precioOk:
-                        gr.add((s, RDF.type, CEO.Producto))
-                        gr.add((s, CEO.categoria, categoriap))
-                        gr.add((oferta, RDF.type, CEO.Oferta))
-                        gr.add((oferta, CEO.precio, precio))
-                        gr.add((s, CEO.ofertado_en, oferta))
-
-        return gr
-
 
     message = request.args['content']
     gm = Graph()
@@ -201,14 +191,24 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.BuscarProductos:
-                gr = buscarProductos()
+                gr = buscarProductos(gm)
+                """
+                (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
+                """
+            elif accion == CEO.ActualizarInformacionProductos:
+                ab1 = Process(target=gestionarActualizacion, args=(gm,))
+                ab1.start()
+                
+                print(gm.serialize(format='turtle'))
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=BuscadorProductos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
                                 sender=BuscadorProductos.uri)
             
     return gr.serialize(format='xml')
-    
 
 
 @app.route("/Stop")
@@ -238,11 +238,18 @@ def agentbehavior1(cola):
 
     :return:
     """
+    """
+    Aqui metemos la comunicacion con el servicio directoria para registrarse como agente buscadorProductos
+    """
+    
+    
     pass
     
     
 def setup():
-    products_graph.parse('product.ttl', format='turtle')
+    products_graph.parse('informacion productos.ttl', format='turtle')
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
 
 
 if __name__ == '__main__':

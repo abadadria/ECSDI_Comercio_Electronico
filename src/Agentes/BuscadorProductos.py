@@ -31,6 +31,8 @@ from AgentUtil.Util import gethostname
 
 from decimal import Decimal
 
+from DirectoryOps import register_agent
+
 
 __author__ = 'adria'
 
@@ -242,41 +244,6 @@ def agentbehavior1(cola):
 def setup():
     products_graph.parse('product.ttl', format='turtle')
 
-    # Registro al ServicioDirectorio
-    gm = Graph()
-    gm.namespace_manager.bind('rdf', RDF)
-    gm.namespace_manager.bind('ceo', CEO)
-
-    ra = CEO.registraragente
-    gm.add((ra, RDF.type, CEO.RegistrarAgente))
-    gm.add((CEO.RegistrarAgente, RDFS.subClassOf, CEO.Accion))
-    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
-
-    a = CEO.agente
-    gm.add((a, RDF.type, CEO.BuscadorProductos))
-    gm.add((CEO.BuscadorProductos, RDFS.subClassOf, CEO.Agente))
-    gm.add((a, CEO.direccion, Literal(BuscadorProductos.address)))
-    gm.add((a, CEO.uri, BuscadorProductos.uri))
-    gm.add((ra, CEO.con_agente, a))
-
-    logger.info('Peticion de registro al ServicioDirectorio')
-    logger.info(gm.serialize(format='turtle'))
-
-    msg = build_message(gm,
-                        ACL.request,
-                        sender=BuscadorProductos.uri,
-                        receiver=ServicioDirectorio.uri,
-                        content=ra)
-    
-    gr = send_message(msg, ServicioDirectorio.address)
-
-    logger.info(gr.serialize(format='turtle'))
-
-    if (None, ACL.performative, ACL.confirm) in gr:
-        print('\n  * Registro de agente CONFIRMADO')
-    else:
-        print('\n  * Registro de agente NO confirmado')
-
 
 if __name__ == '__main__':
     # Ponemos en marcha los behaviors
@@ -284,6 +251,7 @@ if __name__ == '__main__':
     ab1.start()
     
     setup()
+    register_agent(BuscadorProductos, ServicioDirectorio, logger)
 
     print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 

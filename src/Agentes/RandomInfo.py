@@ -131,6 +131,6 @@ if __name__ == '__main__':
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)
-    ofile = open('../informacion productos.ttl', "w")
+    ofile = open('informacion productos.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()

@@ -128,6 +128,13 @@ def gestionarActualizacion(ge):
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
     
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        
+        for ss, pp, oo in ge.triples((s,None,None)):
+            atributo = ge.value(s, pp)
+            if atributo != None: 
+                gm.add((ss, pp, atributo))
+        
+        """
         cantidad = ge.value(s, CEO.cantidad)
         categoria = ge.value(s, CEO.categoria)
         descripcion = ge.value(s, CEO.descripcion)
@@ -139,6 +146,7 @@ def gestionarActualizacion(ge):
         if descripcion != None: gm.add((s, CEO.descripcion, Literal(descripcion)))
         if precio != None: gm.add((s, CEO.precio, Literal(precio)))
         if restricciones_devolucion != None: gm.add((s, CEO.restricciones_devolucion, Literal(restricciones_devolucion)))
+        """
 
     BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
 

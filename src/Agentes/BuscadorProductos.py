@@ -120,8 +120,6 @@ def buscarProductos(gm):
         precio_max = gm.value(s, CEO.precio_max)
         precio_min = gm.value(s, CEO.precio_min)
         
-        """ CREAR LINIA OFERTA I DEVOLVER ESO"""
-        
         for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
             categoriap = products_graph.value(s, CEO.categoria)
             cantidadp = products_graph.value(s, CEO.cantidad)
@@ -181,16 +179,29 @@ def buscarProductos(gm):
 
     return gr
 
+# Product_11 60 - - - -
 
 def gestionarActualizacion(ge):    
     """
     Actualizar estado del grafo products_graph
     """
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        descripcion = ge.value(s, CEO.descripcion)
+        cantidad = ge.value(s, CEO.cantidad)
         categoria = ge.value(s, CEO.categoria)
+        descripcion = ge.value(s, CEO.descripcion)
+        precio = ge.value(s, CEO.precio)
         restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
         
+        for ss, pp, oo in products_graph.triples((s,None,None)):
+            atributo = ge.value(s, pp)
+            print("printando atributo")
+            print(atributo)
+            if atributo != None and atributo != RDF.type: 
+                products_graph.set((ss, pp, Literal(atributo)))
+    
+    ofile = open('informacion productos.ttl', "w")
+    ofile.write(products_graph.serialize(format='turtle'))
+    ofile.close()        
 
     return
 

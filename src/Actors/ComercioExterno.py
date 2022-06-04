@@ -27,8 +27,8 @@ from AgentUtil.Logging import config_logger
 from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 import socket
-import requests
-import json
+import threading
+import time
 
 from DirectoryOps import search_agent
 
@@ -187,11 +187,70 @@ def setup():
     
     return
 
+@app.route("/comm")
+def comunicacion():
+    """
+    Entrypoint de comunicacion
+    """
+
+    message = request.args['content']
+    gm = Graph()
+    gm.parse(data=message, format='xml')
+
+    msgdic = get_message_properties(gm)
+
+    # Comprobamos que sea un mensaje FIPA ACL
+    if not msgdic:
+        # Si no es, respondemos que no hemos entendido el mensaje
+        gr = build_message(Graph(),
+                           ACL['not-understood'],
+                           sender=ComercioExterno.uri)
+    else:
+        # Obtenemos la performativa
+        if msgdic['performative'] != ACL.request:
+            # Si no es un request, respondemos que no hemos entendido el mensaje
+            gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=ComercioExterno.uri)
+        else:
+            # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
+            content = msgdic['content']
+
+            # Averiguamos el tipo de la accion
+            accion = gm.value(subject=content, predicate=RDF.type)
+
+            # Aqui realizariamos lo que pide la accion
+            # Por ahora simplemente retornamos un Inform-done
+            if accion == CEO.ActualizarInformacionProductos:
+                pass
+            else:
+                gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=ComercioExterno.uri)
+            
+    return gr.serialize(format='xml')
+
+
+@app.route("/Stop")
+def stop():
+    """
+    Entrypoint que para el agente
+
+    :return:
+    """
+    shutdown_server()
+    return "Parando Servidor"
+    
 
 if __name__ == '__main__':
     setup()
-    print("Bienvenido a ComercioExterno")
+    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
     
+    threading.Thread(target=lambda: app.run(host=hostname, port=port)).start()
+    
+    time.sleep(0.5)
+    print("Bienvenido a ComercioExterno")
     while 1:
         print("Que acción deseas realizar?")
         print("[1] Actualizar información productos")
@@ -202,4 +261,3 @@ if __name__ == '__main__':
             exit()
         else:
             do(value)
-    

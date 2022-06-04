@@ -132,20 +132,6 @@ def gestionarActualizacion(ge):
             atributo = ge.value(s, pp)
             if atributo != None: 
                 gm.add((ss, pp, atributo))
-        
-        """
-        cantidad = ge.value(s, CEO.cantidad)
-        categoria = ge.value(s, CEO.categoria)
-        descripcion = ge.value(s, CEO.descripcion)
-        precio = ge.value(s, CEO.precio)
-        restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
-        gm.add((s, RDF.type, CEO.Producto))
-        if cantidad != None: gm.add((s, CEO.cantidad, Literal(cantidad)))
-        if categoria != None: gm.add((s, CEO.categoria, Literal(categoria)))
-        if descripcion != None: gm.add((s, CEO.descripcion, Literal(descripcion)))
-        if precio != None: gm.add((s, CEO.precio, Literal(precio)))
-        if restricciones_devolucion != None: gm.add((s, CEO.restricciones_devolucion, Literal(restricciones_devolucion)))
-        """
 
     BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
 

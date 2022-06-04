@@ -1,3 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+
+Esqueleto de agente usando los servicios web de Flask
+
+/Stop es la entrada que para el agente
+
+Tiene una funcion AgentBehavior1 que se lanza como un thread concurrente
+
+Asume que el agente de registro esta en el puerto 9000
+
+"""
+
 import logging
 from multiprocessing import Process, Queue
 import socket
@@ -17,11 +30,12 @@ from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
 from decimal import Decimal
+from multiprocessing import Process
 
-from DirectoryOps import register_agent, unregister_agent
+from DirectoryOps import register_agent, search_agent
 
 
-__author__ = 'raul'
+__author__ = 'adria'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -53,7 +67,7 @@ else:
 
 # Configuration stuff
 if args.port is None:
-    port = 9020
+    port = 9030
 else:
     port = args.port
 
@@ -71,11 +85,10 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 
 # Contador de mensajes
 mss_cnt = 0
-n_pedidos = 0
 
 # Datos del Agente
-GestorPedidos = Agent('GestorPedidos',
-                       CEO.GestorPedidos,
+GestorProductosExternos = Agent('GestorProductosExternos',
+                       CEO.GestorProductosExternos,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
@@ -85,7 +98,9 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/Stop' % (diraddress))
 
 # Global triplestore graph
-grafo_pedidos = Graph()
+products_graph = Graph()
+
+cola1 = Queue()
 
 # Flask stuff
 app = Flask(__name__)
@@ -94,30 +109,54 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
-def cobrar_pedido():
-    pass
 
-def almacenar_pedido_cerrado():
-    pass
 
-def actualizar_informacion_productos():
-    pass
+def gestionarActualizacion(ge):
+    """
+    De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro
+    Ahora solo redirecciona, en un futuro tendra que separar la informacion y enviar varios mensajes
+    """
+
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
+    
+    bp = CEO.ActualizarInformacionProductos
+    gm.add((bp, RDF.type, CEO.ActualizarInformacionProductos))
+    gm.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    
+    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        
+        for ss, pp, oo in ge.triples((s,None,None)):
+            atributo = ge.value(s, pp)
+            if atributo != None: 
+                gm.add((ss, pp, atributo))
+
+    BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
+
+    msg = build_message(gm, perf=ACL.request,
+                        sender=GestorProductosExternos.uri,
+                        receiver=BuscadorProductos.uri,
+                        content=bp)
+
+    gr = send_message(msg, BuscadorProductos.address)
+        
+    msgdic = get_message_properties(gr)
+    if msgdic['performative'] == ACL.confirm:
+        print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
+    else:
+        print('\n' + 'Ha habido un error durante el proceso\n ')
+    
+    return
+
+        
 
 @app.route("/comm")
 def comunicacion():
     """
     Entrypoint de comunicacion
     """
-    def crear_pedido():
-        gr = Graph()
-        gr.namespace_manager.bind('rdf', RDF)
-        gr.namespace_manager.bind('ceo', CEO)
-
-        p = CEO['pedido_' + str(n_pedidos)]
-        gr.add((p, RDF.type, CEO.Pedido))
-        gr.add(())
-        pass
-    
 
     message = request.args['content']
     gm = Graph()
@@ -130,10 +169,15 @@ def comunicacion():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(),
                            ACL['not-understood'],
-                           sender=GestorPedidos.uri)
+                           sender=GestorProductosExternos.uri)
     else:
         # Obtenemos la performativa
-        if msgdic['performative'] == ACL.request:
+        if msgdic['performative'] != ACL.request:
+            # Si no es un request, respondemos que no hemos entendido el mensaje
+            gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=GestorProductosExternos.uri)
+        else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
             content = msgdic['content']
@@ -143,40 +187,44 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.RealizarPedido:
-                gr = crear_pedido()
+            if accion == CEO.ActualizarInformacionProductos:
+                ab1 = Process(target=gestionarActualizacion, args=(gm,))
+                ab1.start()
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=GestorProductosExternos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=GestorPedidos.uri)
-        elif msgdic['performative'] == ACL.inform:
-            pass
-        else:
-            # Si no es un request ni un inform, respondemos que no hemos entendido el mensaje
-            gr = build_message( Graph(),
-                                ACL['not-understood'],
-                                sender=GestorPedidos.uri)
+                                sender=GestorProductosExternos.uri)
             
     return gr.serialize(format='xml')
 
 
+@app.route("/Stop")
+def stop():
+    """
+    Entrypoint que para el agente
+
+    :return:
+    """
+    shutdown_server()
+    return "Parando Servidor"
+    
+    
 def setup():
-    pass
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
 
-def tidyup():
-    """
-    Acciones previas a parar el agente
 
-    """
-    unregister_agent(GestorPedidos, ServicioDirectorio)
-
-if __name__ == '__main__':
+if __name__ == '__main__': 
     setup()
-    register_agent(GestorPedidos, ServicioDirectorio, logger)
+    
+    register_agent(GestorProductosExternos, ServicioDirectorio, logger)
 
-    print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
+    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
-    tidyup()
+
     print('The End')

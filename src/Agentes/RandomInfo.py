@@ -9,21 +9,8 @@ RandomInfo
 
     Genera un grafo RDF con aserciones generando los valores de los atributos aleatoriamente
 
-    Asumimos que tenemos ya definida una ontologia y simplemente escogemos una o varias de las clases
-    y generamos aleatoriamente los valores para sus atributos.
+    Corresponde a la BD de Información productos
 
-    Solo tenemos que añadir aserciones al grafo RDFlib y despues grabarlo en OWL (o turtle), el resultado
-    deberia poder cargarse en Protege, en un grafo RDFlib o en una triplestore (Stardog, Fuseki, ...)
-
-    Se puede añadir tambien aserciones sobre las clases y los atributos si no estan ya en una ontologia
-      que hayamos elaborado con Protege
-
-:Authors: bejar
-    
-
-:Version: 
-
-:Created on: 22/04/2016 12:30 
 
 """
 
@@ -56,12 +43,9 @@ if __name__ == '__main__':
                           'categoria': 's',
                           'descripcion': 's',
                           'restricciones_devolucion': 's',
+                          'gestion_envio' : 's',
+                          'precio': 'f',
                           'valoracion_media': 'f'}
-
-    ofert_properties = {'cantidad': 'i',
-                        'gestion_envio' : 's',
-                        'identificador': 'i',
-                        'precio': 'f'}
     
     categorias_productos = ['producto_hogar', 
                             'ropa', 
@@ -117,14 +101,18 @@ if __name__ == '__main__':
         # Le asignamos una propiedad nombre al producto
         products_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
         # Le asignamos un modelo al producto
-        products_graph.add((CEO[rproduct], CEO.tiene_modelo, Literal(modelos[i])))
+        products_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
         
         # Generamos sus atributos
         for prop_key, prop_value in product_properties.items():
             # el atributo es real
             if prop_value == 'f':
-                number = format(round(random.uniform(0, 10), 2), '.2f')
-                val = Literal(number)
+                if prop_key == 'precio':
+                    number = format(round(random.uniform(0, 100), 2), '.2f')
+                    val = Literal(number)
+                else:
+                    number = format(round(random.uniform(0, 10), 2), '.2f')
+                    val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
                 val = Literal(random.randint(0, 50))
@@ -132,54 +120,17 @@ if __name__ == '__main__':
             else:
                 if prop_key == 'categoria':
                     val = Literal(random.choice(categorias_productos))
+                elif prop_key == 'gestion_envio':
+                    tipoGestion = ['interna', 'externa']
+                    val = Literal(random.choice(tipoGestion))
                 else:
                     val = Literal(random_name(str(prop_key)))
             products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
-
-        # generamos dos instancias de oferta para cada uno de los productos creados
-        oferta1 = 'Oferta_1_' + rproduct
-        oferta2 = 'Oferta_2_' + rproduct
-
-        # Añadimos la instancia de oferta
-        products_graph.add((CEO[oferta1], RDF.type, CEO.Oferta))
-        products_graph.add((CEO[oferta2], RDF.type, CEO.Oferta))
-
-        for of_key, of_value in ofert_properties.items():
-            # el atributo es real
-            if of_value == 'f':
-                number = format(round(random.uniform(0, 100), 2), '.2f')
-                number2 = format(round(random.uniform(0, 100), 2), '.2f')
-                val = Literal(number)
-                val2 = Literal(number2)
-            # el atributo es entero
-            elif of_value == 'i':
-                if of_key == 'cantidad':
-                    val = Literal(1)
-                    val2 = val
-                else:
-                    val = Literal(random.randint(0, 50))
-                    val2 = Literal(random.randint(0, 50))
-            # el atributo es string
-            else:
-                if of_key == 'gestion_envio':
-                    val = Literal('interna')
-                    val2 = val
-                else:
-                    val = Literal(random_name(str(prop_key)))
-                    val2 = Literal(random_name(str(prop_key)))
-
-            products_graph.add((CEO[oferta1], CEO[of_key], val))
-            products_graph.add((CEO[oferta2], CEO[of_key], val2))
-
-        
-        
-        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta1]))
-        products_graph.add((CEO[rproduct], CEO.ofertado_en, CEO[oferta2]))
 
 
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)
-    ofile = open('product.ttl', "w")
+    ofile = open('informacion productos.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()

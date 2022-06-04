@@ -18,6 +18,7 @@ from SPARQLWrapper import SPARQLWrapper
 import argparse
 
 from flask import Flask, request, render_template
+from numpy import prod
 from rdflib import Graph, RDF, Namespace, RDFS, Literal
 from rdflib.namespace import FOAF
 
@@ -30,6 +31,7 @@ from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 
 from decimal import Decimal
+from multiprocessing import Process
 
 from DirectoryOps import register_agent, unregister_agent
 
@@ -108,68 +110,96 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
+def buscarProductos(gm):
+    gr = Graph()
+    gr.namespace_manager.bind('rdf', RDF)
+    gr.namespace_manager.bind('ceo', CEO)
+    
+    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+        cantidad = gm.value(s, CEO.cantidad)
+        categoria = gm.value(s, CEO.categoria)
+        precio_max = gm.value(s, CEO.precio_max)
+        precio_min = gm.value(s, CEO.precio_min)
+        
+        for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
+            categoriap = products_graph.value(s, CEO.categoria)
+            cantidadp = products_graph.value(s, CEO.cantidad)
+            categoriaOk = False
+            cantidadOk = False
+            if categoriap == categoria:
+                categoriaOk = True
+            if cantidadp >= cantidad:
+                cantidadOk = True
+            
+            if categoriaOk and cantidadOk:
+                precio = products_graph.value(s, CEO.precio)
+                gestion_envio = products_graph.value(s, CEO.gestion_envio)
+                precioOk = False
+                if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
+                    precioOk = True
+                if precioOk:
+                    # Añadimos toda la informacion necessaria: producto, oferta, modelo, marca
+                    gr.add((s, RDF.type, CEO.Producto))
+                    gr.add((s, CEO.precio, precio))
+                    gr.add((s, CEO.gestion_envio, gestion_envio))
+                    gr.add((s, CEO.categoria, categoriap))
+                    gr.add((s, CEO.cantidad, cantidadp))
+                    
+                    descripcion = products_graph.value(s, CEO.descripcion)
+                    gr.add((s, CEO.descripcion, descripcion))
+                    
+                    nombre = products_graph.value(s, CEO.nombre)
+                    gr.add((s, CEO.nombre, nombre))
+                    
+                    restricciones_devolucion = products_graph.value(s, CEO.restricciones_devolucion)
+                    gr.add((s, CEO.restricciones_devolucion, restricciones_devolucion))
+                    
+                    valoracion_media = products_graph.value(s, CEO.valoracion_media)
+                    gr.add((s, CEO.valoracion_media, valoracion_media))
+                    
+                    modelo = products_graph.value(s, CEO.tiene_modelo)
+                    gr.add((s, CEO.tiene_modelo, modelo))
+                    
+                    # Creamos las instancias de marca y modelo
+                    gr.add((modelo, RDF.type, CEO.Modelo))
+                    nombreModelo = products_graph.value(modelo, CEO.nombre)
+                    gr.add((modelo, CEO.nombre, nombreModelo))
+                    tiene_marca = products_graph.value(modelo, CEO.tiene_marca)
+                    gr.add((tiene_marca, RDF.type, CEO.Marca))
+                    gr.add((modelo, CEO.tiene_marca, tiene_marca))
+                    nombreMarca = products_graph.value(tiene_marca, CEO.nombre)
+                    gr.add((tiene_marca, CEO.nombre, nombreMarca))
+                    
+                    
+
+    return gr
+
+# Product_11 60 - - - -
+
+def gestionarActualizacion(ge):    
+    """
+    Actualizar estado del grafo products_graph
+    """
+    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+      
+        for ss, pp, oo in products_graph.triples((s,None,None)):
+            atributo = ge.value(s, pp)
+            if atributo != None and atributo != RDF.type: 
+                products_graph.set((ss, pp, Literal(atributo)))
+                products_graph.set((ss, RDF.type, CEO.Producto))
+    
+    ofile = open('informacion productos.ttl', "w")
+    ofile.write(products_graph.serialize(format='turtle'))
+    ofile.close()        
+
+    return
+
+
 @app.route("/comm")
 def comunicacion():
     """
     Entrypoint de comunicacion
     """
-
-    def buscarProductos():
-        gr = Graph()
-        gr.namespace_manager.bind('rdf', RDF)
-        gr.namespace_manager.bind('ceo', CEO)
-        
-        for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
-            cantidad = gm.value(s, CEO.cantidad)
-            categoria = gm.value(s, CEO.categoria)
-            precio_max = gm.value(s, CEO.precio_max)
-            precio_min = gm.value(s, CEO.precio_min)
-            
-            
-            ''' NO FUNCIONA
-            
-            # FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-            
-            query = """PREFIX ceo: <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#>
-                    SELECT ?Oferta ?Producto ?categoria ?precio
-                    WHERE {
-                        ?Oferta rdf:type ceo:Oferta .
-                        ?Oferta ceo:precio ?precio .
-                        ?Producto ceo:ofertado_en ?Oferta .
-                        ?Producto ceo:categoria ?categoria .
-                        FILTER (?precio <= '""" + str(precio_max) + """' && ?precio >= '""" + str(precio_min) + """' && ?categoria = '""" + categoria + """')
-                    }"""
-            
-            graph = products_graph.query(query, initNs= {'rdf', RDF})
-            
-            print('graph despues de query)
-            for row in graph:
-                print(row)
-            print('graph despues de query)    
-            
-            '''
-            
-            for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):                
-                categoriap = products_graph.value(s, CEO.categoria)
-                categoriaOk = False
-                if categoriap == categoria:
-                     categoriaOk = True
-                            
-                if categoriaOk:
-                    oferta = products_graph.value(s, CEO.ofertado_en)
-                    precio = products_graph.value(oferta, CEO.precio)
-                    precioOk = False
-                    if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
-                        precioOk = True
-                    if precioOk:
-                        gr.add((s, RDF.type, CEO.Producto))
-                        gr.add((s, CEO.categoria, categoriap))
-                        gr.add((oferta, RDF.type, CEO.Oferta))
-                        gr.add((oferta, CEO.precio, precio))
-                        gr.add((s, CEO.ofertado_en, oferta))
-
-        return gr
-
 
     message = request.args['content']
     gm = Graph()
@@ -201,14 +231,23 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.BuscarProductos:
-                gr = buscarProductos()
+                gr = buscarProductos(gm)
+                """
+                (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
+                """
+            elif accion == CEO.ActualizarInformacionProductos:
+                ab1 = Process(target=gestionarActualizacion, args=(gm,))
+                ab1.start()
+                
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=BuscadorProductos.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
                                 sender=BuscadorProductos.uri)
             
     return gr.serialize(format='xml')
-    
 
 
 @app.route("/Stop")
@@ -218,10 +257,14 @@ def stop():
 
     :return:
     """
-    tidyup()
     shutdown_server()
     return "Parando Servidor"
-
+    
+    
+def setup():
+    products_graph.parse('informacion productos.ttl', format='turtle')
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
 
 def tidyup():
     """
@@ -229,28 +272,8 @@ def tidyup():
 
     """
     unregister_agent(BuscadorProductos, ServicioDirectorio)
-    pass
-    
-
-
-def agentbehavior1(cola):
-    """
-    Un comportamiento del agente
-
-    :return:
-    """
-    pass
-    
-    
-def setup():
-    products_graph.parse('product.ttl', format='turtle')
-
 
 if __name__ == '__main__':
-    # Ponemos en marcha los behaviors
-    ab1 = Process(target=agentbehavior1, args=(cola1,))
-    ab1.start()
-    
     setup()
     register_agent(BuscadorProductos, ServicioDirectorio, logger)
 
@@ -259,7 +282,5 @@ if __name__ == '__main__':
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
 
-    # Esperamos a que acaben los behaviors
-    ab1.join()
     tidyup()
     print('The End')

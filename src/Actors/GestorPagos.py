@@ -102,7 +102,7 @@ ServicioDirectorio = Agent('ServicioDirectorio',
 cobros_graph = Graph()
 cobros_graph.namespace_manager.bind('rdf', RDF)
 cobros_graph.namespace_manager.bind('ceo', CEO)
-ofile = open('informacion cobros.ttl', "w")
+ofile = open('info_cobros.ttl', "w")
 
 cola1 = Queue()
 
@@ -218,7 +218,7 @@ def stop():
     
     
 def setup():
-    cobros_graph.parse('informacion cobros.ttl', format='turtle')
+    cobros_graph.parse('info_cobros.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 

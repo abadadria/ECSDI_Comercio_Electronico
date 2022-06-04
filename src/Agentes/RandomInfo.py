@@ -80,7 +80,6 @@ if __name__ == '__main__':
         # instancia al azar
         rmarca = 'marca_' + str(j)
         marcas[j] = rmarca
-        # print(rmarca)
         # Añadimos la instancia de marca
         products_graph.add((CEO[rmarca], RDF.type, CEO.Marca))
         # Le asignamos una propiedad nombre a la marca
@@ -90,7 +89,6 @@ if __name__ == '__main__':
             # instancia al azar
             rmodelo = 'modelo_' + str(j*10 + k)
             modelos[j*10 + k] = rmodelo
-            # print(rmodelo)
             # Añadimos la instancia de modelo
             products_graph.add((CEO[rmodelo], RDF.type, CEO.Modelo))
             # Le asignamos una propiedad nombre al modelo

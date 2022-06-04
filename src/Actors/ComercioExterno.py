@@ -88,7 +88,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/register' % (diraddress),
                         '%s/Stop' % (diraddress))
 
-
 # Contador de mensajes
 mss_cnt = 0
 
@@ -97,6 +96,8 @@ ComercioExterno = Agent('AgentePersonal',
                        agn.AgentePersonal,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
+
+products_graph = Graph()
 
 
 def actualizar_info_productos():
@@ -152,7 +153,17 @@ def do(value):
             print('\n' + 'Ha habido un error durante el proceso\n ')
         
 
+def setup():
+    if port == 9040: name = 'info_prod_CE1.ttl'
+    elif port == 9041: name = 'info_prod_CE2.ttl'
+    else: name = 'info_prod_CE3.ttl'
+    products_graph.parse(name, format='turtle')
+    
+    print(products_graph.serialize(format='turtle'))
+
+
 if __name__ == '__main__':
+    setup()
     print("Bienvenido a ComercioExterno")
     
     while 1:

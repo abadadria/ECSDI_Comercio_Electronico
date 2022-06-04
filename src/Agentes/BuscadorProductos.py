@@ -18,6 +18,7 @@ from SPARQLWrapper import SPARQLWrapper
 import argparse
 
 from flask import Flask, request, render_template
+from numpy import prod
 from rdflib import Graph, RDF, Namespace, RDFS, Literal
 from rdflib.namespace import FOAF
 
@@ -198,6 +199,7 @@ def gestionarActualizacion(ge):
             print(atributo)
             if atributo != None and atributo != RDF.type: 
                 products_graph.set((ss, pp, Literal(atributo)))
+                products_graph.set((ss, RDF.type, CEO.Producto))
     
     ofile = open('informacion productos.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))

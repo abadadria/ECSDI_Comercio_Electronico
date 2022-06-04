@@ -257,7 +257,7 @@ def stop():
     
     
 def setup():
-    products_graph.parse('informacion productos.ttl', format='turtle')
+    products_graph.parse('info_prod.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 

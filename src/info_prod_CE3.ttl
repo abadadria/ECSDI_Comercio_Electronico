@@ -2,122 +2,122 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ceo:product_50 a ceo:Producto ;
-    ceo:cantidad 19 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_E6AQGJ" ;
+    ceo:cantidad 1 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_LLLADL" ;
     ceo:gestion_envio "interna" ;
     ceo:nombre "product_50" ;
-    ceo:precio "70.36" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_74K4TV" ;
+    ceo:precio "15.43" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_JJHRYV" ;
     ceo:tiene_modelo ceo:modelo_50 ;
-    ceo:valoracion_media "1.52" ;
+    ceo:valoracion_media "1.94" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_51 a ceo:Producto ;
-    ceo:cantidad 40 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_KA4WKG" ;
+    ceo:cantidad 10 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_EFXMZK" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_51" ;
-    ceo:precio "55.43" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_A0ZOVH" ;
+    ceo:precio "12.75" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_M5CO0B" ;
     ceo:tiene_modelo ceo:modelo_51 ;
-    ceo:valoracion_media "7.24" ;
+    ceo:valoracion_media "4.58" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_52 a ceo:Producto ;
-    ceo:cantidad 5 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_KVFKNT" ;
+    ceo:cantidad 27 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_DNJLGE" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_52" ;
-    ceo:precio "82.91" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_OK24JJ" ;
+    ceo:precio "60.46" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_6O196K" ;
     ceo:tiene_modelo ceo:modelo_52 ;
-    ceo:valoracion_media "0.17" ;
+    ceo:valoracion_media "4.30" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_53 a ceo:Producto ;
-    ceo:cantidad 39 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_P4DBKH" ;
+    ceo:cantidad 33 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_U6YX00" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_53" ;
-    ceo:precio "81.19" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_08XBFY" ;
+    ceo:precio "44.33" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_WOGKMP" ;
     ceo:tiene_modelo ceo:modelo_53 ;
-    ceo:valoracion_media "7.73" ;
+    ceo:valoracion_media "5.88" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_54 a ceo:Producto ;
-    ceo:cantidad 14 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_VBFU1J" ;
-    ceo:gestion_envio "interna" ;
+    ceo:cantidad 41 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_UAPFD2" ;
+    ceo:gestion_envio "externa" ;
     ceo:nombre "product_54" ;
-    ceo:precio "90.51" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_W5KWR4" ;
+    ceo:precio "44.57" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_WET45J" ;
     ceo:tiene_modelo ceo:modelo_54 ;
-    ceo:valoracion_media "3.63" ;
+    ceo:valoracion_media "7.67" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_55 a ceo:Producto ;
-    ceo:cantidad 29 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_AI2V32" ;
+    ceo:cantidad 45 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_YBXQKC" ;
     ceo:gestion_envio "interna" ;
     ceo:nombre "product_55" ;
-    ceo:precio "57.88" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_0J15V6" ;
+    ceo:precio "55.48" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_TFAVTN" ;
     ceo:tiene_modelo ceo:modelo_55 ;
-    ceo:valoracion_media "7.92" ;
+    ceo:valoracion_media "4.64" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_56 a ceo:Producto ;
-    ceo:cantidad 38 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_02B3Q8" ;
+    ceo:cantidad 37 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_SKSMKQ" ;
     ceo:gestion_envio "interna" ;
     ceo:nombre "product_56" ;
-    ceo:precio "97.27" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_M8QYFE" ;
+    ceo:precio "97.90" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_9GNGOU" ;
     ceo:tiene_modelo ceo:modelo_56 ;
-    ceo:valoracion_media "0.71" ;
+    ceo:valoracion_media "1.39" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_57 a ceo:Producto ;
-    ceo:cantidad 26 ;
-    ceo:categoria "ropa" ;
-    ceo:descripcion "descripcion_MKXQ21" ;
-    ceo:gestion_envio "externa" ;
+    ceo:cantidad 20 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_CJIA8D" ;
+    ceo:gestion_envio "interna" ;
     ceo:nombre "product_57" ;
-    ceo:precio "92.57" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_7XHBL7" ;
+    ceo:precio "61.10" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ZA9JLM" ;
     ceo:tiene_modelo ceo:modelo_57 ;
-    ceo:valoracion_media "6.61" ;
+    ceo:valoracion_media "0.76" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_58 a ceo:Producto ;
-    ceo:cantidad 33 ;
-    ceo:categoria "comida" ;
-    ceo:descripcion "descripcion_OQNUHJ" ;
+    ceo:cantidad 47 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_4P6XM3" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_58" ;
-    ceo:precio "97.29" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_H48D7F" ;
+    ceo:precio "90.17" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_QKH56Z" ;
     ceo:tiene_modelo ceo:modelo_58 ;
-    ceo:valoracion_media "6.21" ;
+    ceo:valoracion_media "1.37" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 
 ceo:product_59 a ceo:Producto ;
-    ceo:cantidad 37 ;
-    ceo:categoria "comida" ;
-    ceo:descripcion "descripcion_J7R97C" ;
-    ceo:gestion_envio "externa" ;
+    ceo:cantidad 27 ;
+    ceo:categoria "juguete" ;
+    ceo:descripcion "descripcion_4QCGMY" ;
+    ceo:gestion_envio "interna" ;
     ceo:nombre "product_59" ;
-    ceo:precio "94.32" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_DXM305" ;
+    ceo:precio "9.38" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_6O2D33" ;
     ceo:tiene_modelo ceo:modelo_59 ;
-    ceo:valoracion_media "6.10" ;
+    ceo:valoracion_media "8.54" ;
     ceo:vendedor "http://adria-VirtualBox:9042" .
 

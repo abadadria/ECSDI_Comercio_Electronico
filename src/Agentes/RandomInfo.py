@@ -62,11 +62,14 @@ if __name__ == '__main__':
     # model_properties = {'tieneMarca': 'Marca', 'nombre': 's'}
     # marca_properties = {'nombre': 's'}
 
-    # contiene 80 productos, 8 marcas y 80 modelos
+    # contiene 60 productos, 6 marcas y 60 modelos
     products_graph = Graph()
-
     products_graph.namespace_manager.bind('rdf', RDF)
     products_graph.namespace_manager.bind('ceo', CEO)
+    
+    productsEnvio_graph = Graph()
+    productsEnvio_graph.namespace_manager.bind('rdf', RDF)
+    productsEnvio_graph.namespace_manager.bind('ceo', CEO)
 
     # Listas con todas las marcas y los modelos que se van a crear
     marcas = [None] * 6
@@ -101,8 +104,10 @@ if __name__ == '__main__':
         rproduct = 'product_' + str(i)
         # Añadimos la instancia de producto
         products_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
+        productsEnvio_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
         # Le asignamos una propiedad nombre al producto
         products_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
+        productsEnvio_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
         # Le asignamos un modelo al producto
         products_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
         
@@ -127,7 +132,10 @@ if __name__ == '__main__':
                     val = Literal('interna')
                 else:
                     val = Literal(random_name(str(prop_key)))
-            if prop_key != 'vendedor': products_graph.add((CEO[rproduct], CEO[prop_key], val))
+            if prop_key not in ['vendedor', 'gestion_envio']: products_graph.add((CEO[rproduct], CEO[prop_key], val))
+            else: 
+                if prop_key != 'vendedor': productsEnvio_graph.add((CEO[rproduct], CEO[prop_key], val))
+                
             
     # productos externos
     # crear archivo para cada comercio
@@ -224,3 +232,9 @@ if __name__ == '__main__':
     ofile = open('info_prod_CE3.ttl', "w")
     ofile.write(comExt3_graph.serialize(format='turtle'))
     ofile.close()
+    
+    ofile = open('info_prod_env.ttl', "w")
+    ofile.write(productsEnvio_graph.serialize(format='turtle'))
+    ofile.close()
+    
+    

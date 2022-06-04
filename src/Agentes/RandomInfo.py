@@ -34,6 +34,9 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
 if __name__ == '__main__':
+    direccionesComerciosExternos = input("Introduzca las direcciones de los comercios externos separadas por un espacio (ej: http://10.10.10.10:9040):\n").split()
+    direccionesComerciosExternos.append('-')
+    
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
     
@@ -44,6 +47,7 @@ if __name__ == '__main__':
                           'descripcion': 's',
                           'restricciones_devolucion': 's',
                           'gestion_envio' : 's',
+                          'vendedor' : 's',
                           'precio': 'f',
                           'valoracion_media': 'f'}
     
@@ -59,7 +63,7 @@ if __name__ == '__main__':
     # model_properties = {'tieneMarca': 'Marca', 'nombre': 's'}
     # marca_properties = {'nombre': 's'}
 
-    # contiene 40 productos, 8 marcas y 40 modelos
+    # contiene 80 productos, 8 marcas y 80 modelos
     products_graph = Graph()
 
     products_graph.namespace_manager.bind('rdf', RDF)
@@ -67,12 +71,12 @@ if __name__ == '__main__':
 
     # Listas con todas las marcas y los modelos que se van a crear
     marcas = [None] * 8
-    modelos = [None] * 40
+    modelos = [None] * 80
     
-    # Generamos 8 instancias de marcas al azar y 5 instancias de modelo para cada marca
+    # Generamos 8 instancias de marcas al azar y 10 instancias de modelo para cada marca
     for j in range(8):
         # instancia al azar
-        rmarca = 'Marca_' + str(j)
+        rmarca = 'marca_' + str(j)
         marcas[j] = rmarca
         # print(rmarca)
         # Añadimos la instancia de marca
@@ -80,10 +84,10 @@ if __name__ == '__main__':
         # Le asignamos una propiedad nombre a la marca
         products_graph.add((CEO[rmarca], CEO.nombre, Literal(rmarca)))
         # Creamos cinco instancias de modelo y le asignamos esta marca
-        for k in range(5):
+        for k in range(10):
             # instancia al azar
-            rmodelo = 'Modelo_' + str(j*5 + k)
-            modelos[j*5 + k] = rmodelo
+            rmodelo = 'modelo_' + str(j*10 + k)
+            modelos[j*10 + k] = rmodelo
             # print(rmodelo)
             # Añadimos la instancia de modelo
             products_graph.add((CEO[rmodelo], RDF.type, CEO.Modelo))
@@ -92,9 +96,9 @@ if __name__ == '__main__':
             # Le asignamos la marca que acabamos de crear
             products_graph.add((CEO[rmodelo], CEO.tiene_marca, CEO[rmarca]))
     
-    for i in range(40):
+    for i in range(80):
         # generamos instancias de productos
-        rproduct = 'Product_' + str(i)
+        rproduct = 'product_' + str(i)
         # print(rproduct)
         # Añadimos la instancia de producto
         products_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
@@ -123,9 +127,11 @@ if __name__ == '__main__':
                 elif prop_key == 'gestion_envio':
                     tipoGestion = ['interna', 'externa']
                     val = Literal(random.choice(tipoGestion))
+                elif prop_key == 'vendedor':
+                    val = Literal(random.choice(direccionesComerciosExternos))
                 else:
                     val = Literal(random_name(str(prop_key)))
-            products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
+            if str(val) != '-': products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
 
 
 

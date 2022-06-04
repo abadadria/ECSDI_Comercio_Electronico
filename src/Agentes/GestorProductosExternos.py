@@ -110,7 +110,6 @@ if not args.verbose:
     logger.setLevel(logging.ERROR)
 
 
-
 def gestionarActualizacion(ge):
     """
     De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro

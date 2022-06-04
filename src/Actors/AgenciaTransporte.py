@@ -110,6 +110,11 @@ precioMenos5 = ""
 precio5_20 = ""
 precioMas20 = ""
 
+# Tarifas de tiempo
+tiempoMenos5 = ""
+tiempo5_20 = ""
+tiempoMas20 = ""
+
 
 # Flask stuff
 app = Flask(__name__)
@@ -154,7 +159,9 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.Cobrar:
+            if accion == CEO.SolicitarInformacionTransporteEnvio:
+                pass
+            elif accion == CEO.SolicitarInformacionTransporteRecogida:
                 pass
             else:
                 gr = build_message( Graph(),
@@ -189,13 +196,13 @@ def tidyup():
     pass
 
 def askForInput():
-    precioMenos5 = input("Intorduzca el precio por envio de menos de 5 productos:")
-    precio5_20 = input("Intorduzca el precio por envio de entre 5 y 20 productos:")
-    precioMas20 = input("Intorduzca el precio por envio de mas de 20 productos:")
-    
-    """
-    Lo mismo para tiempo de envio
-    """
+    precioMenos5 = input("Intorduzca el precio por el envio de menos de 5 productos:")
+    precio5_20 = input("Intorduzca el precio por el envio de entre 5 y 20 productos:")
+    precioMas20 = input("Intorduzca el precio por el envio de mas de 20 productos:")
+    print("\n")    
+    tiempoMenos5 = input("Intorduzca el tiempo por el envio de menos de 5 productos:")
+    tiempo5_20 = input("Intorduzca el tiempo por el envio de entre 5 y 20 productos:")
+    tiempoMas20 = input("Intorduzca el tiempo por el envio de mas de 20 productos:")
 
 
 if __name__ == '__main__':

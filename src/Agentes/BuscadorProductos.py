@@ -125,13 +125,10 @@ def buscarProductos(gm):
             categoriap = products_graph.value(s, CEO.categoria)
             cantidadp = products_graph.value(s, CEO.cantidad)
             categoriaOk = False
-            cantidadOk = True
             if categoriap == categoria:
                 categoriaOk = True
-            # if cantidadp >= cantidad:
-            #     cantidadOk = True
             
-            if categoriaOk and cantidadOk:
+            if categoriaOk:
                 precio = products_graph.value(s, CEO.precio)
                 gestion_envio = products_graph.value(s, CEO.gestion_envio)
                 precioOk = False
@@ -169,8 +166,6 @@ def buscarProductos(gm):
                     gr.add((modelo, CEO.tiene_marca, tiene_marca))
                     nombreMarca = products_graph.value(tiene_marca, CEO.nombre)
                     gr.add((tiene_marca, CEO.nombre, nombreMarca))
-                    
-                    
 
     return gr
 

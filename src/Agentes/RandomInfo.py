@@ -99,7 +99,6 @@ if __name__ == '__main__':
     for i in range(80):
         # generamos instancias de productos
         rproduct = 'product_' + str(i)
-        # print(rproduct)
         # Añadimos la instancia de producto
         products_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
         # Le asignamos una propiedad nombre al producto
@@ -131,8 +130,16 @@ if __name__ == '__main__':
                     val = Literal(random.choice(direccionesComerciosExternos))
                 else:
                     val = Literal(random_name(str(prop_key)))
-            if str(val) != '-': products_graph.add((CEO[rproduct], CEO[prop_key], val)) 
-
+            if str(val) != '-': products_graph.add((CEO[rproduct], CEO[prop_key], val))
+            
+    # repartir los productos entre los comercios externos
+    # crear archivo para cada comercio
+    
+    size = len(direccionesComerciosExternos)
+    for i in range(size):
+        # tener en cuenta que '-' es que el producto no es de ningun comercio
+        # Cada comercio coge el rango de productos (n/size*i, n/size*i+1) productos
+        print(i)
 
 
     # Grabamos la ontologia resultante en turtle

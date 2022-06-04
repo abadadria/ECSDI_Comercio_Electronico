@@ -34,8 +34,7 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
 if __name__ == '__main__':
-    direccionesComerciosExternos = input("Introduzca las direcciones de los comercios externos separadas por un espacio (ej: http://10.10.10.10:9040):\n").split()
-    direccionesComerciosExternos.append('-')
+    direccionesComerciosExternos = input("Introduzca las direcciones de los 3 comercios externos separadas por un espacio (ej: http://10.10.10.10:9040):\n").split()
     
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
@@ -70,11 +69,11 @@ if __name__ == '__main__':
     products_graph.namespace_manager.bind('ceo', CEO)
 
     # Listas con todas las marcas y los modelos que se van a crear
-    marcas = [None] * 8
-    modelos = [None] * 80
+    marcas = [None] * 6
+    modelos = [None] * 60
     
-    # Generamos 8 instancias de marcas al azar y 10 instancias de modelo para cada marca
-    for j in range(8):
+    # Generamos 6 instancias de marcas al azar y 10 instancias de modelo para cada marca
+    for j in range(6):
         # instancia al azar
         rmarca = 'marca_' + str(j)
         marcas[j] = rmarca
@@ -96,7 +95,8 @@ if __name__ == '__main__':
             # Le asignamos la marca que acabamos de crear
             products_graph.add((CEO[rmodelo], CEO.tiene_marca, CEO[rmarca]))
     
-    for i in range(80):
+    # productos internos
+    for i in range(30):
         # generamos instancias de productos
         rproduct = 'product_' + str(i)
         # Añadimos la instancia de producto
@@ -124,26 +124,103 @@ if __name__ == '__main__':
                 if prop_key == 'categoria':
                     val = Literal(random.choice(categorias_productos))
                 elif prop_key == 'gestion_envio':
+                    val = Literal('interna')
+                else:
+                    val = Literal(random_name(str(prop_key)))
+            if prop_key != 'vendedor': products_graph.add((CEO[rproduct], CEO[prop_key], val))
+            
+    # productos externos
+    # crear archivo para cada comercio
+    i = 30
+    comExt1_graph = Graph()
+    comExt1_graph.namespace_manager.bind('rdf', RDF)
+    comExt1_graph.namespace_manager.bind('ceo', CEO)
+    
+    comExt2_graph = Graph()
+    comExt2_graph.namespace_manager.bind('rdf', RDF)
+    comExt2_graph.namespace_manager.bind('ceo', CEO)
+    
+    comExt3_graph = Graph()
+    comExt3_graph.namespace_manager.bind('rdf', RDF)
+    comExt3_graph.namespace_manager.bind('ceo', CEO)
+    
+    
+    while (i <  60): 
+        # generamos instancias de productos
+        rproduct = 'product_' + str(i)
+        
+        if i < 40:
+            comExt1_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
+            comExt1_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
+            comExt1_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
+            
+        elif i < 50:
+            comExt2_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
+            comExt2_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
+            comExt2_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
+            
+        else:
+            comExt3_graph.add((CEO[rproduct], RDF.type, CEO.Producto))
+            comExt3_graph.add((CEO[rproduct], CEO.nombre, Literal(rproduct)))
+            comExt3_graph.add((CEO[rproduct], CEO.tiene_modelo, CEO[modelos[i]]))
+                
+        # Generamos sus atributos
+        for prop_key, prop_value in product_properties.items():
+            # el atributo es real
+            if prop_value == 'f':
+                if prop_key == 'precio':
+                    number = format(round(random.uniform(0, 100), 2), '.2f')
+                    val = Literal(number)
+                else:
+                    number = format(round(random.uniform(0, 10), 2), '.2f')
+                    val = Literal(number)
+            # el atributo es entero
+            elif prop_value == 'i':
+                val = Literal(random.randint(0, 50))
+            # el atributo es string
+            else:
+                if prop_key == 'categoria':
+                    val = Literal(random.choice(categorias_productos))
+                elif prop_key == 'gestion_envio':
                     tipoGestion = ['interna', 'externa']
                     val = Literal(random.choice(tipoGestion))
                 elif prop_key == 'vendedor':
-                    val = Literal(random.choice(direccionesComerciosExternos))
+                    if i < 40:
+                        val = Literal(direccionesComerciosExternos[0])
+                    elif i < 50:
+                        val = Literal(direccionesComerciosExternos[1])
+                    else:
+                        val = Literal(direccionesComerciosExternos[2])
                 else:
                     val = Literal(random_name(str(prop_key)))
-            if str(val) != '-': products_graph.add((CEO[rproduct], CEO[prop_key], val))
+            if i < 40:
+                comExt1_graph.add((CEO[rproduct], CEO[prop_key], val))
             
-    # repartir los productos entre los comercios externos
-    # crear archivo para cada comercio
-    
-    size = len(direccionesComerciosExternos)
-    for i in range(size):
-        # tener en cuenta que '-' es que el producto no es de ningun comercio
-        # Cada comercio coge el rango de productos (n/size*i, n/size*i+1) productos
-        print(i)
+            elif i < 50:
+                comExt2_graph.add((CEO[rproduct], CEO[prop_key], val))
+            
+            else:
+                comExt3_graph.add((CEO[rproduct], CEO[prop_key], val))
+            
+        i += 1
+    # tener en cuenta que '-' es que el producto no es de ningun comercio
+    # Cada comercio coge el rango de productos (n/size*i, n/size*i+1) productos
 
 
     # Grabamos la ontologia resultante en turtle
     # Lo podemos cargar en Protege para verlo y cargarlo con RDFlib o en una triplestore (Fuseki)
-    ofile = open('informacion productos.ttl', "w")
+    ofile = open('info_prod.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
+    ofile.close()
+    
+    ofile = open('info_prod_CE1.ttl', "w")
+    ofile.write(comExt1_graph.serialize(format='turtle'))
+    ofile.close()
+    
+    ofile = open('info_prod_CE2.ttl', "w")
+    ofile.write(comExt2_graph.serialize(format='turtle'))
+    ofile.close()
+    
+    ofile = open('info_prod_CE3.ttl', "w")
+    ofile.write(comExt3_graph.serialize(format='turtle'))
     ofile.close()

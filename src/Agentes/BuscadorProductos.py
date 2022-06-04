@@ -130,7 +130,6 @@ def buscarProductos(gm):
             
             if categoriaOk:
                 precio = products_graph.value(s, CEO.precio)
-                gestion_envio = products_graph.value(s, CEO.gestion_envio)
                 precioOk = False
                 if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
                     precioOk = True
@@ -138,7 +137,6 @@ def buscarProductos(gm):
                     # Añadimos toda la informacion necessaria: producto, oferta, modelo, marca
                     gr.add((s, RDF.type, CEO.Producto))
                     gr.add((s, CEO.precio, precio))
-                    gr.add((s, CEO.gestion_envio, gestion_envio))
                     gr.add((s, CEO.categoria, categoriap))
                     gr.add((s, CEO.cantidad, cantidadp))
                     

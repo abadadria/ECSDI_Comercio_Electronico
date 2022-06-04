@@ -132,24 +132,18 @@ def buscarProductos(gm):
                 cantidadOk = True
             
             if categoriaOk and cantidadOk:
-                oferta = products_graph.value(s, CEO.ofertado_en)
-                precio = products_graph.value(oferta, CEO.precio)
-                gestion_envio = products_graph.value(oferta, CEO.gestion_envio)
+                precio = products_graph.value(s, CEO.precio)
+                gestion_envio = products_graph.value(s, CEO.gestion_envio)
                 precioOk = False
                 if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
                     precioOk = True
                 if precioOk:
                     # Añadimos toda la informacion necessaria: producto, oferta, modelo, marca
                     gr.add((s, RDF.type, CEO.Producto))
-                    
-                    gr.add((oferta, RDF.type, CEO.Oferta))
-                    gr.add((oferta, CEO.precio, precio))
-                    gr.add((oferta, CEO.gestion_envio, gestion_envio))
-                    
-                    
+                    gr.add((s, CEO.precio, precio))
+                    gr.add((s, CEO.gestion_envio, gestion_envio))
                     gr.add((s, CEO.categoria, categoriap))
                     gr.add((s, CEO.cantidad, cantidadp))
-                    gr.add((s, CEO.ofertado_en, oferta))
                     
                     descripcion = products_graph.value(s, CEO.descripcion)
                     gr.add((s, CEO.descripcion, descripcion))
@@ -187,16 +181,9 @@ def gestionarActualizacion(ge):
     Actualizar estado del grafo products_graph
     """
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        cantidad = ge.value(s, CEO.cantidad)
-        categoria = ge.value(s, CEO.categoria)
-        descripcion = ge.value(s, CEO.descripcion)
-        precio = ge.value(s, CEO.precio)
-        restricciones_devolucion = ge.value(s, CEO.restricciones_devolucion)
-        
+      
         for ss, pp, oo in products_graph.triples((s,None,None)):
             atributo = ge.value(s, pp)
-            print("printando atributo")
-            print(atributo)
             if atributo != None and atributo != RDF.type: 
                 products_graph.set((ss, pp, Literal(atributo)))
                 products_graph.set((ss, RDF.type, CEO.Producto))
@@ -245,7 +232,6 @@ def comunicacion():
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.BuscarProductos:
                 gr = buscarProductos(gm)
-                print(gr.serialize(format='turtle'))
                 """
                 (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """
@@ -253,7 +239,6 @@ def comunicacion():
                 ab1 = Process(target=gestionarActualizacion, args=(gm,))
                 ab1.start()
                 
-                print(gm.serialize(format='turtle'))
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=BuscadorProductos.uri)

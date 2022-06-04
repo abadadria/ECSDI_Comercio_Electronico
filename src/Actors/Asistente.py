@@ -152,11 +152,10 @@ def do(value):
         gr = Graph()
         gr = buscar_productos()
         print('\n' + 'Las ofertas de productos son:\n ')
-        for s, p, o in gr.triples((None, RDF.type, CEO.Oferta)):
+        for s, p, o in gr.triples((None, RDF.type, CEO.Producto)):
             precio = gr.value(s, CEO.precio)
-            
             length = len(s)
-            name = s[76:length]
+            name = s[67:length]
             
             print(name + ' con precio: ' + precio + '€')
         print('\n')

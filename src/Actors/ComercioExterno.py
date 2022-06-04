@@ -122,7 +122,6 @@ def actualizar_info_productos():
     for i in range(nproductos):
         # Lee una linea de terminal que sorresponde con parte de la inforacion de un Producto
         atributosProducto = input().split()
-        print(atributosProducto)
         # Añade la LineaBusqueda al grafo
         p = CEO[atributosProducto[0]]
         gm.add((p, RDF.type, CEO.Producto))
@@ -133,10 +132,6 @@ def actualizar_info_productos():
         if atributosProducto[5] != '-': gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[5])))
     
     GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
-    
-    print("printando gestor productos externos\n")
-    print(GestorProductosExternos)
-    print(gm.serialize(format='turtle'))
     
     msg = build_message(gm, perf=ACL.request,
                         sender=ComercioExterno.uri,

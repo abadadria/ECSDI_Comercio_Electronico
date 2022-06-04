@@ -112,7 +112,6 @@ if not args.verbose:
 
 
 def gestionarActualizacion(ge):
-    print("gestionando actualización de productos")
     """
     De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro
     Ahora solo redirecciona, en un futuro tendra que separar la informacion y enviar varios mensajes

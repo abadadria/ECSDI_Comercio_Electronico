@@ -99,6 +99,9 @@ Asistente = Agent('Asistente',
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
+def filtrar_resultados(gr):
+    pass
+
 def buscar_productos():
     ncategorias = int(input("Introduce la cantidad de categorias de productos que te interesan:"))
     print("Introduce las categorias de productos que te interesan:")
@@ -156,10 +159,26 @@ def buscar_productos():
         print(name + ' con precio: ' + precio + '€')
     print('\n')
 
-    return gr
+    g = filtrar_resultados(gr)
+
+    return g
 
 def pedir(g):
     print(g.serialize(format='turtle'))
+
+    GestorPedidos = search_agent(CEO.GestorPedidos, Asistente, ServicioDirectorio)
+
+    gm = Graph()
+
+    for s, p, o g.triples((None, RDF.type, ))
+    gm.add(())
+
+    msg = build_message(g,
+                        perf=ACL.request,
+                        sender=Asistente.uri,
+                        receiver=GestorPedidos.uri,
+                        content=)
+
     pass
 
 def do(value):

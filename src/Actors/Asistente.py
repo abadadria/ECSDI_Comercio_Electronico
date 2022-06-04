@@ -145,21 +145,39 @@ def buscar_productos():
 
     gr = send_message(msg, BuscadorProductos.address)
 
-    return gr
+    print(gr.serialize(format='turtle'))
+
+    print('\n' + 'Las ofertas de productos son:\n ')
+    for s, p, o in gr.triples((None, RDF.type, CEO.Oferta)):
+        precio = gr.value(s, CEO.precio)
         
+        length = len(s)
+        name = s[76:length]
+        
+        print(name + ' con precio: ' + precio + '€')
+    print('\n')
+
+    return gr
+
+def pedir(g):
+    print(g.serialize(format='turtle'))
+    pass
+
 def do(value):
     if value == 1:
         gr = Graph()
         gr = buscar_productos()
-        print('\n' + 'Las ofertas de productos son:\n ')
-        for s, p, o in gr.triples((None, RDF.type, CEO.Oferta)):
-            precio = gr.value(s, CEO.precio)
-            
-            length = len(s)
-            name = s[76:length]
-            
-            print(name + ' con precio: ' + precio + '€')
-        print('\n')
+        
+        print("Deseas pedir estos productos?")
+        print("[1] Pedir productos")
+        print("[0] Cerrar")
+        value = int(input())
+
+        if value == 0:
+            exit()
+        else:
+            pedir(gr)
+        
         
 
 if __name__ == '__main__':

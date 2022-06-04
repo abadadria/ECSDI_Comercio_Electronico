@@ -266,6 +266,13 @@ def setup():
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 
+def tidyup():
+    """
+    Acciones previas a parar el agente
+
+    """
+    unregister_agent(BuscadorProductos, ServicioDirectorio)
+    pass
 
 if __name__ == '__main__':
     setup()
@@ -275,5 +282,6 @@ if __name__ == '__main__':
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
-
+    
+    tidyup()
     print('The End')

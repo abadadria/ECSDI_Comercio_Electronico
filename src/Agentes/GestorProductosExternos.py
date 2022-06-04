@@ -32,7 +32,7 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
-from DirectoryOps import register_agent, search_agent
+from DirectoryOps import register_agent, search_agent, unregister_agent
 
 
 __author__ = 'adria'
@@ -216,6 +216,13 @@ def setup():
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 
+def tidyup():
+    """
+    Acciones previas a parar el agente
+
+    """
+    unregister_agent(GestorProductosExternos, ServicioDirectorio)
+    pass
 
 if __name__ == '__main__': 
     setup()
@@ -227,4 +234,5 @@ if __name__ == '__main__':
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
 
+    tidyup()
     print('The End')

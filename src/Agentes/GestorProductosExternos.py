@@ -126,7 +126,6 @@ def gestionarActualizacion(ge):
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
     
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        
         for ss, pp, oo in ge.triples((s,None,None)):
             atributo = ge.value(s, pp)
             if atributo != None: 
@@ -187,6 +186,8 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.ActualizarInformacionProductos:
+                print("\nprintando graph:")
+                print(gm.serialize(format='turtle'))
                 ab1 = Process(target=gestionarActualizacion, args=(gm,))
                 ab1.start()
                 gr = build_message( Graph(),

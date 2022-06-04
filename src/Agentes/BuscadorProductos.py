@@ -167,21 +167,26 @@ def buscarProductos(gm):
 
     return gr
 
-# Product_11 60 - - - -
-
 def gestionarActualizacion(ge):    
     """
     Actualizar estado del grafo products_graph
     """
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-      
+        
+        boolean = False
         for ss, pp, oo in products_graph.triples((s,None,None)):
+            boolean = True
             atributo = ge.value(s, pp)
             if atributo != None and atributo != RDF.type: 
                 products_graph.set((ss, pp, Literal(atributo)))
                 products_graph.set((ss, RDF.type, CEO.Producto))
+        
+        # el producto no existia
+        if not boolean:
+            for ss, pp, oo in ge.triples((s,None,None)):
+                products_graph.add((ss, pp, oo))
     
-    ofile = open('informacion productos.ttl', "w")
+    ofile = open('info_prod.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()        
 
@@ -229,8 +234,7 @@ def comunicacion():
                 (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """
             elif accion == CEO.ActualizarInformacionProductos:
-                ab1 = Process(target=gestionarActualizacion, args=(gm,))
-                ab1.start()
+                gestionarActualizacion(gm)
                 
                 gr = build_message( Graph(),
                                 ACL['confirm'],

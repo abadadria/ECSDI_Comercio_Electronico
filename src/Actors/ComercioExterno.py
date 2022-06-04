@@ -152,6 +152,23 @@ def do(value):
         else:
             print('\n' + 'Ha habido un error durante el proceso\n ')
         
+def inicializar_info_productos():
+    bp = CEO.ActualizarInformacionProductos
+    products_graph.add((bp, RDF.type, CEO.ActualizarInformacionProductos))
+    products_graph.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    products_graph.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+
+    GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
+    
+    msg = build_message(products_graph, perf=ACL.request,
+                        sender=ComercioExterno.uri,
+                        receiver=GestorProductosExternos.uri,
+                        content=bp)
+
+    gr = send_message(msg, GestorProductosExternos.address)
+
+    return gr
+
 
 def setup():
     if port == 9040: name = 'info_prod_CE1.ttl'
@@ -159,7 +176,14 @@ def setup():
     else: name = 'info_prod_CE3.ttl'
     products_graph.parse(name, format='turtle')
     
-    print(products_graph.serialize(format='turtle'))
+    gr = inicializar_info_productos()
+    msgdic = get_message_properties(gr)
+    if msgdic['performative'] == ACL.confirm:
+        print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
+    else:
+        print('\n' + 'Ha habido un error durante el proceso\n ')
+    
+    return
 
 
 if __name__ == '__main__':

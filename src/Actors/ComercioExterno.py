@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-filename: Comercio Externo1
+filename: Comercio Externo
 
 /comm es la entrada para la recepcion de mensajes del agente
 /Stop es la entrada que para el agente

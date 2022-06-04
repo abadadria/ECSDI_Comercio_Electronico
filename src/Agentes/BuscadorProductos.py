@@ -125,11 +125,11 @@ def buscarProductos(gm):
             categoriap = products_graph.value(s, CEO.categoria)
             cantidadp = products_graph.value(s, CEO.cantidad)
             categoriaOk = False
-            cantidadOk = False
+            cantidadOk = True
             if categoriap == categoria:
                 categoriaOk = True
-            if cantidadp >= cantidad:
-                cantidadOk = True
+            # if cantidadp >= cantidad:
+            #     cantidadOk = True
             
             if categoriaOk and cantidadOk:
                 precio = products_graph.value(s, CEO.precio)

@@ -125,11 +125,11 @@ def buscarProductos(gm):
             categoriap = products_graph.value(s, CEO.categoria)
             cantidadp = products_graph.value(s, CEO.cantidad)
             categoriaOk = False
-            cantidadOk = False
+            cantidadOk = True
             if categoriap == categoria:
                 categoriaOk = True
-            if cantidadp >= cantidad:
-                cantidadOk = True
+            # if cantidadp >= cantidad:
+            #     cantidadOk = True
             
             if categoriaOk and cantidadOk:
                 precio = products_graph.value(s, CEO.precio)
@@ -152,7 +152,7 @@ def buscarProductos(gm):
                     gr.add((s, CEO.nombre, nombre))
                     
                     restricciones_devolucion = products_graph.value(s, CEO.restricciones_devolucion)
-                    gr.add((s, CEO.descrrestricciones_devolucionipcion, restricciones_devolucion))
+                    gr.add((s, CEO.restricciones_devolucion, restricciones_devolucion))
                     
                     valoracion_media = products_graph.value(s, CEO.valoracion_media)
                     gr.add((s, CEO.valoracion_media, valoracion_media))
@@ -272,7 +272,6 @@ def tidyup():
 
     """
     unregister_agent(BuscadorProductos, ServicioDirectorio)
-    pass
 
 if __name__ == '__main__':
     setup()

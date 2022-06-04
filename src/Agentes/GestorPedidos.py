@@ -169,7 +169,6 @@ def tidyup():
 
     """
     unregister_agent(GestorPedidos, ServicioDirectorio)
-    pass
 
 if __name__ == '__main__':
     setup()

@@ -19,6 +19,7 @@ from time import gmtime
 from flask import Flask, request
 from matplotlib import get_backend
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, Literal
+import rdflib
 from rdflib.namespace import FOAF, RDF
 
 from AgentUtil.ACL import ACL
@@ -145,20 +146,113 @@ def buscar_productos():
 
     gr = send_message(msg, BuscadorProductos.address)
 
-    return gr
+    print(gr.serialize(format='turtle'))
+
+    print('\n' + 'Las ofertas de productos son:\n ')
+    for s, p, o in gr.triples((None, RDF.type, CEO.Producto)):
+        precio = gr.value(s, CEO.precio)
+        length = len(s)
+        name = s[67:length]
         
+        print(name + ' con precio: ' + str(precio) + '€')
+    print('\n')
+
+    gp = Graph()
+    gp.namespace_manager.bind('ceo', CEO)
+
+    pedido = CEO.pedido
+    gp.add((pedido, RDF.type, CEO.Pedido))
+    gp.add((CEO.LineaProducto, RDFS.subClassOf, CEO.Linea))
+
+    # Se filtra el resultado obtenido de la búsqueda según las preferencias del usuario
+    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+        # Para cada linea de busqueda del usuario se busca que producto/s es/son el/los mejor/es
+        categoria = gm.value(subject=s, predicate=CEO.categoria)
+        cantidad_pedida = gm.value(subject=s, predicate=CEO.cantidad)
+        q = """SELECT ?p ?c
+            WHERE {
+                ?p rdf:type ceo:Producto .
+                ?p ceo:categoria ?cat .
+                ?p ceo:precio ?precio .
+                ?p ceo:cantidad ?c
+            }
+            ORDER BY ?precio
+            """
+        
+        res = gr.query(q, initBindings={'cat': Literal(categoria)})
+
+        remaining = int(cantidad_pedida)
+        n_linea = 0
+        for p, c in res:
+            if int(c) == 0: continue
+
+            lp = CEO["lineaproducto" + str(n_linea)]
+            n_linea += 1
+            gp.add((lp, RDF.type, CEO.LineaProducto))
+            gp.add((pedido, CEO.tiene_linea_producto, lp))
+
+            if int(c) >= remaining:
+                # el producto satisface la cantidad deseada
+                gp.add((lp, CEO.cantidad, Literal(remaining)))
+                gr.set((p, CEO.cantidad, Literal(int(c) - remaining)))
+                remaining = 0
+            else:
+                # el producto NO satisface la cantidad deseada
+                gp.add((lp, CEO.cantidad, c))
+                gr.set((p, CEO.cantidad, Literal(0)))
+                remaining -= int(c)
+
+            for res in gr.predicate_objects(p):
+                gp.add((p, res[0], res[1]))
+            gp.add((lp, CEO.tiene_producto, p))
+
+            modelo = gr.value(subject=p, predicate=CEO.tiene_modelo)
+            for res in gr.predicate_objects(modelo):
+                gp.add((modelo, res[0], res[1]))
+
+            marca = gr.value(subject=modelo, predicate=CEO.tiene_marca)
+            for res in gr.predicate_objects(marca):
+                gp.add((marca, res[0], res[1]))
+
+            if remaining <= 0: break  
+
+        print(gp.serialize(format='turtle'))          
+
+        return gp
+
+def pedir(g):
+    print(g.serialize(format='turtle'))
+
+    GestorPedidos = search_agent(CEO.GestorPedidos, Asistente, ServicioDirectorio)
+
+
+    # for s, p, o g.triples((None, RDF.type, ))
+    # gm.add(())
+
+    # msg = build_message(g,
+    #                     perf=ACL.request,
+    #                     sender=Asistente.uri,
+    #                     receiver=GestorPedidos.uri,
+    #                     content=)
+
+    pass
+
 def do(value):
     if value == 1:
-        gr = Graph()
         gr = buscar_productos()
-        print('\n' + 'Las ofertas de productos son:\n ')
-        for s, p, o in gr.triples((None, RDF.type, CEO.Producto)):
-            precio = gr.value(s, CEO.precio)
-            length = len(s)
-            name = s[67:length]
-            
-            print(name + ' con precio: ' + precio + '€')
-        print('\n')
+        # categoria marca modelo cantidad precio_unitario precio_total
+        # precio_pedido
+        
+        print("Deseas pedir estos productos?")
+        print("[1] Pedir productos")
+        print("[0] Cerrar")
+        value = int(input())
+
+        if value == 0:
+            exit()
+        else:
+            pedir(gr)
+        
         
 
 if __name__ == '__main__':

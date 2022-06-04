@@ -131,6 +131,7 @@ def gestionarActualizacion(ge):
     gmP.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
     
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
+        gmB.add((s, RDF.type, CEO.Producto))
         for ss, pp, oo in ge.triples((s,None,None)):
             length = len(pp)
             name = pp[67:length]

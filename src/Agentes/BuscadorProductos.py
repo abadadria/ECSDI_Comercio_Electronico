@@ -168,9 +168,6 @@ def buscarProductos(gm):
     return gr
 
 def gestionarActualizacion(ge):    
-    """
-    Actualizar estado del grafo products_graph
-    """
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
         
         boolean = False

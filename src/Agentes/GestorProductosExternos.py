@@ -111,40 +111,44 @@ if not args.verbose:
 
 
 def gestionarActualizacion(ge):
-    """
-    De momento solo se puede cambiar la informacion que le corresponde al buscador de productos, ampliar en un futuro
-    Ahora solo redirecciona, en un futuro tendra que separar la informacion y enviar varios mensajes
-    """
-
-    gm = Graph()
-    gm.namespace_manager.bind('rdf', RDF)
-    gm.namespace_manager.bind('ceo', CEO)
     
-    bp = CEO.ActualizarInformacionProductos
-    gm.add((bp, RDF.type, CEO.ActualizarInformacionProductos))
-    gm.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
-    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    gmB = Graph()
+    gmB.namespace_manager.bind('rdf', RDF)
+    gmB.namespace_manager.bind('ceo', CEO)
+    
+    bpB = CEO.ActualizarInformacionProductos
+    gmB.add((bpB, RDF.type, CEO.ActualizarInformacionProductos))
+    gmB.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    gmB.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    
+    gmP = Graph()
+    gmP.namespace_manager.bind('rdf', RDF)
+    gmP.namespace_manager.bind('ceo', CEO)
+    
+    bpP = CEO.ActualizarInformacionProductos
+    gmP.add((bpP, RDF.type, CEO.ActualizarInformacionProductos))
+    gmP.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    gmP.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
     
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
         for ss, pp, oo in ge.triples((s,None,None)):
-            atributo = ge.value(s, pp)
-            if atributo != None: 
-                gm.add((ss, pp, atributo))
+            length = len(pp)
+            name = pp[67:length]
+            if name in ['cantidad','categoria','descripcion','nombre','precio','restricciones_devolucion','tiene_modelo','valoracion_media']: 
+                gmB.add((ss, pp, oo))
+            else:
+                gmP.add((ss, pp, oo))
 
     BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
 
-    msg = build_message(gm, perf=ACL.request,
+    msgB = build_message(gmB, perf=ACL.request,
                         sender=GestorProductosExternos.uri,
                         receiver=BuscadorProductos.uri,
-                        content=bp)
+                        content=bpB)
 
-    gr = send_message(msg, BuscadorProductos.address)
-        
-    msgdic = get_message_properties(gr)
-    if msgdic['performative'] == ACL.confirm:
-        print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
-    else:
-        print('\n' + 'Ha habido un error durante el proceso\n ')
+    send_message(msgB, BuscadorProductos.address)
+    
+    """Enviar mensaje al gestor envios para que se actualice la info"""
     
     return
 
@@ -186,8 +190,6 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.ActualizarInformacionProductos:
-                print("\nprintando graph:")
-                print(gm.serialize(format='turtle'))
                 ab1 = Process(target=gestionarActualizacion, args=(gm,))
                 ab1.start()
                 gr = build_message( Graph(),

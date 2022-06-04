@@ -19,6 +19,7 @@ from time import gmtime
 from flask import Flask, request
 from matplotlib import get_backend
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, Literal
+import rdflib
 from rdflib.namespace import FOAF, RDF
 
 from AgentUtil.ACL import ACL
@@ -99,9 +100,6 @@ Asistente = Agent('Asistente',
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
-def filtrar_resultados(gr):
-    pass
-
 def buscar_productos():
     ncategorias = int(input("Introduce la cantidad de categorias de productos que te interesan:"))
     print("Introduce las categorias de productos que te interesan:")
@@ -159,9 +157,43 @@ def buscar_productos():
         print(name + ' con precio: ' + precio + '€')
     print('\n')
 
-    g = filtrar_resultados(gr)
+    pedido = CEO.pedido
 
-    return g
+    # Se filtra el resultado obtenido de la búsqueda según las preferencias del usuario
+    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+        categoria = gm.value(subject=s, predicate=CEO.categoria)
+        print("categoria: " + categoria)
+        cantidad = gm.value(subject=s, predicate=CEO.cantidad)
+        q = """SELECT ?p ?c
+            WHERE {{
+                ?p rdf:type ceo:Producto .
+                ?p ceo:categoria ?cat .
+                ?p ceo:precio ?precio .
+                ?p ceo:cantidad ?c
+            }}
+            ORDER BY ?precio
+            """
+
+        print(q)
+        
+        res = gr.query(q, initBindings={'cat': rdflib.Literal(categoria)})
+
+        print([str(result[0]) + " " + str(result[1]) for result in res])
+
+        remaining = cantidad
+        i = 0
+        while remaining > 0 and i < len(res):
+            res_cantidad = res[i].c
+            if res_cantidad >= remaining:
+                # el producto satisface la cantidad deseada
+                remaining = 0
+            else:
+                # el producto NO satisface la cantidad deseada
+                
+            i += 1
+            
+
+        return gr
 
 def pedir(g):
     print(g.serialize(format='turtle'))
@@ -170,14 +202,14 @@ def pedir(g):
 
     gm = Graph()
 
-    for s, p, o g.triples((None, RDF.type, ))
-    gm.add(())
+    # for s, p, o g.triples((None, RDF.type, ))
+    # gm.add(())
 
-    msg = build_message(g,
-                        perf=ACL.request,
-                        sender=Asistente.uri,
-                        receiver=GestorPedidos.uri,
-                        content=)
+    # msg = build_message(g,
+    #                     perf=ACL.request,
+    #                     sender=Asistente.uri,
+    #                     receiver=GestorPedidos.uri,
+    #                     content=)
 
     pass
 

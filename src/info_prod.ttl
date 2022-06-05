@@ -122,304 +122,304 @@ ceo:modelo_59 a ceo:Modelo ;
     ceo:tiene_marca ceo:marca_5 .
 
 ceo:product_0 a ceo:Producto ;
-    ceo:cantidad 3 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_48GPSE" ;
+    ceo:cantidad 34 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_90QA93" ;
     ceo:nombre "product_0" ;
-    ceo:precio "84.18" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_FZMQ5H" ;
+    ceo:precio "81.86" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_DP13GZ" ;
     ceo:tiene_modelo ceo:modelo_0 ;
-    ceo:valoracion_media "6.47" .
+    ceo:valoracion_media "8.59" .
 
 ceo:product_1 a ceo:Producto ;
-    ceo:cantidad 21 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_3ZY6CR" ;
+    ceo:cantidad 38 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_FM2LGV" ;
     ceo:nombre "product_1" ;
-    ceo:precio "65.68" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_XZ8UF9" ;
+    ceo:precio "25.38" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_H4XX9R" ;
     ceo:tiene_modelo ceo:modelo_1 ;
-    ceo:valoracion_media "0.54" .
+    ceo:valoracion_media "1.45" .
 
 ceo:product_10 a ceo:Producto ;
-    ceo:cantidad 47 ;
-    ceo:categoria "ropa" ;
-    ceo:descripcion "descripcion_GA4C7M" ;
+    ceo:cantidad 18 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_2R86AZ" ;
     ceo:nombre "product_10" ;
-    ceo:precio "75.69" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_UGW0LR" ;
+    ceo:precio "57.19" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_6VEBE8" ;
     ceo:tiene_modelo ceo:modelo_10 ;
-    ceo:valoracion_media "5.85" .
+    ceo:valoracion_media "3.66" .
 
 ceo:product_11 a ceo:Producto ;
-    ceo:cantidad 35 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_VUFQHO" ;
+    ceo:cantidad 29 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_8H28YZ" ;
     ceo:nombre "product_11" ;
-    ceo:precio "25.57" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_5HG4B6" ;
+    ceo:precio "94.97" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ODDETA" ;
     ceo:tiene_modelo ceo:modelo_11 ;
-    ceo:valoracion_media "3.97" .
+    ceo:valoracion_media "7.61" .
 
 ceo:product_12 a ceo:Producto ;
-    ceo:cantidad 36 ;
+    ceo:cantidad 21 ;
     ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_NEO6JK" ;
+    ceo:descripcion "descripcion_0E1LDU" ;
     ceo:nombre "product_12" ;
-    ceo:precio "21.51" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_GVLRN7" ;
+    ceo:precio "83.93" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_TZ5KOO" ;
     ceo:tiene_modelo ceo:modelo_12 ;
-    ceo:valoracion_media "3.55" .
+    ceo:valoracion_media "4.50" .
 
 ceo:product_13 a ceo:Producto ;
-    ceo:cantidad 37 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_3ARR3Y" ;
+    ceo:cantidad 8 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_SNO2J9" ;
     ceo:nombre "product_13" ;
-    ceo:precio "24.41" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_7112TQ" ;
+    ceo:precio "58.27" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_6KM39I" ;
     ceo:tiene_modelo ceo:modelo_13 ;
-    ceo:valoracion_media "9.70" .
+    ceo:valoracion_media "4.39" .
 
 ceo:product_14 a ceo:Producto ;
-    ceo:cantidad 30 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_DAE2QF" ;
+    ceo:cantidad 32 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_DA3BFG" ;
     ceo:nombre "product_14" ;
-    ceo:precio "75.27" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_A1J9C4" ;
+    ceo:precio "66.98" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_UGOIM7" ;
     ceo:tiene_modelo ceo:modelo_14 ;
-    ceo:valoracion_media "0.34" .
+    ceo:valoracion_media "6.37" .
 
 ceo:product_15 a ceo:Producto ;
-    ceo:cantidad 10 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_NQ167G" ;
+    ceo:cantidad 1 ;
+    ceo:categoria "juguete" ;
+    ceo:descripcion "descripcion_BRZRXT" ;
     ceo:nombre "product_15" ;
-    ceo:precio "85.16" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_JPL3DT" ;
+    ceo:precio "40.33" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ZWWMUX" ;
     ceo:tiene_modelo ceo:modelo_15 ;
-    ceo:valoracion_media "5.26" .
+    ceo:valoracion_media "9.06" .
 
 ceo:product_16 a ceo:Producto ;
-    ceo:cantidad 23 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_QNO6US" ;
+    ceo:cantidad 41 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_S60KRC" ;
     ceo:nombre "product_16" ;
-    ceo:precio "43.94" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_QOK4XO" ;
+    ceo:precio "79.40" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_IOF9HD" ;
     ceo:tiene_modelo ceo:modelo_16 ;
-    ceo:valoracion_media "1.01" .
+    ceo:valoracion_media "2.41" .
 
 ceo:product_17 a ceo:Producto ;
-    ceo:cantidad 23 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_QCAP45" ;
+    ceo:cantidad 12 ;
+    ceo:categoria "juguete" ;
+    ceo:descripcion "descripcion_630XTN" ;
     ceo:nombre "product_17" ;
-    ceo:precio "22.68" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_C84M65" ;
+    ceo:precio "22.55" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ZDYICD" ;
     ceo:tiene_modelo ceo:modelo_17 ;
-    ceo:valoracion_media "1.54" .
+    ceo:valoracion_media "3.57" .
 
 ceo:product_18 a ceo:Producto ;
-    ceo:cantidad 22 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_VRRW80" ;
+    ceo:cantidad 29 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_6Z1OQ0" ;
     ceo:nombre "product_18" ;
-    ceo:precio "18.71" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_EY4XSN" ;
+    ceo:precio "79.45" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ARJ6DT" ;
     ceo:tiene_modelo ceo:modelo_18 ;
-    ceo:valoracion_media "4.32" .
+    ceo:valoracion_media "0.18" .
 
 ceo:product_19 a ceo:Producto ;
-    ceo:cantidad 27 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_2WWDW3" ;
+    ceo:cantidad 28 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_3TKF4A" ;
     ceo:nombre "product_19" ;
-    ceo:precio "68.05" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_JAC65A" ;
+    ceo:precio "58.19" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_1M2CEW" ;
     ceo:tiene_modelo ceo:modelo_19 ;
-    ceo:valoracion_media "0.28" .
+    ceo:valoracion_media "5.90" .
 
 ceo:product_2 a ceo:Producto ;
-    ceo:cantidad 50 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_1PN6XC" ;
+    ceo:cantidad 13 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_71SE8M" ;
     ceo:nombre "product_2" ;
-    ceo:precio "14.92" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_UMQGRG" ;
+    ceo:precio "20.12" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_WHM7N1" ;
     ceo:tiene_modelo ceo:modelo_2 ;
-    ceo:valoracion_media "8.79" .
+    ceo:valoracion_media "3.66" .
 
 ceo:product_20 a ceo:Producto ;
-    ceo:cantidad 31 ;
-    ceo:categoria "electrodomestico" ;
-    ceo:descripcion "descripcion_QQ5ZKB" ;
+    ceo:cantidad 19 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_OSP37T" ;
     ceo:nombre "product_20" ;
-    ceo:precio "48.60" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_SF822D" ;
+    ceo:precio "12.94" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_013077" ;
     ceo:tiene_modelo ceo:modelo_20 ;
-    ceo:valoracion_media "7.72" .
+    ceo:valoracion_media "3.12" .
 
 ceo:product_21 a ceo:Producto ;
-    ceo:cantidad 48 ;
-    ceo:categoria "electrodomestico" ;
-    ceo:descripcion "descripcion_S5C5M6" ;
+    ceo:cantidad 42 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_KN1XAE" ;
     ceo:nombre "product_21" ;
-    ceo:precio "85.59" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_7S0CZG" ;
+    ceo:precio "32.25" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_RSDODB" ;
     ceo:tiene_modelo ceo:modelo_21 ;
-    ceo:valoracion_media "5.64" .
+    ceo:valoracion_media "7.46" .
 
 ceo:product_22 a ceo:Producto ;
-    ceo:cantidad 41 ;
+    ceo:cantidad 22 ;
     ceo:categoria "electrodomestico" ;
-    ceo:descripcion "descripcion_OOANFW" ;
+    ceo:descripcion "descripcion_UWS5GT" ;
     ceo:nombre "product_22" ;
-    ceo:precio "50.55" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_Q5SIFD" ;
+    ceo:precio "97.07" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_B2VLNU" ;
     ceo:tiene_modelo ceo:modelo_22 ;
-    ceo:valoracion_media "8.65" .
+    ceo:valoracion_media "6.81" .
 
 ceo:product_23 a ceo:Producto ;
-    ceo:cantidad 39 ;
-    ceo:categoria "comida" ;
-    ceo:descripcion "descripcion_5L3Q8Y" ;
-    ceo:nombre "product_23" ;
-    ceo:precio "75.58" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_19S8TF" ;
-    ceo:tiene_modelo ceo:modelo_23 ;
-    ceo:valoracion_media "4.27" .
-
-ceo:product_24 a ceo:Producto ;
-    ceo:cantidad 12 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_XC4RE5" ;
-    ceo:nombre "product_24" ;
-    ceo:precio "9.19" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_BOEVTF" ;
-    ceo:tiene_modelo ceo:modelo_24 ;
-    ceo:valoracion_media "7.89" .
-
-ceo:product_25 a ceo:Producto ;
-    ceo:cantidad 42 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_2KDH08" ;
-    ceo:nombre "product_25" ;
-    ceo:precio "60.90" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_OY1B20" ;
-    ceo:tiene_modelo ceo:modelo_25 ;
-    ceo:valoracion_media "9.53" .
-
-ceo:product_26 a ceo:Producto ;
-    ceo:cantidad 39 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_9EOWWK" ;
-    ceo:nombre "product_26" ;
-    ceo:precio "64.43" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_43USTK" ;
-    ceo:tiene_modelo ceo:modelo_26 ;
-    ceo:valoracion_media "9.04" .
-
-ceo:product_27 a ceo:Producto ;
-    ceo:cantidad 39 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_RMZO0P" ;
-    ceo:nombre "product_27" ;
-    ceo:precio "33.70" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_PU9VJN" ;
-    ceo:tiene_modelo ceo:modelo_27 ;
-    ceo:valoracion_media "5.39" .
-
-ceo:product_28 a ceo:Producto ;
-    ceo:cantidad 30 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_A33ZN8" ;
-    ceo:nombre "product_28" ;
-    ceo:precio "5.57" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_VCHFE7" ;
-    ceo:tiene_modelo ceo:modelo_28 ;
-    ceo:valoracion_media "3.85" .
-
-ceo:product_29 a ceo:Producto ;
-    ceo:cantidad 13 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_93841W" ;
-    ceo:nombre "product_29" ;
-    ceo:precio "5.00" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_4NE7MV" ;
-    ceo:tiene_modelo ceo:modelo_29 ;
-    ceo:valoracion_media "7.68" .
-
-ceo:product_3 a ceo:Producto ;
     ceo:cantidad 26 ;
     ceo:categoria "electrodomestico" ;
-    ceo:descripcion "descripcion_RWDALF" ;
+    ceo:descripcion "descripcion_TL0AED" ;
+    ceo:nombre "product_23" ;
+    ceo:precio "75.41" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_JY7S8I" ;
+    ceo:tiene_modelo ceo:modelo_23 ;
+    ceo:valoracion_media "5.67" .
+
+ceo:product_24 a ceo:Producto ;
+    ceo:cantidad 20 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_GON3UP" ;
+    ceo:nombre "product_24" ;
+    ceo:precio "16.22" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_9QE9YN" ;
+    ceo:tiene_modelo ceo:modelo_24 ;
+    ceo:valoracion_media "3.15" .
+
+ceo:product_25 a ceo:Producto ;
+    ceo:cantidad 36 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_012EBT" ;
+    ceo:nombre "product_25" ;
+    ceo:precio "89.45" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_M3WEGD" ;
+    ceo:tiene_modelo ceo:modelo_25 ;
+    ceo:valoracion_media "8.38" .
+
+ceo:product_26 a ceo:Producto ;
+    ceo:cantidad 23 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_KD7MLN" ;
+    ceo:nombre "product_26" ;
+    ceo:precio "62.82" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_T74XQW" ;
+    ceo:tiene_modelo ceo:modelo_26 ;
+    ceo:valoracion_media "7.96" .
+
+ceo:product_27 a ceo:Producto ;
+    ceo:cantidad 34 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_87J8D3" ;
+    ceo:nombre "product_27" ;
+    ceo:precio "92.00" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_GHGY1B" ;
+    ceo:tiene_modelo ceo:modelo_27 ;
+    ceo:valoracion_media "0.46" .
+
+ceo:product_28 a ceo:Producto ;
+    ceo:cantidad 31 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_6ZO1DS" ;
+    ceo:nombre "product_28" ;
+    ceo:precio "38.25" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_63GM1J" ;
+    ceo:tiene_modelo ceo:modelo_28 ;
+    ceo:valoracion_media "6.64" .
+
+ceo:product_29 a ceo:Producto ;
+    ceo:cantidad 38 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_LM3WA1" ;
+    ceo:nombre "product_29" ;
+    ceo:precio "72.64" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_XBQZOA" ;
+    ceo:tiene_modelo ceo:modelo_29 ;
+    ceo:valoracion_media "6.15" .
+
+ceo:product_3 a ceo:Producto ;
+    ceo:cantidad 43 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_ZA0VL1" ;
     ceo:nombre "product_3" ;
-    ceo:precio "71.81" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_8OTV6Q" ;
+    ceo:precio "20.28" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_I2MT8O" ;
     ceo:tiene_modelo ceo:modelo_3 ;
-    ceo:valoracion_media "0.24" .
+    ceo:valoracion_media "7.92" .
 
 ceo:product_4 a ceo:Producto ;
-    ceo:cantidad 25 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_G6TG65" ;
+    ceo:cantidad 43 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_HCAXMH" ;
     ceo:nombre "product_4" ;
-    ceo:precio "53.89" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_5HITB8" ;
+    ceo:precio "74.87" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_NRY8QD" ;
     ceo:tiene_modelo ceo:modelo_4 ;
-    ceo:valoracion_media "5.52" .
+    ceo:valoracion_media "6.64" .
 
 ceo:product_5 a ceo:Producto ;
-    ceo:cantidad 39 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_BD0GCD" ;
+    ceo:cantidad 40 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_8PAQ3Z" ;
     ceo:nombre "product_5" ;
-    ceo:precio "46.54" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_85MSLS" ;
+    ceo:precio "83.55" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_V4EZNT" ;
     ceo:tiene_modelo ceo:modelo_5 ;
-    ceo:valoracion_media "0.76" .
+    ceo:valoracion_media "1.90" .
 
 ceo:product_6 a ceo:Producto ;
-    ceo:cantidad 30 ;
-    ceo:categoria "comida" ;
-    ceo:descripcion "descripcion_DD2NJ8" ;
+    ceo:cantidad 13 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_X29XOE" ;
     ceo:nombre "product_6" ;
-    ceo:precio "79.93" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_VAUE72" ;
+    ceo:precio "57.14" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_TEPY2V" ;
     ceo:tiene_modelo ceo:modelo_6 ;
-    ceo:valoracion_media "6.07" .
+    ceo:valoracion_media "6.59" .
 
 ceo:product_7 a ceo:Producto ;
-    ceo:cantidad 18 ;
-    ceo:categoria "producto_hogar" ;
-    ceo:descripcion "descripcion_EZGUK0" ;
+    ceo:cantidad 25 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_7OPVKG" ;
     ceo:nombre "product_7" ;
-    ceo:precio "62.45" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_TQ7A36" ;
+    ceo:precio "13.09" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_467OW4" ;
     ceo:tiene_modelo ceo:modelo_7 ;
-    ceo:valoracion_media "5.56" .
+    ceo:valoracion_media "2.88" .
 
 ceo:product_8 a ceo:Producto ;
-    ceo:cantidad 16 ;
-    ceo:categoria "juguete" ;
-    ceo:descripcion "descripcion_5J9ZYR" ;
+    ceo:cantidad 20 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_FYDJH1" ;
     ceo:nombre "product_8" ;
-    ceo:precio "50.12" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_C6GZZR" ;
+    ceo:precio "72.83" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_351PSB" ;
     ceo:tiene_modelo ceo:modelo_8 ;
-    ceo:valoracion_media "2.80" .
+    ceo:valoracion_media "0.70" .
 
 ceo:product_9 a ceo:Producto ;
-    ceo:cantidad 25 ;
-    ceo:categoria "ropa" ;
-    ceo:descripcion "descripcion_5WRNYG" ;
+    ceo:cantidad 42 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_S62FN4" ;
     ceo:nombre "product_9" ;
-    ceo:precio "1.81" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_XGW02U" ;
+    ceo:precio "60.69" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_XFT8ET" ;
     ceo:tiene_modelo ceo:modelo_9 ;
-    ceo:valoracion_media "3.52" .
+    ceo:valoracion_media "5.74" .
 
 ceo:modelo_0 a ceo:Modelo ;
     ceo:nombre "modelo_0" ;

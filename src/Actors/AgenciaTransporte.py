@@ -98,21 +98,14 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/register' % (diraddress),
                         '%s/Stop' % (diraddress))
 
-# Global triplestore graph
+# precio envio menos de 5 productos, precio envio entre 5 y 15 prodcutos, precio envios mas de 15 productos
+tarifaPrecio = [[5, 15 ,30],
+                [3, 18 ,40],
+                [7, 12 ,40]]
 
+global nAgencia
 
 cola1 = Queue()
-
-# Tarifas de precio
-precioMenos5 = ""
-precio5_20 = ""
-precioMas20 = ""
-
-# Tarifas de tiempo
-tiempoMenos5 = ""
-tiempo5_20 = ""
-tiempoMas20 = ""
-
 
 # Flask stuff
 app = Flask(__name__)
@@ -120,6 +113,11 @@ app = Flask(__name__)
 if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
+
+
+def tarifaAgencia(graph):
+    # Construir el mensaje
+    pass
 
 
 @app.route("/comm")
@@ -158,9 +156,7 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.SolicitarInformacionTransporteEnvio:
-                pass
-            elif accion == CEO.SolicitarInformacionTransporteRecogida:
-                pass
+                gr = tarifaAgencia(gm)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
@@ -181,8 +177,12 @@ def stop():
     
     
 def setup():
+    if port == 9050: nAgencia = 0
+    elif port == 9051: nAgencia = 1
+    else: nAgencia = 2
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
+    
 
 def tidyup():
     """
@@ -192,20 +192,9 @@ def tidyup():
     unregister_agent(AgenciaTransporte, ServicioDirectorio)
     pass
 
-def askForInput():
-    precioMenos5 = input("Intorduzca el precio por el envio de menos de 5 productos:")
-    precio5_20 = input("Intorduzca el precio por el envio de entre 5 y 20 productos:")
-    precioMas20 = input("Intorduzca el precio por el envio de mas de 20 productos:")
-    print("\n")    
-    tiempoMenos5 = input("Intorduzca el tiempo por el envio de menos de 5 productos:")
-    tiempo5_20 = input("Intorduzca el tiempo por el envio de entre 5 y 20 productos:")
-    tiempoMas20 = input("Intorduzca el tiempo por el envio de mas de 20 productos:")
-
 
 if __name__ == '__main__':
     setup()
-   
-    askForInput()
     
     register_agent(AgenciaTransporte, ServicioDirectorio, logger)
 

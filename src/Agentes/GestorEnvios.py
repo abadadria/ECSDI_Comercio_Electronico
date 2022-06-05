@@ -139,7 +139,7 @@ def gestionarEnvioProceso(ge):
             vendedor_addr = products_graph.value(producto, CEO.vendedor)
             if not (None, CEO.vendedor, vendedor_addr) in genv_ext:
                 # Si no existe un envio desde vendedor_addr, se crea
-                envio = CEO['envio_' + n_envio]
+                envio = CEO['envio_' + str(n_envio)]
                 genv_ext.add((envio, RDF.type, CEO.Envio))
                 genv_ext.add((envio, CEO.con_destino, destino))
                 genv_ext.add((envio, CEO.vendedor, vendedor_addr))
@@ -162,7 +162,7 @@ def gestionarEnvioProceso(ge):
 
 
 def gestionarEnvio(ge):
-    p = Process(taget=gestionarEnvioProceso, args=(ge,))
+    p = Process(target=gestionarEnvioProceso, args=(ge,))
     jobs.append(p)
     p.start()
     

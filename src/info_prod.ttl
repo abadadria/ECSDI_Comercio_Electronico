@@ -1,46 +1,6 @@
 @prefix ceo: <http://www.semanticweb.org/samragu/ontologies/comercio-electronico#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ceo:modelo_50 a ceo:Modelo ;
-    ceo:nombre "modelo_50" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_51 a ceo:Modelo ;
-    ceo:nombre "modelo_51" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_52 a ceo:Modelo ;
-    ceo:nombre "modelo_52" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_53 a ceo:Modelo ;
-    ceo:nombre "modelo_53" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_54 a ceo:Modelo ;
-    ceo:nombre "modelo_54" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_55 a ceo:Modelo ;
-    ceo:nombre "modelo_55" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_56 a ceo:Modelo ;
-    ceo:nombre "modelo_56" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_57 a ceo:Modelo ;
-    ceo:nombre "modelo_57" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_58 a ceo:Modelo ;
-    ceo:nombre "modelo_58" ;
-    ceo:tiene_marca ceo:marca_5 .
-
-ceo:modelo_59 a ceo:Modelo ;
-    ceo:nombre "modelo_59" ;
-    ceo:tiene_marca ceo:marca_5 .
-
 ceo:product_0 a ceo:Producto ;
     ceo:cantidad 14 ;
     ceo:categoria "comida" ;
@@ -402,7 +362,7 @@ ceo:product_40 a ceo:Producto ;
     ceo:valoracion_media "3.09" .
 
 ceo:product_41 a ceo:Producto ;
-    ceo:cantidad 45 ;
+    ceo:cantidad 44 ;
     ceo:categoria "comida" ;
     ceo:descripcion "descripcion_C5E682" ;
     ceo:nombre "product_41" ;
@@ -500,6 +460,106 @@ ceo:product_5 a ceo:Producto ;
     ceo:restricciones_devolucion "restricciones_devolucion_JJKP7K" ;
     ceo:tiene_modelo ceo:modelo_5 ;
     ceo:valoracion_media "0.93" .
+
+ceo:product_50 a ceo:Producto ;
+    ceo:cantidad 28 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_SJEH1P" ;
+    ceo:nombre "product_50" ;
+    ceo:precio "3.16" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_84GAHZ" ;
+    ceo:tiene_modelo ceo:modelo_50 ;
+    ceo:valoracion_media "2.26" .
+
+ceo:product_51 a ceo:Producto ;
+    ceo:cantidad 27 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_YRDYHB" ;
+    ceo:nombre "product_51" ;
+    ceo:precio "95.69" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_1YZNO1" ;
+    ceo:tiene_modelo ceo:modelo_51 ;
+    ceo:valoracion_media "7.84" .
+
+ceo:product_52 a ceo:Producto ;
+    ceo:cantidad 10 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_HBYNEC" ;
+    ceo:nombre "product_52" ;
+    ceo:precio "48.14" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_X2EAAF" ;
+    ceo:tiene_modelo ceo:modelo_52 ;
+    ceo:valoracion_media "0.85" .
+
+ceo:product_53 a ceo:Producto ;
+    ceo:cantidad 11 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_2SWIFI" ;
+    ceo:nombre "product_53" ;
+    ceo:precio "52.65" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_M7POKM" ;
+    ceo:tiene_modelo ceo:modelo_53 ;
+    ceo:valoracion_media "2.07" .
+
+ceo:product_54 a ceo:Producto ;
+    ceo:cantidad 35 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_01NW9D" ;
+    ceo:nombre "product_54" ;
+    ceo:precio "19.14" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_ELEUGT" ;
+    ceo:tiene_modelo ceo:modelo_54 ;
+    ceo:valoracion_media "5.80" .
+
+ceo:product_55 a ceo:Producto ;
+    ceo:cantidad 18 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_1OEFAL" ;
+    ceo:nombre "product_55" ;
+    ceo:precio "94.96" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_VS0A3S" ;
+    ceo:tiene_modelo ceo:modelo_55 ;
+    ceo:valoracion_media "4.05" .
+
+ceo:product_56 a ceo:Producto ;
+    ceo:cantidad 45 ;
+    ceo:categoria "juguete" ;
+    ceo:descripcion "descripcion_5HEMPK" ;
+    ceo:nombre "product_56" ;
+    ceo:precio "53.83" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_GOJMZK" ;
+    ceo:tiene_modelo ceo:modelo_56 ;
+    ceo:valoracion_media "1.94" .
+
+ceo:product_57 a ceo:Producto ;
+    ceo:cantidad 50 ;
+    ceo:categoria "electrodomestico" ;
+    ceo:descripcion "descripcion_AR7PQM" ;
+    ceo:nombre "product_57" ;
+    ceo:precio "69.72" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_CW5ZWO" ;
+    ceo:tiene_modelo ceo:modelo_57 ;
+    ceo:valoracion_media "3.35" .
+
+ceo:product_58 a ceo:Producto ;
+    ceo:cantidad 27 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_JEOJG8" ;
+    ceo:nombre "product_58" ;
+    ceo:precio "7.92" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_FVQV7D" ;
+    ceo:tiene_modelo ceo:modelo_58 ;
+    ceo:valoracion_media "2.42" .
+
+ceo:product_59 a ceo:Producto ;
+    ceo:cantidad 11 ;
+    ceo:categoria "comida" ;
+    ceo:descripcion "descripcion_MUUEO1" ;
+    ceo:nombre "product_59" ;
+    ceo:precio "71.57" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_AVZ66E" ;
+    ceo:tiene_modelo ceo:modelo_59 ;
+    ceo:valoracion_media "5.77" .
 
 ceo:product_6 a ceo:Producto ;
     ceo:cantidad 47 ;
@@ -724,6 +784,46 @@ ceo:modelo_49 a ceo:Modelo ;
 ceo:modelo_5 a ceo:Modelo ;
     ceo:nombre "modelo_5" ;
     ceo:tiene_marca ceo:marca_0 .
+
+ceo:modelo_50 a ceo:Modelo ;
+    ceo:nombre "modelo_50" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_51 a ceo:Modelo ;
+    ceo:nombre "modelo_51" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_52 a ceo:Modelo ;
+    ceo:nombre "modelo_52" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_53 a ceo:Modelo ;
+    ceo:nombre "modelo_53" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_54 a ceo:Modelo ;
+    ceo:nombre "modelo_54" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_55 a ceo:Modelo ;
+    ceo:nombre "modelo_55" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_56 a ceo:Modelo ;
+    ceo:nombre "modelo_56" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_57 a ceo:Modelo ;
+    ceo:nombre "modelo_57" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_58 a ceo:Modelo ;
+    ceo:nombre "modelo_58" ;
+    ceo:tiene_marca ceo:marca_5 .
+
+ceo:modelo_59 a ceo:Modelo ;
+    ceo:nombre "modelo_59" ;
+    ceo:tiene_marca ceo:marca_5 .
 
 ceo:modelo_6 a ceo:Modelo ;
     ceo:nombre "modelo_6" ;

@@ -123,46 +123,46 @@ ceo:product_3 a ceo:Producto ;
 
 ceo:product_30 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_31 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_32 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_33 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_34 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_35 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_36 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_37 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 1 ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_38 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_39 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9040/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9040/comm" .
 
 ceo:product_4 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
@@ -171,54 +171,99 @@ ceo:product_4 a ceo:Producto ;
 
 ceo:product_40 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_41 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_42 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 1 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_43 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_44 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_45 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_46 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 2 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_47 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_48 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_49 a ceo:Producto ;
     ceo:gestion_envio "externa" ;
-    ceo:vendedor "http://samragu-ps42:9041/comm" .
+    ceo:vendedor "http://adria-VirtualBox:9041/comm" .
 
 ceo:product_5 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 2 ;
     ceo:nombre "product_5" .
+
+ceo:product_50 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_51 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_52 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_53 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 2 ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_54 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 1 ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_55 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_56 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_57 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 2 ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_58 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
+
+ceo:product_59 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://adria-VirtualBox:9042/comm" .
 
 ceo:product_6 a ceo:Producto ;
     ceo:gestion_envio "interna" ;

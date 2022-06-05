@@ -116,6 +116,7 @@ def realizarEnvio():
     global cola1
     while not cola1.empty:
         graph = cola1.pop(0)
+        print("printando graph")
         print(graph.serialize(format='turtle'))
         
 

@@ -162,6 +162,10 @@ def inicializar_info_productos():
 
     GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
     
+    address = str(ComercioExterno.address)
+    for s, p, o in products_graph.triples((None, RDF.type, CEO.Producto)):
+        products_graph.add((s, CEO.vendedor, Literal(address)))
+    
     msg = build_message(products_graph, perf=ACL.request,
                         sender=ComercioExterno.uri,
                         receiver=GestorProductosExternos.uri,

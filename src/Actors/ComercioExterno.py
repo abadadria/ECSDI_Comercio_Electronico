@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-filename: Comercio Externo1
+filename: Comercio Externo
 
 /comm es la entrada para la recepcion de mensajes del agente
 /Stop es la entrada que para el agente
@@ -27,8 +27,8 @@ from AgentUtil.Logging import config_logger
 from AgentUtil.DSO import DSO
 from AgentUtil.Util import gethostname
 import socket
-import requests
-import json
+import threading
+import time
 
 from DirectoryOps import search_agent
 
@@ -62,7 +62,7 @@ else:
 
 # Configuration stuff
 if args.port is None:
-    port = 9003
+    port = 9040
 else:
     port = args.port
 
@@ -88,7 +88,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/register' % (diraddress),
                         '%s/Stop' % (diraddress))
 
-
 # Contador de mensajes
 mss_cnt = 0
 
@@ -98,11 +97,13 @@ ComercioExterno = Agent('AgentePersonal',
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
+products_graph = Graph()
+
 
 def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
     print("Introduce el nombre del producto y sus atributos a cambiar (insertar '-' si no se desea cambiar")
-    print("\tFormato: nombre(str) cantidad(int) categoria(str) descripcion(str) precio(float) restricciones_devolucion(str)")
+    print("\tFormato: nombre(str) cantidad(int) categoria(str) descripcion(str) precio(float) restricciones_devolucion(str) gestion_envio(str) vendedor(str)")
     """
     Ampliar en un futuro para que se pueda cambiar todo tipo de información y que sea el gestor
     de productos externos el que decida a quien enviar esta informacion. De momento solo se puede cambiar la
@@ -130,6 +131,8 @@ def actualizar_info_productos():
         if atributosProducto[3] != '-': gm.add((p, CEO.descripcion, Literal(atributosProducto[3])))
         if atributosProducto[4] != '-': gm.add((p, CEO.precio, Literal(atributosProducto[4])))
         if atributosProducto[5] != '-': gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[5])))
+        if atributosProducto[6] != '-': gm.add((p, CEO.gestion_envio, Literal(atributosProducto[6])))
+        if atributosProducto[7] != '-': gm.add((p, CEO.vendedor, Literal(atributosProducto[7])))
     
     GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
     
@@ -151,10 +154,103 @@ def do(value):
         else:
             print('\n' + 'Ha habido un error durante el proceso\n ')
         
+def inicializar_info_productos():
+    bp = CEO.ActualizarInformacionProductos
+    products_graph.add((bp, RDF.type, CEO.ActualizarInformacionProductos))
+    products_graph.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
+    products_graph.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+
+    GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
+    
+    msg = build_message(products_graph, perf=ACL.request,
+                        sender=ComercioExterno.uri,
+                        receiver=GestorProductosExternos.uri,
+                        content=bp)
+
+    gr = send_message(msg, GestorProductosExternos.address)
+
+    return gr
+
+
+def setup():
+    if port == 9040: name = 'info_prod_CE1.ttl'
+    elif port == 9041: name = 'info_prod_CE2.ttl'
+    else: name = 'info_prod_CE3.ttl'
+    products_graph.parse(name, format='turtle')
+    
+    gr = inicializar_info_productos()
+    msgdic = get_message_properties(gr)
+    if msgdic['performative'] == ACL.confirm:
+        print('\n' + 'El mensaje se ha enviado y gestionado correctamente\n ')
+    else:
+        print('\n' + 'Ha habido un error durante el proceso\n ')
+    
+    return
+
+@app.route("/comm")
+def comunicacion():
+    """
+    Entrypoint de comunicacion
+    """
+
+    message = request.args['content']
+    gm = Graph()
+    gm.parse(data=message, format='xml')
+
+    msgdic = get_message_properties(gm)
+
+    # Comprobamos que sea un mensaje FIPA ACL
+    if not msgdic:
+        # Si no es, respondemos que no hemos entendido el mensaje
+        gr = build_message(Graph(),
+                           ACL['not-understood'],
+                           sender=ComercioExterno.uri)
+    else:
+        # Obtenemos la performativa
+        if msgdic['performative'] != ACL.request:
+            # Si no es un request, respondemos que no hemos entendido el mensaje
+            gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=ComercioExterno.uri)
+        else:
+            # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
+            content = msgdic['content']
+
+            # Averiguamos el tipo de la accion
+            accion = gm.value(subject=content, predicate=RDF.type)
+
+            # Aqui realizariamos lo que pide la accion
+            # Por ahora simplemente retornamos un Inform-done
+            if accion == CEO.ActualizarInformacionProductos:
+                pass
+            else:
+                gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=ComercioExterno.uri)
+            
+    return gr.serialize(format='xml')
+
+
+@app.route("/Stop")
+def stop():
+    """
+    Entrypoint que para el agente
+
+    :return:
+    """
+    shutdown_server()
+    return "Parando Servidor"
+    
 
 if __name__ == '__main__':
-    print("Bienvenido a ComercioExterno")
+    setup()
+    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
     
+    threading.Thread(target=lambda: app.run(host=hostname, port=port)).start()
+    
+    time.sleep(0.5)
+    print("Bienvenido a ComercioExterno")
     while 1:
         print("Que acción deseas realizar?")
         print("[1] Actualizar información productos")
@@ -165,4 +261,3 @@ if __name__ == '__main__':
             exit()
         else:
             do(value)
-    

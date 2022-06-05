@@ -18,6 +18,7 @@ from SPARQLWrapper import SPARQLWrapper
 import argparse
 
 from flask import Flask, request, render_template
+from numpy import prod
 from rdflib import Graph, RDF, Namespace, RDFS, Literal
 from rdflib.namespace import FOAF
 
@@ -32,7 +33,7 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
-from DirectoryOps import register_agent, search_agent, unregister_agent
+from DirectoryOps import register_agent, unregister_agent
 
 
 __author__ = 'adria'
@@ -67,7 +68,7 @@ else:
 
 # Configuration stuff
 if args.port is None:
-    port = 9030
+    port = 9050
 else:
     port = args.port
 
@@ -87,8 +88,8 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 mss_cnt = 0
 
 # Datos del Agente
-GestorProductosExternos = Agent('GestorProductosExternos',
-                       CEO.GestorProductosExternos,
+AgenciaTransporte = Agent('AgenciaTransporte',
+                       CEO.AgenciaTransporte,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
@@ -98,9 +99,20 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/Stop' % (diraddress))
 
 # Global triplestore graph
-products_graph = Graph()
+
 
 cola1 = Queue()
+
+# Tarifas de precio
+precioMenos5 = ""
+precio5_20 = ""
+precioMas20 = ""
+
+# Tarifas de tiempo
+tiempoMenos5 = ""
+tiempo5_20 = ""
+tiempoMas20 = ""
+
 
 # Flask stuff
 app = Flask(__name__)
@@ -109,51 +121,6 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
-
-def gestionarActualizacion(ge):
-    
-    gmB = Graph()
-    gmB.namespace_manager.bind('rdf', RDF)
-    gmB.namespace_manager.bind('ceo', CEO)
-    
-    bpB = CEO.ActualizarInformacionProductos
-    gmB.add((bpB, RDF.type, CEO.ActualizarInformacionProductos))
-    gmB.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
-    gmB.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
-    
-    gmP = Graph()
-    gmP.namespace_manager.bind('rdf', RDF)
-    gmP.namespace_manager.bind('ceo', CEO)
-    
-    bpP = CEO.ActualizarInformacionProductos
-    gmP.add((bpP, RDF.type, CEO.ActualizarInformacionProductos))
-    gmP.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
-    gmP.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
-    
-    for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        gmB.add((s, RDF.type, CEO.Producto))
-        for ss, pp, oo in ge.triples((s,None,None)):
-            length = len(pp)
-            name = pp[67:length]
-            if name in ['cantidad','categoria','descripcion','nombre','precio','restricciones_devolucion','tiene_modelo','valoracion_media']: 
-                gmB.add((ss, pp, oo))
-            else:
-                gmP.add((ss, pp, oo))
-
-    BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
-
-    msgB = build_message(gmB, perf=ACL.request,
-                        sender=GestorProductosExternos.uri,
-                        receiver=BuscadorProductos.uri,
-                        content=bpB)
-
-    send_message(msgB, BuscadorProductos.address)
-    
-    """Enviar mensaje al gestor envios para que se actualice la info"""
-    
-    return
-
-        
 
 @app.route("/comm")
 def comunicacion():
@@ -172,14 +139,14 @@ def comunicacion():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(),
                            ACL['not-understood'],
-                           sender=GestorProductosExternos.uri)
+                           sender=AgenciaTransporte.uri)
     else:
         # Obtenemos la performativa
         if msgdic['performative'] != ACL.request:
             # Si no es un request, respondemos que no hemos entendido el mensaje
             gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=GestorProductosExternos.uri)
+                                sender=AgenciaTransporte.uri)
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
@@ -190,16 +157,14 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.ActualizarInformacionProductos:
-                ab1 = Process(target=gestionarActualizacion, args=(gm,))
-                ab1.start()
-                gr = build_message( Graph(),
-                                ACL['confirm'],
-                                sender=GestorProductosExternos.uri)
+            if accion == CEO.SolicitarInformacionTransporteEnvio:
+                pass
+            elif accion == CEO.SolicitarInformacionTransporteRecogida:
+                pass
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=GestorProductosExternos.uri)
+                                sender=AgenciaTransporte.uri)
             
     return gr.serialize(format='xml')
 
@@ -224,18 +189,30 @@ def tidyup():
     Acciones previas a parar el agente
 
     """
-    unregister_agent(GestorProductosExternos, ServicioDirectorio)
+    unregister_agent(AgenciaTransporte, ServicioDirectorio)
     pass
 
-if __name__ == '__main__': 
-    setup()
-    
-    register_agent(GestorProductosExternos, ServicioDirectorio, logger)
+def askForInput():
+    precioMenos5 = input("Intorduzca el precio por el envio de menos de 5 productos:")
+    precio5_20 = input("Intorduzca el precio por el envio de entre 5 y 20 productos:")
+    precioMas20 = input("Intorduzca el precio por el envio de mas de 20 productos:")
+    print("\n")    
+    tiempoMenos5 = input("Intorduzca el tiempo por el envio de menos de 5 productos:")
+    tiempo5_20 = input("Intorduzca el tiempo por el envio de entre 5 y 20 productos:")
+    tiempoMas20 = input("Intorduzca el tiempo por el envio de mas de 20 productos:")
 
-    print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
+
+if __name__ == '__main__':
+    setup()
+   
+    askForInput()
+    
+    register_agent(AgenciaTransporte, ServicioDirectorio, logger)
+
+    print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
-
+    
     tidyup()
     print('The End')

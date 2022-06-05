@@ -125,15 +125,11 @@ def buscarProductos(gm):
             categoriap = products_graph.value(s, CEO.categoria)
             cantidadp = products_graph.value(s, CEO.cantidad)
             categoriaOk = False
-            cantidadOk = True
             if categoriap == categoria:
                 categoriaOk = True
-            # if cantidadp >= cantidad:
-            #     cantidadOk = True
             
-            if categoriaOk and cantidadOk:
+            if categoriaOk:
                 precio = products_graph.value(s, CEO.precio)
-                gestion_envio = products_graph.value(s, CEO.gestion_envio)
                 precioOk = False
                 if Decimal(precio) < int(precio_max) and Decimal(precio) > int(precio_min):
                     precioOk = True
@@ -141,7 +137,6 @@ def buscarProductos(gm):
                     # Añadimos toda la informacion necessaria: producto, oferta, modelo, marca
                     gr.add((s, RDF.type, CEO.Producto))
                     gr.add((s, CEO.precio, precio))
-                    gr.add((s, CEO.gestion_envio, gestion_envio))
                     gr.add((s, CEO.categoria, categoriap))
                     gr.add((s, CEO.cantidad, cantidadp))
                     
@@ -172,7 +167,6 @@ def buscarProductos(gm):
                     
     return gr
 
-
 def eliminar_productos_pedidos(gm):
     for lp, p in gm.subject_objects(CEO.tiene_producto):
         c_pedida = int(gm.value(subject=lp, predicate=CEO.cantidad))
@@ -185,19 +179,25 @@ def eliminar_productos_pedidos(gm):
 
 # Product_11 60 - - - -
 
-def gestionarActualizacion(ge):    
-    """
-    Actualizar estado del grafo products_graph
-    """
+def gestionarActualizacion(ge): 
+    print("actualizando")   
+    print(ge.serialize(format='turtle'))
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-      
+        
+        boolean = False
         for ss, pp, oo in products_graph.triples((s,None,None)):
+            boolean = True
             atributo = ge.value(s, pp)
             if atributo != None and atributo != RDF.type: 
                 products_graph.set((ss, pp, Literal(atributo)))
                 products_graph.set((ss, RDF.type, CEO.Producto))
+        
+        # el producto no existia
+        if not boolean:
+            for ss, pp, oo in ge.triples((s,None,None)):
+                products_graph.add((ss, pp, oo))
     
-    ofile = open('informacion productos.ttl', "w")
+    ofile = open('info_prod.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
     ofile.close()        
 
@@ -240,8 +240,7 @@ def comunicacion():
                 (extra) Crear proceso que envie un mensaje al recomendador/control calidad para que almacene la busqueda
                 """
             elif accion == CEO.ActualizarInformacionProductos:
-                ab1 = Process(target=gestionarActualizacion, args=(gm,))
-                ab1.start()
+                gestionarActualizacion(gm)
                 
                 gr = build_message( Graph(),
                                 ACL['confirm'],
@@ -287,7 +286,7 @@ def stop():
     
     
 def setup():
-    products_graph.parse('informacion productos.ttl', format='turtle')
+    products_graph.parse('info_prod.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 
@@ -306,6 +305,6 @@ if __name__ == '__main__':
 
     # Ponemos en marcha el servidor
     app.run(host=hostname, port=port)
-
+    
     tidyup()
     print('The End')

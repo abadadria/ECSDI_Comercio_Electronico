@@ -196,6 +196,7 @@ def comunicacion():
     Entrypoint de comunicacion
     """
     def enviarProductos():
+        print("Petición de envio de productos recibida y gestionada\n")
         return build_message(Graph(),
                              ACL.confirm,
                              sender=ComercioExterno.uri)

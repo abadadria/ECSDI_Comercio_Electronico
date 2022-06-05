@@ -339,6 +339,7 @@ def comunicacion():
 
 
 def setup():
+    grafo_pedidos.parse('pedidos.ttl', format='turtle')
     pass
 
 def tidyup():

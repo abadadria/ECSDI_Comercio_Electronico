@@ -146,6 +146,8 @@ def reembolsar(graph):
     Leer el reembolso que viene en el graph
     """
     
+    print(graph.serialize(format='turtle'))
+    
     # Creamos la Respuesta RespuestaReembolso
     gr = Graph()
     gr.namespace_manager.bind('rdf', RDF)

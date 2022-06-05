@@ -3,32 +3,32 @@
 
 ceo:product_0 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_0" .
 
 ceo:product_1 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_1" .
 
 ceo:product_10 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_10" .
 
 ceo:product_11 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_11" .
 
 ceo:product_12 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_12" .
 
 ceo:product_13 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_13" .
 
 ceo:product_14 a ceo:Producto ;
@@ -43,12 +43,12 @@ ceo:product_15 a ceo:Producto ;
 
 ceo:product_16 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_16" .
 
 ceo:product_17 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_17" .
 
 ceo:product_18 a ceo:Producto ;
@@ -63,17 +63,17 @@ ceo:product_19 a ceo:Producto ;
 
 ceo:product_2 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_2" .
 
 ceo:product_20 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_20" .
 
 ceo:product_21 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_21" .
 
 ceo:product_22 a ceo:Producto ;
@@ -83,37 +83,37 @@ ceo:product_22 a ceo:Producto ;
 
 ceo:product_23 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_23" .
 
 ceo:product_24 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_24" .
 
 ceo:product_25 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_25" .
 
 ceo:product_26 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_26" .
 
 ceo:product_27 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_27" .
 
 ceo:product_28 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_28" .
 
 ceo:product_29 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_29" .
 
 ceo:product_3 a ceo:Producto ;
@@ -123,7 +123,7 @@ ceo:product_3 a ceo:Producto ;
 
 ceo:product_4 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_4" .
 
 ceo:product_5 a ceo:Producto ;
@@ -133,21 +133,21 @@ ceo:product_5 a ceo:Producto ;
 
 ceo:product_6 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_6" .
 
 ceo:product_7 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_7" .
 
 ceo:product_8 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_8" .
 
 ceo:product_9 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_9" .
 

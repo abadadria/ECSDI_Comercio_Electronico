@@ -25,6 +25,7 @@ from flask import Flask, request, render_template
 from numpy import prod
 from rdflib import Graph, RDF, Namespace, RDFS, Literal
 from rdflib.namespace import FOAF
+from Actors.AgenciaTransporte import AgenciaTransporte
 
 from AgentUtil.ACL import ACL
 from AgentUtil.FlaskServer import shutdown_server
@@ -37,7 +38,7 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
-from DirectoryOps import register_agent, unregister_agent
+from DirectoryOps import register_agent, unregister_agent, search_agent
 
 
 __author__ = 'adria'
@@ -111,10 +112,52 @@ if not args.verbose:
 
 
 def hacerEnvio(graph):
-    print("printando graph")
-    print(graph.serialize(format='turtle'))
-    #escojer uno de las tres agencias de transporte random
+    # se obtendria de graph la cantidad de procutos a enviar, con lo que se escogeria la tarifa de envio
+    print("Pidiendo tarifa envio")
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
+    respuestaInfo = CEO.SolicitarInformacionTransporteEnvio
+    gm.add((respuestaInfo, RDF.type, CEO.SolicitarInformacionTransporteEnvio))
+    gm.add((CEO.SolicitarInformacionTransporteEnvio, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    
+    AgenciaTransporte = search_agent(CEO.AgenciaTransporte, CentroLogistico, ServicioDirectorio)
+    
+    msg = build_message(gm, perf=ACL.request,
+                        sender=CentroLogistico.uri,
+                        receiver=AgenciaTransporte.uri,
+                        content=respuestaInfo)
+
+    gr = send_message(msg, AgenciaTransporte.address)
+    precio = gr.value(CEO.RespuestaInformacionTransporteEnvio, CEO.precio)
+    
+    print("Respuesta tarifa envio: ")
+    print("El precio del envio es de :" + str(precio) + "€")
+    # printar el precio del envio que se encuentra en gr
+    
+    print("Procedemos a contratar el envio")
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
+    contratarEnvio = CEO.ContratarEnvio
+    gm.add((contratarEnvio, RDF.type, CEO.ContratarEnvio))
+    gm.add((CEO.ContratarEnvio, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    
+    AgenciaTransporte = search_agent(CEO.AgenciaTransporte, CentroLogistico, ServicioDirectorio)
+    
+    msg = build_message(gm, perf=ACL.request,
+                        sender=CentroLogistico.uri,
+                        receiver=AgenciaTransporte.uri,
+                        content=contratarEnvio)
+
+    gr = send_message(msg, AgenciaTransporte.address)
+    msgdic = get_message_properties(gr)
+    if msgdic['performative'] != ACL.confirm:
+        print('\n' + 'Ha habido un error durante el proceso\n ')
         
+    print("Envio contratado correctamente a " + AgenciaTransporte.address + "\n")
 
 
 @app.route("/comm")

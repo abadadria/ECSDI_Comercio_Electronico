@@ -147,8 +147,9 @@ def gestionInterna(g):
                             sender=GestorEnvios.uri,
                             receiver=CentroLogistico.uri,
                             content=accion)
-        print("enviando")
         gr = send_message(msg, CentroLogistico.address)
+        
+        print("Petición de envio de producto interno gestionada\n")
 
 
 def gestionExterna(g):
@@ -181,12 +182,12 @@ def gestionExterna(g):
         logger.info(gm.serialize(format='turtle'))
 
         msg = build_message(gm,
-                            ACL.Request,
+                            ACL.request,
                             sender=GestorEnvios.uri,
                             receiver=CEO.ComercioExterno,
                             content=accion)
         gr = send_message(msg, str(g.value(envio, CEO.vendedor)))
-
+        print("Petición de envio de producto externo gestionada\n")
         if not (None, ACL.performative, ACL.confirm) in gr:
             print("Ha habido un error (GestorEnvios:163)")
             exit()

@@ -2,120 +2,115 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ceo:product_40 a ceo:Producto ;
-    ceo:cantidad 40 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_9WT8H0" ;
+    ceo:cantidad 41 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_YLO5JK" ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_40" ;
-    ceo:precio "32.11" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_80YVWY" ;
+    ceo:precio "57.33" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_E6DJRG" ;
     ceo:tiene_modelo ceo:modelo_40 ;
-    ceo:valoracion_media "5.39" .
+    ceo:valoracion_media "7.47" .
 
 ceo:product_41 a ceo:Producto ;
-    ceo:cantidad 35 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_ZF4887" ;
-    ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:cantidad 42 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_Y316MZ" ;
+    ceo:gestion_envio "externa" ;
     ceo:nombre "product_41" ;
-    ceo:precio "36.89" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_XGN2GC" ;
+    ceo:precio "89.01" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_X66I7L" ;
     ceo:tiene_modelo ceo:modelo_41 ;
-    ceo:valoracion_media "4.98" .
+    ceo:valoracion_media "4.60" .
 
 ceo:product_42 a ceo:Producto ;
-    ceo:cantidad 49 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_G0SIFA" ;
-    ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:cantidad 47 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_ZAH5CQ" ;
+    ceo:gestion_envio "externa" ;
     ceo:nombre "product_42" ;
-    ceo:precio "29.27" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_GJGN3R" ;
+    ceo:precio "61.68" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_3DF3Z3" ;
     ceo:tiene_modelo ceo:modelo_42 ;
-    ceo:valoracion_media "8.65" .
+    ceo:valoracion_media "4.09" .
 
 ceo:product_43 a ceo:Producto ;
-    ceo:cantidad 41 ;
-    ceo:categoria "instrumento_musical" ;
-    ceo:descripcion "descripcion_GB01MB" ;
-    ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:cantidad 44 ;
+    ceo:categoria "informatica" ;
+    ceo:descripcion "descripcion_ED5UDY" ;
+    ceo:gestion_envio "externa" ;
     ceo:nombre "product_43" ;
-    ceo:precio "62.24" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_L4HREZ" ;
+    ceo:precio "93.56" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_AMX3TY" ;
     ceo:tiene_modelo ceo:modelo_43 ;
-    ceo:valoracion_media "7.11" .
+    ceo:valoracion_media "0.95" .
 
 ceo:product_44 a ceo:Producto ;
-    ceo:cantidad 36 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_M7HO5M" ;
-    ceo:gestion_envio "externa" ;
-    ceo:nombre "product_44" ;
-    ceo:precio "32.08" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_FDXR7C" ;
-    ceo:tiene_modelo ceo:modelo_44 ;
-    ceo:valoracion_media "2.61" .
-
-ceo:product_45 a ceo:Producto ;
-    ceo:cantidad 47 ;
-    ceo:categoria "producto_jardin" ;
-    ceo:descripcion "descripcion_C9LWOV" ;
-    ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
-    ceo:nombre "product_45" ;
-    ceo:precio "38.49" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_SNZ0ST" ;
-    ceo:tiene_modelo ceo:modelo_45 ;
-    ceo:valoracion_media "9.23" .
-
-ceo:product_46 a ceo:Producto ;
-    ceo:cantidad 48 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_XRFLSW" ;
-    ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
-    ceo:nombre "product_46" ;
-    ceo:precio "47.50" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_ZTJOTK" ;
-    ceo:tiene_modelo ceo:modelo_46 ;
-    ceo:valoracion_media "8.69" .
-
-ceo:product_47 a ceo:Producto ;
-    ceo:cantidad 45 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_Y03A60" ;
+    ceo:cantidad 33 ;
+    ceo:categoria "instrumento_musical" ;
+    ceo:descripcion "descripcion_R7FLS5" ;
     ceo:gestion_envio "interna" ;
     ceo:n_centro_logistico 0 ;
+    ceo:nombre "product_44" ;
+    ceo:precio "44.38" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_7LYT1W" ;
+    ceo:tiene_modelo ceo:modelo_44 ;
+    ceo:valoracion_media "7.86" .
+
+ceo:product_45 a ceo:Producto ;
+    ceo:cantidad 32 ;
+    ceo:categoria "ropa" ;
+    ceo:descripcion "descripcion_JYTAOV" ;
+    ceo:gestion_envio "externa" ;
+    ceo:nombre "product_45" ;
+    ceo:precio "27.89" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_8SFYCN" ;
+    ceo:tiene_modelo ceo:modelo_45 ;
+    ceo:valoracion_media "6.09" .
+
+ceo:product_46 a ceo:Producto ;
+    ceo:cantidad 29 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_3UA6B7" ;
+    ceo:gestion_envio "externa" ;
+    ceo:nombre "product_46" ;
+    ceo:precio "88.26" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_7Y2K22" ;
+    ceo:tiene_modelo ceo:modelo_46 ;
+    ceo:valoracion_media "3.55" .
+
+ceo:product_47 a ceo:Producto ;
+    ceo:cantidad 44 ;
+    ceo:categoria "producto_jardin" ;
+    ceo:descripcion "descripcion_4M4URR" ;
+    ceo:gestion_envio "externa" ;
     ceo:nombre "product_47" ;
-    ceo:precio "89.09" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_2ANDT4" ;
+    ceo:precio "14.32" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_5X9PZD" ;
     ceo:tiene_modelo ceo:modelo_47 ;
-    ceo:valoracion_media "8.72" .
+    ceo:valoracion_media "8.28" .
 
 ceo:product_48 a ceo:Producto ;
-    ceo:cantidad 14 ;
-    ceo:categoria "informatica" ;
-    ceo:descripcion "descripcion_H5Z99U" ;
+    ceo:cantidad 35 ;
+    ceo:categoria "producto_hogar" ;
+    ceo:descripcion "descripcion_N4D23X" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_48" ;
-    ceo:precio "84.89" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_BSQKYX" ;
+    ceo:precio "61.43" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_7QSWKG" ;
     ceo:tiene_modelo ceo:modelo_48 ;
-    ceo:valoracion_media "8.84" .
+    ceo:valoracion_media "7.11" .
 
 ceo:product_49 a ceo:Producto ;
-    ceo:cantidad 14 ;
-    ceo:categoria "comida" ;
-    ceo:descripcion "descripcion_N3NNNX" ;
+    ceo:cantidad 18 ;
+    ceo:categoria "juguete" ;
+    ceo:descripcion "descripcion_C1PGWY" ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_49" ;
-    ceo:precio "36.41" ;
-    ceo:restricciones_devolucion "restricciones_devolucion_Z48ZHR" ;
+    ceo:precio "36.36" ;
+    ceo:restricciones_devolucion "restricciones_devolucion_3WAKGX" ;
     ceo:tiene_modelo ceo:modelo_49 ;
-    ceo:valoracion_media "1.52" .
+    ceo:valoracion_media "4.60" .
 

@@ -102,7 +102,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
 cobros_graph = Graph()
 cobros_graph.namespace_manager.bind('rdf', RDF)
 cobros_graph.namespace_manager.bind('ceo', CEO)
-ofile = open('info_cobros.ttl', "w")
 
 cola1 = Queue()
 
@@ -144,13 +143,8 @@ def reembolsar(graph):
     gr.add((rc, RDF.type, CEO.RespuestaReembolso))
     gr.add((CEO.RespuestaReembolso, RDFS.subClassOf, CEO.Respuesta))
     
-    """
-    Asignar el reembolso que nos entra a la respuesta del reembolso y añadirle un estado (exitoso,fallido)
-    """
     
     
-    ofile.write(cobros_graph.serialize(format='turtle'))
-
 
 @app.route("/comm")
 def comunicacion():

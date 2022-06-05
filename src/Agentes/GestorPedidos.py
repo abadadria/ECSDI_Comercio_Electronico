@@ -98,15 +98,17 @@ if not args.verbose:
     logger.setLevel(logging.ERROR)
 
 def cobrar_pedido(importe_pedido):
+    global n_pedidos
+
     gm = Graph()
     gm.namespace_manager.bind('rdf', RDF)
     gm.namespace_manager.bind('ceo', CEO)
     
     cobro = CEO.Cobro
     gm.add((cobro, RDF.type, CEO.Cobro))
-    gm.add((CEO.Cobro, RDF.subClassOf, CEO.Pago))
-    gm.add((cobro, CEO.identificador, n_pedidos))
-    gm.add((cobro, CEO.importe_total, importe_pedido))
+    gm.add((CEO.Cobro, RDFS.subClassOf, CEO.Pago))
+    gm.add((cobro, CEO.identificador, Literal(n_pedidos)))
+    gm.add((cobro, CEO.importe_total, Literal(importe_pedido)))
     
     accion = CEO.Cobrar
     gm.add((accion, RDF.type, CEO.Cobrar))
@@ -287,7 +289,7 @@ def comunicacion():
 
         n_pedidos += 1 
         
-        cobrar_pedido(importe_pedido)
+        #cobrar_pedido(importe_pedido)
 
         return build_message(gf,
                       ACL.inform,

@@ -107,8 +107,6 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
-
-
 @app.route("/comm")
 def comunicacion():
     """

@@ -3,12 +3,12 @@
 
 ceo:product_0 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_0" .
 
 ceo:product_1 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_1" .
 
 ceo:product_10 a ceo:Producto ;
@@ -18,32 +18,32 @@ ceo:product_10 a ceo:Producto ;
 
 ceo:product_11 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_11" .
 
 ceo:product_12 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_12" .
 
 ceo:product_13 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_13" .
 
 ceo:product_14 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_14" .
 
 ceo:product_15 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_15" .
 
 ceo:product_16 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_16" .
 
 ceo:product_17 a ceo:Producto ;
@@ -53,27 +53,27 @@ ceo:product_17 a ceo:Producto ;
 
 ceo:product_18 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_18" .
 
 ceo:product_19 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_19" .
 
 ceo:product_2 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_2" .
 
 ceo:product_20 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_20" .
 
 ceo:product_21 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_21" .
 
 ceo:product_22 a ceo:Producto ;
@@ -83,17 +83,17 @@ ceo:product_22 a ceo:Producto ;
 
 ceo:product_23 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_23" .
 
 ceo:product_24 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_24" .
 
 ceo:product_25 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_25" .
 
 ceo:product_26 a ceo:Producto ;
@@ -103,12 +103,12 @@ ceo:product_26 a ceo:Producto ;
 
 ceo:product_27 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_27" .
 
 ceo:product_28 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_28" .
 
 ceo:product_29 a ceo:Producto ;
@@ -118,32 +118,121 @@ ceo:product_29 a ceo:Producto ;
 
 ceo:product_3 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_3" .
+
+ceo:product_30 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_31 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_32 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_33 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_34 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_35 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_36 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_37 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 1 ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_38 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
+
+ceo:product_39 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9040/comm" .
 
 ceo:product_4 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_4" .
+
+ceo:product_40 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_41 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_42 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 1 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_43 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_44 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_45 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_46 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 2 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_47 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_48 a ceo:Producto ;
+    ceo:gestion_envio "interna" ;
+    ceo:n_centro_logistico 0 ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
+
+ceo:product_49 a ceo:Producto ;
+    ceo:gestion_envio "externa" ;
+    ceo:vendedor "http://samragu-ps42:9041/comm" .
 
 ceo:product_5 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 2 ;
     ceo:nombre "product_5" .
 
 ceo:product_6 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 1 ;
+    ceo:n_centro_logistico 0 ;
     ceo:nombre "product_6" .
 
 ceo:product_7 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 0 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_7" .
 
 ceo:product_8 a ceo:Producto ;
     ceo:gestion_envio "interna" ;
-    ceo:n_centro_logistico 2 ;
+    ceo:n_centro_logistico 1 ;
     ceo:nombre "product_8" .
 
 ceo:product_9 a ceo:Producto ;

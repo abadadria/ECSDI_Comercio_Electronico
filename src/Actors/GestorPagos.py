@@ -124,25 +124,7 @@ def cobrar(graph):
     return build_message(Graph(),
                          ACL.confirm,
                          sender=GestorPagos.uri)
-    
-
-
-def reembolsar(graph):
-    """
-    Leer el reembolso que viene en el graph
-    """
-    
-    print(graph.serialize(format='turtle'))
-    
-    # Creamos la Respuesta RespuestaReembolso
-    gr = Graph()
-    gr.namespace_manager.bind('rdf', RDF)
-    gr.namespace_manager.bind('ceo', CEO)
-    
-    rc = CEO.RespuestaReembolso
-    gr.add((rc, RDF.type, CEO.RespuestaReembolso))
-    gr.add((CEO.RespuestaReembolso, RDFS.subClassOf, CEO.Respuesta))
-    
+   
     
     
 
@@ -183,8 +165,6 @@ def comunicacion():
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.Cobrar:
                 gr = cobrar(gm)
-            elif accion == CEO.Reembolsar:
-                gr = reembolsar(gm)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],

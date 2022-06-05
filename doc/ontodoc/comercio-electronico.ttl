@@ -70,8 +70,7 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_pedido
 :de_pedido rdf:type owl:ObjectProperty ;
            rdfs:domain :Devolucion ,
-                       :InformarEnvioPedido ,
-                       :LineaEnvio ;
+                       :InformarEnvioPedido ;
            rdfs:range :Pedido .
 
 
@@ -150,15 +149,10 @@
              rdfs:range :Cobro .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_en_inventario
-:tiene_en_inventario rdf:type owl:ObjectProperty ;
-                     rdfs:domain :CentroLogistico ;
-                     rdfs:range :LineaProducto .
-
-
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_envio
 :tiene_envio rdf:type owl:ObjectProperty ;
-             rdfs:domain :Pedido ;
+             rdfs:domain :Pedido ,
+                         :SolicitarEnvio ;
              rdfs:range :Envio .
 
 
@@ -177,18 +171,21 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_envio
 :tiene_linea_envio rdf:type owl:ObjectProperty ;
-                   rdfs:domain :SolicitarEnvio ;
-                   rdfs:range :LineaEnvio .
+                   rdfs:domain :SolicitarEnvio .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_factura
+:tiene_linea_factura rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Factura ;
+                     rdfs:range :LineaFactura .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_producto
 :tiene_linea_producto rdf:type owl:ObjectProperty ;
                       rdfs:domain :Envio ,
-                                  :Factura ,
                                   :InformarProductosPedidos ,
                                   :Lote ,
-                                  :Pedido ,
-                                  :RespuestaProductos ;
+                                  :Pedido ;
                       rdfs:range :LineaProducto .
 
 
@@ -234,7 +231,8 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_producto
 :tiene_producto rdf:type owl:ObjectProperty ;
                 rdfs:domain :ActualizarInformacionProductos ,
-                            :LineaProducto ;
+                            :LineaProducto ,
+                            :RespuestaProductos ;
                 rdfs:range :Producto .
 
 
@@ -312,7 +310,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#direccion
 :direccion rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Agente ;
+           rdfs:domain :Actor ,
+                       :Agente ;
            rdfs:range xsd:string .
 
 
@@ -361,6 +360,7 @@
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :Devolucion ,
                            :Factura ,
+                           :LineaFactura ,
                            :Pago ,
                            :Pedido ;
                rdfs:range xsd:float ;
@@ -372,6 +372,37 @@
                rdfs:domain :InformarRecogidaProductos ;
                rdfs:range xsd:string ;
                rdfs:comment "Serie de pasos a seguir para llevar a cabo un objetivo"@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#marca
+:marca rdf:type owl:DatatypeProperty ;
+       rdfs:domain :LineaFactura .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#modelo
+:modelo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :LineaFactura .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n
+:n rdf:type owl:DatatypeProperty ;
+   rdfs:domain :BuscarAgente ;
+   rdfs:range xsd:int ;
+   rdfs:comment "Indica el Agente a obtener del ServicioDirectorio si hay más de uno."@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n_centro_logistico
+:n_centro_logistico rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Producto ;
+                    rdfs:range xsd:int ;
+                    rdfs:comment "Indica el ID del CentroLogísitco en el que se almacena el Producto"@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n_pedido
+:n_pedido rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Factura ,
+                      :Pedido ;
+          rdfs:range xsd:int .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#nombre
@@ -394,7 +425,8 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#precio
 :precio rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:domain :Producto ,
+        rdfs:domain :LineaFactura ,
+                    :Producto ,
                     :RespuestaInformacionTransporteEnvio ,
                     :RespuestaInformacionTransporteRecogida ;
         rdfs:range xsd:float ;
@@ -646,10 +678,9 @@
                rdfs:comment "Asocia una categoria de Producto, con una cantidad y un intervalo de precios"@es .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaEnvio
-:LineaEnvio rdf:type owl:Class ;
-            rdfs:subClassOf :LineaProducto ;
-            rdfs:comment "Asocia una Oferta con una cantidad y un Pedido. De esta manera, para cada Producto conoce: cantidad a enviar, destino al que enviarlo/s, como debe gestionar el envio y cual es el ComercioExterno que lo vende."@es .
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaFactura
+:LineaFactura rdf:type owl:Class ;
+              rdfs:subClassOf :Linea .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaProducto
@@ -681,11 +712,6 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Modelo
 :Modelo rdf:type owl:Class ;
         rdfs:comment "Modelo de una Marca y un Producto"@es .
-
-
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Oferta
-:Oferta rdf:type owl:Class ;
-        rdfs:comment "Oferta de Producto hecha por un ComercioExterno o por el Sistema mismo. Contiene la cantidad, el precio unitario del Producto ofertado y el tipo de gestion que se debe hacer se esos Productos a la hora de efectuar el envio. La cantidad de una Oferta siempre es menor que la cantidad de su Producto. Puede haber varias ofertas del mismo Producto y el mismo ComercioExterno, ya que puede variar el precio, por ejemplo."@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Pago

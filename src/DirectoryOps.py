@@ -24,9 +24,6 @@ def register_agent(agent, ds, logger):
     gm.add((a, CEO.uri, agent.uri))
     gm.add((ra, CEO.con_agente, a))
 
-    logger.info('Peticion de registro al ServicioDirectorio')
-    logger.info(gm.serialize(format='turtle'))
-
     msg = build_message(gm,
                         ACL.request,
                         sender=agent.uri,
@@ -34,8 +31,6 @@ def register_agent(agent, ds, logger):
                         content=ra)
     
     gr = send_message(msg, ds.address)
-
-    logger.info(gr.serialize(format='turtle'))
 
     if (None, ACL.performative, ACL.confirm) in gr:
         print('\n * Registro de agente CONFIRMADO')
@@ -91,8 +86,6 @@ def search_agent(agn_uri, agent, ds):
     gm.add((agn_uri, RDFS.subClassOf, CEO.Agente))
     gm.add((ba, CEO.con_agente, a))
 
-    print(gm.serialize(format='turtle'))
-
     msg = build_message(gm,
                         ACL.request,
                         sender=agent.uri,
@@ -101,11 +94,9 @@ def search_agent(agn_uri, agent, ds):
 
     gr = send_message(msg, ds.address)
 
-    print(gr.serialize(format='turtle'))
-
     address = gr.value(subject=CEO.agente, predicate=CEO.direccion)
 
-    print('address: ' + address)
+    print(' * Agent address: ' + address)
 
     return Agent('BuscadorProductos',
                  CEO.BuscadorProductos,

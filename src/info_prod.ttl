@@ -202,7 +202,7 @@ ceo:product_15 a ceo:Producto ;
     ceo:valoracion_media "7.52" .
 
 ceo:product_16 a ceo:Producto ;
-    ceo:cantidad 41 ;
+    ceo:cantidad 29 ;
     ceo:categoria "comida" ;
     ceo:descripcion "descripcion_M4CPJ6" ;
     ceo:nombre "product_16" ;
@@ -232,7 +232,7 @@ ceo:product_18 a ceo:Producto ;
     ceo:valoracion_media "1.60" .
 
 ceo:product_19 a ceo:Producto ;
-    ceo:cantidad 7 ;
+    ceo:cantidad 0 ;
     ceo:categoria "ropa" ;
     ceo:descripcion "descripcion_W4C8N6" ;
     ceo:nombre "product_19" ;
@@ -262,7 +262,7 @@ ceo:product_20 a ceo:Producto ;
     ceo:valoracion_media "3.83" .
 
 ceo:product_21 a ceo:Producto ;
-    ceo:cantidad 28 ;
+    ceo:cantidad 24 ;
     ceo:categoria "producto_hogar" ;
     ceo:descripcion "descripcion_465OB6" ;
     ceo:nombre "product_21" ;
@@ -382,7 +382,7 @@ ceo:product_5 a ceo:Producto ;
     ceo:valoracion_media "5.56" .
 
 ceo:product_6 a ceo:Producto ;
-    ceo:cantidad 49 ;
+    ceo:cantidad 46 ;
     ceo:categoria "ropa" ;
     ceo:descripcion "descripcion_JX6Q39" ;
     ceo:nombre "product_6" ;

@@ -33,6 +33,8 @@ from AgentUtil.Util import gethostname
 from decimal import Decimal
 from multiprocessing import Process
 
+import random
+
 from DirectoryOps import register_agent, unregister_agent
 
 
@@ -103,8 +105,6 @@ tarifaPrecio = [[5, 15 ,30],
                 [3, 18 ,40],
                 [7, 12 ,40]]
 
-global nAgencia
-
 cola1 = Queue()
 
 # Flask stuff
@@ -116,8 +116,17 @@ if not args.verbose:
 
 
 def tarifaAgencia(graph):
+    gm = Graph()
+    gm.namespace_manager.bind('ceo', CEO)
     # Construir el mensaje
-    pass
+    respuestaInfo = CEO.RespuestaInformacionTransporteEnvio
+    gm.add((respuestaInfo, RDF.type, CEO.RespuestaInformacionTransporteEnvio))
+    gm.add((CEO.RespuestaInformacionTransporteEnvio, RDFS.subClassOf, CEO.Respuesta))
+    precio = random.choice(random.choice(tarifaPrecio))
+    gm.add((respuestaInfo, CEO.precio, Literal(precio)))
+    print("Respondiendo a solicitud de tarifa con un precio de: " + str(precio) + "€")
+    return gm
+    
 
 
 @app.route("/comm")
@@ -159,6 +168,7 @@ def comunicacion():
                 gr = tarifaAgencia(gm)
             elif accion == CEO.ContratarEnvio:
                 # La agencia se encarga del envio (fuera del alcance del problema)
+                print("Se ha contratado un envio")
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=AgenciaTransporte.uri)
@@ -182,9 +192,6 @@ def stop():
     
     
 def setup():
-    if port == 9050: nAgencia = 0
-    elif port == 9051: nAgencia = 1
-    else: nAgencia = 2
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
     

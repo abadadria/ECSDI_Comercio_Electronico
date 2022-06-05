@@ -5,7 +5,7 @@
 - Raül Sampietro Gutierrez
 
 ========================
-Descripcióin del sistema
+Descripción del sistema
 ========================
 
 Sistema distribuido para un comercio electrónico
@@ -113,6 +113,7 @@ El sistema interactua con los siguientes actores:
       --verbose = va escribiendo por terminal las peticiones que recibe el servidor http
       --port = port de comunicacion (9004 por defecto)
       --dir = Direccion completa del servicio de directorio
+
 
 =====================
 Ejecución del sistema

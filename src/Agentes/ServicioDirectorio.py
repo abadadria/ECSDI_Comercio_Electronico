@@ -169,39 +169,29 @@ def register():
         logger.info('Peticion de busqueda')
 
         agn_type = gm.value(subject=CEO.agente, predicate=RDF.type)
-        rsearch = dsgraph.triples((None, RDF.type, agn_type))
-        if rsearch is not None:
-            agn = next(rsearch)
+        agn_name = dsgraph.value(predicate=RDF.type, object=agn_type)
 
-            gr = Graph()
-            gr.namespace_manager.bind('rdf', RDF)
-            gr.namespace_manager.bind('ceo', CEO)
+        gr = Graph()
+        gr.namespace_manager.bind('ceo', CEO)
 
-            ra = CEO.RespuestaAgente
-            gr.add((ra, RDF.type, CEO.RespuestaAgente))
-            gr.add((CEO.RespuestaAgente, RDFS.subClassOf, CEO.Respuesta))
-            gr.add((CEO.Respuesta, RDFS.subClassOf, CEO.Comunicacion))
+        ra = CEO.RespuestaAgente
+        gr.add((ra, RDF.type, CEO.RespuestaAgente))
+        gr.add((CEO.RespuestaAgente, RDFS.subClassOf, CEO.Respuesta))
+        gr.add((CEO.Respuesta, RDFS.subClassOf, CEO.Comunicacion))
 
-            a = CEO.agente
-            gr.add((a, RDF.type, agn_type))
-            gr.add((agn_type, RDFS.subClassOf, CEO.Agente))
-            gr.add((a, CEO.direccion, Literal(agn[0])))
-            gr.add((a, CEO.uri, agn_type))
-            gr.add((ra, CEO.con_agente, a))
+        a = CEO.agente
+        gr.add((a, RDF.type, agn_type))
+        gr.add((agn_type, RDFS.subClassOf, CEO.Agente))
+        gr.add((a, CEO.direccion, Literal(agn_name)))
+        gr.add((a, CEO.uri, agn_type))
+        gr.add((ra, CEO.con_agente, a))
 
 
-            return build_message(gr,
-                                 ACL.inform,
-                                 sender=ServicioDirectorio.uri,
-                                 msgcnt=mss_cnt,
-                                 content=ra)
-
-        else:
-            # Si no encontramos nada retornamos un inform sin contenido
-            return build_message(Graph(),
-                                 ACL.inform,
-                                 sender=ServicioDirectorio.uri,
-                                 msgcnt=mss_cnt)
+        return build_message(gr,
+                                ACL.inform,
+                                sender=ServicioDirectorio.uri,
+                                msgcnt=mss_cnt,
+                                content=ra)
 
     global dsgraph
     global mss_cnt

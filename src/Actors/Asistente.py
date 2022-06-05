@@ -17,6 +17,7 @@ import argparse
 from time import gmtime
 
 from flask import Flask, request
+from markupsafe import _MarkupEscapeHelper
 from matplotlib import get_backend
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, Literal
 import rdflib
@@ -221,28 +222,87 @@ def buscar_productos():
         return gp
 
 def pedir(g):
-    print(g.serialize(format='turtle'))
-
     GestorPedidos = search_agent(CEO.GestorPedidos, Asistente, ServicioDirectorio)
 
+    accion = CEO.realizarpedido
+    g.add((accion, RDF.type, CEO.RealizarPedido))
+    g.add((CEO.RealizarPedido, RDFS.subClassOf, CEO.Accion))
+    g.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    g.add((accion, CEO.tiene_pedido, CEO.pedido))
 
-    # for s, p, o g.triples((None, RDF.type, ))
-    # gm.add(())
+    print("Datos de tarjeta de pago:")
+    print("\tFormato: pan(str) cvv(int) fecha_caducidad(str)")
+    metodo_pago = input().split()
 
-    # msg = build_message(g,
-    #                     perf=ACL.request,
-    #                     sender=Asistente.uri,
-    #                     receiver=GestorPedidos.uri,
-    #                     content=)
+    tc = CEO.targetacredito
+    g.add((tc, RDF.type, CEO.TargetaCredito))
+    g.add((CEO.TargetaCredito, RDFS.subClassOf, CEO.MetodoPago))
+    g.add((tc, CEO.pan, Literal(str(metodo_pago[0]))))
+    g.add((tc, CEO.cvv, Literal(int(metodo_pago[1]))))
+    g.add((tc, CEO.fecha_caducidad, Literal(str(metodo_pago[2]))))
+    g.add((CEO.pedido, CEO.tiene_metodo_pago, tc))
 
-    pass
+    print("Datos de envio:")
+    print("\tFormato: prioridad[alta/media/baja] ciudad_destino(str)")
+    datos_envio = input().split()
+    g.add((CEO.pedido, CEO.prioridad, Literal(str(datos_envio[0]))))
+    lugar = CEO.lugar
+    g.add((lugar, RDF.type, CEO.Lugar))
+    g.add((lugar, CEO.ciudad, Literal(str(datos_envio[1]))))
+    g.add((CEO.pedido, CEO.se_entrega_en, lugar))
+
+    print('Pedido:')
+    print(g.serialize(format='turtle'))
+
+    msg = build_message(g,
+                        perf=ACL.request,
+                        sender=Asistente.uri,
+                        receiver=GestorPedidos.uri,
+                        content=accion)
+
+    gr = send_message(msg, GestorPedidos.address)
+
+    if (None, ACL.performative, ACL.inform) in gr:
+        print('\n * Pedido realizado con éxito')
+        print('\n\n-----------------------------------------------')
+        print('            FACTURA DE COMPRA')
+        print('-----------------------------------------------\n')
+        for lf in gr.subjects(RDF.type, CEO.LineaFactura):
+            cantidad = gr.value(lf, CEO.cantidad)
+            marca = gr.value(lf, CEO.marca)
+            modelo = gr.value(lf, CEO.modelo)
+            precio = gr.value(lf, CEO.precio)
+            importe_linea = gr.value(lf, CEO.importe_total)
+            print(f'{cantidad} {marca[67:]} {modelo[67:]} {precio}€ {importe_linea}€')
+        pedido = gr.value(predicate=RDF.type, object=CEO.Factura)
+        print('\n-----------------------------------------------')
+        print('IMPORTE FINAL: ' + gr.value(pedido, CEO.importe_total))
+        print('-----------------------------------------------\n\n')
+    else:
+        print('\n * No se ha hecho el pedido')
 
 def do(value):
     if value == 1:
-        gr = buscar_productos()
+        gp = buscar_productos()
         # categoria marca modelo cantidad precio_unitario precio_total
         # precio_pedido
         
+        print('\n' + 'Los productos recomendados son:')
+        print("\tFormato: categoria marca modelo cantidad precio_unitario precio_total\n")
+        precio_pedido = 0
+        for s, p, o in gp.triples((None, RDF.type, CEO.Producto)):
+            categoria = gp.value(subject=s, predicate=CEO.categoria)
+            modelo = gp.value(subject=s, predicate=CEO.tiene_modelo)
+            marca = gp.value(subject=modelo, predicate=CEO.tiene_marca)
+            linea = gp.value(predicate=CEO.tiene_producto, object=s)
+            cantidad = gp.value(subject=linea, predicate=CEO.cantidad)
+            precio = gp.value(s, CEO.precio)
+            precio_total = float(precio) * int(cantidad)
+            precio_pedido += precio_total
+            
+            print(f'{categoria} {marca[67:]} {modelo[67:]} {cantidad} {precio}€ {precio_total}€')
+        print(f'PRECIO TOTAL: {precio_pedido}€\n')
+
         print("Deseas pedir estos productos?")
         print("[1] Pedir productos")
         print("[0] Cerrar")
@@ -251,7 +311,7 @@ def do(value):
         if value == 0:
             exit()
         else:
-            pedir(gr)
+            pedir(gp)
         
         
 

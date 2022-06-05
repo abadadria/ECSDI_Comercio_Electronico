@@ -170,9 +170,18 @@ def buscarProductos(gm):
                     nombreMarca = products_graph.value(tiene_marca, CEO.nombre)
                     gr.add((tiene_marca, CEO.nombre, nombreMarca))
                     
-                    
-
     return gr
+
+
+def eliminar_productos_pedidos(gm):
+    for lp, p in gm.subject_objects(CEO.tiene_producto):
+        c_pedida = int(gm.value(subject=lp, predicate=CEO.cantidad))
+        c_previa = int(products_graph.value(subject=p, predicate=CEO.cantidad))
+        products_graph.set((p, CEO.cantidad, Literal(c_previa - c_pedida)))
+
+    return build_message(Graph(),
+                         ACL.confirm,
+                         sender=BuscadorProductos.uri)
 
 # Product_11 60 - - - -
 
@@ -215,12 +224,7 @@ def comunicacion():
                            sender=BuscadorProductos.uri)
     else:
         # Obtenemos la performativa
-        if msgdic['performative'] != ACL.request:
-            # Si no es un request, respondemos que no hemos entendido el mensaje
-            gr = build_message( Graph(),
-                                ACL['not-understood'],
-                                sender=BuscadorProductos.uri)
-        else:
+        if msgdic['performative'] == ACL.request:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
             content = msgdic['content']
@@ -244,6 +248,27 @@ def comunicacion():
                                 sender=BuscadorProductos.uri)
             else:
                 gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=BuscadorProductos.uri)
+        elif msgdic['performative'] == ACL.inform:
+            # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
+            content = msgdic['content']
+
+            # Averiguamos el tipo de la accion
+            accion = gm.value(subject=content, predicate=RDF.type)
+
+            # Aqui realizariamos lo que pide la accion
+            # Por ahora simplemente retornamos un Inform-done
+            if accion == CEO.InformarProductosPedidos:
+                gr = eliminar_productos_pedidos(gm)
+            else:
+                gr = build_message( Graph(),
+                                ACL['not-understood'],
+                                sender=BuscadorProductos.uri)
+        else:
+            # Si no es un request ni un inform, respondemos que no hemos entendido el mensaje
+            gr = build_message( Graph(),
                                 ACL['not-understood'],
                                 sender=BuscadorProductos.uri)
             

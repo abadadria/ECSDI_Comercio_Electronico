@@ -187,8 +187,7 @@
                                   :Factura ,
                                   :InformarProductosPedidos ,
                                   :Lote ,
-                                  :Pedido ,
-                                  :RespuestaProductos ;
+                                  :Pedido ;
                       rdfs:range :LineaProducto .
 
 
@@ -234,7 +233,8 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_producto
 :tiene_producto rdf:type owl:ObjectProperty ;
                 rdfs:domain :ActualizarInformacionProductos ,
-                            :LineaProducto ;
+                            :LineaProducto ,
+                            :RespuestaProductos ;
                 rdfs:range :Producto .
 
 
@@ -681,11 +681,6 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Modelo
 :Modelo rdf:type owl:Class ;
         rdfs:comment "Modelo de una Marca y un Producto"@es .
-
-
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Oferta
-:Oferta rdf:type owl:Class ;
-        rdfs:comment "Oferta de Producto hecha por un ComercioExterno o por el Sistema mismo. Contiene la cantidad, el precio unitario del Producto ofertado y el tipo de gestion que se debe hacer se esos Productos a la hora de efectuar el envio. La cantidad de una Oferta siempre es menor que la cantidad de su Producto. Puede haber varias ofertas del mismo Producto y el mismo ComercioExterno, ya que puede variar el precio, por ejemplo."@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Pago

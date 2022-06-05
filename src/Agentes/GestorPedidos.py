@@ -327,8 +327,6 @@ def comunicacion():
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
                                 sender=GestorPedidos.uri)
-        elif msgdic['performative'] == ACL.inform:
-            pass
         else:
             # Si no es un request ni un inform, respondemos que no hemos entendido el mensaje
             gr = build_message( Graph(),

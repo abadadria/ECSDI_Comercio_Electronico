@@ -122,22 +122,9 @@ def cobrar(graph):
     
     print(graph.serialize(format='turtle'))
     
-    
-    # Creamos la Respuesta RespuestaCobro
-    gr = Graph()
-    gr.namespace_manager.bind('rdf', RDF)
-    gr.namespace_manager.bind('ceo', CEO)
-    
-    rc = CEO.RespuestaCobro
-    gr.add((rc, RDF.type, CEO.RespuestaCobro))
-    gr.add((CEO.RespuestaCobro, RDFS.subClassOf, CEO.Respuesta))
-    
-    """
-    Asignar el cobro que nos entra a la respuesta del cobro y añadirle un estado (exitoso,fallido)
-    """
-    
-    
-    ofile.write(cobros_graph.serialize(format='turtle'))
+    return build_message(Graph(),
+                         ACL.confirm,
+                         sender=GestorPagos.uri)
     
 
 
@@ -224,7 +211,6 @@ def stop():
     
     
 def setup():
-    cobros_graph.parse('info_cobros.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 
@@ -233,7 +219,6 @@ def tidyup():
     Acciones previas a parar el agente
 
     """    
-    ofile.close()
     unregister_agent(GestorPagos, ServicioDirectorio)
     pass
 

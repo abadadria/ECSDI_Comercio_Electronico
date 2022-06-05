@@ -289,7 +289,7 @@ def comunicacion():
 
         n_pedidos += 1 
         
-        #cobrar_pedido(importe_pedido)
+        cobrar_pedido(importe_pedido)
 
         return build_message(gf,
                       ACL.inform,

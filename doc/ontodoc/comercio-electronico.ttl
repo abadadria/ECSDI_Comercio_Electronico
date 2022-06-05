@@ -70,8 +70,7 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#de_pedido
 :de_pedido rdf:type owl:ObjectProperty ;
            rdfs:domain :Devolucion ,
-                       :InformarEnvioPedido ,
-                       :LineaEnvio ;
+                       :InformarEnvioPedido ;
            rdfs:range :Pedido .
 
 
@@ -150,15 +149,10 @@
              rdfs:range :Cobro .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_en_inventario
-:tiene_en_inventario rdf:type owl:ObjectProperty ;
-                     rdfs:domain :CentroLogistico ;
-                     rdfs:range :LineaProducto .
-
-
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_envio
 :tiene_envio rdf:type owl:ObjectProperty ;
-             rdfs:domain :Pedido ;
+             rdfs:domain :Pedido ,
+                         :SolicitarEnvio ;
              rdfs:range :Envio .
 
 
@@ -177,8 +171,7 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_envio
 :tiene_linea_envio rdf:type owl:ObjectProperty ;
-                   rdfs:domain :SolicitarEnvio ;
-                   rdfs:range :LineaEnvio .
+                   rdfs:domain :SolicitarEnvio .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_factura
@@ -389,6 +382,20 @@
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#modelo
 :modelo rdf:type owl:DatatypeProperty ;
         rdfs:domain :LineaFactura .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n
+:n rdf:type owl:DatatypeProperty ;
+   rdfs:domain :BuscarAgente ;
+   rdfs:range xsd:int ;
+   rdfs:comment "Indica el Agente a obtener del ServicioDirectorio si hay más de uno."@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n_centro_logistico
+:n_centro_logistico rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Producto ;
+                    rdfs:range xsd:int ;
+                    rdfs:comment "Indica el ID del CentroLogísitco en el que se almacena el Producto"@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n_pedido
@@ -669,12 +676,6 @@
 :LineaBusqueda rdf:type owl:Class ;
                rdfs:subClassOf :Linea ;
                rdfs:comment "Asocia una categoria de Producto, con una cantidad y un intervalo de precios"@es .
-
-
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaEnvio
-:LineaEnvio rdf:type owl:Class ;
-            rdfs:subClassOf :LineaProducto ;
-            rdfs:comment "Asocia una Oferta con una cantidad y un Pedido. De esta manera, para cada Producto conoce: cantidad a enviar, destino al que enviarlo/s, como debe gestionar el envio y cual es el ComercioExterno que lo vende."@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaFactura

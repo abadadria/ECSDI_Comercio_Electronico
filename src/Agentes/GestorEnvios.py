@@ -99,6 +99,7 @@ ServicioDirectorio = Agent('ServicioDirectorio',
 
 # Global triplestore graph
 products_graph = Graph()
+pedidos_envio_graph = Graph()
 
 cola1 = Queue()
 
@@ -109,22 +110,30 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
-
-def gestionarEnvio(ge):
-    
+def gestionarEnvioProceso(ge):
     print(ge.serialize(format='turtle'))
 
     gr = Graph()
     gr.namespace_manager.bind('ceo', CEO)
 
-    rc = CEO.RespuestaCobro
-    gr.add((rc, RDF.type, CEO.RespuestaCobro))
-    gr.add((CEO.RespuestaCobro, RDFS.subClassOf, CEO.Respuesta))
-    """
-    Asignar el cobro que nos entra a la respuesta del cobro y añadirle un estado (exitoso,fallido)
-    """
+    for lp in ge.subjects(RDF.type, CEO.LineaProducto):
+        producto = ge.value(lp, CEO.tiene_producto)
+        gestion_envio = products_graph.value(producto, CEO.gestion_envio)
+        if str(gestion_envio) == 'externa':
+            vendedor = products_graph.value(producto, CEO.vendedor)
+            vendedor_addr = products_graph.value(vendedor, CEO.direccion)
+            
+        else:
+
+
+
+def gestionarEnvio(ge):
+    p1 = Process(taget=gestionarEnvioProceso, args=(ge,))
+    p1.start()
     
-    return gr
+    return build_message(Graph(),
+                         ACL.agree,
+                         sender=GestorEnvios.uri)
 
 
 def gestionarActualizacion(ge): 

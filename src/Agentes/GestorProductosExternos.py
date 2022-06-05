@@ -98,9 +98,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/register' % (diraddress),
                         '%s/Stop' % (diraddress))
 
-# Global triplestore graph
-products_graph = Graph()
-
 cola1 = Queue()
 
 # Flask stuff

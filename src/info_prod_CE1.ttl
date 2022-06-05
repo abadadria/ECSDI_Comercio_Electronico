@@ -113,7 +113,7 @@ ceo:product_39 a ceo:Producto ;
     ceo:descripcion "descripcion_7RFR2W" ;
     ceo:gestion_envio "externa" ;
     ceo:nombre "product_39" ;
-    ceo:precio "4.51" ;
+    ceo:precio "46.51" ;
     ceo:restricciones_devolucion "restricciones_devolucion_8ZXBUW" ;
     ceo:tiene_modelo ceo:modelo_39 ;
     ceo:valoracion_media "1.41" .

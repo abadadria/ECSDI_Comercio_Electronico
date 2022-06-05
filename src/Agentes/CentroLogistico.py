@@ -13,9 +13,13 @@ Asume que el agente de registro esta en el puerto 9000
 
 import logging
 from multiprocessing import Process, Queue
+import queue
 import socket
 from SPARQLWrapper import SPARQLWrapper
 import argparse
+import threading
+import time
+
 
 from flask import Flask, request, render_template
 from numpy import prod
@@ -107,6 +111,15 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
+
+def realizarEnvio():
+    global cola1
+    while not cola1.empty:
+        graph = cola1.pop(0)
+        print(graph.serialize(format='turtle'))
+        
+
+
 @app.route("/comm")
 def comunicacion():
     """
@@ -143,7 +156,10 @@ def comunicacion():
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.RealizarEnvio:
-                pass
+                cola1.append(gm)
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=CentroLogistico.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
@@ -185,7 +201,12 @@ if __name__ == '__main__':
     print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
-    app.run(host=hostname, port=port)
+    threading.Thread(target=lambda: app.run(host=hostname, port=port)).start()
+    
+    while(1):
+        if not cola1.empty():
+            realizarEnvio()
+        time.sleep(60)
     
     tidyup()
     print('The End')

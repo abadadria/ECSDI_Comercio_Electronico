@@ -157,6 +157,11 @@ def comunicacion():
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.SolicitarInformacionTransporteEnvio:
                 gr = tarifaAgencia(gm)
+            elif accion == CEO.ContratarEnvio:
+                # La agencia se encarga del envio (fuera del alcance del problema)
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=AgenciaTransporte.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],

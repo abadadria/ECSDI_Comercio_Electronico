@@ -102,8 +102,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/register' % (diraddress),
                         '%s/Stop' % (diraddress))
 
-cola1 = Queue()
-
 # Flask stuff
 app = Flask(__name__)
 
@@ -112,12 +110,10 @@ if not args.verbose:
     logger.setLevel(logging.ERROR)
 
 
-def realizarEnvio():
-    global cola1
-    while not cola1.empty:
-        graph = cola1.pop(0)
-        print("printando graph")
-        print(graph.serialize(format='turtle'))
+def hacerEnvio(graph):
+    print("printando graph")
+    print(graph.serialize(format='turtle'))
+    #escojer uno de las tres agencias de transporte random
         
 
 
@@ -156,8 +152,9 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.RealizarEnvio:
-                cola1.append(gm)
+            if accion == CEO.SolicitarEnvio:
+                print("funciona")
+                hacerEnvio(gm)
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=CentroLogistico.uri)
@@ -202,12 +199,7 @@ if __name__ == '__main__':
     print('\nRunning on http://' + str(hostaddr) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 
     # Ponemos en marcha el servidor
-    threading.Thread(target=lambda: app.run(host=hostname, port=port)).start()
-    
-    while(1):
-        if not cola1.empty():
-            realizarEnvio()
-        time.sleep(60)
+    app.run(host=hostname, port=port)
     
     tidyup()
     print('The End')

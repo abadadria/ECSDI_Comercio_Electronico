@@ -31,7 +31,6 @@ from AgentUtil.Util import gethostname
 
 from decimal import Decimal
 from multiprocessing import Process
-from Agentes.GestorEnvios import GestorEnvios
 
 from DirectoryOps import register_agent, search_agent, unregister_agent
 
@@ -68,7 +67,7 @@ else:
 
 # Configuration stuff
 if args.port is None:
-    port = 9001
+    port = 9030
 else:
     port = args.port
 
@@ -88,8 +87,8 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 mss_cnt = 0
 
 # Datos del Agente
-GestorProductosExternos = Agent('GestorProductosExternos',
-                       CEO.GestorProductosExternos,
+GestorEnvios = Agent('GestorEnvios',
+                       CEO.GestorEnvios,
                        'http://%s:%d/comm' % (hostaddr, port),
                        'http://%s:%d/Stop' % (hostaddr, port))
 
@@ -111,56 +110,46 @@ if not args.verbose:
     logger.setLevel(logging.ERROR)
 
 
-def gestionarActualizacion(ge):
+def gestionarEnvio(ge):
     
-    gmB = Graph()
-    gmB.namespace_manager.bind('rdf', RDF)
-    gmB.namespace_manager.bind('ceo', CEO)
     
-    bpB = CEO.ActualizarInformacionProductos
-    gmB.add((bpB, RDF.type, CEO.ActualizarInformacionProductos))
-    gmB.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
-    gmB.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    gr = Graph()
+    gr.namespace_manager.bind('rdf', RDF)
+    gr.namespace_manager.bind('ceo', CEO)
     
-    gmE = Graph()
-    gmE.namespace_manager.bind('rdf', RDF)
-    gmE.namespace_manager.bind('ceo', CEO)
+    rc = CEO.RespuestaCobro
+    gr.add((rc, RDF.type, CEO.RespuestaCobro))
+    gr.add((CEO.RespuestaCobro, RDFS.subClassOf, CEO.Respuesta))
+    """
+    Asignar el cobro que nos entra a la respuesta del cobro y añadirle un estado (exitoso,fallido)
+    """
     
-    bpE = CEO.ActualizarInformacionProductos
-    gmE.add((bpE, RDF.type, CEO.ActualizarInformacionProductos))
-    gmE.add((CEO.ActualizarInformacionProductos, RDFS.subClassOf, CEO.Accion))
-    gmE.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
-    
+    return gr
+
+
+def gestionarActualizacion(ge): 
+    print("actualizando")   
+    print(ge.serialize(format='turtle'))
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        gmB.add((s, RDF.type, CEO.Producto))
-        for ss, pp, oo in ge.triples((s,None,None)):
-            length = len(pp)
-            name = pp[67:length]
-            if name in ['cantidad','categoria','descripcion','nombre','precio','restricciones_devolucion','tiene_modelo','valoracion_media']: 
-                gmB.add((ss, pp, oo))
-            else:
-                gmE.add((ss, pp, oo))
-
-    BuscadorProductos = search_agent(CEO.BuscadorProductos, GestorProductosExternos, ServicioDirectorio)
-
-    msgB = build_message(gmB, perf=ACL.request,
-                        sender=GestorProductosExternos.uri,
-                        receiver=BuscadorProductos.uri,
-                        content=bpB)
-
-    send_message(msgB, BuscadorProductos.address)
+        
+        boolean = False
+        for ss, pp, oo in products_graph.triples((s,None,None)):
+            boolean = True
+            atributo = ge.value(s, pp)
+            if atributo != None and atributo != RDF.type: 
+                products_graph.set((ss, pp, Literal(atributo)))
+                products_graph.set((ss, RDF.type, CEO.Producto))
+        
+        # el producto no existia
+        if not boolean:
+            for ss, pp, oo in ge.triples((s,None,None)):
+                products_graph.add((ss, pp, oo))
     
-    GestorEnvios = search_agent(CEO.GestorEnvios, GestorProductosExternos, ServicioDirectorio)
-    
-    msgE = build_message(gmE, perf=ACL.request,
-                        sender=GestorProductosExternos.uri,
-                        receiver=BuscadorProductos.uri,
-                        content=bpE)
+    ofile = open('info_prod_env.ttl', "w")
+    ofile.write(products_graph.serialize(format='turtle'))
+    ofile.close()        
 
-    send_message(msgE, GestorEnvios.address)
-    
     return
-
         
 
 @app.route("/comm")
@@ -180,14 +169,14 @@ def comunicacion():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(),
                            ACL['not-understood'],
-                           sender=GestorProductosExternos.uri)
+                           sender=GestorEnvios.uri)
     else:
         # Obtenemos la performativa
         if msgdic['performative'] != ACL.request:
             # Si no es un request, respondemos que no hemos entendido el mensaje
             gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=GestorProductosExternos.uri)
+                                sender=GestorEnvios.uri)
         else:
             # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
             # de registro
@@ -198,16 +187,21 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
             # Por ahora simplemente retornamos un Inform-done
-            if accion == CEO.ActualizarInformacionProductos:
-                ab1 = Process(target=gestionarActualizacion, args=(gm,))
-                ab1.start()
+            if accion == CEO.RealizarEnvio:
+                gestionarEnvio(gm)
                 gr = build_message( Graph(),
                                 ACL['confirm'],
-                                sender=GestorProductosExternos.uri)
+                                sender=GestorEnvios.uri)
+            elif accion == CEO.ActualizarInformacionProductos:
+                gestionarActualizacion(gm)
+                
+                gr = build_message( Graph(),
+                                ACL['confirm'],
+                                sender=GestorEnvios.uri)
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
-                                sender=GestorProductosExternos.uri)
+                                sender=GestorEnvios.uri)
             
     return gr.serialize(format='xml')
 
@@ -224,6 +218,7 @@ def stop():
     
     
 def setup():
+    products_graph.parse('info_prod_env.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 
@@ -232,13 +227,13 @@ def tidyup():
     Acciones previas a parar el agente
 
     """
-    unregister_agent(GestorProductosExternos, ServicioDirectorio)
+    unregister_agent(GestorEnvios, ServicioDirectorio)
     pass
 
 if __name__ == '__main__': 
     setup()
     
-    register_agent(GestorProductosExternos, ServicioDirectorio, logger)
+    register_agent(GestorEnvios, ServicioDirectorio, logger)
 
     print('\nRunning on https://' + str(hostname) + ':' + str(port) + '/ (Press CTRL+C to quit)\n')
 

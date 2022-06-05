@@ -141,13 +141,13 @@ def gestionInterna(g):
         logger.info('\n\nGM_INT:')
         logger.info(gm.serialize(format='turtle'))
 
-        CentroLogistico = search_agent_by_n(CEO.CentroLogistico, GestorEnvios, ServicioDirectorio, int(g.value(envio, CEO.n_centro_logistico)))
-        msg = build_message(gm,
-                            ACL.Request,
-                            sender=GestorEnvios.uri,
-                            receiver=CEO.ComercioExterno,
-                            content=accion)
-        gr = send_message(msg, str())
+        #CentroLogistico = search_agent(CEO.CentroLogistico, GestorEnvios, ServicioDirectorio) #, int(g.value(envio, CEO.n_centro_logistico))
+        #msg = build_message(gm,
+        #                    ACL.request,
+        #                    sender=GestorEnvios.uri,
+        #                    receiver=CEO.ComercioExterno,
+        #                    content=accion)
+        #gr = send_message(msg, str())
 
 
 def gestionExterna(g):
@@ -271,15 +271,18 @@ def gestionarEnvioProceso(ge):
     logger.info('\n\nGENV_INT:')
     logger.info(genv_int.serialize(format='turtle'))
 
-    p1 = Process(target=gestionInterna, args=(genv_int,))
-    p2 = Process(target=gestionExterna, args=(genv_ext,))
-    jobs.append(p1)
-    jobs.append(p2)
-    p1.start()
-    p2.start()
+    gestionInterna(genv_int)
+    gestionExterna(genv_ext)
 
-    p1.join()
-    p2.join()
+    #p1 = Process(target=gestionInterna, args=(genv_int,))
+    #p2 = Process(target=gestionExterna, args=(genv_ext,))
+    #jobs.append(p1)
+    #jobs.append(p2)
+    #p1.start()
+    #p2.start()
+
+    #p1.join()
+    #p2.join()
 
 def gestionarEnvio(ge):
     gestionarEnvioProceso(ge)

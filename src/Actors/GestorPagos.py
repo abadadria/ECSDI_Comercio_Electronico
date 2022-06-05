@@ -102,7 +102,6 @@ ServicioDirectorio = Agent('ServicioDirectorio',
 cobros_graph = Graph()
 cobros_graph.namespace_manager.bind('rdf', RDF)
 cobros_graph.namespace_manager.bind('ceo', CEO)
-ofile = open('info_cobros.ttl', "w")
 
 cola1 = Queue()
 

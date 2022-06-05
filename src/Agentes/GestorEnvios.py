@@ -124,6 +124,7 @@ def gestionarEnvioProceso(ge):
             vendedor_addr = products_graph.value(vendedor, CEO.direccion)
             
         else:
+            pass
 
 
 

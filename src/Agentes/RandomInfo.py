@@ -199,13 +199,17 @@ if __name__ == '__main__':
                         val = Literal(direccionesComerciosExternos[2])
                 else:
                     val = Literal(random_name(str(prop_key)))
+            val3 = random.randint(0, 2)
             if i < 40:
+                if str(val) == 'interna': comExt1_graph.add((CEO[rproduct], CEO.n_centro_logistico, Literal(val3)))
                 comExt1_graph.add((CEO[rproduct], CEO[prop_key], val))
             
             elif i < 50:
+                if str(val) == 'interna': comExt2_graph.add((CEO[rproduct], CEO.n_centro_logistico, Literal(val3)))
                 comExt2_graph.add((CEO[rproduct], CEO[prop_key], val))
             
             else:
+                if str(val) == 'interna': comExt3_graph.add((CEO[rproduct], CEO.n_centro_logistico, Literal(val3)))
                 comExt3_graph.add((CEO[rproduct], CEO[prop_key], val))
             
         i += 1

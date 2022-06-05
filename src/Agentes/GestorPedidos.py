@@ -339,13 +339,13 @@ def comunicacion():
 
 
 def setup():
-    grafo_pedidos.parse('pedidos.ttl', format='turtle')
+    ##grafo_pedidos.parse('pedidos.ttl', format='turtle')
     pass
 
 def tidyup():
-    ofile = open('pedidos.ttl', "w")
-    ofile.write(grafo_pedidos.serialize(format='turtle'))
-    ofile.close()
+    #ofile = open('pedidos.ttl', "w")
+    #ofile.write(grafo_pedidos.serialize(format='turtle'))
+    #ofile.close()
     unregister_agent(GestorPedidos, ServicioDirectorio)
 
 if __name__ == '__main__':

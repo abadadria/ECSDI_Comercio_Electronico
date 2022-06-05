@@ -103,7 +103,7 @@ products_graph = Graph()
 def actualizar_info_productos():
     nproductos = int(input("Introduce la cantidad de productos que vas a actualizar:"))
     print("Introduce el nombre del producto y sus atributos a cambiar (insertar '-' si no se desea cambiar")
-    print("\tFormato: nombre(str) cantidad(int) categoria(str) descripcion(str) precio(float) restricciones_devolucion(str) gestion_envio(str) vendedor(str)")
+    print("\tFormato: nombre(str) cantidad(int) categoria(str) descripcion(str) precio(float) restricciones_devolucion(str) gestion_envio(str)")
     """
     Ampliar en un futuro para que se pueda cambiar todo tipo de información y que sea el gestor
     de productos externos el que decida a quien enviar esta informacion. De momento solo se puede cambiar la
@@ -132,7 +132,6 @@ def actualizar_info_productos():
         if atributosProducto[4] != '-': gm.add((p, CEO.precio, Literal(atributosProducto[4])))
         if atributosProducto[5] != '-': gm.add((p, CEO.restricciones_devolucion, Literal(atributosProducto[5])))
         if atributosProducto[6] != '-': gm.add((p, CEO.gestion_envio, Literal(atributosProducto[6])))
-        if atributosProducto[7] != '-': gm.add((p, CEO.vendedor, Literal(atributosProducto[7])))
     
     GestorProductosExternos = search_agent(CEO.GestorProductosExternos, ComercioExterno, ServicioDirectorio)
     

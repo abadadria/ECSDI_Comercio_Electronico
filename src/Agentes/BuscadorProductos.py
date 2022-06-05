@@ -171,7 +171,6 @@ def gestionarActualizacion(ge):
     print("actualizando")   
     print(ge.serialize(format='turtle'))
     for s, p, o in ge.triples((None, RDF.type, CEO.Producto)):
-        
         boolean = False
         for ss, pp, oo in products_graph.triples((s,None,None)):
             boolean = True

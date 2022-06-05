@@ -211,6 +211,12 @@ if __name__ == '__main__':
         i += 1
     # tener en cuenta que '-' es que el producto no es de ningun comercio
     # Cada comercio coge el rango de productos (n/size*i, n/size*i+1) productos
+    
+    # añadimos el atributo centro logistico a los productos de gestion interna en productsEnvio_graph
+    
+    for s, p, o in productsEnvio_graph.triples((None, RDF.type, CEO.Producto)):
+        val = random.randint(0, 2)
+        productsEnvio_graph.add((s, CEO.n_centro_logistico, Literal(val)))
 
 
     # Grabamos la ontologia resultante en turtle

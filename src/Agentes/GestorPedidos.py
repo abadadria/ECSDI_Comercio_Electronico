@@ -102,9 +102,6 @@ def cobrar_pedido():
 def almacenar_pedido_cerrado():
     pass
 
-def actualizar_informacion_productos():
-    pass
-
 def informar_productos_pedidos(gm):
     accion = CEO.informarproductospedidos
     gm.add((accion, RDF.type, CEO.InformarProductosPedidos))

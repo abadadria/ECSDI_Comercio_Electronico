@@ -86,6 +86,8 @@ CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electron
 # Contador de mensajes
 mss_cnt = 0
 
+jobs = []
+
 # Datos del Agente
 GestorEnvios = Agent('GestorEnvios',
                        CEO.GestorEnvios,
@@ -113,23 +115,56 @@ if not args.verbose:
 def gestionarEnvioProceso(ge):
     print(ge.serialize(format='turtle'))
 
-    gr = Graph()
-    gr.namespace_manager.bind('ceo', CEO)
+    # Grafo para envios de gestion externa
+    genv_ext = Graph()
+    genv_ext.namespace_manager.bind('ceo', CEO)
 
+    # Grafo para envios de gestion interna
+    genv_int = Graph()
+    genv_int.namespace_manager.bind('ceo', CEO)
+
+    destino = CEO.destino
+    genv_ext.add((destino, RDF.type, CEO.lugar))
+    genv_int.add((destino, RDF.type, CEO.lugar))
+    lugar_d = ge.value(predicate=RDF.type, object=CEO.Lugar)
+    genv_ext.add((destino, CEO.ciudad, ge.value(lugar_d, CEO.ciudad)))
+    genv_int.add((destino, CEO.ciudad, ge.value(lugar_d, CEO.ciudad)))
+
+    n_envio = 0
     for lp in ge.subjects(RDF.type, CEO.LineaProducto):
         producto = ge.value(lp, CEO.tiene_producto)
         gestion_envio = products_graph.value(producto, CEO.gestion_envio)
         if str(gestion_envio) == 'externa':
-            vendedor = products_graph.value(producto, CEO.vendedor)
-            vendedor_addr = products_graph.value(vendedor, CEO.direccion)
             
-        else:
+            vendedor_addr = products_graph.value(producto, CEO.vendedor)
+            if not (None, CEO.vendedor, vendedor_addr) in genv_ext:
+                # Si no existe un envio desde vendedor_addr, se crea
+                envio = CEO['envio_' + n_envio]
+                genv_ext.add((envio, RDF.type, CEO.Envio))
+                genv_ext.add((envio, CEO.con_destino, destino))
+                genv_ext.add((envio, CEO.vendedor, vendedor_addr))
+                n_envio += 1
+            else:
+                # Y existe un envio desde vendedor_addr
+                envio = genv_ext.value(predicate=CEO.vendedor, object=vendedor_addr)
+            
+            genv_ext.add((envio, CEO.tiene_linea_producto, lp))
+            genv_ext.add((lp, RDF.type, CEO.LineaProducto))
+            genv_ext.add((CEO.LineaProducto, RDFS.subClassOf, CEO.Linea))
+            genv_ext.add((lp, CEO.tiene_producto, producto))
+            for p, o in ge.predicate_objects(producto):
+                genv_ext.add((producto, p, o))
+            genv_ext.add((producto, CEO.gestion_envio, gestion_envio))
+            genv_ext.add((producto, CEO.vendedor, vendedor_addr))
 
+    print('\n\nGENV_EXT:')
+    print(genv_ext.serialize(format='turtle'))
 
 
 def gestionarEnvio(ge):
-    p1 = Process(taget=gestionarEnvioProceso, args=(ge,))
-    p1.start()
+    p = Process(taget=gestionarEnvioProceso, args=(ge,))
+    jobs.append(p)
+    p.start()
     
     return build_message(Graph(),
                          ACL.agree,
@@ -236,6 +271,9 @@ def tidyup():
     Acciones previas a parar el agente
 
     """
+    global jobs
+    for job in jobs:
+        job.join()
     unregister_agent(GestorEnvios, ServicioDirectorio)
     pass
 

@@ -112,6 +112,84 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
+def gestionInterna(g):
+    # Informar productos externos a ComerciosExternos
+    for envio in g.subjects(RDF.type, CEO.Envio):
+        gm = Graph()
+        gm.namespace_manager.bind('ceo', CEO)
+
+        accion = CEO.solicitarenvio
+        gm.add((accion, RDF.type, CEO.SolicitarEnvio))
+        gm.add((CEO.SolicitarEnvio, RDFS.subClassOf, CEO.Accion))
+        gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+
+        gm.add((accion, CEO.tiene_envio, envio))
+        for p, o in g.predicate_objects(envio):
+            gm.add((envio, p, o))
+            if p == CEO.tiene_linea_producto:
+                for p2, o2 in g.predicate_objects(o):
+                    gm.add((o, p2, o2))
+                    if p2 == CEO.tiene_producto:
+                        for p3, o3 in g.predicate_objects(o2):
+                            gm.add((o2, p3, o3))
+        destino = g.value(envio, CEO.con_destino)
+        ciudad = g.value(destino, CEO.ciudad)
+        gm.add((destino, envio, CEO.con_destino))
+        gm.add((destino, RDF.type, CEO.Lugar))
+        gm.add((destino, CEO.ciudad, ciudad))
+
+        logger.info('\n\nGM_INT:')
+        logger.info(gm.serialize(format='turtle'))
+
+        CentroLogistico = search_agent(CEO.CentroLogistico, GestorEnvios, ServicioDirectorio, int(g.value(envio, CEO.n_centro_logistico)))
+        msg = build_message(gm,
+                            ACL.Request,
+                            sender=GestorEnvios.uri,
+                            receiver=CEO.ComercioExterno,
+                            content=accion)
+        gr = send_message(msg, str())
+
+
+def gestionExterna(g):
+    # SolicitarEnvio a ComerciosExternos
+    for envio in g.subjects(RDF.type, CEO.Envio):
+        gm = Graph()
+        gm.namespace_manager.bind('ceo', CEO)
+
+        accion = CEO.solicitarenvio
+        gm.add((accion, RDF.type, CEO.SolicitarEnvio))
+        gm.add((CEO.SolicitarEnvio, RDFS.subClassOf, CEO.Accion))
+        gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+        
+        gm.add((accion, CEO.tiene_envio, envio))
+        for p, o in g.predicate_objects(envio):
+            gm.add((envio, p, o))
+            if p == CEO.tiene_linea_producto:
+                for p2, o2 in g.predicate_objects(o):
+                    gm.add((o, p2, o2))
+                    if p2 == CEO.tiene_producto:
+                        for p3, o3 in g.predicate_objects(o2):
+                            gm.add((o2, p3, o3))
+        destino = g.value(envio, CEO.con_destino)
+        ciudad = g.value(destino, CEO.ciudad)
+        gm.add((destino, envio, CEO.con_destino))
+        gm.add((destino, RDF.type, CEO.Lugar))
+        gm.add((destino, CEO.ciudad, ciudad))
+        
+        logger.info('\n\nGM_EXT:')
+        logger.info(gm.serialize(format='turtle'))
+
+        msg = build_message(gm,
+                            ACL.Request,
+                            sender=GestorEnvios.uri,
+                            receiver=CEO.ComercioExterno,
+                            content=accion)
+        gr = send_message(msg, str(g.value(envio, CEO.vendedor)))
+
+        if not (None, ACL.performative, ACL.confirm) in gr:
+            print("Ha habido un error (GestorEnvios:163)")
+            exit()
+
 def gestionarEnvioProceso(ge):
     print(ge.serialize(format='turtle'))
 
@@ -134,8 +212,9 @@ def gestionarEnvioProceso(ge):
     for lp in ge.subjects(RDF.type, CEO.LineaProducto):
         producto = ge.value(lp, CEO.tiene_producto)
         gestion_envio = products_graph.value(producto, CEO.gestion_envio)
+        
         if str(gestion_envio) == 'externa':
-            
+            #Gestion externa
             vendedor_addr = products_graph.value(producto, CEO.vendedor)
             if not (None, CEO.vendedor, vendedor_addr) in genv_ext:
                 # Si no existe un envio desde vendedor_addr, se crea
@@ -145,7 +224,7 @@ def gestionarEnvioProceso(ge):
                 genv_ext.add((envio, CEO.vendedor, vendedor_addr))
                 n_envio += 1
             else:
-                # Y existe un envio desde vendedor_addr
+                # Ya existe un envio desde vendedor_addr
                 envio = genv_ext.value(predicate=CEO.vendedor, object=vendedor_addr)
             
             genv_ext.add((envio, CEO.tiene_linea_producto, lp))
@@ -156,10 +235,51 @@ def gestionarEnvioProceso(ge):
                 genv_ext.add((producto, p, o))
             genv_ext.add((producto, CEO.gestion_envio, gestion_envio))
             genv_ext.add((producto, CEO.vendedor, vendedor_addr))
+            genv_ext.add((envio, CEO.estado, Literal("PENDING")))
 
-    print('\n\nGENV_EXT:')
-    print(genv_ext.serialize(format='turtle'))
+        else:
+        # Gestion interna
+            n_cl = products_graph.value(producto, CEO.n_centro_logistico)
+            if not (None, CEO.n_centro_logistico, n_cl) in genv_int:
+                # Si no existe un envio desde n_cl, se crea
+                envio = CEO['envio_' + str(n_envio)]
+                genv_int.add((envio, RDF.type, CEO.Envio))
+                genv_int.add((envio, CEO.con_destino, destino))
+                genv_int.add((envio, CEO.n_centro_logistico, n_cl))
+                n_envio += 1
+            else:
+                # Ya existe un envio desde n_cl
+                envio = genv_int.value(predicate=CEO.n_centro_logistico, object=n_cl)
 
+            genv_int.add((envio, CEO.tiene_linea_producto, lp))
+            genv_int.add((lp, RDF.type, CEO.LineaProducto))
+            genv_int.add((CEO.LineaProducto, RDFS.subClassOf, CEO.Linea))
+            genv_int.add((lp, CEO.tiene_producto, producto))
+            for p, o in ge.predicate_objects(producto):
+                genv_int.add((producto, p, o))
+            genv_int.add((producto, CEO.gestion_envio, gestion_envio))
+            genv_int.add((producto, CEO.n_centro_logistico, n_cl))
+            genv_ext.add((envio, CEO.estado, Literal("PENDING")))
+
+            if (producto, CEO.vendedor, None) in products_graph:
+                # Producto externo
+                genv_int.add((producto, CEO.vendedor, products_graph.value(producto, CEO.vendedor)))
+
+    logger.info('\n\nGENV_EXT:')
+    logger.info(genv_ext.serialize(format='turtle'))
+
+    logger.info('\n\nGENV_INT:')
+    logger.info(genv_int.serialize(format='turtle'))
+
+    p1 = Process(target=gestionInterna, args=(genv_int,))
+    p2 = Process(target=gestionExterna, args=(genv_ext,))
+    jobs.append(p1)
+    jobs.append(p2)
+    p1.start()
+    p2.start()
+
+    p1.join()
+    p2.join()
 
 def gestionarEnvio(ge):
     p = Process(target=gestionarEnvioProceso, args=(ge,))

@@ -141,13 +141,14 @@ def gestionInterna(g):
         logger.info('\n\nGM_INT:')
         logger.info(gm.serialize(format='turtle'))
 
-        CentroLogistico = search_agent(CEO.CentroLogistico, GestorEnvios, ServicioDirectorio, int(g.value(envio, CEO.n_centro_logistico))) #, int(g.value(envio, CEO.n_centro_logistico))
-        #msg = build_message(gm,
-        #                    ACL.request,
-        #                    sender=GestorEnvios.uri,
-        #                    receiver=CEO.ComercioExterno,
-        #                    content=accion)
-        #gr = send_message(msg, str())
+        CentroLogistico = search_agent(CEO.CentroLogistico, GestorEnvios, ServicioDirectorio, int(g.value(envio, CEO.n_centro_logistico)))
+        msg = build_message(gm,
+                            perf=ACL.request,
+                            sender=GestorEnvios.uri,
+                            receiver=CentroLogistico.uri,
+                            content=accion)
+        print("enviando")
+        gr = send_message(msg, CentroLogistico.address)
 
 
 def gestionExterna(g):

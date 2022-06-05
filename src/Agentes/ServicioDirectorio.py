@@ -183,10 +183,18 @@ def register():
         gr.add((a, RDF.type, agn_type))
 
         if (None, CEO.n, None) in gm:
-            res = gm.subjects(RDF.type, agn_type)
-            selected_agent = res[gm.value(CEO.buscaragente, CEO.n)]
+            n = int(gm.value(CEO.buscaragente, CEO.n))
+            print(n)
+            i = 0
+            for s, p, o in dsgraph.triples((None, RDF.type, agn_type)):
+                print(i)
+                print(str(s))
+                if i == n:
+                    selected_agent = s
+                    break
+                i += 1
             gr.add((agn_type, RDFS.subClassOf, CEO.Agente))
-            gr.add((a, CEO.direccion, gm.value(selected_agent, CEO.direccion)))
+            gr.add((a, CEO.direccion, dsgraph.value(selected_agent, CEO.direccion)))
             gr.add((a, CEO.uri, agn_type))
         else:
             gr.add((agn_type, RDFS.subClassOf, CEO.Agente))

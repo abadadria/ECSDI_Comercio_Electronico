@@ -244,6 +244,11 @@ def comunicacion():
                 gr = build_message( Graph(),
                                 ACL['confirm'],
                                 sender=BuscadorProductos.uri)
+            elif accion == CEO.informarproductospedidos:
+                """
+                IMPLEMENTAR
+                """
+                pass
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],

@@ -113,6 +113,8 @@ if not args.verbose:
 
 def gestionarActualizacion(ge):
     
+    print(ge.serialize(format='turtle'))
+    
     gmB = Graph()
     gmB.namespace_manager.bind('rdf', RDF)
     gmB.namespace_manager.bind('ceo', CEO)

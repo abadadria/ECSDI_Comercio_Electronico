@@ -33,9 +33,7 @@ def random_name(prefix, size=6, chars=string.ascii_uppercase + string.digits):
     """
     return prefix + '_' + ''.join(random.choice(chars) for _ in range(size))
 
-if __name__ == '__main__':
-    direccionesComerciosExternos = input("Introduzca las direcciones de los 3 comercios externos separadas por un espacio (ej: http://10.10.10.10:9040):\n").split()
-    
+if __name__ == '__main__':    
     # Declaramos espacios de nombres de nuestra ontologia, al estilo DBPedia (clases, propiedades, recursos)
     CEO = Namespace("http://www.semanticweb.org/samragu/ontologies/comercio-electronico#")
     
@@ -46,7 +44,6 @@ if __name__ == '__main__':
                           'descripcion': 's',
                           'restricciones_devolucion': 's',
                           'gestion_envio' : 's',
-                          'vendedor' : 's',
                           'precio': 'f',
                           'valoracion_media': 'f'}
     
@@ -114,14 +111,14 @@ if __name__ == '__main__':
             # el atributo es real
             if prop_value == 'f':
                 if prop_key == 'precio':
-                    number = format(round(random.uniform(0, 100), 2), '.2f')
+                    number = format(round(random.uniform(1, 100), 2), '.2f')
                     val = Literal(number)
                 else:
                     number = format(round(random.uniform(0, 10), 2), '.2f')
                     val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
-                val = Literal(random.randint(0, 50))
+                val = Literal(random.randint(1, 50))
             # el atributo es string
             else:
                 if prop_key == 'categoria':
@@ -175,14 +172,14 @@ if __name__ == '__main__':
             # el atributo es real
             if prop_value == 'f':
                 if prop_key == 'precio':
-                    number = format(round(random.uniform(0, 100), 2), '.2f')
+                    number = format(round(random.uniform(1, 100), 2), '.2f')
                     val = Literal(number)
                 else:
                     number = format(round(random.uniform(0, 10), 2), '.2f')
                     val = Literal(number)
             # el atributo es entero
             elif prop_value == 'i':
-                val = Literal(random.randint(0, 50))
+                val = Literal(random.randint(1, 50))
             # el atributo es string
             else:
                 if prop_key == 'categoria':
@@ -190,13 +187,6 @@ if __name__ == '__main__':
                 elif prop_key == 'gestion_envio':
                     tipoGestion = ['interna', 'externa']
                     val = Literal(random.choice(tipoGestion))
-                elif prop_key == 'vendedor':
-                    if i < 40:
-                        val = Literal(direccionesComerciosExternos[0])
-                    elif i < 50:
-                        val = Literal(direccionesComerciosExternos[1])
-                    else:
-                        val = Literal(direccionesComerciosExternos[2])
                 else:
                     val = Literal(random_name(str(prop_key)))
             val3 = random.randint(0, 2)

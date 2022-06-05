@@ -120,6 +120,9 @@ def cobrar(graph):
     Leer el cobro que viene en el graph
     """
     
+    print(graph.serialize(format='turtle'))
+    
+    
     # Creamos la Respuesta RespuestaCobro
     gr = Graph()
     gr.namespace_manager.bind('rdf', RDF)
@@ -128,6 +131,7 @@ def cobrar(graph):
     rc = CEO.RespuestaCobro
     gr.add((rc, RDF.type, CEO.RespuestaCobro))
     gr.add((CEO.RespuestaCobro, RDFS.subClassOf, CEO.Respuesta))
+    
     """
     Asignar el cobro que nos entra a la respuesta del cobro y añadirle un estado (exitoso,fallido)
     """

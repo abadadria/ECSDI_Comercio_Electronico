@@ -7,6 +7,7 @@ import argparse
 from flask import Flask, request, render_template
 from rdflib import Graph, RDF, Namespace, RDFS, Literal
 from rdflib.namespace import FOAF
+from Actors.GestorPagos import GestorPagos
 
 from AgentUtil.ACL import ACL
 from AgentUtil.FlaskServer import shutdown_server
@@ -96,13 +97,33 @@ if not args.verbose:
     logger = logging.getLogger('werkzeug')
     logger.setLevel(logging.ERROR)
 
-def cobrar_pedido():
-    pass
+def cobrar_pedido(importe_pedido):
+    gm = Graph()
+    gm.namespace_manager.bind('rdf', RDF)
+    gm.namespace_manager.bind('ceo', CEO)
+    
+    cobro = CEO.Cobro
+    gm.add((cobro, RDF.type, CEO.Cobro))
+    gm.add((CEO.Cobro, RDF.subClassOf, CEO.Pago))
+    gm.add((cobro, CEO.identificador, n_pedidos))
+    gm.add((cobro, CEO.importe_total, importe_pedido))
+    
+    accion = CEO.Cobrar
+    gm.add((accion, RDF.type, CEO.Cobrar))
+    gm.add((CEO.Cobrar, RDFS.subClassOf, CEO.Accion))
+    gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    gm.add((accion, CEO.tiene_cobro, cobro))
+    
+    GestorPagos = search_agent(CEO.GestorPagos, GestorPedidos, ServicioDirectorio)
 
-def almacenar_pedido_cerrado():
-    pass
+    msg = build_message(gm, perf=ACL.request,
+                        sender=GestorPedidos.uri,
+                        receiver=GestorPagos.uri,
+                        content=accion)
 
-def actualizar_informacion_productos():
+    gr = send_message(msg, GestorPagos.address)
+    
+    
     pass
 
 def informar_productos_pedidos(gm):
@@ -267,6 +288,8 @@ def comunicacion():
             exit()
 
         n_pedidos += 1 
+        
+        cobrar_pedido(importe_pedido)
 
         return build_message(gf,
                       ACL.inform,

@@ -597,7 +597,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#DesregistrarAgente
 :DesregistrarAgente rdf:type owl:Class ;
-                    rdfs:subClassOf :Accion .
+                    rdfs:subClassOf :Accion ;
+                    rdfs:comment "Un Agente de da de baja del ServicioDirectorio"@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Devolucion
@@ -677,7 +678,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaFactura
 :LineaFactura rdf:type owl:Class ;
-              rdfs:subClassOf :Linea .
+              rdfs:subClassOf :Linea ;
+              rdfs:comment "Detalles de una LineaProducto necesarios para elaborar la Factura"@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#LineaProducto
@@ -718,7 +720,7 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Pedido
 :Pedido rdf:type owl:Class ;
-        rdfs:comment "Conjunto de LineaOferta (cantidades de productos a un determinado precio). Contiene tambien el MetodoPago, la prioridad de envio, el destino donde enviar los Productos, la Factura de compra y los distintos Envios que son necesarios para el procesamiento del Pedido."@es .
+        rdfs:comment "Conjunto de LineaProducto (cantidades de productos a un determinado precio). Contiene tambien el MetodoPago, la prioridad de envio, el destino donde enviar los Productos, la Factura de compra y los distintos Envios que son necesarios para el procesamiento del Pedido."@es .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#Producto

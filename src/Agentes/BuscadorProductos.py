@@ -187,8 +187,8 @@ def gestionarActualizacion(ge):
         for ss, pp, oo in products_graph.triples((s,None,None)):
             boolean = True
             atributo = ge.value(s, pp)
-            if atributo != None and atributo != RDF.type: 
-                products_graph.set((ss, pp, Literal(atributo)))
+            if atributo != None: 
+                products_graph.set((ss, pp, atributo))
                 products_graph.set((ss, RDF.type, CEO.Producto))
         
         # el producto no existia

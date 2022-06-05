@@ -135,7 +135,9 @@ def buscar_productos():
         gm.add((l, CEO.precio_min, Literal(int(linea[2]))))
         gm.add((l, CEO.precio_max, Literal(int(linea[3]))))
     
-    # print(gm.serialize(format='turtle'))
+    print('\n\nPinta GM')
+    print(gm.serialize(format='turtle'))
+    print('\n\n')
 
     BuscadorProductos = search_agent(CEO.BuscadorProductos, Asistente, ServicioDirectorio)
 
@@ -147,15 +149,18 @@ def buscar_productos():
 
     gr = send_message(msg, BuscadorProductos.address)
 
+    print('\n\nPinta GR')
     print(gr.serialize(format='turtle'))
+    print('\n\n')
 
     print('\n' + 'Las ofertas de productos son:\n ')
     for s, p, o in gr.triples((None, RDF.type, CEO.Producto)):
         precio = gr.value(s, CEO.precio)
         length = len(s)
         name = s[67:length]
+        categoria = gr.value(s, CEO.categoria)
         
-        print(name + ' con precio: ' + str(precio) + '€')
+        print(name + ' de categoria ' + str(categoria) + ' con precio: ' + str(precio) + '€')
     print('\n')
 
     gp = Graph()
@@ -165,11 +170,13 @@ def buscar_productos():
     gp.add((pedido, RDF.type, CEO.Pedido))
     gp.add((CEO.LineaProducto, RDFS.subClassOf, CEO.Linea))
 
+    n_linea = 0
     # Se filtra el resultado obtenido de la búsqueda según las preferencias del usuario
-    for s, p, o in gm.triples((None, RDF.type, CEO.LineaBusqueda)):
+    for s in gm.subjects(RDF.type, CEO.LineaBusqueda):
         # Para cada linea de busqueda del usuario se busca que producto/s es/son el/los mejor/es
         categoria = gm.value(subject=s, predicate=CEO.categoria)
         cantidad_pedida = gm.value(subject=s, predicate=CEO.cantidad)
+        print('Filtrando categoria ' + str(categoria) + ' ' + str(int(cantidad_pedida)))
         q = """SELECT ?p ?c
             WHERE {
                 ?p rdf:type ceo:Producto .
@@ -183,7 +190,6 @@ def buscar_productos():
         res = gr.query(q, initBindings={'cat': Literal(categoria)})
 
         remaining = int(cantidad_pedida)
-        n_linea = 0
         for p, c in res:
             if int(c) == 0: continue
 
@@ -217,9 +223,9 @@ def buscar_productos():
 
             if remaining <= 0: break  
 
-        print(gp.serialize(format='turtle'))          
+    print(gp.serialize(format='turtle'))          
 
-        return gp
+    return gp
 
 def pedir(g):
     GestorPedidos = search_agent(CEO.GestorPedidos, Asistente, ServicioDirectorio)

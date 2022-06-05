@@ -168,7 +168,7 @@ def comunicacion():
                             for p3, o3 in gm.predicate_objects(o2):
                                 grafo_pedidos.add((o2, p3, o3))
 
-        grafo_pedidos.add((pedido, CEO.tiene_linea_producto, lp))    
+            grafo_pedidos.add((pedido, CEO.tiene_linea_producto, lp))    
 
         print(grafo_pedidos.serialize(format='turtle'))
 

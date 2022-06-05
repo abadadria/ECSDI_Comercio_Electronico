@@ -173,9 +173,14 @@ def eliminar_productos_pedidos(gm):
         c_previa = int(products_graph.value(subject=p, predicate=CEO.cantidad))
         products_graph.set((p, CEO.cantidad, Literal(c_previa - c_pedida)))
 
+    ofile = open('info_prod.ttl', "w")
+    ofile.write(products_graph.serialize(format='turtle'))
+    ofile.close()
+
     return build_message(Graph(),
                          ACL.confirm,
                          sender=BuscadorProductos.uri)
+    
 
 # Product_11 60 - - - -
 
@@ -198,7 +203,7 @@ def gestionarActualizacion(ge):
     
     ofile = open('info_prod.ttl', "w")
     ofile.write(products_graph.serialize(format='turtle'))
-    ofile.close()        
+    ofile.close()
 
     return
 
@@ -290,10 +295,7 @@ def setup():
     log.setLevel(logging.ERROR)
 
 def tidyup():
-    """
-    Acciones previas a parar el agente
-
-    """
+    
     unregister_agent(BuscadorProductos, ServicioDirectorio)
 
 if __name__ == '__main__':

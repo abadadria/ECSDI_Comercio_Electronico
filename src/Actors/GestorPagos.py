@@ -143,13 +143,8 @@ def reembolsar(graph):
     gr.add((rc, RDF.type, CEO.RespuestaReembolso))
     gr.add((CEO.RespuestaReembolso, RDFS.subClassOf, CEO.Respuesta))
     
-    """
-    Asignar el reembolso que nos entra a la respuesta del reembolso y añadirle un estado (exitoso,fallido)
-    """
     
     
-    ofile.write(cobros_graph.serialize(format='turtle'))
-
 
 @app.route("/comm")
 def comunicacion():

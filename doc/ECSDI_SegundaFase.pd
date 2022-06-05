@@ -9950,8 +9950,8 @@ finish</field>
 		    </field>
 		    <field name="location">
 			<object type="Coordinate" id="575">
-			    <field name="x">133</field>
-			    <field name="y">536</field>
+			    <field name="x">134</field>
+			    <field name="y">535</field>
 			</object>
 		    </field>
 		</object>
@@ -10554,8 +10554,8 @@ finish</field>
 		    </field>
 		    <field name="location">
 			<object type="Coordinate" id="677">
-			    <field name="x">602</field>
-			    <field name="y">144</field>
+			    <field name="x">612</field>
+			    <field name="y">141</field>
 			</object>
 		    </field>
 		</object>
@@ -12804,8 +12804,8 @@ finish</field>
 		    </field>
 		    <field name="location">
 			<object type="Coordinate" id="1054">
-			    <field name="x">175</field>
-			    <field name="y">210</field>
+			    <field name="x">190</field>
+			    <field name="y">206</field>
 			</object>
 		    </field>
 		</object>

@@ -272,6 +272,8 @@ def pedir(g):
         print('\n * Pedido realizado con éxito')
         print('\n\n-----------------------------------------------')
         print('            FACTURA DE COMPRA')
+        factura = gr.value(predicate=RDF.type, object=CEO.Factura)
+        print('Pedido Nº ' + gr.value(factura, CEO.n_pedido))
         print('-----------------------------------------------\n')
         for lf in gr.subjects(RDF.type, CEO.LineaFactura):
             cantidad = gr.value(lf, CEO.cantidad)

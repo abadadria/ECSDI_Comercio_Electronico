@@ -112,11 +112,11 @@ if not args.verbose:
 
 def gestionarEnvio(ge):
     
-    
+    print(ge.serialize(format='turtle'))
+
     gr = Graph()
-    gr.namespace_manager.bind('rdf', RDF)
     gr.namespace_manager.bind('ceo', CEO)
-    
+
     rc = CEO.RespuestaCobro
     gr.add((rc, RDF.type, CEO.RespuestaCobro))
     gr.add((CEO.RespuestaCobro, RDFS.subClassOf, CEO.Respuesta))
@@ -190,7 +190,7 @@ def comunicacion():
             if accion == CEO.RealizarEnvio:
                 gestionarEnvio(gm)
                 gr = build_message( Graph(),
-                                ACL['confirm'],
+                                ACL['agree'],
                                 sender=GestorEnvios.uri)
             elif accion == CEO.ActualizarInformacionProductos:
                 gestionarActualizacion(gm)

@@ -122,9 +122,7 @@ def cobrar_pedido(importe_pedido):
                         content=accion)
 
     gr = send_message(msg, GestorPagos.address)
-    
-    
-    pass
+
 
 def informar_productos_pedidos(gm):
     accion = CEO.informarproductospedidos

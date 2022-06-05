@@ -68,7 +68,7 @@ else:
 
 # Configuration stuff
 if args.port is None:
-    port = 9004
+    port = 9050
 else:
     port = args.port
 
@@ -99,9 +99,7 @@ ServicioDirectorio = Agent('ServicioDirectorio',
                         '%s/Stop' % (diraddress))
 
 # Global triplestore graph
-cobros_graph = Graph()
-cobros_graph.namespace_manager.bind('rdf', RDF)
-cobros_graph.namespace_manager.bind('ceo', CEO)
+
 
 cola1 = Queue()
 
@@ -183,7 +181,6 @@ def stop():
     
     
 def setup():
-    cobros_graph.parse('informacion cobros.ttl', format='turtle')
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
 

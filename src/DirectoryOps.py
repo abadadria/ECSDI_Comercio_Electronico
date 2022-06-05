@@ -70,7 +70,7 @@ def unregister_agent(agent, ds):
         print('\n * Desregistro de agente NO confirmado')
 
 
-def search_agent(agn_uri, agent, ds):
+def search_agent(agn_uri, agent, ds, n=None):
     # Obtiene un agente
     gm = Graph()
     gm.namespace_manager.bind('rdf', RDF)
@@ -80,6 +80,8 @@ def search_agent(agn_uri, agent, ds):
     gm.add((ba, RDF.type, CEO.BuscarAgente))
     gm.add((CEO.BuscarAgente, RDFS.subClassOf, CEO.Accion))
     gm.add((CEO.Accion, RDFS.subClassOf, CEO.Comunicacion))
+    if not n is None:
+        gm.add((ba, CEO.n, Literal(n)))
 
     a = CEO.agente
     gm.add((a, RDF.type, agn_uri))

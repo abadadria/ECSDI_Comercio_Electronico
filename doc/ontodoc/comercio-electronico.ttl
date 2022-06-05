@@ -43,10 +43,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_origen
 :con_origen rdf:type owl:ObjectProperty ;
-            rdfs:domain :Envio ,
-                        :Lote ;
-            rdfs:range :CentroLogistico ,
-                       :ComercioExterno .
+            rdfs:domain :Lote ;
+            rdfs:range :CentroLogistico .
 
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#con_reembolso
@@ -169,11 +167,6 @@
                       rdfs:range :LineaBusqueda .
 
 
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_envio
-:tiene_linea_envio rdf:type owl:ObjectProperty ;
-                   rdfs:domain :SolicitarEnvio .
-
-
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_linea_factura
 :tiene_linea_factura rdf:type owl:ObjectProperty ;
                      rdfs:domain :Factura ;
@@ -205,7 +198,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#tiene_metodo_pago
 :tiene_metodo_pago rdf:type owl:ObjectProperty ;
-                   rdfs:domain :Pedido ;
+                   rdfs:domain :Pago ,
+                               :Pedido ;
                    rdfs:range :MetodoPago .
 
 
@@ -253,12 +247,6 @@
 :valora_producto rdf:type owl:ObjectProperty ;
                  rdfs:domain :SolicitarValoracionProducto ;
                  rdfs:range :Producto .
-
-
-###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#vendedor
-:vendedor rdf:type owl:ObjectProperty ;
-          rdfs:domain :Producto ;
-          rdfs:range :ComercioExterno .
 
 
 #################################################################
@@ -319,6 +307,7 @@
 :estado rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Devolucion ,
+                    :Envio ,
                     :Pedido ,
                     :RespuestaCobro ,
                     :RespuestaReembolso ;
@@ -393,7 +382,8 @@
 
 ###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#n_centro_logistico
 :n_centro_logistico rdf:type owl:DatatypeProperty ;
-                    rdfs:domain :Producto ;
+                    rdfs:domain :Envio ,
+                                :Producto ;
                     rdfs:range xsd:int ;
                     rdfs:comment "Indica el ID del CentroLogísitco en el que se almacena el Producto"@es .
 
@@ -483,6 +473,13 @@
                   rdfs:domain :Producto ;
                   rdfs:range xsd:nonNegativeInteger ;
                   rdfs:comment "Media aritmetica de todas las valoraciones hechas a un Producto"@es .
+
+
+###  http://www.semanticweb.org/samragu/ontologies/comercio-electronico#vendedor
+:vendedor rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Envio ,
+                      :Producto ;
+          rdfs:range xsd:string .
 
 
 #################################################################

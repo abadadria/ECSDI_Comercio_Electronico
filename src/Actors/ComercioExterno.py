@@ -195,6 +195,11 @@ def comunicacion():
     """
     Entrypoint de comunicacion
     """
+    def enviarProductos():
+        return build_message(Graph(),
+                             ACL.confirm,
+                             sender=ComercioExterno.uri)
+
 
     message = request.args['content']
     gm = Graph()
@@ -227,6 +232,8 @@ def comunicacion():
             # Por ahora simplemente retornamos un Inform-done
             if accion == CEO.ActualizarInformacionProductos:
                 pass
+            elif accion == CEO.SolicitarEnvio:
+                gr = enviarProductos()
             else:
                 gr = build_message( Graph(),
                                 ACL['not-understood'],
